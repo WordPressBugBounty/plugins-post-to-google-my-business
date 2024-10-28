@@ -17,7 +17,7 @@
  * GNU General Public License for more details.
  *
  * @license GPL-2.0-or-later
- * Modified by __root__ on 24-July-2024 using Strauss.
+ * Modified by __root__ on 28-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -240,16 +240,19 @@ class Html2Text
      */
     public function __construct($html = '', $options = array())
     {
+        $this->htmlFuncFlags = (PHP_VERSION_ID < 50400)
+            ? ENT_QUOTES
+            : ENT_QUOTES | ENT_HTML5;
+
         // for backwards compatibility
         if (!is_array($options)) {
-            return call_user_func_array(array($this, 'legacyConstruct'), func_get_args());
+            // phpcs:ignore (PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue.NeedsInspection
+            call_user_func_array(array($this, 'legacyConstruct'), func_get_args());
+            return;
         }
 
         $this->html = $html;
         $this->options = array_merge($this->options, $options);
-        $this->htmlFuncFlags = (PHP_VERSION_ID < 50400)
-            ? ENT_COMPAT
-            : ENT_COMPAT | ENT_HTML5;
     }
 
     /**
@@ -355,7 +358,11 @@ class Html2Text
     {
         $this->linkList = array();
 
-        $text = trim($this->html);
+        if ($this->html === null) {
+            $text = '';
+        } else {
+            $text = trim($this->html);
+        }
 
         $this->converter($text);
 
@@ -393,6 +400,9 @@ class Html2Text
         $text = preg_replace("/[\n]{3,}/", "\n\n", $text);
 
         // remove leading empty lines (can be produced by eg. P tag on the beginning)
+        if ($text === null) {
+            $text = '';
+        }
         $text = ltrim($text, "\n");
 
         if ($this->options['width'] > 0) {
@@ -421,7 +431,7 @@ class Html2Text
         }
 
         // Ignored link types
-        if (preg_match('!^(javascript:|mailto:|#)!i', html_entity_decode($link))) {
+        if (preg_match('!^(javascript:|mailto:|#)!i', html_entity_decode($link, $this->htmlFuncFlags, self::ENCODING))) {
             return $display;
         }
 

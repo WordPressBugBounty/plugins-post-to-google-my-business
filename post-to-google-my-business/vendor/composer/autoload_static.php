@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1992977fa7971831141eee00bde7c04e
+class ComposerStaticInit76dc74e23223b2f92e11eb29c7f7091e
 {
     public static $prefixLengthsPsr4 = array (
         'T' => 
@@ -49,7 +49,6 @@ class ComposerStaticInit1992977fa7971831141eee00bde7c04e
         'Html2Text\\' => 
         array (
             0 => __DIR__ . '/..' . '/html2text/html2text/src',
-            1 => __DIR__ . '/..' . '/html2text/html2text/test',
         ),
         'Firebase\\JWT\\' => 
         array (
@@ -206,23 +205,7 @@ class ComposerStaticInit1992977fa7971831141eee00bde7c04e
         'PGMB\\Vendor\\Firebase\\JWT\\JWT' => __DIR__ . '/../..' . '/vendor-prefixed/firebase/php-jwt/src/JWT.php',
         'PGMB\\Vendor\\Firebase\\JWT\\Key' => __DIR__ . '/../..' . '/vendor-prefixed/firebase/php-jwt/src/Key.php',
         'PGMB\\Vendor\\Firebase\\JWT\\SignatureInvalidException' => __DIR__ . '/../..' . '/vendor-prefixed/firebase/php-jwt/src/SignatureInvalidException.php',
-        'PGMB\\Vendor\\Html2Text\\BasicTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/BasicTest.php',
-        'PGMB\\Vendor\\Html2Text\\BlockquoteTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/BlockquoteTest.php',
-        'PGMB\\Vendor\\Html2Text\\ConstructorTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/ConstructorTest.php',
-        'PGMB\\Vendor\\Html2Text\\DefinitionListTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/DefinitionListTest.php',
-        'PGMB\\Vendor\\Html2Text\\DelTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/DelTest.php',
         'PGMB\\Vendor\\Html2Text\\Html2Text' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/src/Html2Text.php',
-        'PGMB\\Vendor\\Html2Text\\HtmlCharsTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/HtmlCharsTest.php',
-        'PGMB\\Vendor\\Html2Text\\ImageTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/ImageTest.php',
-        'PGMB\\Vendor\\Html2Text\\InsTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/InsTest.php',
-        'PGMB\\Vendor\\Html2Text\\LinkTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/LinkTest.php',
-        'PGMB\\Vendor\\Html2Text\\ListTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/ListTest.php',
-        'PGMB\\Vendor\\Html2Text\\PreTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/PreTest.php',
-        'PGMB\\Vendor\\Html2Text\\PrintTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/PrintTest.php',
-        'PGMB\\Vendor\\Html2Text\\SearchReplaceTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/SearchReplaceTest.php',
-        'PGMB\\Vendor\\Html2Text\\SpanTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/SpanTest.php',
-        'PGMB\\Vendor\\Html2Text\\StrToUpperTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/StrToUpperTest.php',
-        'PGMB\\Vendor\\Html2Text\\TableTest' => __DIR__ . '/../..' . '/vendor-prefixed/html2text/html2text/test/TableTest.php',
         'PGMB\\Vendor\\Rarst\\WordPress\\DateTime\\WpDateTime' => __DIR__ . '/../..' . '/vendor-prefixed/rarst/wpdatetime/src/WpDateTime.php',
         'PGMB\\Vendor\\Rarst\\WordPress\\DateTime\\WpDateTimeImmutable' => __DIR__ . '/../..' . '/vendor-prefixed/rarst/wpdatetime/src/WpDateTimeImmutable.php',
         'PGMB\\Vendor\\Rarst\\WordPress\\DateTime\\WpDateTimeInterface' => __DIR__ . '/../..' . '/vendor-prefixed/rarst/wpdatetime/src/WpDateTimeInterface.php',
@@ -246,9 +229,9 @@ class ComposerStaticInit1992977fa7971831141eee00bde7c04e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1992977fa7971831141eee00bde7c04e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1992977fa7971831141eee00bde7c04e::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit1992977fa7971831141eee00bde7c04e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit76dc74e23223b2f92e11eb29c7f7091e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit76dc74e23223b2f92e11eb29c7f7091e::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit76dc74e23223b2f92e11eb29c7f7091e::$classMap;
 
         }, null, ClassLoader::class);
     }

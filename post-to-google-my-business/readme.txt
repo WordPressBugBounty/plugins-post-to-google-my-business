@@ -3,8 +3,8 @@ Contributors: koen12344, freemius
 Donate link: https://tycoonmedia.net/?utm_source=repository&utm_medium=link&utm_campaign=donate
 Tags: google my business, gmb, auto publish, posts, post, local search, google my business posts, google places, google plus, google+
 Requires at least: 4.9.0
-Tested up to: 6.6.1
-Stable tag: 3.1.27
+Tested up to: 6.7
+Stable tag: 3.1.28
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -113,6 +113,14 @@ with image accessibility. To further debug the issue, you can use a service like
 6. Auto-post template settings
 
 == Changelog ==
+
+= 3.1.28 =
+* Tested on WordPress 6.7
+* Update: Freemius SDK 2.9.0
+
+> **Premium**
+>
+> * Fix: "Refresh locations" button not working on Auto-post settings page
 
 = 3.1.27 =
 * Added: AVIF image conversion, fall back on original uploaded image if it matches GMB requirements

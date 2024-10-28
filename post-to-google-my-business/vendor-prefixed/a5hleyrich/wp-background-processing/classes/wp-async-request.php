@@ -5,7 +5,7 @@
  * @package WP-Background-Processing
  *
  * @license GPL-2.0-or-later
- * Modified by __root__ on 24-July-2024 using Strauss.
+ * Modified by __root__ on 28-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -143,7 +143,7 @@ abstract class PGMB_Vendor_WP_Async_Request {
 		}
 
 		$args = array(
-			'timeout'   => 0.01,
+			'timeout'   => 5,
 			'blocking'  => false,
 			'body'      => $this->data,
 			'cookies'   => $_COOKIE, // Passing cookies ensures request is performed as initiating user.

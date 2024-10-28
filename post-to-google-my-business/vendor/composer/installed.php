@@ -1,7 +1,7 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '3.1.27',
-        'version' => '3.1.27.0',
+        'pretty_version' => '3.1.28',
+        'version' => '3.1.28.0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,8 +11,8 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '3.1.27',
-            'version' => '3.1.27.0',
+            'pretty_version' => '3.1.28',
+            'version' => '3.1.28.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -20,12 +20,12 @@
             'dev_requirement' => false,
         ),
         'a5hleyrich/wp-background-processing' => array(
-            'pretty_version' => '1.1.1',
-            'version' => '1.1.1.0',
+            'pretty_version' => '1.3.1',
+            'version' => '1.3.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../a5hleyrich/wp-background-processing',
             'aliases' => array(),
-            'reference' => 'ebbed762c42e70e76573ffbd36e591378ba5f2ee',
+            'reference' => '6d1e48165e461260075b9f161b3861c7278f71e7',
             'dev_requirement' => false,
         ),
         'dragonmantank/cron-expression' => array(
@@ -47,12 +47,12 @@
             'dev_requirement' => false,
         ),
         'html2text/html2text' => array(
-            'pretty_version' => '4.3.1',
-            'version' => '4.3.1.0',
+            'pretty_version' => '4.3.2',
+            'version' => '4.3.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../html2text/html2text',
             'aliases' => array(),
-            'reference' => '61ad68e934066a6f8df29a3d23a6460536d0855c',
+            'reference' => '3b443cbe302b52eb5806a21a9dbd79524203970a',
             'dev_requirement' => false,
         ),
         'rarst/wpdatetime' => array(

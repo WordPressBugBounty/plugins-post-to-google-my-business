@@ -13,7 +13,7 @@
  * @see       https://www.typist.tech/projects/wp-admin-notices
  * @see       https://github.com/TypistTech/wp-admin-notices
  *
- * Modified by __root__ on 24-July-2024 using Strauss.
+ * Modified by __root__ on 28-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
