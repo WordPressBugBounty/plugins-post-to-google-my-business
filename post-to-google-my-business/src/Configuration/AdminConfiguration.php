@@ -24,7 +24,7 @@ class AdminConfiguration implements ContainerConfigurationInterface {
             );
         } );
         $container['user_manager'] = $container->service( function ( Container $container ) {
-            return new GoogleUserManager($container['proxy_auth_api'], $container['wordpress.http_transport']);
+            return new GoogleUserManager($container['proxy_auth_api'], $container['wordpress.http_transport'], $container['service.location_sync_process']);
         } );
         $container['admin_pages'] = $container->service( function ( Container $container ) {
             $admin_page_args = [

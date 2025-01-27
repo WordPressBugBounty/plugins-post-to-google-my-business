@@ -1,18 +1,18 @@
 {
     "packages": [
         {
-            "name": "a5hleyrich/wp-background-processing",
-            "version": "1.3.1",
-            "version_normalized": "1.3.1.0",
+            "name": "deliciousbrains/wp-background-processing",
+            "version": "dev-prod",
+            "version_normalized": "dev-prod",
             "source": {
                 "type": "git",
-                "url": "https://github.com/deliciousbrains/wp-background-processing.git",
-                "reference": "6d1e48165e461260075b9f161b3861c7278f71e7"
+                "url": "https://github.com/koen12344/multisite-background-processing.git",
+                "reference": "7724c9d124f1efdc672d0b15923a60c8ee42e434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deliciousbrains/wp-background-processing/zipball/6d1e48165e461260075b9f161b3861c7278f71e7",
-                "reference": "6d1e48165e461260075b9f161b3861c7278f71e7",
+                "url": "https://api.github.com/repos/koen12344/multisite-background-processing/zipball/7724c9d124f1efdc672d0b15923a60c8ee42e434",
+                "reference": "7724c9d124f1efdc672d0b15923a60c8ee42e434",
                 "shasum": ""
             },
             "require": {
@@ -28,7 +28,7 @@
             "suggest": {
                 "coenjacobs/mozart": "Easily wrap this library with your own prefix, to prevent collisions when multiple plugins use this library"
             },
-            "time": "2024-02-28T13:39:06+00:00",
+            "time": "2025-01-11T16:16:36+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -36,7 +36,6 @@
                     "classes/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0-or-later"
             ],
@@ -48,10 +47,9 @@
             ],
             "description": "WP Background Processing can be used to fire off non-blocking asynchronous requests or as a background processing tool, allowing you to queue tasks.",
             "support": {
-                "issues": "https://github.com/deliciousbrains/wp-background-processing/issues",
-                "source": "https://github.com/deliciousbrains/wp-background-processing/tree/1.3.1"
+                "source": "https://github.com/koen12344/multisite-background-processing/tree/prod"
             },
-            "install-path": "../a5hleyrich/wp-background-processing"
+            "install-path": "../deliciousbrains/wp-background-processing"
         },
         {
             "name": "dragonmantank/cron-expression",
@@ -292,8 +290,8 @@
             "type": "library",
             "extra": {
                 "scripts-dev": {
-                    "post-install-cmd": "@install-dev-extra",
-                    "post-update-cmd": "@install-dev-extra"
+                    "post-update-cmd": "@install-dev-extra",
+                    "post-install-cmd": "@install-dev-extra"
                 }
             },
             "installation-source": "dist",

@@ -24,6 +24,7 @@ class SubPost implements EntityInterface {
 	protected $editing_id = 0;
 
 	private $post_publish_date_timestamp;
+	private $queued_items;
 
 
 	public function __construct($ID, $parent_id) {
@@ -80,6 +81,13 @@ class SubPost implements EntityInterface {
 		return $this->editing_id;
 	}
 
+	public function set_queued_items($queued_items){
+		$this->queued_items = $queued_items;
+	}
+	public function get_queued_items(){
+		return $this->queued_items;
+	}
+
 	public function set_draft($draft = true){
 		if($draft){
 			$this->draft = true;
@@ -111,6 +119,7 @@ class SubPost implements EntityInterface {
 		$instance->set_autopost($post->_mbp_is_autopost);
 		$instance->set_post_publish_date_timestamp($post->_mbp_post_publish_date);
 		$instance->set_has_errors($post->mbp_last_error);
+		$instance->set_queued_items($post->_pgmb_queued_items);
 		$instance->set_draft( $post->post_status === 'draft' );
 		return $instance;
 	}

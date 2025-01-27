@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit76dc74e23223b2f92e11eb29c7f7091e
+class ComposerStaticInitea067c724201b211e291337ce8bd0abb
 {
     public static $prefixLengthsPsr4 = array (
         'T' => 
@@ -76,6 +76,15 @@ class ComposerStaticInit76dc74e23223b2f92e11eb29c7f7091e
         'PGMB\\Admin\\DashboardPage' => __DIR__ . '/../..' . '/src/Admin/DashboardPage.php',
         'PGMB\\Admin\\EnqueuesScriptsInterface' => __DIR__ . '/../..' . '/src/Admin/EnqueuesScriptsInterface.php',
         'PGMB\\Admin\\PostCampaignsUpsell' => __DIR__ . '/../..' . '/src/Admin/PostCampaignsUpsell.php',
+        'PGMB\\ApiCache\\Group' => __DIR__ . '/../..' . '/src/ApiCache/Group.php',
+        'PGMB\\ApiCache\\GroupCacheRepository' => __DIR__ . '/../..' . '/src/ApiCache/GroupCacheRepository.php',
+        'PGMB\\ApiCache\\Location' => __DIR__ . '/../..' . '/src/ApiCache/Location.php',
+        'PGMB\\ApiCache\\LocationCacheRepository' => __DIR__ . '/../..' . '/src/ApiCache/LocationCacheRepository.php',
+        'PGMB\\BackgroundProcessing\\AccountSyncQueueItem' => __DIR__ . '/../..' . '/src/BackgroundProcessing/AccountSyncQueueItem.php',
+        'PGMB\\BackgroundProcessing\\AccountsSyncQueueItem' => __DIR__ . '/../..' . '/src/BackgroundProcessing/AccountsSyncQueueItem.php',
+        'PGMB\\BackgroundProcessing\\GroupSyncQueueItem' => __DIR__ . '/../..' . '/src/BackgroundProcessing/GroupSyncQueueItem.php',
+        'PGMB\\BackgroundProcessing\\LocationSyncProcess' => __DIR__ . '/../..' . '/src/BackgroundProcessing/LocationSyncProcess.php',
+        'PGMB\\BackgroundProcessing\\LocationSyncQueueItem' => __DIR__ . '/../..' . '/src/BackgroundProcessing/LocationSyncQueueItem.php',
         'PGMB\\BackgroundProcessing\\PostPublishProcess' => __DIR__ . '/../..' . '/src/BackgroundProcessing/PostPublishProcess.php',
         'PGMB\\Components\\BusinessSelector' => __DIR__ . '/../..' . '/src/Components/BusinessSelector.php',
         'PGMB\\Components\\GooglePostEntityListTable' => __DIR__ . '/../..' . '/src/Components/GooglePostEntityListTable.php',
@@ -187,6 +196,7 @@ class ComposerStaticInit76dc74e23223b2f92e11eb29c7f7091e
         'PGMB\\Upgrader\\Upgrade_3_0_0' => __DIR__ . '/../..' . '/src/Upgrader/Upgrade_3_0_0.php',
         'PGMB\\Upgrader\\Upgrade_3_1_2' => __DIR__ . '/../..' . '/src/Upgrader/Upgrade_3_1_2.php',
         'PGMB\\Upgrader\\Upgrade_3_1_6' => __DIR__ . '/../..' . '/src/Upgrader/Upgrade_3_1_6.php',
+        'PGMB\\Upgrader\\Upgrade_3_2_0' => __DIR__ . '/../..' . '/src/Upgrader/Upgrade_3_2_0.php',
         'PGMB\\Upgrader\\Upgrader' => __DIR__ . '/../..' . '/src/Upgrader/Upgrader.php',
         'PGMB\\Util\\UTF16CodeUnitsUtil' => __DIR__ . '/../..' . '/src/Util/UTF16CodeUnitsUtil.php',
         'PGMB\\Vendor\\Cron\\AbstractField' => __DIR__ . '/../..' . '/vendor-prefixed/dragonmantank/cron-expression/src/Cron/AbstractField.php',
@@ -222,16 +232,16 @@ class ComposerStaticInit76dc74e23223b2f92e11eb29c7f7091e
         'PGMB\\Vendor\\TypistTech\\WPAdminNotices\\StoreInterface' => __DIR__ . '/../..' . '/vendor-prefixed/typisttech/wp-admin-notices/src/StoreInterface.php',
         'PGMB\\Vendor\\WeDevsSettingsAPI' => __DIR__ . '/../..' . '/src/Vendor/WeDevsSettingsAPI.php',
         'PGMB\\WordPressInitializable' => __DIR__ . '/../..' . '/src/WordPressInitializable.php',
-        'PGMB_Vendor_WP_Async_Request' => __DIR__ . '/../..' . '/vendor-prefixed/a5hleyrich/wp-background-processing/classes/wp-async-request.php',
-        'PGMB_Vendor_WP_Background_Process' => __DIR__ . '/../..' . '/vendor-prefixed/a5hleyrich/wp-background-processing/classes/wp-background-process.php',
+        'PGMB_Vendor_WP_Async_Request' => __DIR__ . '/../..' . '/vendor-prefixed/deliciousbrains/wp-background-processing/classes/wp-async-request.php',
+        'PGMB_Vendor_WP_Background_Process' => __DIR__ . '/../..' . '/vendor-prefixed/deliciousbrains/wp-background-processing/classes/wp-background-process.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit76dc74e23223b2f92e11eb29c7f7091e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit76dc74e23223b2f92e11eb29c7f7091e::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit76dc74e23223b2f92e11eb29c7f7091e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitea067c724201b211e291337ce8bd0abb::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitea067c724201b211e291337ce8bd0abb::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitea067c724201b211e291337ce8bd0abb::$classMap;
 
         }, null, ClassLoader::class);
     }

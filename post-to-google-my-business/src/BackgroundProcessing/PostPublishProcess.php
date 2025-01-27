@@ -3,16 +3,18 @@
 namespace PGMB\BackgroundProcessing;
 
 use PGMB\API\CachedGoogleMyBusiness;
+use PGMB\ApiCache\LocationCacheRepository;
 use PGMB\Google\LocalPostEditMask;
+use PGMB\Google\NormalizeLocationName;
 use PGMB\ParseFormFields;
 use PGMB\PostTypes\GooglePostEntity;
 use PGMB\PostTypes\GooglePostEntityRepository;
 use PGMB\Vendor\TypistTech\WPAdminNotices\AbstractNotice;
 use PGMB\Vendor\TypistTech\WPAdminNotices\StickyNotice;
-use PGMB\Vendor\TypistTech\WPAdminNotices\Store;
-use PGMB_Vendor_WP_Background_Process as Background_Process;
+use PGMB\Vendor\TypistTech\WPAdminNotices\Store as AdminNoticesStore;
+use PGMB_Vendor_WP_Background_Process as BackgroundProcess;
 use WP_Error;
-class PostPublishProcess extends Background_Process {
+class PostPublishProcess extends BackgroundProcess {
     protected $action = 'mbp_background_process';
 
     protected $api;
@@ -20,15 +22,26 @@ class PostPublishProcess extends Background_Process {
     protected $repository;
 
     /**
-     * @var Store
+     * @var AdminNoticesStore
      */
     protected $admin_notice_store;
 
-    public function __construct( CachedGoogleMyBusiness $api, GooglePostEntityRepository $repository, Store $admin_notice_store ) {
+    /**
+     * @var LocationCacheRepository
+     */
+    private $location_repository;
+
+    public function __construct(
+        CachedGoogleMyBusiness $api,
+        GooglePostEntityRepository $repository,
+        LocationCacheRepository $location_repository,
+        AdminNoticesStore $admin_notice_store
+    ) {
         parent::__construct();
         $this->api = $api;
         $this->repository = $repository;
         $this->admin_notice_store = $admin_notice_store;
+        $this->location_repository = $location_repository;
     }
 
     /**
@@ -60,14 +73,14 @@ class PostPublishProcess extends Background_Process {
 
     public function update_status( $entity_id ) {
         $entity = $this->repository->find_by_id( (int) $entity_id );
-        if ( !$entity instanceof GooglePostEntity ) {
+        if ( !$entity instanceof GooglePostEntity || empty( $entity->get_post_name() ) ) {
             return false;
         }
         try {
             $this->api->set_user_id( $entity->get_user_key() );
             $updated_post = $this->api->get_post( $entity->get_post_name() );
             $entity->set_post_success( $updated_post->name, $updated_post->state, $updated_post->searchUrl );
-        } catch ( \Exception $e ) {
+        } catch ( \Throwable $e ) {
             $entity->set_post_state( null )->set_post_failure( sprintf( __( 'Updating status failed: %s', 'post-to-google-my-business' ), $e->getMessage() ) );
         }
         $this->repository->persist( $entity );
@@ -82,13 +95,30 @@ class PostPublishProcess extends Background_Process {
         $this->delete_post( $user_key, $post_name );
     }
 
+    protected function lower_queue_count( $post_id ) {
+        $count = (int) get_post_meta( $post_id, "_pgmb_queued_items", true );
+        if ( $count > 0 ) {
+            $count--;
+            if ( $count === 0 ) {
+                delete_post_meta( $post_id, "_pgmb_queued_items" );
+            } else {
+                update_post_meta( $post_id, "_pgmb_queued_items", $count );
+            }
+        }
+    }
+
     public function create_google_post( $post_id, $location, $user_key = false ) {
         /*
          * user_key is not set pre 3.0.0, any posts that were scheduled before installing 3.0.0 will not set have user_key value,
          *
          * Can not rely on default location because if it is changed to a location on another account, the user_key will be incorrect
          */
+        $this->lower_queue_count( $post_id );
         $form_fields = get_post_meta( $post_id, 'mbp_form_fields', true );
+        if ( empty( $form_fields ) ) {
+            //The parent post is probably deleted
+            return;
+        }
         $parent_post_id = wp_get_post_parent_id( $post_id );
         $is_autopost = get_post_meta( $post_id, '_mbp_is_autopost', true );
         $created_post = $this->repository->find_by_parent( $post_id )->find_by_user_key( $user_key )->find_by_location( $location )->find_one();
@@ -107,12 +137,8 @@ class PostPublishProcess extends Background_Process {
             //			if(!isset($location_data->locationState->isVerified) || !$location_data->locationState->isVerified || !isset($location_data->locationState->isPublished) || !$location_data->locationState->isPublished){
             //				throw new \InvalidArgumentException(__('This location is unverified, not public, or not eligible to publish posts.', 'post-to-google-my-business'));
             //			}
-            $localPost = $data->getLocalPost(
-                $this->api,
-                $parent_post_id,
-                $user_key,
-                $location
-            );
+            $location_ent = $this->location_repository->get_location_by_google_id( NormalizeLocationName::from_with_account( $location )->without_account_id() );
+            $localPost = $data->getLocalPost( $location_ent, $parent_post_id );
             if ( $post_name ) {
                 $oldPost = $this->api->get_post( $post_name );
                 $mask = new LocalPostEditMask($oldPost, $localPost);
@@ -159,16 +185,6 @@ class PostPublishProcess extends Background_Process {
         }
         $this->repository->persist( $created_post );
         sleep( 1 );
-    }
-
-    public function dispatch() {
-        update_option( 'pgmb_is_busy', true );
-        parent::dispatch();
-    }
-
-    protected function complete() {
-        delete_option( 'pgmb_is_busy' );
-        parent::complete();
     }
 
 }

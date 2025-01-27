@@ -8,8 +8,10 @@ use InvalidArgumentException;
 use PGMB\Admin\AjaxCallbackInterface;
 use PGMB\API\APIInterface;
 use PGMB\API\CachedGoogleMyBusiness;
+use PGMB\ApiCache\LocationCacheRepository;
 use PGMB\Components\PostEditor;
 use PGMB\EventManagement\SubscriberInterface;
+use PGMB\Google\NormalizeLocationName;
 use PGMB\PostTypes\GooglePostEntityRepository;
 use PGMB\PostTypes\SubPost;
 use PGMB\Premium\PostTypes\PostCampaign;
@@ -46,11 +48,11 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
     /**
      * @var APIInterface
      */
-    private $api;
+    private $location_repository;
 
     public function __construct(
         WeDevsSettingsAPI $settings_api,
-        CachedGoogleMyBusiness $api,
+        LocationCacheRepository $location_repository,
         $plugin_version,
         $post_editor,
         $enabled_post_types,
@@ -66,7 +68,7 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
         $this->settings_api = $settings_api;
         $this->plugin_path = $plugin_path;
         $this->plugin_url = $plugin_url;
-        $this->api = $api;
+        $this->location_repository = $location_repository;
     }
 
     public static function get_subscribed_hooks() {
@@ -151,6 +153,8 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
             'locale'                     => get_locale(),
             'disable_event_dateselector' => $this->settings_api->get_option( 'disable_event_dateselector', 'mbp_misc' ) === 'on',
             'nonce'                      => wp_create_nonce( 'pgmb-nonce' ),
+            'remaining_items'            => __( '%d publishing tasks queued', 'post-to-google-my-business' ),
+            'refresh_post_status'        => __( 'Refreshing post statuses...', 'post-to-google-my-business' ),
         );
         wp_localize_script( 'mbp-metabox', 'mbp_localize_script', $localize_vars );
     }
@@ -250,22 +254,12 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
         $parsed_fields = new \PGMB\ParseFormFields($fields);
         $default_location = (array) $this->settings_api->get_option( 'google_location', 'mbp_google_settings' );
         $location_name = reset( $default_location );
-        $user_key = key( $default_location );
+        $location = $this->location_repository->get_location_by_google_id( NormalizeLocationName::from_with_account( $location_name )->without_account_id() );
         if ( mbp_fs()->is__premium_only() && $parsed_fields->get_topic_type() === 'PRODUCT' ) {
-            $parsed_fields->get_product__premium_only(
-                $this->api,
-                $parent_post_id,
-                $user_key,
-                $location_name
-            );
+            $parsed_fields->get_product__premium_only( $location, $parent_post_id );
             return;
         }
-        $parsed_fields->getLocalPost(
-            $this->api,
-            $parent_post_id,
-            $user_key,
-            $location_name
-        );
+        $parsed_fields->getLocalPost( $location, $parent_post_id );
     }
 
     public function wp_time_format() {

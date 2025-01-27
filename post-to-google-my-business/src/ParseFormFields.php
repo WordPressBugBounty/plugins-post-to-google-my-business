@@ -5,6 +5,8 @@ namespace PGMB;
 use Exception;
 use InvalidArgumentException;
 use PGMB\API\CachedGoogleMyBusiness;
+use PGMB\ApiCache\Location;
+use PGMB\ApiCache\LocationCacheRepository;
 use PGMB\Google\LocalPost;
 use PGMB\Google\MediaItem;
 use PGMB\Google\NormalizeLocationName;
@@ -92,26 +94,17 @@ class ParseFormFields {
     /**
      * Parse the form fields and return a LocalPost object
      *
-     * @param CachedGoogleMyBusiness $api
+     * @param Location $location
      * @param $parent_post_id
-     * @param $user_key
-     * @param $location_name
      *
      * @return LocalPost
      * @throws Exception
      */
-    public function getLocalPost(
-        CachedGoogleMyBusiness $api,
-        $parent_post_id,
-        $user_key,
-        $location_name
-    ) {
+    public function getLocalPost( Location $location, $parent_post_id ) : LocalPost {
         if ( !is_numeric( $parent_post_id ) ) {
             throw new InvalidArgumentException('Parent Post ID required for placeholder parsing');
         }
-        $api->set_user_id( $user_key );
-        $location = $api->get_location( NormalizeLocationName::from_with_account( $location_name )->without_account_id(), 'title,languageCode,phoneNumbers,storefrontAddress,websiteUri,regularHours,specialHours,labels', false );
-        $placeholder_variables = $this->generate_placeholder_variables( $parent_post_id, $location );
+        $placeholder_variables = $this->generate_placeholder_variables( $parent_post_id, $location->api_formatted() );
         $summary = stripslashes( $this->form_fields['mbp_post_text'] );
         $summary = $this->parse_placeholder_variables( $placeholder_variables, $summary );
         $summary = UTF16CodeUnitsUtil::strimwidth(
@@ -126,7 +119,7 @@ class ParseFormFields {
         if ( $topicType == 'PRODUCT' ) {
             throw new InvalidArgumentException(__( 'Products are not supported in the free version of the plugin. Please choose a different post type in your template.', 'post-to-google-my-business' ));
         }
-        $localPost = new LocalPost($location->languageCode, $summary, $topicType);
+        $localPost = new LocalPost($location->get_languageCode(), $summary, $topicType);
         //Set alert type
         if ( $topicType === 'ALERT' ) {
             $localPost->setAlertType( $this->form_fields['mbp_alert_type'] );

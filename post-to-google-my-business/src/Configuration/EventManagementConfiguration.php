@@ -35,7 +35,7 @@ class EventManagementConfiguration implements ContainerConfigurationInterface {
                     $container['setting.bypass_wp_cron']
                 ),
                 new Subscriber\SubPostListAjaxSubscriber($container['repository.subposts']),
-                new Subscriber\PostEntityListAjaxSubscriber($container['repository.post_entities'], $container['google_my_business_api'], $container['post_publishing_process']),
+                new Subscriber\PostEntityListAjaxSubscriber($container['repository.post_entities'], $container['repository.location_cache'], $container['post_publishing_process']),
                 new Subscriber\AdminPageSubscriber(
                     $container['dashboard_page'],
                     $container['admin_pages'],

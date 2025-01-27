@@ -6,6 +6,8 @@ use DateTime;
 
 use PGMB\API\ProxyAuthenticationAPI;
 
+use PGMB\BackgroundProcessing\AccountSyncQueueItem;
+use PGMB\BackgroundProcessing\LocationSyncProcess;
 use PGMB\Vendor\Firebase\JWT\JWK;
 use PGMB\Vendor\Firebase\JWT\JWT;
 
@@ -19,6 +21,10 @@ class GoogleUserManager {
 	 * @var \WP_Http
 	 */
 	private $transport;
+	/**
+	 * @var LocationSyncProcess
+	 */
+	private $location_sync_process;
 
 	public function get_public_keys() {
 		$transient = get_transient('pgmb_public_keys');
@@ -41,9 +47,10 @@ class GoogleUserManager {
 		return $keys;
 	}
 
-	public function __construct(ProxyAuthenticationAPI $auth_api, \WP_Http $transport){
+	public function __construct(ProxyAuthenticationAPI $auth_api, \WP_Http $transport, LocationSyncProcess $location_sync_process){
 		$this->auth_api = $auth_api;
 		$this->transport = $transport;
+		$this->location_sync_process = $location_sync_process;
 	}
 
 	private function clear_tokens($account_id, $account){
@@ -104,6 +111,7 @@ class GoogleUserManager {
 		update_option('pgmb_accounts', $accounts);
 
 		$this->auth_api->set_access_token($account_data->sub, $tokens->access_token, $tokens->expires_in - 20);
+		$this->location_sync_process->push_to_queue(new AccountSyncQueueItem($account_data->sub))->save()->dispatch();
 		/*
 		 * stdClass Object
 			(

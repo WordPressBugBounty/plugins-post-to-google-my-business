@@ -137,7 +137,7 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
                 'desc'    => __( 'Select which request types the plugin should listen for to create auto-posts. Do not change unless you know what you are doing. Incorrect settings could result in duplicate posts or spamming your listing with posts.', 'post-to-google-my-business' ),
                 'type'    => 'multicheck',
                 'options' => [
-                    'editor'   => __( 'Posts/pages/CPTs created on the front-end through the Block or Classic editor', 'post-to-google-my-business' ),
+                    'editor'   => __( 'Posts/pages/CPTs created in the WordPress Dashboard through the Block- or Classic editor', 'post-to-google-my-business' ),
                     'internal' => __( 'Internal (e.g. items created internally by 3rd party plugins like import plugins)', 'post-to-google-my-business' ),
                     'rest'     => __( 'REST API (Items created through the WP REST API)', 'post-to-google-my-business' ),
                     'xmlrpc'   => __( 'XML-RPC (Items created through XML-RPC)', 'post-to-google-my-business' ),

@@ -10,7 +10,7 @@ class MetaboxConfiguration implements ContainerConfigurationInterface {
         $container['metaboxes'] = $container->service( function ( Container $container ) {
             $metaboxes = [new PostCreationMetabox(
                 $container['wedevs_settings_api'],
-                $container['google_my_business_api'],
+                $container['repository.location_cache'],
                 $container['plugin_version'],
                 $container['component.post_editor'],
                 $container['setting.enabled_post_types'],

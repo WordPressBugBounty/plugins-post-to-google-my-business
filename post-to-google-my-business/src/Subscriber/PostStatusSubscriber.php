@@ -105,6 +105,7 @@ class PostStatusSubscriber implements SubscriberInterface {
             update_post_meta( $post_id, '_mbp_post_publish_date', time() );
         }
         delete_post_meta( $post_id, 'mbp_last_error' );
+        $queued_items = 0;
         //Todo: Skip queue if its just 1 location?
         $accounts = $data->getLocations( $this->default_location );
         foreach ( $accounts as $user_key => $locations ) {
@@ -142,9 +143,12 @@ class PostStatusSubscriber implements SubscriberInterface {
                     continue;
                 }
                 $this->background_process->push_to_queue( $item );
+                $queued_items++;
             }
         }
         if ( !$this->bypass_wp_cron ) {
+            $already_queued_items = (int) get_post_meta( $post_id, '_pgmb_queued_items', true );
+            update_post_meta( $post_id, '_pgmb_queued_items', $already_queued_items + $queued_items );
             $this->background_process->save()->dispatch();
             $this->background_process->data( [] );
             //Clear data to prevent duplicate posts

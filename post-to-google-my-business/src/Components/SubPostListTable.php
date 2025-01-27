@@ -204,7 +204,8 @@ class SubPostListTable extends PrefixedListTable {
 
 
 	public function single_row( $item ) {
-		echo '<tr data-postid="'.$item->get_id().'"  class="mbp-post'.($item->has_error() ? ' mbp-has-error' : '').'">'; //'.($has_error ? ' mbp-has-error' : '').'
+        $is_processing = (bool)$item->get_queued_items();
+		echo '<tr data-is_processing="'.$is_processing.'" data-postid="'.$item->get_id().'"  class="mbp-post'.($item->has_error() ? ' mbp-has-error' : '').'">'; //'.($has_error ? ' mbp-has-error' : '').'
 		$this->single_row_columns( $item );
 		echo '</tr>';
 	}
@@ -285,6 +286,11 @@ class SubPostListTable extends PrefixedListTable {
 	    }
 	    $publish_output .= $publish_DateTime->formatDate().' '.$publish_DateTime->formatTime();
 
+        $queued_items = (int)$item->get_queued_items();
+        if($queued_items > 0){
+	        $publish_output .= '<br /><span style="float:left" class="spinner is-active"></span><span class="pgmb-items-processing">'.sprintf(esc_html__('%d publishing tasks queued', 'post-to-google-my-business'), $queued_items).'</span>';
+        }
+
         $delete_event = wp_get_scheduled_event('pgmb_delete_previous_post', [$item->get_id()]);
         if($delete_event){
 	        $publish_output .= '<br /><span title="'.esc_attr__('This post will be deleted when the next post is auto-posted', 'post-to-google-my-business').'"><span class="dashicons dashicons-clock"></span><span class="dashicons dashicons-trash"></span>';
@@ -353,7 +359,7 @@ class SubPostListTable extends PrefixedListTable {
 
 		</table>
 		<?php
-		$this->display_tablenav( 'bottom-pgmb-subposts' );
+		$this->display_tablenav( 'bottom' );
 	}
 
 

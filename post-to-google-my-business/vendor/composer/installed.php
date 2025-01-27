@@ -19,13 +19,13 @@
             'reference' => NULL,
             'dev_requirement' => false,
         ),
-        'a5hleyrich/wp-background-processing' => array(
-            'pretty_version' => '1.3.1',
-            'version' => '1.3.1.0',
+        'deliciousbrains/wp-background-processing' => array(
+            'pretty_version' => 'dev-prod',
+            'version' => 'dev-prod',
             'type' => 'library',
-            'install_path' => __DIR__ . '/../a5hleyrich/wp-background-processing',
+            'install_path' => __DIR__ . '/../deliciousbrains/wp-background-processing',
             'aliases' => array(),
-            'reference' => '6d1e48165e461260075b9f161b3861c7278f71e7',
+            'reference' => '7724c9d124f1efdc672d0b15923a60c8ee42e434',
             'dev_requirement' => false,
         ),
         'dragonmantank/cron-expression' => array(

@@ -4,6 +4,8 @@ namespace PGMB\Configuration;
 
 use PGMB\API\CachedGoogleMyBusiness;
 use PGMB\API\ProxyAuthenticationAPI;
+use PGMB\ApiCache\GroupCacheRepository;
+use PGMB\ApiCache\LocationCacheRepository;
 use PGMB\DependencyInjection\Container;
 use PGMB\DependencyInjection\ContainerConfigurationInterface;
 use PGMB\Premium\API\GMBCookieAPI;
@@ -19,6 +21,15 @@ class ProxyAPIConfiguration implements ContainerConfigurationInterface {
         } );
         $container['google_my_business_api'] = $container->service( function ( Container $container ) {
             return new CachedGoogleMyBusiness($container['wordpress.http_transport'], $container['proxy_auth_api']);
+        } );
+        //Todo: seperate database configuration file?
+        $container['repository.group_cache'] = $container->service( function ( Container $container ) {
+            global $wpdb;
+            return new GroupCacheRepository($wpdb);
+        } );
+        $container['repository.location_cache'] = $container->service( function ( Container $container ) {
+            global $wpdb;
+            return new LocationCacheRepository($wpdb);
         } );
     }
 

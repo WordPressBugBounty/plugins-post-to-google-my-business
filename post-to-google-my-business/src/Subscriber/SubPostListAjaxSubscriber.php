@@ -17,7 +17,8 @@ class SubPostListAjaxSubscriber implements SubscriberInterface {
 		return [
 			'wp_ajax_pgmb_subpost_list_display'     => 'display_list',
 			'wp_ajax_pgmb_subpost_list_update'      => 'update_list',
-			'wp_ajax_pgmb_subpost_bulk_action'      => 'process_bulk_action'
+			'wp_ajax_pgmb_subpost_bulk_action'      => 'process_bulk_action',
+			'wp_ajax_pgmb_subpost_sync_status'      => 'sync_status',
 		];
 	}
 
@@ -68,6 +69,26 @@ class SubPostListAjaxSubscriber implements SubscriberInterface {
 		))
 
 		);
+	}
+
+	public function sync_status(){
+		check_ajax_referer( 'pgmb_subpost_table_fetch', 'ajax_list_table_nonce', true );
+		$ids = $_REQUEST['post_ids'];
+		if(!is_array($ids) || empty($ids)){
+			return;
+		}
+
+		$queued_items = [];
+		foreach($ids as $id){
+			$subpost = $this->repository->find_by_id((int)$id);
+			if(!$subpost){
+				continue;
+			}
+			$queued_items[(int)$id] = $subpost->get_queued_items();
+		}
+
+		wp_send_json_success($queued_items);
+
 	}
 
 	public function update_list() {

@@ -4,6 +4,7 @@ namespace PGMB\Components;
 
 use PGMB\API\CachedGoogleMyBusiness;
 use PGMB\API\GoogleMyBusiness;
+use PGMB\ApiCache\LocationCacheRepository;
 use PGMB\Google\NormalizeLocationName;
 use PGMB\Plugin;
 use PGMB\PostTypes\GooglePostEntity;
@@ -14,25 +15,25 @@ class GooglePostEntityListTable extends PrefixedListTable {
     /**
      * @var GooglePostEntityRepository
      */
-    private $repository;
+    private $post_repository;
 
     /**
      * @var GoogleMyBusiness
      */
-    private $api;
+    private $location_repository;
 
     protected $html_prefix = 'pgmb-entity';
 
-    function __construct( $parent_id, GooglePostEntityRepository $repository, CachedGoogleMyBusiness $api ) {
+    function __construct( $parent_id, GooglePostEntityRepository $post_repository, LocationCacheRepository $location_repository ) {
         $this->parent_id = (int) $parent_id;
-        $this->repository = $repository;
+        $this->post_repository = $post_repository;
         parent::__construct( [
             'singular' => __( 'Published GMB Post', 'post-to-google-my-business' ),
             'plural'   => __( 'Published GMB Posts', 'post-to-google-my-business' ),
             'ajax'     => true,
             'screen'   => 'post-to-gmb-entities',
         ] );
-        $this->api = $api;
+        $this->location_repository = $location_repository;
     }
 
     private $hidden_columns = [];
@@ -67,7 +68,7 @@ class GooglePostEntityListTable extends PrefixedListTable {
         $sortable = $this->get_sortable_columns();
         $this->_column_headers = [$columns, $this->hidden_columns, $sortable];
         $current_page = $this->get_pagenum();
-        $entities = $this->repository->find_by_parent( $this->parent_id )->limit( $per_page )->offset( ($current_page - 1) * $per_page );
+        $entities = $this->post_repository->find_by_parent( $this->parent_id )->limit( $per_page )->offset( ($current_page - 1) * $per_page );
         //		switch($_REQUEST['orderby']){
         //			case 'pgmb_location':
         //				break;
@@ -81,14 +82,20 @@ class GooglePostEntityListTable extends PrefixedListTable {
         //			$entities->desc();
         //		}
         //$this->items = $entities->find();
-        foreach ( $entities->find() as $entity ) {
-            try {
-                $this->api->set_user_id( $entity->get_user_key() );
-                $location = $this->api->get_location( NormalizeLocationName::from_with_account( $entity->get_location_id() )->without_account_id(), 'title,storeCode' );
-                $location_title = $location->title;
-                $location_storecode = ( !empty( $location->storeCode ) ? $location->storeCode : '' );
-            } catch ( \Exception $e ) {
-                $location_title = sprintf( __( 'Could not get location name: %s', 'post-to-google-my-business' ), $e->getMessage() );
+        $results = $entities->find();
+        $total_items = count( $entities );
+        $location_ids = array_map( function ( $entity ) {
+            return NormalizeLocationName::from_with_account( $entity->get_location_id() )->without_account_id();
+        }, $results );
+        $location_data = $this->location_repository->get_locations_by_google_ids( $location_ids );
+        foreach ( $results as $entity ) {
+            $google_id = NormalizeLocationName::from_with_account( $entity->get_location_id() )->without_account_id();
+            if ( isset( $location_data[$google_id] ) ) {
+                $location = $location_data[$google_id];
+                $location_title = $location->get_title();
+                $location_storecode = $location->get_storeCode();
+            } else {
+                $location_title = __( 'Unknown location', 'post-to-google-my-business' );
                 $location_storecode = '';
             }
             $this->items[] = [
@@ -97,7 +104,6 @@ class GooglePostEntityListTable extends PrefixedListTable {
                 'location_storecode' => $location_storecode,
             ];
         }
-        $total_items = count( $entities );
         /**
          * Call to _set_pagination_args method for informations about
          * total items, items for page, total pages and ordering
@@ -137,7 +143,7 @@ class GooglePostEntityListTable extends PrefixedListTable {
         //		echo '<input type="hidden" id="order" name="order" value="' . $this->_pagination_args['order'] . '" />';
         //		echo '<input type="hidden" id="orderby" name="orderby" value="' . $this->_pagination_args['orderby'] . '" />';
         $singular = $this->_args['singular'];
-        $this->display_tablenav( 'top-pgmb-entities' );
+        $this->display_tablenav( 'top' );
         $this->screen->render_screen_reader_content( 'heading_list' );
         ?>
 		<table class="wp-list-table pgmb-post-entities <?php 
@@ -173,7 +179,7 @@ class GooglePostEntityListTable extends PrefixedListTable {
 
 		</table>
 		<?php 
-        $this->display_tablenav( 'bottom-pgmb-entities' );
+        $this->display_tablenav( 'bottom' );
     }
 
 }

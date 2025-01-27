@@ -5,6 +5,10 @@ namespace PGMB\Components;
 
 
 use PGMB\API\CachedGoogleMyBusiness;
+use PGMB\ApiCache\GroupCacheRepository;
+use PGMB\ApiCache\LocationCacheRepository;
+use PGMB\BackgroundProcessing\AccountSyncQueueItem;
+use PGMB\BackgroundProcessing\LocationSyncProcess;
 
 class BusinessSelector {
 	protected $api;
@@ -13,9 +17,24 @@ class BusinessSelector {
 	protected $selected;
 	protected $flush_cache;
 	private $prefix;
+	/**
+	 * @var LocationSyncProcess
+	 */
+	private $location_sync_process;
+	/**
+	 * @var GroupCacheRepository
+	 */
+	private $group_cache;
+	/**
+	 * @var LocationCacheRepository
+	 */
+	private $location_cache;
 
-	public function __construct(CachedGoogleMyBusiness $api) {
+	public function __construct(CachedGoogleMyBusiness $api, LocationSyncProcess $location_sync_process, GroupCacheRepository $group_cache, LocationCacheRepository $location_cache) {
 		$this->api                 = $api;
+		$this->location_sync_process = $location_sync_process;
+		$this->group_cache = $group_cache;
+		$this->location_cache = $location_cache;
 	}
 
 	/**
@@ -326,6 +345,12 @@ class BusinessSelector {
 			wp_send_json_error(__('Invalid nonce', 'post-to-google-my-business'));
 		}
 		$accounts = $this->load_accounts();
+
+		if($this->location_sync_process->is_processing()){
+			wp_send_json_error([
+				'loading' => true,
+			]);
+		}
 //		$account_data = reset($accounts);
 //		$key = key($accounts);
 		wp_send_json_success($accounts);
@@ -339,22 +364,28 @@ class BusinessSelector {
 		$data = json_decode(stripslashes($_REQUEST['data']));
 
 		$account_key = sanitize_key($data->account_id);
-		$nextPageToken = isset($data->nextPageToken) && $data->nextPageToken ? $data->nextPageToken : null;
+
+		$offset = isset($data->offset) ? (int)$data->offset : 0;
 
 		$refresh = isset($data->refresh) && $data->refresh;
-		try{
-			$this->api->set_user_id($account_key);
-			$response = $this->api->list_accounts($refresh, 20, $nextPageToken);
-		}catch(\Exception $exception){
-			wp_send_json_error(sprintf(__('Could not retrieve account or location groups from Google My Business: %s', 'post-to-google-my-business'), $exception->getMessage()));
+
+		if($refresh){
+			$this->location_sync_process->push_to_queue(new AccountSyncQueueItem($data->account_id))->save()->dispatch();
 		}
 
-		$accounts = isset($response->accounts) && is_array($response->accounts) ? $response->accounts : null;
-		if(!is_array($accounts) || count($accounts) < 1) {
+		$groups = $this->group_cache->get_groups_by_account_id($account_key, 100, $offset);
+
+		if(empty($groups)) {
 			wp_send_json_error(__('No user account or location groups found. Did you log in to the correct Google account?', 'post-to-google-my-business'));
 		}
-		$response->accounts = apply_filters('mbp_business_selector_groups', $accounts, $account_key);
-		wp_send_json_success($response);
+
+		$groups_api_formatted = array_map(function($group){
+			return $group->api_formatted();
+		}, $groups);
+
+		//Todo: pagination/offset
+		$groups_api_formatted = apply_filters('mbp_business_selector_groups', $groups_api_formatted, $account_key);
+		wp_send_json_success(['accounts' => $groups_api_formatted, 'count' => count($groups)]);
 	}
 
 	public function ajax_get_group_locations(){
@@ -366,36 +397,35 @@ class BusinessSelector {
 
 		$account_key = sanitize_key($data->account_id);
 		$account_name = sanitize_text_field($data->group_id);
-		$refresh = isset($data->refresh) && $data->refresh;
-		$readMask = 'name,storeCode,title,storefrontAddress,metadata,serviceArea';
-		$nextPageToken = isset($data->nextPageToken) && $data->nextPageToken ? $data->nextPageToken : null;
 
-		try{
-			$this->api->set_user_id($account_key);
-			$response = $this->api->list_locations($account_name, 100, $nextPageToken, null, null, $readMask, $refresh);
-		}catch(\Exception $exception) {
-			wp_send_json_error(sprintf(__('Could not retrieve locations from Google My Business: %s', 'post-to-google-my-business'), $exception->getMessage()));
-		}
+		$offset = isset($data->offset) ? (int)$data->offset : 0;
 
-		$locations = isset($response->locations) && is_array($response->locations) ? $response->locations : null;
-		if (!is_array( $locations ) || empty( $locations ) ) {
+		$locations = $this->location_cache->get_locations_by_group_google_id($account_name, 500, $offset);
+
+
+		if (empty( $locations ) ) {
 			wp_send_json_error(__('No businesses found.', 'post-to-google-my-business'));
 		}
-		$locations = apply_filters('mbp_business_selector_locations', $locations, $account_name, $account_key);
+
+		$locations_api_formatted = array_map(function($location){
+			return $location->api_formatted();
+		}, $locations);
+
+		$locations_api_formatted = apply_filters('mbp_business_selector_locations', $locations_api_formatted, $account_name, $account_key);
+
 		$rows = [];
-		foreach($locations as $location){
+		foreach($locations_api_formatted as $location){
 			$row = [];
 			$row['column'] = $this->location_data_column($location);
 
 			$row['location_name'] = $location->name;
 			$rows[] = $row;
 		}
-		wp_send_json_success(['rows' => $rows, 'nextPageToken' => $response->nextPageToken ?? null ]);
+		wp_send_json_success(['rows' => $rows, 'count' => count($locations) ]);
 	}
 
 	public function register_ajax_callbacks($prefix) {
 		add_action("wp_ajax_{$prefix}_refresh_locations", [$this, 'ajax_refresh']);
-
 		add_action("wp_ajax_{$prefix}_get_accounts", [$this, 'ajax_get_accounts']);
 		add_action("wp_ajax_{$prefix}_get_groups", [$this, 'ajax_get_groups']);
 		add_action("wp_ajax_{$prefix}_get_group_locations", [$this, 'ajax_get_group_locations']);

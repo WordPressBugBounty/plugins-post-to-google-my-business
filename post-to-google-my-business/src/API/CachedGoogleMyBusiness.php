@@ -4,6 +4,13 @@
 namespace PGMB\API;
 
 
+/*
+ *
+ * This class is deprecated in favour of mysql caching and should be gradually removed in future versions
+ *
+ * Will return currently stored cache to avoid overloading the google api, but delete the transient afterwards.
+ */
+
 class CachedGoogleMyBusiness extends ProxyGMBAPI {
 
 
@@ -27,11 +34,12 @@ class CachedGoogleMyBusiness extends ProxyGMBAPI {
 	public function list_accounts( $flush = false, $pageSize = 20, $pageToken = '', $filter = '', $parentAccount = '' ) {
 		$transient_name = "pgmb_list_accounts-{$this->user_id}-" . md5(serialize([ $parentAccount, $pageSize, $pageToken, $filter ]));
 		if(!$flush && $cached = get_transient($transient_name)){
+			delete_transient($transient_name);
 			return $cached;
 		}
 
 		$request = parent::list_accounts( $parentAccount, $pageSize, $pageToken, $filter );
-		set_transient($transient_name, $request, WEEK_IN_SECONDS);
+//		set_transient($transient_name, $request, WEEK_IN_SECONDS);
 		return $request;
 	}
 
@@ -39,31 +47,34 @@ class CachedGoogleMyBusiness extends ProxyGMBAPI {
 	public function list_locations( $parent, $pageSize = 100, $pageToken = '', $filter = '', $orderBy = '', $readMask = '', $flush = false ) {
 		$transient_name = "pgmb_list_locations-{$this->user_id}-" . md5(serialize([$parent, $pageSize, $pageToken, $filter, $orderBy, $readMask]));
 		if(!$flush && $cached = get_transient($transient_name)){
+			delete_transient($transient_name);
 			return $cached;
 		}
 
 		$request = parent::list_locations( $parent, $pageSize, $pageToken, $filter, $orderBy, $readMask );
-		set_transient($transient_name, $request, WEEK_IN_SECONDS);
+//		set_transient($transient_name, $request, WEEK_IN_SECONDS);
 		return $request;
 	}
 
 	public function get_location( $name, $readMask = '', $flush = false ) {
 		$transient_name = "pgmb_location-".md5(serialize([$name, $readMask]));
 		if(!$flush && $cached = get_transient($transient_name)){
+			delete_transient($transient_name);
 			return $cached;
 		}
 		$request = parent::get_location( $name, $readMask );
-		set_transient($transient_name, $request, WEEK_IN_SECONDS);
+//		set_transient($transient_name, $request, WEEK_IN_SECONDS);
 		return $request;
 	}
 
 	public function get_account($name, $flush = false){
 		$transient_name = 'pgmb_account-'.md5($name);
 		if(!$flush && $cached = get_transient($transient_name)){
+			delete_transient($transient_name);
 			return $cached;
 		}
 		$request = parent::get_account($name);
-		set_transient($transient_name, $request, WEEK_IN_SECONDS);
+//		set_transient($transient_name, $request, WEEK_IN_SECONDS);
 		return $request;
 	}
 

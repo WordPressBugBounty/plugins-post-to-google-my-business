@@ -4,6 +4,7 @@ namespace PGMB\Subscriber;
 
 use PGMB\API\CachedGoogleMyBusiness;
 
+use PGMB\ApiCache\LocationCacheRepository;
 use PGMB\BackgroundProcessing\PostPublishProcess;
 use PGMB\Components\GooglePostEntityListTable;
 use PGMB\EventManagement\SubscriberInterface;
@@ -19,17 +20,17 @@ class PostEntityListAjaxSubscriber implements SubscriberInterface {
 	/**
 	 * @var CachedGoogleMyBusiness
 	 */
-	private $api;
+	private $location_repository;
 	/**
 	 * @var PostPublishProcess
 	 */
 	private $background_process;
 
-	public function __construct(GooglePostEntityRepository $repository, CachedGoogleMyBusiness $api, PostPublishProcess $background_process) {
+	public function __construct(GooglePostEntityRepository $repository, LocationCacheRepository $location_repository, PostPublishProcess $background_process) {
 
-		$this->repository = $repository;
-		$this->api = $api;
-		$this->background_process = $background_process;
+		$this->repository          = $repository;
+		$this->location_repository = $location_repository;
+		$this->background_process  = $background_process;
 	}
 
 	public static function get_subscribed_hooks() {
@@ -46,7 +47,7 @@ class PostEntityListAjaxSubscriber implements SubscriberInterface {
 
 		$parent_post_id = (int)$_REQUEST['parent_id'];
 
-		$wp_list_table = new GooglePostEntityListTable($parent_post_id, $this->repository, $this->api);
+		$wp_list_table = new GooglePostEntityListTable( $parent_post_id, $this->repository, $this->location_repository );
 		$wp_list_table->prepare_items();
 
 		ob_start();
@@ -66,7 +67,7 @@ class PostEntityListAjaxSubscriber implements SubscriberInterface {
 
 	public function list_update(){
 		$parent_post_id = (int)$_REQUEST['parent_id'];
-		$entity_list_table = new GooglePostEntityListTable($parent_post_id, $this->repository, $this->api);
+		$entity_list_table = new GooglePostEntityListTable( $parent_post_id, $this->repository, $this->location_repository );
 		$entity_list_table->ajax_response();
 	}
 
@@ -107,8 +108,6 @@ class PostEntityListAjaxSubscriber implements SubscriberInterface {
 	public function check_status(){
 		check_ajax_referer( 'pgmb_subpost_table_fetch', 'ajax_list_table_nonce', true );
 
-		$status = get_option('pgmb_is_busy', false);
-
-		wp_send_json(['busy' => $status]);
+		wp_send_json(['busy' => $this->background_process->is_processing()]);
 	}
 }

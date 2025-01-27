@@ -131,7 +131,16 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
                 loaderTR.remove();
             }
         }else{
-            if(typeof accounts.data === "string"){
+            if(accounts.data.loading){
+                businessSelector.appendChild(spinner.cloneNode(true));
+                table.appendChild(instance.noticeRow("The background process is currently synchronizing your locations, please wait."));
+                setTimeout(()=> {
+
+                    accountCache.accounts = null;
+                    instance.getAccounts();
+
+                }, 5000);
+            }else if(typeof accounts.data === "string"){
                 table.appendChild(instance.noticeRow(accounts.data));
             }else{
                 table.appendChild(instance.noticeRow("Unknown error occurred trying to load accounts"));
@@ -143,20 +152,20 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
         loadListeners.forEach(listener => listener(false));
     }
 
-    this.getGroups = async function(accountID, accountElement, nextPageToken = null, refresh = false){
+    this.getGroups = async function(accountID, accountElement, offset = 0, refresh = false){
         let groups;
         try {
             while(groupsLoading){
                 await new Promise((resolve) => setTimeout(resolve, 100));
             }
-            let groupcachkey = accountID + nextPageToken;
+            let groupcachkey = accountID + offset;
             if(groupCache[groupcachkey] && !refresh){
                 groups = groupCache[groupcachkey];
             }else{
                 groupsLoading = true;
                 const groupsResponse = await instance.AjaxCall(nonce, 'get_groups', {
                    account_id: accountID,
-                   nextPageToken: nextPageToken ? nextPageToken : null,
+                   offset,
                     refresh: refresh,
                 });
 
@@ -180,7 +189,7 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
                 groupTR.appendChild(groupTD);
                 accountElement.appendChild(groupTR);
 
-                await instance.getLocations(accountID, group.name, accountElement, null, refresh);
+                await instance.getLocations(accountID, group.name, accountElement, 0, refresh);
             }
         }else{
             if(typeof groups.data === "string"){
@@ -190,18 +199,18 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
             }
         }
 
-        if(groups.data.nextPageToken){
-            await instance.getGroups(accountID, accountElement, groups.data.nextPageToken, refresh);
+        if(groups.data.count === 100){
+            await instance.getGroups(accountID, accountElement, offset + 100, refresh);
         }
     }
 
-    this.getLocations = async function(account_id, group_id, groupElement, nextPageToken = null, refresh = false){
+    this.getLocations = async function(account_id, group_id, groupElement, offset = 0, refresh = false){
         let locations;
         try{
             while(locationsLoading){
                 await new Promise((resolve) => setTimeout(resolve, 100));
             }
-            let cachekey = group_id + nextPageToken;
+            let cachekey = group_id + offset;
             if(locationCache[cachekey] && !refresh){
                 locations = locationCache[cachekey];
             }else{
@@ -210,7 +219,7 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
                 const locationsResponse = await instance.AjaxCall(nonce, 'get_group_locations', {
                     group_id: group_id,
                     account_id: account_id,
-                    nextPageToken: nextPageToken ? nextPageToken : null,
+                    offset,
                     refresh: refresh,
                 });
                 locations = locationCache[cachekey] = await locationsResponse.json();
@@ -251,8 +260,8 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
         }
 
 
-        if(locations.data.nextPageToken){
-            await instance.getLocations(account_id, group_id, groupElement, locations.data.nextPageToken, refresh);
+        if(locations.data.count === 500){
+            await instance.getLocations(account_id, group_id, groupElement, offset + 500, refresh);
         }
 
     }

@@ -6,12 +6,14 @@ https://github.com/debba/wp-list-table-ajax-sample
 
 import * as $ from 'jquery';
 
-
+const { remaining_items, refresh_post_status } = mbp_localize_script;
 let AjaxListTable = function(container, nonce, ajax_prefix){
 
     const instance = this;
 
     let parent_id;
+
+    let statustimer;
 
     /** added method display
      * for getting first sets of data
@@ -68,6 +70,23 @@ let AjaxListTable = function(container, nonce, ajax_prefix){
             instance.update(data);
         });
 
+        let postIds = [];
+        $('[data-is_processing]', container).each(function() {
+            let isProcessing = $(this).data('is_processing');
+            if(!isProcessing){
+                return;
+            }
+            let postId = $(this).data('postid');
+            if (postId !== undefined) {
+                postIds.push(postId);
+            }
+
+        });
+
+        instance.queuestate(postIds);
+
+
+
         $('input[name=paged]',container).on('keyup', function (e) {
 
             if (13 == e.which)
@@ -94,6 +113,47 @@ let AjaxListTable = function(container, nonce, ajax_prefix){
 
 
     };
+
+    this.queuestate = function(post_ids){
+        window.clearTimeout(statustimer);
+        if(post_ids.length === 0){
+            return;
+        }
+
+
+        statustimer = window.setInterval(function () {
+            console.log(post_ids);
+           $.ajax({
+
+               url: ajaxurl,
+               dataType: 'json',
+               data: {
+                   ajax_list_table_nonce: nonce.val(),
+                   action: ajax_prefix + '_sync_status',
+                   post_ids: post_ids,
+               },
+               success: function (response) {
+                   $.each(response.data, function (postId, remainingItems){
+                       let parentElement = $(`[data-postid='${postId}']`, container);
+                       let spanElement = parentElement.find('td .pgmb-items-processing');
+                       let spinnerElement = parentElement.find('td .spinner');
+                       if (spanElement.length > 0) {
+                           spanElement.text(remaining_items.replace('%d', remainingItems));
+                       }
+                       if (remainingItems === 0) {
+                           parentElement.attr('data-is_processing', 'false');
+                           spanElement.remove();
+                           spinnerElement.remove();
+                           post_ids = post_ids.filter(id => id !== parseInt(postId));
+                       }
+                       if(post_ids.length === 0){
+                           window.clearTimeout(statustimer);
+                       }
+                   })
+               }
+           });
+        }, 5000);
+    }
 
     /** AJAX call
      *
@@ -123,9 +183,9 @@ let AjaxListTable = function(container, nonce, ajax_prefix){
                 if (response.column_headers.length)
                     $('thead tr, tfoot tr', container).html(response.column_headers);
                 if (response.pagination.bottom.length)
-                    $('.tablenav.top .tablenav-pages', container).html($(response.pagination.top).html());
+                    $('.tablenav.bottom .tablenav-pages', container).html($(response.pagination.bottom).html());
                 if (response.pagination.top.length)
-                    $('.tablenav.bottom-pgmb-subposts .tablenav-pages', container).html($(response.pagination.bottom).html());
+                    $('.tablenav.top .tablenav-pages', container).html($(response.pagination.top).html());
 
                 instance.init();
             }
@@ -157,7 +217,7 @@ let AjaxListTable = function(container, nonce, ajax_prefix){
             },
             success: function (response) {
                 if(bulk_action === "refresh_status"){
-                    $(container).html('Refreshing post statuses... <span class="spinner is-active"></span>');
+                    $(container).html(refresh_post_status + '<span class="spinner is-active"></span>');
                     instance.poll_status();
                 }else{
                     instance.display();
