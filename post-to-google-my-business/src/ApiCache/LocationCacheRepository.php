@@ -96,7 +96,7 @@ class LocationCacheRepository {
 	public function get_location_by_google_id($google_id): Location {
 		$result = $this->wpdb->get_row($this->wpdb->prepare("SELECT * FROM {$this->table} WHERE google_id = %s", $google_id), ARRAY_A);
 		if($result === null){
-			throw new Exception(__("Failed to retrieve location data for %s: %s", 'post-to-google-my-business'), $google_id, $this->wpdb->last_error);
+			throw new Exception(sprintf(__("Failed to retrieve location data for %s: %s", 'post-to-google-my-business'), $google_id, $this->wpdb->last_error));
 		}
 		return new Location( $result );
 	}

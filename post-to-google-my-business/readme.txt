@@ -4,7 +4,7 @@ Donate link: https://tycoonmedia.net/?utm_source=repository&utm_medium=link&utm_
 Tags: google my business, gmb, auto publish, posts, post, local search, google my business posts, google places, google plus, google+
 Requires at least: 4.9.0
 Tested up to: 6.7.1
-Stable tag: 3.2.2
+Stable tag: 3.2.3
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -113,6 +113,10 @@ with image accessibility. To further debug the issue, you can use a service like
 6. Auto-post template settings
 
 == Changelog ==
+
+= 3.2.3 =
+* Improved: Error handling for retrieval of Google public keys
+* Fix: Incorrect error message when trying to load uncached location
 
 = 3.2.2 =
 * Improved: Location cache and performance on accounts with large amounts of locations

@@ -4,6 +4,7 @@ namespace PGMB;
 
 use DateTime;
 
+use Exception;
 use PGMB\API\ProxyAuthenticationAPI;
 
 use PGMB\BackgroundProcessing\AccountSyncQueueItem;
@@ -26,23 +27,57 @@ class GoogleUserManager {
 	 */
 	private $location_sync_process;
 
+
+	/**
+	 * @throws Exception
+	 */
 	public function get_public_keys() {
 		$transient = get_transient('pgmb_public_keys');
-		if($transient){
+		if ($transient) {
 			return $transient;
 		}
 
 		$response = $this->transport->get('https://www.googleapis.com/oauth2/v3/certs');
-		/*
-		 * $response['headers']->data['expires'] = "Wed, 21 Apr 2021 19:24:14 GMT"
-		 * $response['headers']->data['cache-control'] = "public, max-age=25081, must-revalidate, no-transform";
-		 */
-		$expires = new DateTime($response['headers']['expires']);
-		$now = new DateTime();
-		$expires_in_seconds = $expires->getTimestamp() - $now->getTimestamp();
 
-		$keys = json_decode($response['body'], true);
-		set_transient('pgmb_public_keys', $keys, $expires_in_seconds - 20); //Subtract 20 seconds just to be safe
+		if (is_wp_error($response)) {
+			throw new \Exception(sprintf(__('Unable to retrieve public keys from Google: %s', 'post-to-google-my-business'), esc_html($response->get_error_message())));
+		}
+
+		$http_code = wp_remote_retrieve_response_code($response);
+		if ($http_code !== 200) {
+			throw new \Exception(sprintf(
+				__('Unexpected HTTP response code (%d) from Google: %s', 'post-to-google-my-business'),
+				$http_code,
+				'<pre>' . esc_html(print_r($response, true)) . '</pre>'
+			));
+		}
+
+		$expires_header = wp_remote_retrieve_header($response, 'expires');
+		if (!$expires_header) {
+			throw new \Exception(__('Missing "expires" header in Google response.', 'post-to-google-my-business'));
+		}
+
+		try {
+			$expires = new DateTime($expires_header);
+			$now = new DateTime();
+			$expires_in_seconds = max(0, $expires->getTimestamp() - $now->getTimestamp() - 20); // Subtract 20s for safety
+		} catch (Exception $e) {
+			throw new \Exception(__('Invalid "expires" header format in Google response.', 'post-to-google-my-business'));
+		}
+
+		$keys = json_decode(wp_remote_retrieve_body($response), true);
+		if (json_last_error() !== JSON_ERROR_NONE) {
+			throw new \Exception(sprintf(
+				__('Failed to parse public key JSON from Google response: %s', 'post-to-google-my-business'),
+				'<pre>' . esc_html(json_last_error_msg()) . '</pre>'
+			));
+		}
+
+		if (empty($keys['keys'])) {
+			throw new \Exception(__('Google response is missing expected "keys" data.', 'post-to-google-my-business'));
+		}
+
+		set_transient('pgmb_public_keys', $keys, $expires_in_seconds);
 
 		return $keys;
 	}
