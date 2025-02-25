@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit88a213064ffdff7fb3cdad65633743e9
+class ComposerStaticInit7caea00781b82d622959f90e25360fc8
 {
     public static $prefixLengthsPsr4 = array (
         'T' => 
@@ -128,6 +128,7 @@ class ComposerStaticInit88a213064ffdff7fb3cdad65633743e9
         'PGMB\\Metabox\\MetaboxInterface' => __DIR__ . '/../..' . '/src/Metabox/MetaboxInterface.php',
         'PGMB\\Metabox\\PostCreationMetabox' => __DIR__ . '/../..' . '/src/Metabox/PostCreationMetabox.php',
         'PGMB\\Metabox\\StorableDataMetaboxInterface' => __DIR__ . '/../..' . '/src/Metabox/StorableDataMetaboxInterface.php',
+        'PGMB\\Notices\\BrandedStickyNotice' => __DIR__ . '/../..' . '/src/Notices/BrandedStickyNotice.php',
         'PGMB\\Notifications\\BasicNotification' => __DIR__ . '/../..' . '/src/Notifications/BasicNotification.php',
         'PGMB\\Notifications\\FeatureNotification' => __DIR__ . '/../..' . '/src/Notifications/FeatureNotification.php',
         'PGMB\\Notifications\\Notification' => __DIR__ . '/../..' . '/src/Notifications/Notification.php',
@@ -239,9 +240,9 @@ class ComposerStaticInit88a213064ffdff7fb3cdad65633743e9
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit88a213064ffdff7fb3cdad65633743e9::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit88a213064ffdff7fb3cdad65633743e9::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit88a213064ffdff7fb3cdad65633743e9::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit7caea00781b82d622959f90e25360fc8::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit7caea00781b82d622959f90e25360fc8::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit7caea00781b82d622959f90e25360fc8::$classMap;
 
         }, null, ClassLoader::class);
     }

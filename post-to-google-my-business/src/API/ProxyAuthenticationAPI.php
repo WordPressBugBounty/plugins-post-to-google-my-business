@@ -30,34 +30,42 @@ class ProxyAuthenticationAPI {
 	/**
 	 * @throws \Exception
 	 */
-	protected function do_request($url, $args, $method = 'POST'){
+	protected function do_request($url, $args, $method = 'POST') {
 		$response = $this->http->post($url, [
-			'body'  => wp_parse_args($args, $this->default_args()),
+			'body'    => wp_parse_args($args, $this->default_args()),
 			'timeout' => 20,
 			'method'  => $method
 		]);
 
-		if($response instanceof \WP_Error){
+		if ($response instanceof \WP_Error) {
 			throw new \Exception($response->get_error_message());
 		}
 
 		$response_code = wp_remote_retrieve_response_code($response);
-		if($response_code !== 200 && $response_code !== 201){
-			throw new \Exception($response['body']);
+		$response_body = wp_remote_retrieve_body($response);
+
+		$data = json_decode($response_body);
+
+		// If the response is not JSON or is empty, throw an exception
+		if (json_last_error() !== JSON_ERROR_NONE) {
+			throw new UnexpectedValueException(__('Invalid JSON response from authentication server.', 'post-to-google-my-business'));
 		}
 
-		$data = json_decode($response['body']);
-		if(!$data){
-			throw new UnexpectedValueException(__('Could not parse JSON response from authentication server.', 'post-to-google-my-business'));
+		// Check if there's an error object in the JSON response
+		if (isset($data->error)) {
+			if (is_object($data->error)) {
+				throw new GoogleAPIError($data);
+			} else {
+				throw new UnexpectedValueException((string)$data->error);
+			}
 		}
 
-		if(!isset($data->error)){
-			return $data;
-		}elseif(is_object($data->error)) {
-			throw new GoogleAPIError( $data );
-		}else{
-			throw new UnexpectedValueException((string)$data->error);
+		// Allow non-200/201 responses if they contain valid JSON without an error object
+		if ($response_code !== 200 && $response_code !== 201) {
+			throw new \Exception(sprintf(__('Unexpected response code %d: %s', 'post-to-google-my-business'), $response_code, $response_body));
 		}
+
+		return $data;
 	}
 
 

@@ -73,6 +73,7 @@ return array(
     'PGMB\\Metabox\\MetaboxInterface' => $baseDir . '/src/Metabox/MetaboxInterface.php',
     'PGMB\\Metabox\\PostCreationMetabox' => $baseDir . '/src/Metabox/PostCreationMetabox.php',
     'PGMB\\Metabox\\StorableDataMetaboxInterface' => $baseDir . '/src/Metabox/StorableDataMetaboxInterface.php',
+    'PGMB\\Notices\\BrandedStickyNotice' => $baseDir . '/src/Notices/BrandedStickyNotice.php',
     'PGMB\\Notifications\\BasicNotification' => $baseDir . '/src/Notifications/BasicNotification.php',
     'PGMB\\Notifications\\FeatureNotification' => $baseDir . '/src/Notifications/FeatureNotification.php',
     'PGMB\\Notifications\\Notification' => $baseDir . '/src/Notifications/Notification.php',

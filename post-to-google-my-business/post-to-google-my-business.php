@@ -5,7 +5,7 @@ Plugin Name: Post to Google My Business
 Plugin URI: https://tycoonmedia.net
 Description: Automatically create a post on Google My Business when creating a new WordPress post
 Author: Koen Reus
-Version: 3.2.3
+Version: 3.2.4
 Author URI: https://koenreus.com
 Text Domain: post-to-google-my-business
 */

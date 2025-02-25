@@ -320,8 +320,8 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
         //$configured = $this->api_connected;
         $accounts = get_option( 'pgmb_accounts' );
         echo "<br /><br />";
-        if ( !$accounts || empty( $accounts ) ) {
-            echo sprintf( '<a href="%s" class="button-primary">%s</a>', esc_url( admin_url( 'admin-post.php?action=mbp_generate_url' ) ), esc_html__( 'Connect to Google My Business', 'post-to-google-my-business' ) );
+        if ( empty( $accounts ) ) {
+            echo sprintf( '<a href="%s" class="button button-primary button-hero">%s</a>', esc_url( admin_url( 'admin-post.php?action=mbp_generate_url' ) ), esc_html__( 'Connect to Google Business Profile', 'post-to-google-my-business' ) );
             return;
         }
         echo sprintf( '<a title="%s" href="#TB_inline?width=500&height=300&inlineId=multi-account-upgrade-notification" class="thickbox button button-primary">%s</a>', esc_html__( 'Multi-account support is a Post to Google My Business Agency Feature', 'post-to-google-my-business' ), esc_html__( '+ Add another Google account', 'post-to-google-my-business' ) );

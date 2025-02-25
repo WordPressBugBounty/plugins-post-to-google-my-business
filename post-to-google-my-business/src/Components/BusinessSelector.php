@@ -347,10 +347,11 @@ class BusinessSelector {
 		$accounts = $this->load_accounts();
 
 		if($this->location_sync_process->is_processing()){
-			wp_send_json_error([
+			wp_send_json([
 				'loading' => true,
 			]);
 		}
+
 //		$account_data = reset($accounts);
 //		$key = key($accounts);
 		wp_send_json_success($accounts);
@@ -370,7 +371,12 @@ class BusinessSelector {
 		$refresh = isset($data->refresh) && $data->refresh;
 
 		if($refresh){
-			$this->location_sync_process->push_to_queue(new AccountSyncQueueItem($data->account_id))->save()->dispatch();
+			$this->location_sync_process->push_to_queue(new AccountSyncQueueItem($account_key))->save()->dispatch();
+		}
+
+		$error_message = get_option('pgmb_location_import_last_error_'.$account_key);
+		if(!empty($error_message)){
+			wp_send_json_error($error_message);
 		}
 
 		$groups = $this->group_cache->get_groups_by_account_id($account_key, 100, $offset);

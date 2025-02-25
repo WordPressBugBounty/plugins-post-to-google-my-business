@@ -4,6 +4,7 @@ namespace PGMB\BackgroundProcessing;
 
 use PGMB\API\ProxyAuthenticationAPI;
 use PGMB\API\ProxyGMBAPI;
+use PGMB\Notices\BrandedStickyNotice;
 use PGMB\Vendor\TypistTech\WPAdminNotices\AbstractNotice;
 use PGMB\Vendor\TypistTech\WPAdminNotices\StickyNotice;
 use PGMB\Vendor\TypistTech\WPAdminNotices\Store as AdminNoticeStore;
@@ -49,22 +50,29 @@ class LocationSyncProcess extends BackgroundProcess {
 			return false;
 		}
 
-		try{
-			$this->api->set_access_token($this->auth_api->get_access_token($item->get_account_id()));
+		$account_id = $item->get_account_id();
 
+		try{
+			$this->admin_notice_store->delete('location_import_error');
+			delete_option('pgmb_location_import_last_error_'.$account_id);
+			$this->api->set_access_token($this->auth_api->get_access_token($account_id));
 			if($item instanceof LocationSyncQueueItem){
 				return $this->sync_locations($item);
 			}elseif($item instanceof GroupSyncQueueItem){
 				return $this->sync_groups($item);
 			}
 		}catch(\Throwable $e){
-			$this->admin_notice_store->add(new StickyNotice('location_import_error', sprintf(esc_html__("Something went wrong trying to load your Google Business Profile locations: %s", 'post-to-google-my-business'), $e->getMessage()), AbstractNotice::ERROR));
+			$error_message = sprintf(__("Something went wrong trying to load the Google Business Profile locations for this account: %s", 'post-to-google-my-business'), $e->getMessage());
+			$link = sprintf('<a href="%s">%s</a>', esc_url(admin_url('admin.php?page=pgmb_settings#mbp_google_settings')), __('Check Google account settings', 'post-to-google-my-business'));
+			$this->admin_notice_store->add(new BrandedStickyNotice('location_import_error', $error_message, $link, AbstractNotice::ERROR));
+			$this->cancel();
+			update_option('pgmb_location_import_last_error_'.$account_id, $error_message);
 			return false;
 		}
 
-		update_option('pgmb_account_refresh_'.$item->get_account_id(), current_time('mysql', true));
+		update_option('pgmb_account_refresh_'.$account_id, current_time('mysql', true));
 
-		return new GroupSyncQueueItem($item->get_account_id());
+		return new GroupSyncQueueItem($account_id);
 	}
 
 	protected function update_in_latest_import($account_id){

@@ -37,7 +37,7 @@ class GoogleUserManager {
 			return $transient;
 		}
 
-		$response = $this->transport->get('https://www.googleapis.com/oauth2/v3/certs');
+		$response = $this->transport->get('https://app.posttogmb.com/google_cert');
 
 		if (is_wp_error($response)) {
 			throw new \Exception(sprintf(__('Unable to retrieve public keys from Google: %s', 'post-to-google-my-business'), esc_html($response->get_error_message())));
@@ -132,7 +132,11 @@ class GoogleUserManager {
 
 		$account_data = JWT::decode( $tokens->id_token, JWK::parseKeySet( (array) $keys ), [ 'RS256' ] );
 
-
+		$scopes = explode(" ", $tokens->scope);
+		if(!in_array('https://www.googleapis.com/auth/business.manage', $scopes)){
+			throw new Exception(__('You did not give the plugin permission to manage your Google Business Profile listings. The plugin will not work without this permission. Please retry the authentication and make sure you grant the plugin permission to manage your locations.', 'post-to-google-my-business'));
+		}
+		//$tokens->scope = https://www.googleapis.com/auth/userinfo.profile openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/business.manage
 		$accounts = get_option('pgmb_accounts');
 		if(!$accounts){$accounts = [];}
 
