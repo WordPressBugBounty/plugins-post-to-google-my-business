@@ -177,9 +177,13 @@ if ( $this instanceof \PGMB\Components\PostEditor ) {
     ?> <span
                                     class="mbp-word-count">0</span></div>
                             <br/><span
-                                class='description'><?php 
-    _e( 'The text that should appear on your post. Recommended 150-300 characters. 80 characters show in the Google Search results. 1500 characters maximum.', 'post-to-google-my-business' );
-    ?></span>
+                                class='description'>
+                                <?php 
+    $link = sprintf( "<a href=\"https://docs.digitaldistortion.dev/article/12-using-the-auto-post-feature\" target='_blank'>%s<span style=\"text-decoration: none\" class=\"dashicons dashicons-external\"></span></a>", __( 'See available dynamic tags that you can use', 'post-to-google-my-business' ) );
+    /* translators: %s gets replaced by the link to the support page with available dynamic tags that can be used */
+    printf( __( 'The text that should appear on your post. Recommended 150-300 characters. 80 characters show in the Google Search results. 1500 characters maximum. %s', 'post-to-google-my-business' ), $link );
+    ?>
+                            </span>
                         </td>
                     </tr>
 

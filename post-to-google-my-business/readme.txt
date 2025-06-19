@@ -3,9 +3,9 @@ Contributors: koen12344, valdemirmaran, freemius
 Donate link: https://digitaldistortion.dev/?utm_source=repository&utm_medium=link&utm_campaign=donate
 Tags: google my business, google business profile, gmb, local seo, google places
 Requires at least: 4.9.0
-Tested up to: 6.7.2
-Stable tag: 3.2.4
-Requires PHP: 7.0
+Tested up to: 6.8.1
+Stable tag: 3.2.5
+Requires PHP: 7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,7 +47,7 @@ Upgrade to **Post to Google My Business premium** for **even more automation and
 ⭐ **Multiple auto-post Templates** – Customize and manage different posting styles
 ⭐ **Agency support** – Manage Google My Business posts for **multiple clients**
 
-**[Learn more about Post to Google My Business Premium](https://tycoonmedia.net/?utm_source=repository&utm_medium=link&utm_campaign=learn_more&utm_content=description)**
+**[Learn more about Post to Google My Business Premium](https://digitaldistortion.dev/?utm_source=repository&utm_medium=link&utm_campaign=learn_more&utm_content=description)**
 
 = Great support! =
 We're here to help in case you're having trouble using Post to Google My Business. Just ask in the support forum and we'll get back to you ASAP. Feedback and ideas to improve the plugin are always welcome.
@@ -113,6 +113,12 @@ with image accessibility. To further debug the issue, you can use a service like
 6. Auto-post template settings
 
 == Changelog ==
+
+= 3.2.5 =
+* Bump minimum PHP version to 7.1
+* Added: Link to post variables article near post text field
+* Update: Freemius SDK 2.11 > 2.12
+* Fix: Notices related to WpDateTime on PHP8 (Use native WP functions)
 
 = 3.2.4 =
 * Improved: Design of admin notices

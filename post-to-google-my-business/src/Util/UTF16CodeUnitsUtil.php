@@ -2,10 +2,8 @@
 
 namespace PGMB\Util;
 
-use PGMB\MbString;
-
 class UTF16CodeUnitsUtil extends MbString{
-	public static function strimwidth(string $string, int $start, int $width, string $trim_marker = '', string $encoding = null): string {
+	public static function strimwidth(string $string, int $start, int $width, string $trim_marker = '', ?string $encoding = null): string {
 		if(!function_exists('iconv')){
 			return parent::strimwidth($string, $start, $width, $trim_marker, $encoding);
 		}
@@ -33,7 +31,7 @@ class UTF16CodeUnitsUtil extends MbString{
 
 	}
 
-	public static function strwidth(string $string, string $encoding = null ){
+	public static function strwidth(string $string, ?string $encoding = null ){
 		if(!function_exists('iconv')){
 			return parent::strwidth($string, $encoding);
 		}

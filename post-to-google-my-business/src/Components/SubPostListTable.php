@@ -8,9 +8,11 @@
 namespace PGMB\Components;
 
 use DateTime;
-use PGMB\MbString;
+use DateTimeZone;
 use PGMB\PostTypes\SubPost;
 use PGMB\PostTypes\SubPostRepository;
+use PGMB\Util\DateTimeCompat;
+use PGMB\Util\MbString;
 use PGMB\Vendor\Rarst\WordPress\DateTime\WpDateTime;
 use PGMB\Vendor\Rarst\WordPress\DateTime\WpDateTimeZone;
 
@@ -275,16 +277,14 @@ class SubPostListTable extends PrefixedListTable {
 	    }
 
         $publish_date_timestamp = $item->get_post_publish_date_timestamp();
-	    $publish_DateTime = new WpDateTime();
-	    $publish_DateTime->setTimestamp($publish_date_timestamp);
-	    $publish_DateTime->setTimezone(WpDateTimeZone::getWpTimezone());
+	    $publish_datetime = (new DateTime())->setTimestamp($publish_date_timestamp)->setTimezone(DateTimeCompat::get_timezone());
 
 	    $publish_output = '<span class="dashicons dashicons-clock"></span>';
-	    $now = new DateTime('now', WpDateTimeZone::getWpTimezone());
-	    if($publish_DateTime < $now){
+	    $now = new DateTime('now', DateTimeCompat::get_timezone());
+	    if($publish_datetime < $now){
 		    $publish_output = '<span class="dashicons dashicons-admin-site"></span>';
 	    }
-	    $publish_output .= $publish_DateTime->formatDate().' '.$publish_DateTime->formatTime();
+	    $publish_output .= DateTimeCompat::format_date($publish_datetime).' '.DateTimeCompat::format_time($publish_datetime);
 
         $queued_items = (int)$item->get_queued_items();
         if($queued_items > 0){
@@ -294,10 +294,8 @@ class SubPostListTable extends PrefixedListTable {
         $delete_event = wp_get_scheduled_event('pgmb_delete_previous_post', [$item->get_id()]);
         if($delete_event){
 	        $publish_output .= '<br /><span title="'.esc_attr__('This post will be deleted when the next post is auto-posted', 'post-to-google-my-business').'"><span class="dashicons dashicons-clock"></span><span class="dashicons dashicons-trash"></span>';
-	        $delete_DateTime = new WpDateTime();
-	        $delete_DateTime->setTimestamp($delete_event->timestamp);
-	        $delete_DateTime->setTimezone(WpDateTimeZone::getWpTimezone());
-	        $publish_output .= $delete_DateTime->formatDate().' '.$delete_DateTime->formatTime();
+	        $delete_datetime = (new DateTime())->setTimestamp($delete_event->timestamp)->setTimezone(DateTimeCompat::get_timezone());
+	        $publish_output .= DateTimeCompat::format_date($delete_datetime).' '.DateTimeCompat::format_time($delete_datetime);
             $publish_output .= '</span>';
         }
 

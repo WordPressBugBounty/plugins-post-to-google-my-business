@@ -3,9 +3,9 @@
 
 namespace PGMB\Components;
 
+use DateTime;
 use PGMB\FormFields;
-use PGMB\Vendor\Rarst\WordPress\DateTime\WpDateTime;
-use PGMB\Vendor\Rarst\WordPress\DateTime\WpDateTimeZone;
+use PGMB\Util\DateTimeCompat;
 
 class PostEditor {
 
@@ -66,12 +66,12 @@ class PostEditor {
 		}
 
 		try{
-			$datetime = new WpDateTime($timestring, WpDateTimeZone::getWpTimezone());
+			$datetime = new DateTime($timestring, DateTimeCompat::get_timezone());
 		}catch(\Exception $e){
 			wp_send_json_error();
 		}
 
 		/* translators: date time, Timezone: timezone */
-		wp_send_json_success(sprintf(__('%1$s %2$s, Timezone: %3$s', 'post-to-google-my-business'), $datetime->formatDate(), $datetime->formatTime(), WpDateTimeZone::getWpTimezone()->getName()));
+		wp_send_json_success(sprintf(__('%1$s %2$s, Timezone: %3$s', 'post-to-google-my-business'), DateTimeCompat::format_date($datetime), DateTimeCompat::format_time($datetime), DateTimeCompat::get_timezone()->getName()));
 	}
 }

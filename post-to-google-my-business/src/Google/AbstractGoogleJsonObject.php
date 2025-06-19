@@ -8,6 +8,8 @@ use InvalidArgumentException;
 
 abstract class AbstractGoogleJsonObject implements JsonSerializable, LocalPostJsonDeserializeInterface {
 	protected $jsonOutput = [];
+
+	#[\ReturnTypeWillChange]
 	public function jsonSerialize() {
 		return $this->jsonOutput;
 	}

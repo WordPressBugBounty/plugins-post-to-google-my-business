@@ -4,13 +4,13 @@
 namespace PGMB\Subscriber;
 
 
+use DateTime;
 use Exception;
 use PGMB\EventManagement\SubscriberInterface;
-use PGMB\MbString;
 use PGMB\PostTypes\SubPost;
 use PGMB\PostTypes\SubPostRepository;
-use PGMB\Vendor\Rarst\WordPress\DateTime\WpDateTime;
-use PGMB\Vendor\Rarst\WordPress\DateTime\WpDateTimeZone;
+use PGMB\Util\DateTimeCompat;
+use PGMB\Util\MbString;
 
 
 class CalendarFeedAjaxSubscriber implements SubscriberInterface {
@@ -30,14 +30,16 @@ class CalendarFeedAjaxSubscriber implements SubscriberInterface {
 		];
 	}
 
+
 	public function generate(){
 		if(!wp_verify_nonce($_REQUEST['nonce'], self::NONCE_ACTION) || !current_user_can('edit_posts')){
 			wp_send_json_error();
 		}
 
 		try {
-			$start_date = new WpDateTime( $_REQUEST['start'], WpDateTimeZone::getWpTimezone());
-			$end_date = new WpDateTime($_REQUEST['end'], WpDateTimeZone::getWpTimezone());
+            $start_date = new DateTime( $_REQUEST['start'], DateTimeCompat::get_timezone());
+            $end_date = new DateTime($_REQUEST['end'], DateTimeCompat::get_timezone());
+
 			$posts = $this->sub_post_repository->between()->start_date($start_date->getTimestamp())->end_date($end_date->getTimestamp())->limit(-1)->find();
 			$events = $this->prepare_events($posts);
 			wp_send_json($events);
@@ -54,7 +56,8 @@ class CalendarFeedAjaxSubscriber implements SubscriberInterface {
 	 * @throws Exception
 	 */
 	protected function prepare_events($posts) {
-		$now = new WpDateTime('now', WpDateTimeZone::getWpTimezone());
+        $now = new DateTime( 'now', DateTimeCompat::get_timezone() );
+
 		$events = [];
 		foreach($posts as $post){
 			$parent_post_id = $post->get_parent();
@@ -65,13 +68,13 @@ class CalendarFeedAjaxSubscriber implements SubscriberInterface {
 			//$posts_have_error = !empty(get_post_meta($post->get_id(), 'mbp_last_error', true)); //Todo: error handling
             $posts_have_error  = $post->has_error();
 
-			$post_date = new WpDateTime();
-			$post_date->setTimestamp($post_date_timestamp);
-			$post_date->setTimezone(WpDateTimeZone::getWpTimezone());
+			$post_date = (new DateTime())->setTimestamp($post_date_timestamp)->setTimezone(DateTimeCompat::get_timezone());
+//			$post_date->setTimestamp($post_date_timestamp);
+//			$post_date->setTimezone(WpDateTimeZone::getWpTimezone());
 			$live = $post_date <= $now;
 			$events[] = [
 				'title'     => get_the_title($parent_post_id),
-				'start'     => $post_date->format(WpDateTime::ISO8601),
+				'start'     => $post_date->format( DateTime::ISO8601),
 				'end'       => null,
 				'url'       => get_edit_post_link($parent_post_id, false),
 				'color'     => $live ? ($posts_have_error ? '#DE2E30' : '#4CAF50') : '#2196F3',
@@ -101,9 +104,7 @@ class CalendarFeedAjaxSubscriber implements SubscriberInterface {
         $parsed_form_fields = $sub_post->parsed_form_fields();
 
 		$publish_date_timestamp = $sub_post->get_post_publish_date_timestamp();
-		$publish_DateTime = new WpDateTime();
-		$publish_DateTime->setTimestamp($publish_date_timestamp);
-		$publish_DateTime->setTimezone(WpDateTimeZone::getWpTimezone());
+		$publish_DateTime = (new DateTime())->setTimestamp($publish_date_timestamp)->setTimezone(DateTimeCompat::get_timezone());
 
 		ob_start();
 
@@ -121,14 +122,12 @@ class CalendarFeedAjaxSubscriber implements SubscriberInterface {
 		?>
             <strong><?php echo sprintf(__('Parent post: %s', 'post-to-google-my-business'), '</strong><a href="'.$parent_post_link.'">'.esc_html(get_the_title($sub_post->get_parent())).'</a>'); ?><br />
             <strong><?php echo sprintf(__('Post type: %s', 'post-to-google-my-business'), '</strong>'.$parsed_form_fields->get_topic_type()); ?><br />
-            <strong><?php echo sprintf(__('Publish date: %s', 'post-to-google-my-business'), '</strong>'.$publish_DateTime->formatDate().' '.$publish_DateTime->formatTime()); ?>
+            <strong><?php echo sprintf(__('Publish date: %s', 'post-to-google-my-business'), '</strong>'.DateTimeCompat::format_date($publish_DateTime).' '.DateTimeCompat::format_time($publish_DateTime)); ?>
             <?php
                 $delete_event = wp_get_scheduled_event('pgmb_delete_previous_post', [$sub_post->get_id()]);
                 if($delete_event){
-	                $delete_DateTime = new WpDateTime();
-	                $delete_DateTime->setTimestamp($delete_event->timestamp);
-	                $delete_DateTime->setTimezone(WpDateTimeZone::getWpTimezone());
-	                $delete_output = $delete_DateTime->formatDate().' '.$delete_DateTime->formatTime();
+	                $delete_DateTime = (new DateTime())->setTimestamp($delete_event->timestamp)->setTimezone(DateTimeCompat::get_timezone());
+	                $delete_output = DateTimeCompat::format_date($delete_DateTime).' '.DateTimeCompat::format_time($delete_DateTime);
                     ?>
                         <br />
                     <span title="<?php esc_attr_e('This post will be deleted when the next post is auto-posted', 'post-to-google-my-business'); ?>">

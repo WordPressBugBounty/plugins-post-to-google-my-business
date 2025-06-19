@@ -84,6 +84,7 @@ class LocationSyncProcess extends BackgroundProcess {
 
 		global $wpdb;
 
+		//Join the groups with the locations table by a specific account ID so only the locations belonging to the specified account will be updated
 		$wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}pgmb_location_cache l INNER JOIN {$wpdb->prefix}pgmb_group_cache g ON l.group_id=g.id SET l.in_latest_import=0 WHERE g.account_id=%s AND l.imported_at < %s", $account_id, $latest_import_date));
 		$wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}pgmb_group_cache SET in_latest_import=0 WHERE account_id=%s AND imported_at < %s", $account_id, $latest_import_date));
 

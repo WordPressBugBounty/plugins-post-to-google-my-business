@@ -2,10 +2,10 @@
 
 /*
 Plugin Name: Post to Google My Business
-Plugin URI: https://tycoonmedia.net
+Plugin URI: https://digitaldistortion.dev
 Description: Automatically create a post on Google My Business when creating a new WordPress post
 Author: Koen Reus
-Version: 3.2.4
+Version: 3.2.5
 Author URI: https://koenreus.com
 Text Domain: post-to-google-my-business
 */

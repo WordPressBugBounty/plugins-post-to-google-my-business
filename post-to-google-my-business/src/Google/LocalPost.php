@@ -6,7 +6,6 @@ namespace PGMB\Google;
 use LengthException;
 use OutOfBoundsException;
 use OverflowException;
-use PGMB\MbString;
 use PGMB\Util\UTF16CodeUnitsUtil;
 
 /**

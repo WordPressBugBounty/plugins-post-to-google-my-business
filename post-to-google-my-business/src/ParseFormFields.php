@@ -2,6 +2,9 @@
 
 namespace PGMB;
 
+use DateTime;
+use DateTimeImmutable;
+use DateTimeInterface;
 use Exception;
 use InvalidArgumentException;
 use PGMB\API\CachedGoogleMyBusiness;
@@ -17,12 +20,9 @@ use PGMB\Placeholders\UserVariables;
 use PGMB\Placeholders\LocationVariables;
 use PGMB\Placeholders\VariableInterface;
 use PGMB\Placeholders\WooCommerceVariables;
+use PGMB\Util\DateTimeCompat;
 use PGMB\Util\UTF16CodeUnitsUtil;
 use PGMB\Vendor\Cron\CronExpression;
-use PGMB\Vendor\Rarst\WordPress\DateTime\WpDateTimeImmutable;
-use PGMB\Vendor\Rarst\WordPress\DateTime\WpDateTimeInterface;
-use PGMB\Vendor\Rarst\WordPress\DateTime\WpDateTimeZone;
-use PGMB\Vendor\Rarst\WordPress\DateTime\WpDateTime;
 class ParseFormFields {
     private $form_fields;
 
@@ -36,7 +36,7 @@ class ParseFormFields {
     /**
      * Get DateTime object representing the when a post will be first published
      *
-     * @return bool|WpDateTime|false DateTime when the post is first published, or false when the post isn't scheduled
+     * @return bool|DateTimeInterface|false DateTime when the post is first published, or false when the post isn't scheduled
      * @throws Exception Invalid DateTime
      */
     public function getPublishDateTime() {
@@ -146,8 +146,8 @@ class ParseFormFields {
             $eventTitle = ( $topicType == 'OFFER' ? $this->form_fields['mbp_offer_title'] : $this->form_fields['mbp_event_title'] );
             //get the appropriate event title
             $eventTitle = $this->parse_placeholder_variables( $placeholder_variables, $eventTitle );
-            $startdate = new \DateTime($this->parse_placeholder_variables( $placeholder_variables, $this->form_fields['mbp_event_start_date'] ), WpDateTimeZone::getWpTimezone());
-            $enddate = new \DateTime($this->parse_placeholder_variables( $placeholder_variables, $this->form_fields['mbp_event_end_date'] ), WpDateTimeZone::getWpTimezone());
+            $startdate = new \DateTime($this->parse_placeholder_variables( $placeholder_variables, $this->form_fields['mbp_event_start_date'] ), DateTimeCompat::get_timezone());
+            $enddate = new \DateTime($this->parse_placeholder_variables( $placeholder_variables, $this->form_fields['mbp_event_end_date'] ), DateTimeCompat::get_timezone());
             $startDate = new \PGMB\Google\Date($startdate->format( 'Y' ), $startdate->format( 'm' ), $startdate->format( 'd' ));
             $startTime = new \PGMB\Google\TimeOfDay($startdate->format( 'H' ), $startdate->format( 'i' ));
             $endDate = new \PGMB\Google\Date($enddate->format( 'Y' ), $enddate->format( 'm' ), $enddate->format( 'd' ));
