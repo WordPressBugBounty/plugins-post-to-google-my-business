@@ -62,7 +62,8 @@ class ProxyAuthenticationAPI {
 
 		// Allow non-200/201 responses if they contain valid JSON without an error object
 		if ($response_code !== 200 && $response_code !== 201) {
-			throw new \Exception(sprintf(__('Unexpected response code %d: %s', 'post-to-google-my-business'), $response_code, $response_body));
+			/* translators: %1$d represents the HTTP status code, %2$s is the error response body */
+			throw new \Exception(sprintf(__('Unexpected response code %1$d: %2$s', 'post-to-google-my-business'), $response_code, $response_body));
 		}
 
 		return $data;

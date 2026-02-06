@@ -31,6 +31,9 @@ class SettingsConfiguration implements ContainerConfigurationInterface {
         $container['setting.bypass_wp_cron'] = $container->service( function ( Container $container ) {
             return $container['wedevs_settings_api']->get_option( 'bypass_wp_cron', 'mbp_misc', 'on' ) === 'on';
         } );
+        $container['setting.enable_alert_post_type'] = $container->service( function ( Container $container ) {
+            return $container['wedevs_settings_api']->get_option( 'enable_alert_post_type', 'mbp_misc', 'off' ) === 'on';
+        } );
         $container['setting.enabled_post_types'] = $container->service( function ( Container $container ) {
             $enabled_post_types = array_values( (array) $container['wedevs_settings_api']->get_option( 'post_types', 'mbp_post_type_settings', ['post'] ) );
             return apply_filters( 'mbp_post_types', $enabled_post_types );

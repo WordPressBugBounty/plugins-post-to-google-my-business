@@ -10,31 +10,37 @@ if ( $this instanceof \PGMB\Components\PostEditor ) {
          xmlns="http://www.w3.org/1999/html">
 
         <div class="nav-tab-wrapper current">
-            <a href="#" class="mbp-nav-tab nav-tab" data-fields='mbp-alert-field'
-               data-topic='ALERT'><span
-                        class="dashicons dashicons-sos"></span> <?php 
-    _e( 'COVID-19 update', 'post-to-google-my-business' );
+
+                <a href="#" class="mbp-nav-tab nav-tab pgmb-nav-tab-alert <?php 
+    if ( $this->is_alert_type_enabled() ) {
+        ?>alert-enabled<?php 
+    }
+    ?>"  data-fields='mbp-alert-field'
+                   data-topic='ALERT'><span
+                            class="dashicons dashicons-yes"></span> <?php 
+    esc_html_e( 'Alert', 'post-to-google-my-business' );
     ?>
-            </a>
+                </a>
+
             <a href="#" class="mbp-nav-tab nav-tab nav-tab-active mbp-tab-default" data-fields='mbp-whatsnew-field'
                data-topic='STANDARD'><span
-                    class="dashicons dashicons-megaphone"></span> <?php 
-    _e( "What's New", 'post-to-google-my-business' );
+                    class="dashicons dashicons-yes"></span> <?php 
+    esc_html_e( "Update", 'post-to-google-my-business' );
     ?>
             </a>
             <a href="#" class="mbp-nav-tab nav-tab" data-fields='mbp-event-field' data-topic='EVENT'><span
-                    class="dashicons dashicons-calendar"></span> <?php 
-    _e( "Event", 'post-to-google-my-business' );
+                    class="dashicons dashicons-yes"></span> <?php 
+    esc_html_e( "Event", 'post-to-google-my-business' );
     ?>
             </a>
             <a href="#" class="mbp-nav-tab nav-tab" data-fields='mbp-offer-field' data-topic='OFFER'><span
-                    class="dashicons dashicons-tag"></span> <?php 
-    _e( "Offer", 'post-to-google-my-business' );
+                    class="dashicons dashicons-yes"></span> <?php 
+    esc_html_e( "Offer", 'post-to-google-my-business' );
     ?>
             </a>
             <a href="#" class="mbp-nav-tab nav-tab pgmb-nav-tab-product" data-fields='mbp-product-field' data-topic='PRODUCT'><span
-                    class="dashicons dashicons-cart"></span> <?php 
-    _e( "Product", 'post-to-google-my-business' );
+                    class="dashicons dashicons-yes"></span> <?php 
+    esc_html_e( "Product", 'post-to-google-my-business' );
     ?>
             </a>
         </div>
@@ -81,18 +87,18 @@ if ( $this instanceof \PGMB\Components\PostEditor ) {
                     <tr class="mbp-product-field">
                         <td colspan="2">
                             <h3><?php 
-        _e( 'Products are a Post to Google My Business Premium feature', 'post-to-google-my-business' );
+        esc_html_e( 'Products are a Post to Google My Business Premium feature', 'post-to-google-my-business' );
         ?></h3>
                             <p>
                                 <?php 
-        _e( 'Because products require a proprietary authentication method, they are not available in the free version of the plugin. Upgrade to <strong>any</strong> of the Premium versions of Post to Google My Business to (automatically) publish your products to your Google Business Profile.', 'post-to-google-my-business' );
+        esc_html_e( 'Because products require a proprietary authentication method, they are not available in the free version of the plugin. Upgrade to <strong>any</strong> of the Premium versions of Post to Google My Business to (automatically) publish your products to your Google Business Profile.', 'post-to-google-my-business' );
         ?>
                             </p>
                             <br />
                             <a class="button button-primary" href="<?php 
         echo mbp_fs()->get_upgrade_url();
         ?>" target="_blank"><?php 
-        _e( 'View pricing &amp; buy now &raquo;', 'post-to-google-my-business' );
+        esc_html_e( 'View pricing &amp; buy now &raquo;', 'post-to-google-my-business' );
         ?></a>
                         </td>
                     </tr>
@@ -107,6 +113,7 @@ if ( $this instanceof \PGMB\Components\PostEditor ) {
                             <p>
                                 <?php 
         $link = sprintf( "<a href=\"https://tycoonmedia.net/product-sync-for-gbp/?utm_source=wordpress&utm_medium=plugin&utm_campaign=psfg+prelaunch&utm_content=product+tab\" target='_blank'>%s</a>", __( 'Product Sync for GBP', 'post-to-google-my-business' ) );
+        /* translators: %s is link to Product Sync for GBP plugin */
         printf( __( 'Using WooCommerce? Check out my new plugin: %s. It makes it super easy to sync your entire WooCommerce product catalog directly to your Google Business Profile.', 'post-to-google-my-business' ), $link );
         ?>
                             </p>
@@ -123,6 +130,7 @@ if ( $this instanceof \PGMB\Components\PostEditor ) {
                                 <p>
                                     <strong><?php 
         $link = sprintf( "<a href=\"https://tycoonmedia.net/blog/publish-products-using-cookie-method/\" target='_blank'>%s</a>", __( 'the guide', 'post-to-google-my-business' ) );
+        /* translators: %s is link to configuration guide, anchor text: "the guide" */
         printf( __( 'Additional configuration is required for publishing products. Please check %s.', 'post-to-google-my-business' ), $link );
         ?></strong>
                                 </p>

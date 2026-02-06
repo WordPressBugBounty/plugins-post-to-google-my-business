@@ -76,7 +76,8 @@ class LocationCacheRepository {
 		$results = $this->wpdb->get_results($prepared_query, ARRAY_A);
 
 		if($results === false){
-			throw new Exception(sprintf(__("Failed to retrieve location data for %s: %s", 'post-to-google-my-business'), $placeholders, $this->wpdb->last_error));
+			/* translators: %1$s is comma separated list of queried locations, %2$s represents the actual MySQL error generated */
+			throw new Exception(sprintf(__('Failed to retrieve location data for %1$s: %2$s', 'post-to-google-my-business'), $placeholders, $this->wpdb->last_error));
 		}
 
 		$locations = [];
@@ -96,7 +97,8 @@ class LocationCacheRepository {
 	public function get_location_by_google_id($google_id): Location {
 		$result = $this->wpdb->get_row($this->wpdb->prepare("SELECT * FROM {$this->table} WHERE google_id = %s", $google_id), ARRAY_A);
 		if($result === null){
-			throw new Exception(sprintf(__("Failed to retrieve location data for %s: %s", 'post-to-google-my-business'), $google_id, $this->wpdb->last_error));
+			/* translators: %1$s is comma separated list of queried locations, %2$s represents the actual MySQL error generated */
+			throw new Exception(sprintf(__('Failed to retrieve location data for %1$s: %2$s', 'post-to-google-my-business'), $google_id, $this->wpdb->last_error));
 		}
 		return new Location( $result );
 	}

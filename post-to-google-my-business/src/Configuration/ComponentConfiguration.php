@@ -17,7 +17,7 @@ class ComponentConfiguration implements ContainerConfigurationInterface {
             );
         };
         $container['component.post_editor'] = function ( Container $container ) {
-            return new PostEditor($container['plugin_path'] . 'templates/admin/');
+            return new PostEditor($container['plugin_path'] . 'templates/admin/', $container['setting.enable_alert_post_type']);
         };
     }
 

@@ -55,10 +55,9 @@
       "constant_prefix": "PGMB_Vendor_",
       "delete_vendor_files": true,
       "exclude_from_prefix": {
-        "packages": [
-        ]
+        "packages": []
       }
     }
   },
-  "version": "3.1.28"
+  "version": "3.3.0"
 }

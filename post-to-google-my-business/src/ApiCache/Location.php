@@ -37,7 +37,7 @@ class Location {
 		$output->websiteUri = $this->website_uri;
 		$output->regularHours = json_decode($this->regular_hours);
 		$output->specialHours = json_decode($this->special_hours);
-		$output->labels = $this->labels;
+		$output->labels = json_decode($this->labels);
 		$output->serviceArea = json_decode($this->service_area);
 		$output->metadata = json_decode($this->metadata);
 		$output->storefrontAddress = json_decode($this->storefront_address);

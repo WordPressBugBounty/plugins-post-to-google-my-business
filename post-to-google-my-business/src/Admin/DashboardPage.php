@@ -58,6 +58,7 @@ class DashboardPage extends AbstractPage implements EnqueuesScriptsInterface, Aj
 	}
 
 	public function get_menu_title(){
+        /* translators: %s renders a red notification bullet with the amount of notifications in the plugin */
 		return sprintf(__('Dashboard %s', 'post-to-google-my-business'), $this->get_notification_count_html());
 	}
 

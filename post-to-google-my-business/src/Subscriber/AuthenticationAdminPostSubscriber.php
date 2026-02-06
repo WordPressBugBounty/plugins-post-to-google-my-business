@@ -60,6 +60,7 @@ class AuthenticationAdminPostSubscriber implements SubscriberInterface {
 		try{
 			$response = $this->auth_api->get_authentication_url(esc_url(admin_url('admin-post.php')), wp_create_nonce('mbp_generate_url'));
 		}catch(\Exception $e){
+			/* translators: %s represents error message */
 			wp_die(sprintf(__('Could not generate authentication URL: %s', 'post-to-google-my-business'), $e->getMessage()),'', $this->wp_die_args());
 		}
 
@@ -95,6 +96,7 @@ class AuthenticationAdminPostSubscriber implements SubscriberInterface {
 		try{
 			$tokens = $this->auth_api->get_tokens_from_code($_REQUEST['code']);
 		}catch(Exception $e){
+			/* translators: %s represents error message */
 			wp_die(sprintf(__('Could not obtain access tokens: %s', 'post-to-google-my-business'), $e->getMessage()), '', $this->wp_die_args());
 		}
 
@@ -102,8 +104,10 @@ class AuthenticationAdminPostSubscriber implements SubscriberInterface {
 			$this->user_manager->add_account($tokens);
 		}catch ( ExpiredException $e){
 		}catch( BeforeValidException $e){
+			/* translators: %s represents error message */
 			wp_die(sprintf(__('Could not verify Google access token: %s. Is the date & time on your server set correctly?', 'post-to-google-my-business'), $e->getMessage()),'', $this->wp_die_args());
 		}catch( Exception $e){
+			/* translators: %s represents error message */
 			wp_die(sprintf(__('Could not verify Google access token: %s', 'post-to-google-my-business'), $e->getMessage()),'', $this->wp_die_args());
 		}
 
@@ -126,7 +130,7 @@ class AuthenticationAdminPostSubscriber implements SubscriberInterface {
 					$reason = __('The request was cancelled', 'post-to-google-my-business');
 			}
 		}
-
+		/* translators: %s represents error message */
 		wp_die(sprintf(__('The authorization failed: %s', 'post-to-google-my-business'), $reason),'', $this->wp_die_args());
 	}
 }

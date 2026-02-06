@@ -120,12 +120,20 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
      */
     public function enqueue_scripts( $hook ) {
         wp_enqueue_style( 'jquery-ui', $this->plugin_url . 'css/jquery-ui.min.css' );
-        $metabox_path = $this->plugin_url . 'js/';
         wp_enqueue_media();
         add_thickbox();
+        $localize_vars = [
+            'nonce'                      => wp_create_nonce( 'pgmb-nonce' ),
+            'locale'                     => get_locale(),
+            'post_id'                    => get_the_ID(),
+            'post_nonce'                 => wp_create_nonce( 'mbp_post_nonce' ),
+            'AJAX_CALLBACK_PREFIX'       => self::AJAX_CALLBACK_PREFIX,
+            'POST_EDITOR_DEFAULT_FIELDS' => \PGMB\FormFields::default_post_fields(),
+            'disable_event_dateselector' => $this->settings_api->get_option( 'disable_event_dateselector', 'mbp_misc' ) === 'on',
+        ];
         wp_enqueue_script(
             'mbp-metabox',
-            $metabox_path . 'metabox.js',
+            $this->plugin_url . 'js/metabox.js',
             array(
                 'jquery',
                 'jquery-ui-core',
@@ -137,26 +145,9 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
             $this->plugin_version,
             true
         );
-        wp_enqueue_style( 'pgmb-metabox', $metabox_path . 'metabox.css' );
-        $localize_vars = array(
-            'post_id'                    => get_the_ID(),
-            'post_nonce'                 => wp_create_nonce( 'mbp_post_nonce' ),
-            'publish_confirmation'       => __( "You're working on a Google My Business post, but it has not yet been published/scheduled. Press OK to publish/schedule it now, or Cancel to save it as a draft.", 'post-to-google-my-business' ),
-            'please_wait'                => __( 'Please Wait...', 'post-to-google-my-business' ),
-            'publish_button'             => __( 'Publish', 'post-to-google-my-business' ),
-            'update_button'              => __( 'Update', 'post-to-google-my-business' ),
-            'draft_button'               => __( 'Save draft', 'post-to-google-my-business' ),
-            'schedule_post'              => __( 'Schedule post', 'post-to-google-my-business' ),
-            'save_template'              => __( 'Save template', 'post-to-google-my-business' ),
-            'AJAX_CALLBACK_PREFIX'       => self::AJAX_CALLBACK_PREFIX,
-            'POST_EDITOR_DEFAULT_FIELDS' => \PGMB\FormFields::default_post_fields(),
-            'locale'                     => get_locale(),
-            'disable_event_dateselector' => $this->settings_api->get_option( 'disable_event_dateselector', 'mbp_misc' ) === 'on',
-            'nonce'                      => wp_create_nonce( 'pgmb-nonce' ),
-            'remaining_items'            => __( '%d publishing tasks queued', 'post-to-google-my-business' ),
-            'refresh_post_status'        => __( 'Refreshing post statuses...', 'post-to-google-my-business' ),
-        );
+        wp_enqueue_style( 'pgmb-metabox', $this->plugin_url . 'js/metabox.css' );
         wp_localize_script( 'mbp-metabox', 'mbp_localize_script', $localize_vars );
+        wp_set_script_translations( 'mbp-metabox', 'post-to-google-my-business', $this->plugin_path . 'languages' );
     }
 
     /**
@@ -183,36 +174,6 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
      */
     public function is_autopost_enabled() {
         return true;
-    }
-
-    /**
-     * The Google My Business post types
-     *
-     * @return array
-     */
-    public function gmb_topic_types() {
-        return array(
-            'STANDARD' => array(
-                'name'     => __( 'What\'s New', 'post-to-google-my-business' ),
-                'dashicon' => 'dashicons-megaphone',
-            ),
-            'EVENT'    => array(
-                'name'     => __( 'Event', 'post-to-google-my-business' ),
-                'dashicon' => 'dashicons-calendar',
-            ),
-            'OFFER'    => array(
-                'name'     => __( 'Offer', 'post-to-google-my-business' ),
-                'dashicon' => 'dashicons-tag',
-            ),
-            'PRODUCT'  => array(
-                'name'     => __( 'Product', 'post-to-google-my-business' ),
-                'dashicon' => 'dashicons-cart',
-            ),
-            'ALERT'    => [
-                'name'     => __( 'COVID-19 update', 'post-to-google-my-business' ),
-                'dashicon' => 'dashicons-sos',
-            ],
-        );
     }
 
     /**
@@ -287,7 +248,6 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
         //$form_fields = $this->sanitize_form_fields($parsed_fieldset['mbp_form_fields'], ['mbp_post_text'], ['mbp_selected_location', 'mbp_button_url', 'mbp_offer_redeemlink', 'mbp_post_attachment']);
         $parsed_form_fields = new \PGMB\ParseFormFields($parsed_fieldset['mbp_form_fields']);
         $form_fields = $parsed_form_fields->sanitize();
-        $types = $this->gmb_topic_types();
         $json_args = [];
         switch ( $data_mode ) {
             case "save_draft":
@@ -303,6 +263,7 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
                     $this->validate_form_fields( $parent_post_id, $form_fields );
                     $child_post_id = wp_insert_post( $subpost->get_post_data(), true );
                 } catch ( \Throwable $e ) {
+                    /* translators: %s represents error message */
                     wp_send_json_error( array(
                         'error' => sprintf( __( 'Error creating post: %s', 'post-to-google-my-business' ), $e->getMessage() ),
                     ) );

@@ -59,6 +59,7 @@ class AdminPageSubscriber implements EventManagerAwareSubscriberInterface {
 	public function add_admin_pages(){
 		add_menu_page(
 			__('Post to Google My Business', 'post-to-google-my-business'),
+			/* translators: %s is a red notification bullet with the amount of notifications */
 			sprintf(__('Post to GMB %s', 'post-to-google-my-business'), $this->get_notification_count_html()),
 			$this->main_page->get_capability(),
 			$this->main_page->get_menu_slug(),

@@ -10,6 +10,7 @@
 import * as $ from "jquery";
 import PostEditor from "./components/PostEditor";
 import BusinessSelector from "./components/BusinessSelector";
+import {__} from "@wordpress/i18n";
 
 
 const BUSINESSSELECTOR_CALLBACK_PREFIX = mbp_localize_script.BUSINESSSELECTOR_CALLBACK_PREFIX;
@@ -18,22 +19,16 @@ const FIELD_PREFIX = mbp_localize_script.FIELD_PREFIX;
 
 const { disable_event_dateselector, setting_selected_location, nonce } = mbp_localize_script;
 
-const buttons = document.querySelectorAll('.mbp-settings .submit .button');
-const oldtext = buttons[0].value;
-
+const submitButton = document.querySelector('#mbp_google_settings #submit');
+const oldtext = submitButton.value;
 const listener = function(loading){
     if(loading){
-        buttons.forEach((button) => {
-            button.value = mbp_localize_script.wait_for_locations_to_load;
-            button.disabled = true;
-        });
-
-        return;
+        submitButton.value = __('Please wait for all locations to load', 'post-to-google-my-business');
+        submitButton.disabled = true;
+    }else{
+        submitButton.value = oldtext;
+        submitButton.disabled = false;
     }
-    buttons.forEach((button) => {
-        button.value = oldtext;
-        button.disabled = false;
-    });
 }
 
 let postEditor = new PostEditor(false, POST_EDITOR_CALLBACK_PREFIX, null, null, disable_event_dateselector, listener);
@@ -45,7 +40,7 @@ const SettingsBusinessSelector = new BusinessSelector($('.mbp-google-settings-bu
 SettingsBusinessSelector.setSelection(setting_selected_location);
 
 $('.pgmb-disconnect-website').click(function(event){
-    if(!confirm(mbp_localize_script.delete_account_confirmation)){
+    if(!confirm(__('Disconnect the Google account from this website?', 'post-to-google-my-business'))){
         event.preventDefault();
     }
 });

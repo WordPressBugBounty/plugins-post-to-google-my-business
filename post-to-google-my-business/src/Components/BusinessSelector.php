@@ -46,7 +46,7 @@ class BusinessSelector {
 		if(!$this->selected){
 			$this->selected = $this->default_location;
 		}
-		return "<div class=\"mbp-business-selector\" data-field_name=\"{$this->field_name}\"></div>";
+		return "<input type='hidden' name='{$this->field_name}' value='' /><div class=\"mbp-business-selector\" data-field_name=\"{$this->field_name}\"></div>";
 	}
 
 	protected function load_accounts(){
@@ -127,6 +127,7 @@ class BusinessSelector {
 			}while($nextPageToken);
 
 		}catch(\Exception $exception){
+			/* translators: %s represents error message */
 			return $this->notice_row(sprintf(__('Could not retrieve account or location groups from Google My Business: %s', 'post-to-google-my-business'), $exception->getMessage()));
 		}
 
@@ -163,6 +164,7 @@ class BusinessSelector {
 			}while($nextPageToken);
 
 		}catch(\Exception $exception) {
+			/* translators: %s represents error message */
 			return $this->notice_row(sprintf(__('Could not retrieve locations from Google My Business: %s', 'post-to-google-my-business'), $exception->getMessage()));
 		}
 
@@ -382,7 +384,7 @@ class BusinessSelector {
 		$groups = $this->group_cache->get_groups_by_account_id($account_key, 100, $offset);
 
 		if(empty($groups)) {
-			wp_send_json_error(__('No user account or location groups found. Did you log in to the correct Google account?', 'post-to-google-my-business'));
+			wp_send_json_success(__('No user account or location groups found. Did you log in to the correct Google account?', 'post-to-google-my-business'));
 		}
 
 		$groups_api_formatted = array_map(function($group){
@@ -410,7 +412,7 @@ class BusinessSelector {
 
 
 		if (empty( $locations ) ) {
-			wp_send_json_error(__('No businesses found.', 'post-to-google-my-business'));
+			wp_send_json_success(__('No businesses found in this group.', 'post-to-google-my-business'));
 		}
 
 		$locations_api_formatted = array_map(function($location){

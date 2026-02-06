@@ -6,7 +6,12 @@
 <div class="wrap mbp-settings">
     <h2><?php esc_html_e('Multiple auto-post templates are a Post to Google My Business "Professional" feature', 'post-to-google-my-business'); ?></h2>
 
-    <p><?php printf(esc_html__('You can modify the default auto-post template in %s.', 'post-to-google-my-business'), $link ); ?></p>
+    <p>
+        <?php
+            /* translators: %s is link to the auto-post template settings page "the auto-post settings" */
+            printf(esc_html__('You can modify the default auto-post template in %s.', 'post-to-google-my-business'), $link );
+        ?>
+    </p>
 
     <img src="<?php echo $this->plugin_url; ?>/img/promotional/autopost-templates.png" style="float:right;" alt="<?php esc_attr_e('Post campaigns screenshot', 'post-to-google-my-business'); ?>" />
 

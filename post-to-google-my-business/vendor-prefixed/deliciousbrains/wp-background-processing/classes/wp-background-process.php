@@ -5,7 +5,7 @@
  * @package WP-Background-Processing
  *
  * @license GPL-2.0-or-later
- * Modified by __root__ on 19-June-2025 using Strauss.
+ * Modified by __root__ on 29-January-2026 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 

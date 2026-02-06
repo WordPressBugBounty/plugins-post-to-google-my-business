@@ -67,7 +67,8 @@ class PostPublishProcess extends BackgroundProcess {
             $this->api->set_user_id( $user_key );
             $this->api->delete_post( $post_name );
         } catch ( \Exception $e ) {
-            error_log( sprintf( __( 'Failed to delete post %s from GMB: %s', 'post-to-google-my-business' ), (string) $post_name, $e->getMessage() ) );
+            /* translators: %1$s is the Google Post ID of the post, %2$s is the error message */
+            error_log( sprintf( __( 'Failed to delete post %1$s from GMB: %2$s', 'post-to-google-my-business' ), (string) $post_name, $e->getMessage() ) );
         }
     }
 
@@ -79,8 +80,13 @@ class PostPublishProcess extends BackgroundProcess {
         try {
             $this->api->set_user_id( $entity->get_user_key() );
             $updated_post = $this->api->get_post( $entity->get_post_name() );
-            $entity->set_post_success( $updated_post->name, $updated_post->state, $updated_post->searchUrl );
+            if ( isset( $updated_post->name, $updated_post->state ) ) {
+                $entity->set_post_success( $updated_post->name, $updated_post->state, $updated_post->searchUrl ?? null );
+            } else {
+                throw new \Exception('The response did not contain the expected fields', 'post-to-google-my-business');
+            }
         } catch ( \Throwable $e ) {
+            /* translators: %s represents error message */
             $entity->set_post_state( null )->set_post_failure( sprintf( __( 'Updating status failed: %s', 'post-to-google-my-business' ), $e->getMessage() ) );
         }
         $this->repository->persist( $entity );
@@ -139,6 +145,7 @@ class PostPublishProcess extends BackgroundProcess {
             //			}
             $location_ent = $this->location_repository->get_location_by_google_id( NormalizeLocationName::from_with_account( $location )->without_account_id() );
             $localPost = $data->getLocalPost( $location_ent, $parent_post_id );
+            //Update the post if it exists already
             if ( $post_name ) {
                 $oldPost = $this->api->get_post( $post_name );
                 $mask = new LocalPostEditMask($oldPost, $localPost);
@@ -151,7 +158,14 @@ class PostPublishProcess extends BackgroundProcess {
                         $location
                     );
                     $result = $this->api->patch_post( $post_name, $localPost, $mask );
+                    if ( isset( $result->name, $result->state ) ) {
+                        //searchUrl is not available in the updated post response body
+                        $created_post->set_post_success( $result->name, $result->state, $oldPost->searchUrl ?? null );
+                    } else {
+                        throw new \Exception(__( 'The response did not contain the expected fields', 'post-to-google-my-business' ));
+                    }
                 }
+                //Create a new post
             } else {
                 $localPost = apply_filters(
                     'mbp_create_post',
@@ -163,12 +177,15 @@ class PostPublishProcess extends BackgroundProcess {
                 //Backward compatibility
                 $filtered_post_args = ( $is_autopost ? apply_filters( 'mbp_autopost_post_args', $localPost->getArray(), $location ) : $localPost->getArray() );
                 $result = $this->api->create_post( $location, $filtered_post_args );
-            }
-            if ( !empty( $result ) ) {
-                $created_post->set_post_success( $result->name, $result->state, $result->searchUrl );
+                if ( isset( $result->name, $result->state ) ) {
+                    $created_post->set_post_success( $result->name, $result->state, $result->searchUrl ?? null );
+                } else {
+                    throw new \Exception(__( 'The response did not contain the expected fields', 'post-to-google-my-business' ));
+                }
             }
             //unset($post_errors[$location]);
         } catch ( \Throwable $e ) {
+            /* translators: %s represents error message */
             $publishedLocalPost = new WP_Error('post_creation_error', sprintf( __( 'Failed to create/update post: %s', 'post-to-google-my-business' ), $e->getMessage() ));
             update_post_meta( $post_id, 'mbp_last_error', $publishedLocalPost->get_error_message() );
             $created_post->set_post_failure( $publishedLocalPost->get_error_message() );
@@ -180,6 +197,7 @@ class PostPublishProcess extends BackgroundProcess {
                     'pgmb_post_id'   => $post_id,
                 ], $parent_edit_link ) ), $anchor );
             }
+            /* translators: %s represents error message */
             $error_message = sprintf( __( 'There recently has been an issue publishing a post to one of your GMB locations: %s.', 'post-to-google-my-business' ), $publishedLocalPost->get_error_message() );
             $this->admin_notice_store->add( new StickyNotice('post_error', '<p><strong>' . __( 'Post to Google My Business:', 'post-to-google-my-business' ) . '</strong> ' . $error_message . (( $parent_edit_link ? '<br /><br />' . $link : '' )) . '</p>', AbstractNotice::WARNING) );
         }

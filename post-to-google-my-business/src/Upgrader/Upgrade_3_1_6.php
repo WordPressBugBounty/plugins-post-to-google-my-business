@@ -26,6 +26,7 @@ class Upgrade_3_1_6 implements Upgrade {
 			'3_1_6_psfg_promotional',
 			esc_html__('Easily sync your WooCommerce products to GBP', 'post-to-google-my-business'),
 			nl2br(sprintf(
+				/* translators: %1$s is username/display name, %2$s is link to Product Sync for GBP plugin, %3$s is link to early access, %4$s is developer name (Koen) with "Plugin Developer" on the next line */
 				esc_html__("Hey %1\$s,\n\nI noticed you're using WooCommerce and wanted to tell you about the new plugin I've been working on: %2\$s.\n\nIt makes it super easy to sync your entire WooCommerce product catalog directly to your Google Business Profile listing.\n\nIf you're interested in giving it a try, then %3\$s.\n\n%4\$s", 'post-to-google-my-business'),
 				esc_html($current_user->display_name),
 				sprintf(

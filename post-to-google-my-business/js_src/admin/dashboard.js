@@ -2,6 +2,7 @@ import {Calendar} from "@fullcalendar/core";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import allLocales from '@fullcalendar/core/locales-all';
 import * as $ from "jquery";
+import {__, _x} from "@wordpress/i18n";
 
 
 
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         eventClick: function(info){
             info.jsEvent.preventDefault();
             let post_id = info.event.extendedProps.post_id;
-            tb_show("Post info", "#TB_inline?width=600&height=300&inlineId=pgmb-calendar-post-popup");
+            tb_show(_x('Post info', 'Title header for the dialog that opens when you click a post in the calendar', 'post-to-google-my-business'), "#TB_inline?width=600&height=300&inlineId=pgmb-calendar-post-popup");
             eventToDelete = info.event;
             const container = $('#pgmb-calendar-post-popup-inner');
             container.html('<span class="spinner is-active"></span>');
@@ -84,22 +85,22 @@ document.addEventListener('DOMContentLoaded', function() {
             let topicDashicon;
             switch(info.event.extendedProps.topictype){
                 case "STANDARD":
-                    topicDashicon = 'dashicons-megaphone';
+                    topicDashicon = '<svg class="pgmb-calendar-svg" width="20" height="20" viewBox="0 0 24 24" focusable="false"><path d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-4.51 2.11l.26 2.79-2.74.62-1.43 2.41L12 18.82l-2.58 1.11-1.43-2.41-2.74-.62.26-2.8L3.66 12l1.85-2.12-.26-2.78 2.74-.61 1.43-2.41L12 5.18l2.58-1.11 1.43 2.41 2.74.62-.26 2.79L20.34 12l-1.85 2.11z"></path><path d="M11 15h2v2h-2zm0-8h2v6h-2z"></path></svg>';
                     break;
                 case "EVENT":
-                    topicDashicon ='dashicons-calendar';
+                    topicDashicon ='<svg class="pgmb-calendar-svg" width="20" height="20" viewBox="0 0 24 24" focusable="false"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"></path><path d="M14.5 13a2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 0-5z"></path></svg>';
                     break;
                 case "OFFER":
-                    topicDashicon = 'dashicons-tag';
+                    topicDashicon = '<svg class="pgmb-calendar-svg" width="20" height="20" viewBox="0 0 24 24" focusable="false"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58s1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41s-.23-1.06-.59-1.42zM13 20.01L4 11V4h7v-.01l9 9-7 7.02zM8 6.5C8 7.33 7.33 8 6.5 8S5 7.33 5 6.5 5.67 5 6.5 5 8 5.67 8 6.5z"></path></svg>';
                     break;
                 case "PRODUCT":
-                    topicDashicon = 'dashicons-cart'
+                    topicDashicon = '<svg class="pgmb-calendar-svg" height="20" viewBox="0 0 24 24" width="20" focusable="false"><path d="M18,6h-2c0-2.21-1.79-4-4-4S8,3.79,8,6H6C4.9,6,4,6.9,4,8v12c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V8C20,6.9,19.1,6,18,6z M12,4c1.1,0,2,0.9,2,2h-4C10,4.9,10.9,4,12,4z M18,20H6V8h2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V8h4v2c0,0.55,0.45,1,1,1s1-0.45,1-1V8 h2V20z"></path></svg>'
                     break;
                 case "ALERT":
-                    topicDashicon = 'dashicons-sos'
+                    topicDashicon = '<span class="dashicons dashicons-sos"></span>'
                     break;
             }
-            $("<span class=\"dashicons " + topicDashicon + "\"></span> &nbsp;").prependTo(title);
+            $(topicDashicon).prependTo(title);
 
             if (info.event.extendedProps.live && !info.event.extendedProps.hasError) {
                 $("<span class=\"dashicons dashicons-admin-site\"></span> &nbsp;").prependTo(title);

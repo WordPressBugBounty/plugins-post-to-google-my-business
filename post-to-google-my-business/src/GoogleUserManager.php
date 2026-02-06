@@ -40,13 +40,15 @@ class GoogleUserManager {
 		$response = $this->transport->get('https://app.posttogmb.com/google_cert');
 
 		if (is_wp_error($response)) {
+			/* translators: %s represents error message */
 			throw new \Exception(sprintf(__('Unable to retrieve public keys from Google: %s', 'post-to-google-my-business'), esc_html($response->get_error_message())));
 		}
 
 		$http_code = wp_remote_retrieve_response_code($response);
 		if ($http_code !== 200) {
 			throw new \Exception(sprintf(
-				__('Unexpected HTTP response code (%d) from Google: %s', 'post-to-google-my-business'),
+				/* translators: %1$d represents status code, %2$s is response body */
+				__('Unexpected HTTP response code (%1$d) from Google: %2$s', 'post-to-google-my-business'),
 				$http_code,
 				'<pre>' . esc_html(print_r($response, true)) . '</pre>'
 			));
@@ -68,6 +70,7 @@ class GoogleUserManager {
 		$keys = json_decode(wp_remote_retrieve_body($response), true);
 		if (json_last_error() !== JSON_ERROR_NONE) {
 			throw new \Exception(sprintf(
+				/* translators: %s represents error message */
 				__('Failed to parse public key JSON from Google response: %s', 'post-to-google-my-business'),
 				'<pre>' . esc_html(json_last_error_msg()) . '</pre>'
 			));

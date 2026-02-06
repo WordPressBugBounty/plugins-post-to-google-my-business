@@ -32,13 +32,16 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
 
     private $autopost_editor;
 
+    private $plugin_path;
+
     public function __construct(
         WeDevsSettingsAPI $settings_api,
         $plugin_version,
         $business_selector,
         $autopost_editor,
         $template_path,
-        $plugin_url
+        $plugin_url,
+        $plugin_path
     ) {
         if ( !$business_selector instanceof BusinessSelector ) {
             throw new \InvalidArgumentException('Admin page expects valid BusinessSelector component');
@@ -51,30 +54,14 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
         $this->template_path = $template_path;
         $this->business_selector = $business_selector;
         $this->autopost_editor = $autopost_editor;
+        $this->plugin_path = $plugin_path;
         parent::__construct( $template_path, $plugin_url );
     }
 
     public function enqueue_scripts() {
         wp_enqueue_style( 'jquery-ui', $this->plugin_url . 'css/jquery-ui.min.css' );
-        wp_enqueue_script(
-            'mbp-settings-page',
-            $this->plugin_url . 'js/settings.js',
-            array(
-                'jquery',
-                'jquery-ui-core',
-                'jquery-ui-datepicker',
-                'jquery-ui-slider'
-            ),
-            $this->plugin_version,
-            true
-        );
-        wp_enqueue_style( 'pgmb-settings-page', $this->plugin_url . 'js/settings.css' );
         add_thickbox();
         $localize_vars = [
-            'refresh_locations'                => __( 'Refresh locations', 'post-to-google-my-business' ),
-            'delete_account_confirmation'      => __( 'Disconnect the Google account from this website?', 'post-to-google-my-business' ),
-            'please_wait'                      => __( 'Please wait...', 'post-to-google-my-business' ),
-            'wait_for_locations_to_load'       => __( 'Please wait for all locations to load', 'post-to-google-my-business' ),
             'POST_EDITOR_CALLBACK_PREFIX'      => self::POST_EDITOR_CALLBACK_PREFIX,
             'BUSINESSSELECTOR_CALLBACK_PREFIX' => self::BUSINESSSELECTOR_CALLBACK_PREFIX,
             'FIELD_PREFIX'                     => self::FIELD_PREFIX,
@@ -83,6 +70,21 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
             'disable_event_dateselector'       => $this->settings_api->get_option( 'disable_event_dateselector', 'mbp_misc' ) === 'on',
             'setting_selected_location'        => $this->settings_api->get_option( 'google_location', 'mbp_google_settings' ),
         ];
+        wp_enqueue_script(
+            'mbp-settings-page',
+            $this->plugin_url . 'js/settings.js',
+            array(
+                'jquery',
+                'jquery-ui-core',
+                'jquery-ui-datepicker',
+                'jquery-ui-slider',
+                'wp-i18n'
+            ),
+            $this->plugin_version,
+            true
+        );
+        wp_enqueue_style( 'pgmb-settings-page', $this->plugin_url . 'js/settings.css' );
+        wp_set_script_translations( 'mbp-settings-page', 'post-to-google-my-business', $this->plugin_path . 'languages' );
         wp_localize_script( 'mbp-settings-page', 'mbp_localize_script', $localize_vars );
     }
 
@@ -114,10 +116,11 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
     function get_settings_fields() {
         return array(
             'mbp_google_settings'     => array(array(
-                'name'     => 'google_location',
-                'label'    => __( 'Default location', 'post-to-google-my-business' ),
-                'desc'     => __( 'Select the post-types where the GMB metabox & auto-post controls should be displayed', 'post-to-google-my-business' ),
-                'callback' => [$this, 'settings_field_google_business'],
+                'name'              => 'google_location',
+                'label'             => __( 'Default location', 'post-to-google-my-business' ),
+                'desc'              => __( 'Select the post-types where the GMB metabox & auto-post controls should be displayed', 'post-to-google-my-business' ),
+                'callback'          => [$this, 'settings_field_google_business'],
+                'sanitize_callback' => [$this, 'validate_default_location'],
             )),
             'mbp_quick_post_settings' => array(array(
                 'name'  => 'invert',
@@ -127,7 +130,6 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
             ), array(
                 'name'              => 'autopost_template',
                 'label'             => __( 'Default template', 'post-to-google-my-business' ),
-                'desc'              => sprintf( __( 'The template for new Google posts when using quick post. Supports <a target="_blank" href="%s">variables</a> and <a target="_blank" href="%s">spintax</a> (premium only)', 'post-to-google-my-business' ), 'https://tycoonmedia.net/blog/using-the-quick-publish-feature/', 'https://tycoonmedia.net/blog/using-spintax/' ),
                 'callback'          => [$this, 'settings_field_autopost_template'],
                 'sanitize_callback' => [$this, 'validate_autopost_template'],
                 'default'           => \PGMB\FormFields::default_autopost_fields(),
@@ -147,15 +149,14 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
                 ),
             ]),
             'mbp_post_type_settings'  => [[
-                'name'              => 'post_types',
-                'label'             => __( 'Enabled for post types', 'post-to-google-my-business' ),
-                'desc'              => __( 'Select the post-types where the GMB metabox should be displayed', 'post-to-google-my-business' ),
-                'type'              => 'multicheck',
-                'default'           => array(
+                'name'    => 'post_types',
+                'label'   => __( 'Enabled for post types', 'post-to-google-my-business' ),
+                'desc'    => __( 'Select the post-types where the GMB metabox should be displayed', 'post-to-google-my-business' ),
+                'type'    => 'multicheck',
+                'default' => array(
                     'post' => 'post',
                 ),
-                'options'           => $this->settings_field_post_types(),
-                'sanitize_callback' => array($this, 'validate_post_types__premium_only'),
+                'options' => $this->settings_field_post_types(),
             ]],
             'mbp_misc'                => [
                 [
@@ -186,6 +187,13 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
                     'name'    => 'bypass_wp_cron',
                     'label'   => __( 'Bypass WP-Cron', 'post-to-google-my-business' ),
                     'desc'    => __( 'Enable this only if your posts are not being published. Will publish posts in foreground, at expense of performance.', 'post-to-google-my-business' ),
+                    'type'    => 'checkbox',
+                    'default' => 'off',
+                ],
+                [
+                    'name'    => 'enable_alert_post_type',
+                    'label'   => __( 'Enable Alert/COVID-19 post type', 'post-to-google-my-business' ),
+                    'desc'    => __( 'Enable ALERT post type. This is a currently unused GBP post type that will take priority over all other posts until it is deleted, introduced during the COVID-19 pandemic for emergency announcements.', 'post-to-google-my-business' ),
                     'type'    => 'checkbox',
                     'default' => 'off',
                 ]
@@ -338,6 +346,16 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
 
     public function get_autopost_editor() {
         return $this->autopost_editor;
+    }
+
+    public function validate_default_location( $value ) {
+        //$value['load_success'] = "no" means the business selector failed to load fully.
+        $original = $this->settings_api->get_option( 'google_location', 'mbp_google_settings' );
+        if ( !empty( $value['load_success'] ) && $value['load_success'] === 'no' ) {
+            add_settings_error( 'mbp_google_settings[google_location]', 'locations_load_fail', __( 'Google locations could not be loaded at the time of saving. Location settings were not updated. Please reload locations and save again.' ) );
+            $value = $original;
+        }
+        return $value;
     }
 
     public function validate_autopost_template( $value ) {

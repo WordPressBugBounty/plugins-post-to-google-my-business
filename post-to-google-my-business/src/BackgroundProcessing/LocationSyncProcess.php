@@ -62,6 +62,7 @@ class LocationSyncProcess extends BackgroundProcess {
 				return $this->sync_groups($item);
 			}
 		}catch(\Throwable $e){
+			/* translators: %s is error message */
 			$error_message = sprintf(__("Something went wrong trying to load the Google Business Profile locations for this account: %s", 'post-to-google-my-business'), $e->getMessage());
 			$link = sprintf('<a href="%s">%s</a>', esc_url(admin_url('admin.php?page=pgmb_settings#mbp_google_settings')), __('Check Google account settings', 'post-to-google-my-business'));
 			$this->admin_notice_store->add(new BrandedStickyNotice('location_import_error', $error_message, $link, AbstractNotice::ERROR));
@@ -165,7 +166,7 @@ class LocationSyncProcess extends BackgroundProcess {
 		if(!$group_id){
 			throw new \Exception('Could not find group');
 		}
-		$readMask = 'name,languageCode,storeCode,title,websiteUri,storefrontAddress,metadata,serviceArea,regularHours,specialHours';
+		$readMask = 'name,languageCode,storeCode,title,websiteUri,storefrontAddress,metadata,serviceArea,regularHours,specialHours,labels';
 
 		$request = $this->api->list_locations($item->get_parent(), 100, $item->getPageToken(), null, null, $readMask);
 

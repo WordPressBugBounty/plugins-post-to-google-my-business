@@ -448,11 +448,14 @@ class ParseFormFields {
 
     public function validate_image_props( $image_file_size, $width, $height ) {
         if ( $width < 250 || $height < 250 ) {
-            throw new InvalidArgumentException(sprintf( __( 'Post image must be at least 250x250px. Selected image is %dx%dpx', 'post-to-google-my-business' ), $width, $height ));
+            /* translators: %1$dx%2$dpx is the size of the failed image (width x height) */
+            throw new InvalidArgumentException(sprintf( __( 'Post image must be at least 250x250px. Selected image is %1$dx%2$dpx', 'post-to-google-my-business' ), $width, $height ));
         }
         if ( $image_file_size < 10240 ) {
+            /* translators: %s is formatted image size */
             throw new InvalidArgumentException(sprintf( __( 'Post image file too small, must be at least 10 KB. Selected image is %s', 'post-to-google-my-business' ), size_format( $image_file_size ) ));
         } elseif ( $image_file_size > 5242880 ) {
+            /* translators: %s is formatted image size */
             throw new InvalidArgumentException(sprintf( __( 'Post image file too big, must be 5 MB at most. Selected image is %s', 'post-to-google-my-business' ), size_format( $image_file_size ) ));
         }
     }

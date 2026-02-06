@@ -285,3 +285,32 @@
 	float:right;
 	margin-right:.5em;
 }
+.mbp-nav-tab .dashicons{
+	display:none;
+}
+.mbp-nav-tab.nav-tab-active .dashicons{
+	display:inline-block;
+	vertical-align: middle;
+}
+.pgmb-nav-tab-alert:not(.alert-enabled){
+	display:none;
+}
+.pgmb-nav-tab-alert.nav-tab-active{
+	display:block;
+}
+.mbp-action svg{
+	vertical-align: middle;
+	fill: currentColor;
+}
+.mbp-post .dashicons{
+	vertical-align: middle;
+}
+.pgmb-calendar-svg, .pgmb-calendar-post-type svg{
+	fill: currentColor;
+	vertical-align: middle;
+	margin-right:3px;
+}
+
+.pgmb-business-selector-error-row{
+	background-color:#FDCDCD;
+}

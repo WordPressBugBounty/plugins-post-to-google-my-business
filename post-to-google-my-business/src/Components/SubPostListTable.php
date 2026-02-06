@@ -9,6 +9,7 @@ namespace PGMB\Components;
 
 use DateTime;
 use DateTimeZone;
+use PGMB\Plugin;
 use PGMB\PostTypes\SubPost;
 use PGMB\PostTypes\SubPostRepository;
 use PGMB\Util\DateTimeCompat;
@@ -212,36 +213,6 @@ class SubPostListTable extends PrefixedListTable {
 		echo '</tr>';
 	}
 
-	/**
-	 * The Google My Business post types
-	 *
-	 * @return array
-	 */
-	public function gmb_topic_types(){
-		return array(
-			'STANDARD'	=> array(
-				'name'		=> __('What\'s New', 'post-to-google-my-business'),
-				'dashicon'	=> 'dashicons-megaphone'
-			),
-			'EVENT'		=> array(
-				'name'		=> __('Event', 'post-to-google-my-business'),
-				'dashicon'	=> 'dashicons-calendar'
-			),
-			'OFFER'		=> array(
-				'name'		=> __('Offer', 'post-to-google-my-business'),
-				'dashicon'	=> 'dashicons-tag'
-			),
-			'PRODUCT'	=> array(
-				'name'		=> __('Product', 'post-to-google-my-business'),
-				'dashicon'	=> 'dashicons-cart'
-			),
-			'ALERT'     => [
-				'name'      => __('COVID-19 update', 'post-to-google-my-business'),
-				'dashicon'  => 'dashicons-sos'
-			]
-		);
-	}
-
 	public function column_pgmb_post_type(SubPost $item){
 		$actions = [
 			'postlist'      => sprintf('<a href="#" data-action="postlist" class="mbp-action">%s</a>', __('List created posts', 'post-to-google-my-business')),
@@ -262,9 +233,11 @@ class SubPostListTable extends PrefixedListTable {
 	        $output .= sprintf('<span class="dashicons dashicons-controls-repeat" title="%s"></span> ', __('Repost enabled', 'post-to-google-my-business'));
         }
 
-        $output .= sprintf('<a href="#" class="row-title mbp-action" data-action="edit"><span class="dashicons %s"></span> %s</a><br />%s',
-            $this->gmb_topic_types()[$topic_type]['dashicon'],
-	        $this->gmb_topic_types()[$topic_type]['name'],
+        $gbp_post_types = Plugin::gbp_topic_types();
+
+        $output .= sprintf('<a href="#" class="row-title mbp-action" data-action="edit">%s %s</a><br />%s',
+	        $gbp_post_types[ $topic_type ]['svg'] ?? "", // $this->gmb_topic_types()[$topic_type]['dashicon']
+	        $gbp_post_types[$topic_type]['name'],
             MbString::strimwidth((string)$item->parsed_form_fields()->get_summary(), 0, 100, '...')
         );
 
@@ -279,15 +252,16 @@ class SubPostListTable extends PrefixedListTable {
         $publish_date_timestamp = $item->get_post_publish_date_timestamp();
 	    $publish_datetime = (new DateTime())->setTimestamp($publish_date_timestamp)->setTimezone(DateTimeCompat::get_timezone());
 
-	    $publish_output = '<span class="dashicons dashicons-clock"></span>';
+	    $publish_output = '<span class="dashicons dashicons-clock"></span>&nbsp;';
 	    $now = new DateTime('now', DateTimeCompat::get_timezone());
 	    if($publish_datetime < $now){
-		    $publish_output = '<span class="dashicons dashicons-admin-site"></span>';
+		    $publish_output = '<span class="dashicons dashicons-admin-site"></span>&nbsp;';
 	    }
 	    $publish_output .= DateTimeCompat::format_date($publish_datetime).' '.DateTimeCompat::format_time($publish_datetime);
 
         $queued_items = (int)$item->get_queued_items();
         if($queued_items > 0){
+            /* translators: %d is a number representing the amount of tasks still to process */
 	        $publish_output .= '<br /><span style="float:left" class="spinner is-active"></span><span class="pgmb-items-processing">'.sprintf(esc_html__('%d publishing tasks queued', 'post-to-google-my-business'), $queued_items).'</span>';
         }
 
@@ -306,6 +280,7 @@ class SubPostListTable extends PrefixedListTable {
         if($item->is_draft()){
             return __('Draft', 'post-to-google-my-business');
         }
+        /* translators: %s = human-readable time difference */
         return sprintf( _x( '%s ago', '%s = human-readable time difference', 'post-to-google-my-business' ), human_time_diff($item->get_creation_timestamp()));
     }
 

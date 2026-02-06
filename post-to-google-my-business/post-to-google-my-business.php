@@ -1,11 +1,11 @@
 <?php
 
 /*
-Plugin Name: Post to Google My Business
+Plugin Name: Post to Google My Business (Google Business Profile)
 Plugin URI: https://digitaldistortion.dev
-Description: Automatically create a post on Google My Business when creating a new WordPress post
+Description: (Auto-)post and manage Google Business Profile posts from the WordPress dashboard
 Author: Koen Reus
-Version: 3.2.5
+Version: 3.3.2
 Author URI: https://koenreus.com
 Text Domain: post-to-google-my-business
 */

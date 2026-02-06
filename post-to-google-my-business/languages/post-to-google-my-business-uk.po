@@ -1,24 +1,20 @@
-# This file is distributed under the same license as the Post to Google My Business package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Post to Google My Business 2.2.5\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/post-to-google-my-"
-"business\n"
-"POT-Creation-Date: 2020-01-21 16:10:50+00:00\n"
-"PO-Revision-Date: 2020-01-22 09:14+0200\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/post-to-google-my-business\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-01-21 16:10:50+00:00\n"
+"PO-Revision-Date: 2020-01-22 09:14+0200\n"
+"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Eazy Po 0.9.5.3\n"
 "X-Poedit-Country: United States\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_"
-"nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,"
-"2c;esc_html_x:1,2c;\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Bookmarks: \n"
@@ -63,13 +59,11 @@ msgid "Quick post template"
 msgstr "Шаблон швидкого запису"
 
 #: inc/class-mbp-admin-page-settings.php:125
-msgid ""
-"The template for new Google posts when using quick post. Supports <a "
-"target=\"_blank\" href=\"%s\">variables</a> and <a target=\"_blank\" "
-"href=\"%s\">spintax</a> (premium only)"
+msgid "The template for new Google posts when using quick post. Supports <a target=\"_blank\" href=\"%s\">variables</a> and <a target=\"_blank\" href=\"%s\">spintax</a> (premium only)"
 msgstr "Шаблон для нових записів Google при використанні швидкої публікації. Підтримує <a target=\"_blank\" href=\"%s\">змінні</a> та <a target=\"_blank\" href=\"%s\">спінтакс</a> (лише преміум)"
 
-#: inc/class-mbp-admin-page-settings.php:128 inc/class-mbp-metabox.php:555
+#: inc/class-mbp-admin-page-settings.php:128
+#: inc/class-mbp-metabox.php:555
 #: inc/class-mbp-metabox.php:558
 msgid "New post: %post_title% - %post_content%"
 msgstr "Новий запис: %post_title% - %post_content%"
@@ -86,27 +80,33 @@ msgstr "Текст кнопки за замовчуванням"
 msgid "No button"
 msgstr "Немає кнопки"
 
-#: inc/class-mbp-admin-page-settings.php:138 templates/metabox.php:167
+#: inc/class-mbp-admin-page-settings.php:138
+#: templates/metabox.php:167
 msgid "Book"
 msgstr "Книга"
 
-#: inc/class-mbp-admin-page-settings.php:139 templates/metabox.php:168
+#: inc/class-mbp-admin-page-settings.php:139
+#: templates/metabox.php:168
 msgid "Order"
 msgstr "Порядок"
 
-#: inc/class-mbp-admin-page-settings.php:140 templates/metabox.php:169
+#: inc/class-mbp-admin-page-settings.php:140
+#: templates/metabox.php:169
 msgid "Shop"
 msgstr "Магазин"
 
-#: inc/class-mbp-admin-page-settings.php:141 templates/metabox.php:170
+#: inc/class-mbp-admin-page-settings.php:141
+#: templates/metabox.php:170
 msgid "Learn more"
 msgstr "Дізнатись більше"
 
-#: inc/class-mbp-admin-page-settings.php:142 templates/metabox.php:171
+#: inc/class-mbp-admin-page-settings.php:142
+#: templates/metabox.php:171
 msgid "Sign up"
 msgstr "Зареєструватися"
 
-#: inc/class-mbp-admin-page-settings.php:143 templates/metabox.php:172
+#: inc/class-mbp-admin-page-settings.php:143
+#: templates/metabox.php:172
 msgid "Get offer"
 msgstr "Отримайте пропозицію"
 
@@ -119,9 +119,7 @@ msgid "Post to GMB by default"
 msgstr "Публікувати у GMB за замовчанням"
 
 #: inc/class-mbp-admin-page-settings.php:150
-msgid ""
-"The Auto-post checkbox will be checked by default, and your WordPress posts "
-"will be automatically published to GMB, unless you uncheck it."
+msgid "The Auto-post checkbox will be checked by default, and your WordPress posts will be automatically published to GMB, unless you uncheck it."
 msgstr "У поле автоматична публікація буде встановлено прапорець за замовчуванням, і ваші публікації WordPress будуть автоматично опубліковані в GMB, якщо ви не знімете його."
 
 #: inc/class-mbp-admin-page-settings.php:156
@@ -129,16 +127,15 @@ msgid "Fetch post image from content"
 msgstr "Отримати зображення із вмісту"
 
 #: inc/class-mbp-admin-page-settings.php:157
-msgid ""
-"Try to get an image from the post content (when no custom image is set). "
-"This has priority over the featured image."
+msgid "Try to get an image from the post content (when no custom image is set). This has priority over the featured image."
 msgstr "Спробуйте отримати зображення із вмісту публікації (коли не встановлено спеціальне зображення). Це має пріоритет над головним зображенням."
 
 #: inc/class-mbp-admin-page-settings.php:163
 msgid "Use featured image"
 msgstr "Використовуйте головне зображення"
 
-#: inc/class-mbp-admin-page-settings.php:164 templates/metabox.php:199
+#: inc/class-mbp-admin-page-settings.php:164
+#: templates/metabox.php:199
 msgid "Use the Featured Image as GMB Post image (when no custom image is set)"
 msgstr "Використовувати головне зображення як зображення запису GMB (коли не встановлено користувацьке зображення)"
 
@@ -171,9 +168,7 @@ msgid "Location grayed out?"
 msgstr "Місце розташування стало сірим?"
 
 #: inc/class-mbp-admin-page-settings.php:236
-msgid ""
-"It means the location is blocked from using the LocalPostAPI, and can't be "
-"posted to using the plugin."
+msgid "It means the location is blocked from using the LocalPostAPI, and can't be posted to using the plugin."
 msgstr "Це означає, що місцеположення заблоковано з використанням LocalPostAPI і не може бути опубліковано використовуючи плагін."
 
 #: inc/class-mbp-admin-page-settings.php:237
@@ -181,7 +176,8 @@ msgid "Learn more..."
 msgstr "Дізнатися більше..."
 
 #: inc/class-mbp-admin-page-settings.php:265
-#: inc/class-mbp-admin-page-settings.php:275 templates/settings.php:3
+#: inc/class-mbp-admin-page-settings.php:275
+#: templates/settings.php:3
 msgid "Post to Google My Business settings"
 msgstr "Налаштування Post to Google My Business"
 
@@ -210,9 +206,7 @@ msgid "Support for other post types is a <a href=\"%s\">Pro feature</a>."
 msgstr "Підтримка інших типів публікацій - це <a href=\"%s\">особливості Pro</a>."
 
 #: inc/class-mbp-admin-page-settings.php:317
-msgid ""
-"Your WordPress version does not yet support the WP_Debug_Data class, please "
-"update."
+msgid "Your WordPress version does not yet support the WP_Debug_Data class, please update."
 msgstr "Ваша версія WordPress ще не підтримує WP_Debug_Data class, будь ласка, оновіться."
 
 #: inc/class-mbp-admin-page-settings.php:323
@@ -243,7 +237,8 @@ msgstr "Від'єднати цей сайт з Google My Business"
 msgid "Revoke Google account authorization"
 msgstr "Відкликати авторизацію облікового запису Google"
 
-#: inc/class-mbp-connector.php:32 inc/class-mbp-connector.php:58
+#: inc/class-mbp-connector.php:32
+#: inc/class-mbp-connector.php:58
 msgid "No permission to edit options"
 msgstr "Відсутні дозволи для редагування налаштувань"
 
@@ -656,10 +651,7 @@ msgid "Zimbabwe Dollar"
 msgstr ""
 
 #: inc/class-mbp-metabox.php:105
-msgid ""
-"You're working on a Google My Business post, but it has not yet been "
-"published/scheduled. Press OK to publish/schedule it now, or Cancel to save "
-"it as a draft."
+msgid "You're working on a Google My Business post, but it has not yet been published/scheduled. Press OK to publish/schedule it now, or Cancel to save it as a draft."
 msgstr "Ви працюєте над публікацією в службі Google Мій бізнес, але вона ще не була опублікована/запланована. Натисніть OK, щоб опублікувати/запланувати її зараз, або Скасувати, щоб зберегти її як чернетку."
 
 #: inc/class-mbp-metabox.php:106
@@ -674,11 +666,13 @@ msgstr "Опублікувати"
 msgid "Update"
 msgstr "Оновити"
 
-#: inc/class-mbp-metabox.php:109 templates/metabox.php:272
+#: inc/class-mbp-metabox.php:109
+#: templates/metabox.php:272
 msgid "Save draft"
 msgstr "Зберегти чернетку"
 
-#: inc/class-mbp-metabox.php:110 templates/metabox.php:216
+#: inc/class-mbp-metabox.php:110
+#: templates/metabox.php:216
 msgid "Schedule post"
 msgstr "Запланований запис"
 
@@ -694,7 +688,7 @@ msgstr "Мін."
 msgid "Price"
 msgstr "Ціна"
 
-#.      Plugin Name of the plugin/theme
+#. Plugin Name of the plugin/theme
 msgid "Post to Google My Business"
 msgstr "Опублікувати у Google My Business"
 
@@ -710,19 +704,23 @@ msgstr "(Підключіть, виберіть місце за замовчув
 msgid "Auto-post this to GMB"
 msgstr "Публікувати це автоматично на GMB"
 
-#: inc/class-mbp-metabox.php:299 templates/metabox.php:15
+#: inc/class-mbp-metabox.php:299
+#: templates/metabox.php:15
 msgid "What's New"
 msgstr "Що нового"
 
-#: inc/class-mbp-metabox.php:303 templates/metabox.php:16
+#: inc/class-mbp-metabox.php:303
+#: templates/metabox.php:16
 msgid "Event"
 msgstr "Подія"
 
-#: inc/class-mbp-metabox.php:307 templates/metabox.php:17
+#: inc/class-mbp-metabox.php:307
+#: templates/metabox.php:17
 msgid "Offer"
 msgstr "Пропозиція"
 
-#: inc/class-mbp-metabox.php:311 templates/metabox.php:18
+#: inc/class-mbp-metabox.php:311
+#: templates/metabox.php:18
 msgid "Product"
 msgstr "Товар"
 
@@ -738,7 +736,8 @@ msgstr "Репост увімкнено"
 msgid "List created posts"
 msgstr "Список створених записів"
 
-#: inc/class-mbp-metabox.php:414 inc/class-mbp-post-type-google-posts.php:28
+#: inc/class-mbp-metabox.php:414
+#: inc/class-mbp-post-type-google-posts.php:28
 msgid "Edit"
 msgstr "Редагувати"
 
@@ -783,9 +782,7 @@ msgid "You do not have permission to delete posts"
 msgstr "Ви не маєте дозволу на видалення записів"
 
 #: inc/class-mbp-metabox.php:578
-msgid ""
-"No posts found. The posting process may still be in progress, or no "
-"location was selected."
+msgid "No posts found. The posting process may still be in progress, or no location was selected."
 msgstr "Не знайдено жодного запису. Процес публікації все ще триває або не вибрано місце розташування."
 
 #: inc/class-mbp-metabox.php:592
@@ -800,9 +797,12 @@ msgstr ", Часовий пояс: "
 msgid "Manage multiple businesses or locations?"
 msgstr "Керувати кількома підприємствами чи місцезнаходженнями?"
 
-#: inc/class-mbp-plugin.php:138 inc/class-mbp-plugin.php:144
-#: inc/class-mbp-plugin.php:150 inc/class-mbp-plugin.php:156
-#: inc/class-mbp-plugin.php:162 inc/class-mbp-plugin.php:173
+#: inc/class-mbp-plugin.php:138
+#: inc/class-mbp-plugin.php:144
+#: inc/class-mbp-plugin.php:150
+#: inc/class-mbp-plugin.php:156
+#: inc/class-mbp-plugin.php:162
+#: inc/class-mbp-plugin.php:173
 msgid "Upgrade to Premium"
 msgstr "Оновити до Преміум"
 
@@ -827,9 +827,7 @@ msgid "to view post statistics and easily include Google Analytics UTM parameter
 msgstr "щоб переглянути статистику запису та легко включити параметри UTM Google Analytics."
 
 #: inc/class-mbp-plugin.php:154
-msgid ""
-"Use Post to Google My Business for your pages, projects, WooCommerce "
-"products and more."
+msgid "Use Post to Google My Business for your pages, projects, WooCommerce products and more."
 msgstr "Використовуйте Post to Google My Business для своїх сторінок, проєктів, товарів WooCommerce та багато іншого."
 
 #: inc/class-mbp-plugin.php:157
@@ -845,9 +843,7 @@ msgid "to set custom intervals and specify the amount of reposts."
 msgstr "щоб встановити спеціальні інтервали та вказати кількість репостів."
 
 #: inc/class-mbp-plugin.php:166
-msgid ""
-"I hope you enjoy using my Post to Google My Business plugin! Help spread "
-"the word with a"
+msgid "I hope you enjoy using my Post to Google My Business plugin! Help spread the word with a"
 msgstr "Сподіваюся, вам сподобається користуватися моїм плагіном \"Post to Google My Business\"! Допоможіть поширити його за допомогою "
 
 #: inc/class-mbp-plugin.php:167
@@ -947,16 +943,11 @@ msgid "Year must be from 1 to 9999, or 0 if specifying a date without a year."
 msgstr "Рік повинен бути від 1 до 9999, або 0, якщо вказати дату без року."
 
 #: src/Google/Date.php:52
-msgid ""
-"Month must be from 1 to 12, or 0 if specifying a year without a month and "
-"day. "
+msgid "Month must be from 1 to 12, or 0 if specifying a year without a month and day. "
 msgstr "Місяць повинен бути від 1 до 12, або 0, якщо вказати рік без місяця та дня."
 
 #: src/Google/Date.php:62
-msgid ""
-"Day must be from 1 to 31 and valid for the year and month, or 0 if "
-"specifying a year by itself or a year and month where the day is not "
-"significant. "
+msgid "Day must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by itself or a year and month where the day is not significant. "
 msgstr "День повинен бути від 1 до 31 та дійсний для року та місяця, або 0, якщо вказати рік сам або рік та місяць, коли день не є значущим."
 
 #: src/Google/LocalPost.php:60
@@ -1048,9 +1039,7 @@ msgid "Word count:"
 msgstr "Кількість слів:"
 
 #: templates/metabox.php:46
-msgid ""
-"The text that should appear on your post. Recommended 150-300 characters. "
-"80 characters show in the Google Search results. 1500 characters maximum."
+msgid "The text that should appear on your post. Recommended 150-300 characters. 80 characters show in the Google Search results. 1500 characters maximum."
 msgstr "Текст, який повинен з’явитися у вашому записі. Рекомендовано 150-300 символів. 80 символів відображаються в результатах пошуку Google. Максимум 1500 символів."
 
 #: templates/metabox.php:53
@@ -1086,40 +1075,32 @@ msgid "Terms and conditions (optional)"
 msgstr "Загальні положення та умови (необов’язково)"
 
 #: templates/metabox.php:105
-msgid ""
-"The ability to create Product posts has been (temporarily?) removed from "
-"the Google My Business API. Please check back later."
-msgstr ""
-"Можливість створення публікацій про продукт була (тимчасово?) видалена з API "
-"Google My Business. Перевірте пізніше."
+msgid "The ability to create Product posts has been (temporarily?) removed from the Google My Business API. Please check back later."
+msgstr "Можливість створення публікацій про продукт була (тимчасово?) видалена з API Google My Business. Перевірте пізніше."
 
 #: templates/metabox.php:141
 msgid "Details"
 msgstr "Деталі"
 
 #: templates/metabox.php:144
-msgid ""
-"The text that should appear on your post. Recommended 150-300 characters. "
-"80 characters show in the SERPS. 1500 characters maximum."
-msgstr ""
-"Текст, який повинен з’явитися у вашій публікації. Рекомендовано 150-300 "
-"символів. 80 символів показують у SERPS. Максимум 1500 символів."
+msgid "The text that should appear on your post. Recommended 150-300 characters. 80 characters show in the SERPS. 1500 characters maximum."
+msgstr "Текст, який повинен з’явитися у вашій публікації. Рекомендовано 150-300 символів. 80 символів показують у SERPS. Максимум 1500 символів."
 
 #: templates/metabox.php:151
 msgid "Have more people engage with your events, products or offers."
 msgstr "Дайте можливість більшій кількості людей брати участь у ваших заходах, товарах чи пропозиціях."
 
-#: templates/metabox.php:151 templates/metabox.php:301
+#: templates/metabox.php:151
+#: templates/metabox.php:301
 msgid "Upgrade to premium"
 msgstr "Оновити до Преміум"
 
 #: templates/metabox.php:151
-msgid ""
-"and start creating your Event, Offer and Product posts right from the "
-"WordPress dashboard!"
+msgid "and start creating your Event, Offer and Product posts right from the WordPress dashboard!"
 msgstr "і почніть створювати свої події, пропозиції та товари безпосередньо з інформаційної панелі WordPress!"
 
-#: templates/metabox.php:152 templates/metabox.php:207
+#: templates/metabox.php:152
+#: templates/metabox.php:207
 #: templates/metabox.php:302
 msgid "Upgrade now!"
 msgstr "Оновити зараз!"
@@ -1149,9 +1130,7 @@ msgid "Alternative button URL"
 msgstr "Альтернативна URL-адреса кнопки"
 
 #: templates/metabox.php:181
-msgid ""
-"Optional. Where the user should go when clicking the button. Leave at "
-"default to send them to your newly created WordPress post."
+msgid "Optional. Where the user should go when clicking the button. Leave at default to send them to your newly created WordPress post."
 msgstr "За бажанням. Куди користувач повинен зайти при натисканні кнопки. Залиште за замовченням, щоб надіслати їх на ваш щойно створений запис у WordPress."
 
 #: templates/metabox.php:188
@@ -1167,9 +1146,7 @@ msgid "Fetch image from post content"
 msgstr "Отримати зображення з вмісту публікації"
 
 #: templates/metabox.php:197
-msgid ""
-"Try to get an image from the post content (when no custom image is set). "
-"This takes priority over the featured image."
+msgid "Try to get an image from the post content (when no custom image is set). This takes priority over the featured image."
 msgstr "Спробуйте отримати зображення із вмісту публікації (коли не встановлено спеціальне зображення). Це має пріоритет над головним зображенням."
 
 #: templates/metabox.php:198
@@ -1177,10 +1154,7 @@ msgid "Use Featured Image as GMB post image"
 msgstr "Використовувати головне зображення як зображення запису GMB"
 
 #: templates/metabox.php:205
-msgid ""
-"Schedule your Google My Business posts, automatically repost them at "
-"specified interval, and pick one or more locations to post to. And many "
-"more features!"
+msgid "Schedule your Google My Business posts, automatically repost them at specified interval, and pick one or more locations to post to. And many more features!"
 msgstr "Сплануйте свої публікації в службі Google Мій бізнес, автоматично розмістіть їх у визначений проміжок часу та виберіть одне або декілька місць для публікації. І ще багато можливостей!"
 
 #: templates/metabox.php:221
@@ -1256,32 +1230,26 @@ msgid "Status"
 msgstr "Статус"
 
 #: templates/settings.php:4
-msgid ""
-"Thanks for choosing Post to Google My Business! The easiest and most "
-"versatile Google My Business plugin for WordPress."
+msgid "Thanks for choosing Post to Google My Business! The easiest and most versatile Google My Business plugin for WordPress."
 msgstr "Дякуємо, що вибрали Post to Google My Business! Найпростіший і універсальний плагін Google My Business для WordPress."
 
 #: templates/settings.php:5
-msgid ""
-"Need help getting started? Check out the <a target=\"_blank\" "
-"href=\"https://tycoonmedia.net/gmb-tutorial-video/\">tutorial video</a>"
+msgid "Need help getting started? Check out the <a target=\"_blank\" href=\"https://tycoonmedia.net/gmb-tutorial-video/\">tutorial video</a>"
 msgstr "Потрібна допомога для початку роботи? Перевірте <a target=\"_blank\" href=\"https://tycoonmedia.net/gmb-tutorial-video/\">відео посібник</a>"
 
-#.      Plugin URI of the plugin/theme
+#. Plugin URI of the plugin/theme
 msgid "https://tycoonmedia.net/wordpress-google-my-business-post/"
 msgstr "https://tycoonmedia.net/wordpress-google-my-business-post/"
 
-#.      Description of the plugin/theme
-msgid ""
-"Automatically create a post on Google My Business when creating a new "
-"WordPress post"
+#. Description of the plugin/theme
+msgid "Automatically create a post on Google My Business when creating a new WordPress post"
 msgstr "Автоматично створюйте запис в Google My Business під час створення нового запису у WordPress"
 
-#.      Author of the plugin/theme
+#. Author of the plugin/theme
 msgid "tyCoon Media"
 msgstr "tyCoon Media"
 
-#.      Author URI of the plugin/theme
+#. Author URI of the plugin/theme
 msgid "https://tycoonmedia.net"
 msgstr "https://tycoonmedia.net"
 

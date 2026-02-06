@@ -8,7 +8,13 @@ if( $this instanceof \PGMB\Admin\DashboardPage) : ?>
         <div class="metabox-holder">
             <?php if($this->notification_manager->notification_count('dashboard-notifications')) : ?>
                 <div class="pgmb-widget postbox pgmb-notifications-container">
-                    <h2 class="hndle ui-sortable-handle"><span><?php echo sprintf(esc_html__("Notifications (%s)", "post-to-google-my-business"), '<span class="mbp-notification-count">'.$this->notification_manager->notification_count('dashboard-notifications').'</span>'); ?></span>
+                    <h2 class="hndle ui-sortable-handle">
+                        <span>
+                            <?php
+                                /* translators: %s is the amount of notifications in a styled html component */
+                                echo sprintf(esc_html__("Notifications (%s)", "post-to-google-my-business"), '<span class="mbp-notification-count">'.$this->notification_manager->notification_count('dashboard-notifications').'</span>');
+                            ?>
+                        </span>
                     </h2>
 
                     <div class="pgmb-widget-inside inside">
@@ -20,7 +26,14 @@ if( $this instanceof \PGMB\Admin\DashboardPage) : ?>
             <?php if($this->notification_manager->notification_count('feature-notifications')) : ?>
             <div class="pgmb-widget postbox pgmb-notifications-container">
 
-                <h2 class="hndle ui-sortable-handle"><span><?php echo sprintf(esc_html__("New features (%s)", "post-to-google-my-business"), '<span class="mbp-notification-count">'.$this->notification_manager->notification_count('feature-notifications').'</span>'); ?></span></h2>
+                <h2 class="hndle ui-sortable-handle">
+                    <span>
+                        <?php
+                            /* translators: %s is the amount of new features (count) in a styled html component */
+                            echo sprintf(esc_html__("New features (%s)", "post-to-google-my-business"), '<span class="mbp-notification-count">'.$this->notification_manager->notification_count('feature-notifications').'</span>');
+                        ?>
+                    </span>
+                </h2>
 
                 <div class="pgmb-widget-inside inside">
                     <div class="pgmb-features-container">

@@ -70,7 +70,7 @@ class Upgrade_3_0_0 implements DistributedUpgrade {
 	public function display_reconnect_notice(){
 		$anchor = _x('Google account settings', 'anchor text', 'post-to-google-my-business');
 		$link = sprintf('<a href="%s">%s</a>', esc_url(admin_url('admin.php?page=pgmb_settings#mbp_google_settings')), $anchor);
-
+		/* translators: %s is link to Google account settings */
 		$reconnect_notice = new StickyNotice('reconnect_notice', '<p>'.sprintf(__('Thanks for updating Post to Google My Business! Due to major changes in the Google account management system, re-authenticating might be required. Check the %s and reconnect your account if needed.', 'post-to-google-my-business'), $link).'</p>', AbstractNotice::INFO);
 		$this->notice_store->add($reconnect_notice);
 	}
@@ -300,6 +300,7 @@ class Upgrade_3_0_0 implements DistributedUpgrade {
 			'3_0_0_upgrade_notification',
 			esc_html__('Thanks for updating Post to Google My Business!', 'post-to-google-my-business'),
 			nl2br(sprintf(
+				/* translators: %1$s is display name/username, %2$s is link to leave a review (anchor: "leave a rating"), %3$s is plugin developer name (Koen) + "Plugin Developer" title  */
 				esc_html__("Hey %1\$s,\n\nThanks for updating Post to Google My Business to version 3, the \"big update\"! The plugin received a massive overhaul from a technical standpoint, making it faster, more stable & more intuitive.\n\nI've also added a ton of features that you've all been asking for. I've highlighted the major ones in the \"New features\" section, which you can check out below!\n\nIf you like the plugin and have a moment to %2\$s, that's much appreciated and really helps me move the plugin forward.\n\n%3\$s", 'post-to-google-my-business'),
 				esc_html($current_user->display_name),
 				sprintf(

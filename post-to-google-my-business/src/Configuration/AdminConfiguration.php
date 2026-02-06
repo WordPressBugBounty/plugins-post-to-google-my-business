@@ -33,7 +33,8 @@ class AdminConfiguration implements ContainerConfigurationInterface {
                 $container['component.business_selector'],
                 $container['component.post_editor'],
                 $container['plugin_path'] . 'templates/admin/',
-                $container['plugin_url']
+                $container['plugin_url'],
+                $container['plugin_path']
             ];
             $pages = [
                 'main_page' => $container['dashboard_page'],

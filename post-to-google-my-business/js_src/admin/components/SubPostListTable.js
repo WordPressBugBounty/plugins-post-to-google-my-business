@@ -5,8 +5,8 @@ https://github.com/debba/wp-list-table-ajax-sample
  */
 
 import * as $ from 'jquery';
+import {__, sprintf} from "@wordpress/i18n";
 
-const { remaining_items, refresh_post_status } = mbp_localize_script;
 let AjaxListTable = function(container, nonce, ajax_prefix){
 
     const instance = this;
@@ -138,7 +138,7 @@ let AjaxListTable = function(container, nonce, ajax_prefix){
                        let spanElement = parentElement.find('td .pgmb-items-processing');
                        let spinnerElement = parentElement.find('td .spinner');
                        if (spanElement.length > 0) {
-                           spanElement.text(remaining_items.replace('%d', remainingItems));
+                           spanElement.text(sprintf(__('%d publishing tasks queued', 'post-to-google-my-business'), remainingItems));
                        }
                        if (remainingItems === 0) {
                            parentElement.attr('data-is_processing', 'false');
@@ -217,7 +217,7 @@ let AjaxListTable = function(container, nonce, ajax_prefix){
             },
             success: function (response) {
                 if(bulk_action === "refresh_status"){
-                    $(container).html(refresh_post_status + '<span class="spinner is-active"></span>');
+                    $(container).html(__('Refreshing post statuses...', 'post-to-google-my-business') + '<span class="spinner is-active"></span>');
                     instance.poll_status();
                 }else{
                     instance.display();

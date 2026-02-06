@@ -17,6 +17,7 @@ import AdminNotice from "./components/AdminNotice";
 import AjaxListTable from "./components/SubPostListTable";
 
 import { addAction } from "@wordpress/hooks";
+import {__} from "@wordpress/i18n";
 
 
 const AJAX_CALLBACK_PREFIX = mbp_localize_script.AJAX_CALLBACK_PREFIX;
@@ -101,11 +102,10 @@ if(urlParams.has('pgmb_list_posts')){
 /**
  * Resets the post editing form to its defaults
  *
- * @property {string} mbp_localize_script.publish_button "Publish"
  */
 function reset_form(){
 	formDataMode = formDataModes.createPost;
-	formControlButtons.publishPostButton.html(mbp_localize_script.publish_button);
+	formControlButtons.publishPostButton.html(__('Publish', 'post-to-google-my-business'));
 	formControlButtons.draftPostButton.show();
 }
 
@@ -132,15 +132,13 @@ function load_form_defaults(){
 /**
  * Load the auto-post template into the editor
  *
- * Translations
- * @property {string} mbp_localize_script.save_template "Save template"
  */
 function load_autopost_template(){
 	postEditor.resetForm();
 	formDataMode = formDataModes.editTemplate;
 	postFormContainer.slideUp("slow");
 	formControlButtons.draftPostButton.hide();
-	formControlButtons.publishPostButton.html(mbp_localize_script.save_template);
+	formControlButtons.publishPostButton.html(__('Save template', 'post-to-google-my-business'));
 	const data = {
 		'action': 'mbp_load_autopost_template',
 		'mbp_post_nonce': mbp_localize_script.post_nonce,
@@ -168,7 +166,7 @@ function show_created_posts(post_id){
 	entityList.set_parent_id(post_id);
 
 	entityList.display();
-	tb_show("Created posts", "#TB_inline?width=600&height=300&inlineId=mbp-created-post-dialog");
+	tb_show(__('Created posts', 'post-to-google-my-business'), "#TB_inline?width=600&height=300&inlineId=mbp-created-post-dialog");
 	let ajaxContent = $('#TB_ajaxContent');
 	ajaxContent.attr("style", "");
 
@@ -197,7 +195,7 @@ function show_created_posts(post_id){
 
 function load_post(post_id, edit, onReadyCallback){
 	postEditor.resetForm();
-	formControlButtons.publishPostButton.html(mbp_localize_script.publish_button);
+	formControlButtons.publishPostButton.html(__('Publish', 'post-to-google-my-business'));
 	if(edit){
 		editing = post_id;
 		formDataMode = formDataModes.editPost;
@@ -223,7 +221,7 @@ function load_post(post_id, edit, onReadyCallback){
 			postEditor.loadFormFields(response.post.form_fields);
 			formControlButtons.draftPostButton.show();
 			if(editing && response.post.post_status === 'publish'){
-				formControlButtons.publishPostButton.html(mbp_localize_script.update_button);
+				formControlButtons.publishPostButton.html(__('Update', 'post-to-google-my-business'));
 				formControlButtons.draftPostButton.hide();
 			}
 			if(response.has_error){
@@ -266,7 +264,7 @@ function delete_post(post_id){
 
 formControlButtons.newPostButton.click(function(event) {
 	event.preventDefault();
-	formControlButtons.publishPostButton.html(mbp_localize_script.publish_button);
+	formControlButtons.publishPostButton.html(__('Publish', 'post-to-google-my-business'));
 	postFormContainer.slideUp("slow");
 	editing = false;
 	postEditor.resetForm();
@@ -306,7 +304,7 @@ $('#publish, #original_publish').click(function(event) {
 		//alert("not visble");
 		return;
 	}
-	let publish = confirm(mbp_localize_script.publish_confirmation);
+	let publish = confirm(__("You're working on a Google My Business post, but it has not yet been published/scheduled. Press OK to publish/schedule it now, or Cancel to save it as a draft.", 'post-to-google-my-business'));
 
 	if(publish){
 		formControlButtons.publishPostButton.trigger("click");
@@ -360,9 +358,9 @@ $('#mbp-publish-post, #mbp-draft-post').click(function(event){
 		}
 
 		if(!draft){
-			$(publishButton).html(mbp_localize_script.publish_button).attr('disabled', false);
+			$(publishButton).html(__('Publish', 'post-to-google-my-business')).attr('disabled', false);
 		}else{
-			$(publishButton).html(mbp_localize_script.draft_button).attr('disabled', false);
+			$(publishButton).html(__('Save draft', 'post-to-google-my-business')).attr('disabled', false);
 		}
 
 	});

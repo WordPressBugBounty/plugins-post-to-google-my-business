@@ -15,13 +15,18 @@ class PostEditor {
 
 	public $field_name;
 	private $template_dir;
+	/**
+	 * @var false
+	 */
+	private $is_alert_type_enabled;
 
 
-	public function __construct( $template_dir, $isAjax = false, $values = [], $field_name = 'mbp_form_fields' ) {
+	public function __construct( $template_dir, $is_alert_type_enabled = false, $isAjax = false, $values = [], $field_name = 'mbp_form_fields' ) {
 		$this->ajax         = $isAjax;
 		$this->field_name   = $field_name;
 		$this->set_values($values);
 		$this->template_dir = $template_dir;
+		$this->is_alert_type_enabled = $is_alert_type_enabled;
 	}
 
 	public function set_field_name($field_name){
@@ -49,6 +54,10 @@ class PostEditor {
 
 	public function is_ajax_enabled(){
 		return $this->ajax;
+	}
+
+	public function is_alert_type_enabled(){
+		return $this->is_alert_type_enabled;
 	}
 
 	public function register_ajax_callbacks($prefix){

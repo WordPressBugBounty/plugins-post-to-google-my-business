@@ -3,6 +3,7 @@
  */
 
 import * as $ from 'jquery';
+import {__, sprintf} from "@wordpress/i18n";
 
 let accountsLoading = false;
 let accountCache = {};
@@ -13,7 +14,7 @@ let locationCache = {};
 
 let isLoading = false;
 
-
+let refreshLockout = 5;
 
 /**
  * Class to make the business selector work
@@ -32,9 +33,12 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
     let fieldContainer = $('.mbp-business-selector', container);
     let locationBlockedInfo = $('.mbp-location-blocked-info', container);
     let refreshApiCacheButton = $('.refresh-api-cache', container);
+    let filterTextareaControl = $('.mbp-filter-locations', container);
     let businessSelectorSelectedLocation = $('input:checked', fieldContainer);
 
     let selectedLocations;
+
+    let loadSuccess;
 
     const businessSelector = es6container.querySelector('.mbp-business-selector');
 
@@ -68,13 +72,18 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
         });
     }
 
-    this.getAccounts = async function(refresh = false){
-        loadListeners.forEach(listener => listener(true));
-        isLoading = true;
-
+    function getSpinner(){
         const spinner  = document.createElement('span');
         spinner.className = 'spinner is-active';
         spinner.style.float = 'none';
+        return spinner;
+    }
+
+    this.populate = async function (purgeCache = false){
+        loadListeners.forEach(listener => listener(true));
+        isLoading = true;
+        // refreshApiCacheButton.add(filterTextareaControl).attr('disabled', true);
+
 
         while(businessSelector.firstChild) {
             businessSelector.removeChild(businessSelector.firstChild);
@@ -82,28 +91,52 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
 
         const table = document.createElement('table');
 
+        const spinner = getSpinner();
         businessSelector.appendChild(spinner);
         businessSelector.appendChild(table);
 
-        let accounts;
-        try{
-            while(accountsLoading){
-                await new Promise((resolve) => setTimeout(resolve, 100));
-            }
-            if(accountCache.accounts && !refresh){
-                accounts = accountCache.accounts;
-            }else{
-                accountsLoading = true;
-
-                const accountsResponse = await instance.AjaxCall(nonce, 'get_accounts');
-                accounts = accountCache.accounts = await accountsResponse.json();
-                accountsLoading = false;
-            }
-
+        try {
+            await this.getAccounts(table, purgeCache);
+            loadSuccess = true;
         }catch(e){
-            table.appendChild(e.message);
+            /* translators: %s is error message */
+            const errorRow = table.appendChild(instance.errorRow(sprintf(__('Failed to load locations: %s', 'post-to-google-my-business'), e.message)));
+            errorRow.scrollIntoView();
+            accountsLoading = groupsLoading = locationsLoading = false;
+            loadSuccess = false;
+
+            //Add a hidden field so if the user submits we can check if the field data is invalid and prevent it from being saved
+            const errorField = document.createElement('input');
+            errorField.name = businessSelector.dataset.field_name + "[load_success]";
+            errorField.type = "hidden";
+            errorField.value = "no";
+            businessSelector.appendChild(errorField);
         }
 
+        spinner.remove();
+        isLoading = false;
+        filterTextareaControl.attr('disabled', false);
+
+        loadListeners.forEach(listener => listener(false, loadSuccess));
+        return loadSuccess;
+    }
+
+    this.getAccounts = async function(container, refresh = false){
+        let accounts;
+
+        //lockout and caching so two components on the same page won't cause double requests
+        while(accountsLoading){
+            await new Promise((resolve) => setTimeout(resolve, 100));
+        }
+        if(accountCache.accounts && !refresh){
+            accounts = accountCache.accounts;
+        }else{
+            accountsLoading = true;
+
+            const accountsResponse = await instance.AjaxCall(nonce, 'get_accounts');
+            accounts = accountCache.accounts = await accountsResponse.json();
+            accountsLoading = false;
+        }
 
         if(accounts && accounts.success){
             for(const account_id in accounts.data){
@@ -121,40 +154,39 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
                 tr.appendChild(th);
                 tbody.appendChild(tr);
 
-                table.appendChild(tbody);
-                const loaderTR = document.createElement('tr');
-                const loaderTD = document.createElement('td');
-                loaderTR.appendChild(loaderTD);
-                loaderTD.appendChild(spinner.cloneNode(true));
-                table.appendChild(loaderTR);
+                container.appendChild(tbody);
+                // const loaderTR = document.createElement('tr');
+                // const loaderTD = document.createElement('td');
+                // loaderTR.appendChild(loaderTD);
+                // loaderTD.appendChild(getSpinner());
+                // container.appendChild(loaderTR);
                 await instance.getGroups(account_id, tbody, null, refresh);
-                loaderTR.remove();
+                // loaderTR.remove();
             }
         }else{
-            if(accounts.data.loading){
-                businessSelector.appendChild(spinner.cloneNode(true));
-                table.appendChild(instance.noticeRow("The background process is currently synchronizing your locations, please wait."));
+            if(accounts && accounts.loading){
+                businessSelector.appendChild(getSpinner());
+                container.appendChild(instance.noticeRow(__('The background process is currently synchronizing your locations, please wait.', 'post-to-google-my-business')));
                 setTimeout(()=> {
 
                     accountCache.accounts = null;
-                    instance.getAccounts();
+                    instance.populate();
 
                 }, 5000);
-            }else if(typeof accounts.data === "string"){
-                table.appendChild(instance.noticeRow(accounts.data));
+            }else if(accounts && typeof accounts.data === "string"){
+                throw new Error(accounts.data);
             }else{
-                table.appendChild(instance.noticeRow("Unknown error occurred trying to load accounts"));
+                console.log(accounts);
+                throw new Error(__('Unknown error occurred trying to load accounts', 'post-to-google-my-business'));
             }
         }
 
-        spinner.remove();
-        isLoading = false;
-        loadListeners.forEach(listener => listener(false));
+
     }
 
     this.getGroups = async function(accountID, accountElement, offset = 0, refresh = false){
         let groups;
-        try {
+
             while(groupsLoading){
                 await new Promise((resolve) => setTimeout(resolve, 100));
             }
@@ -172,9 +204,7 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
                 groups = groupCache[groupcachkey] = await groupsResponse.json();
                 groupsLoading = false;
             }
-        }catch(e){
-            accountElement.appendChild(instance.noticeRow(e.message));
-        }
+
 
         if(groups && groups.success && groups.data.accounts){
             for (const group of groups.data.accounts){
@@ -191,22 +221,24 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
 
                 await instance.getLocations(accountID, group.name, accountElement, 0, refresh);
             }
+        }else if(groups && groups.success && typeof groups.data === "string") {
+            //e.g. when there are no groups in the account
+            accountElement.appendChild(instance.noticeRow(groups.data));
+        }else if(groups && !groups.success && typeof groups.data === "string"){
+            throw new Error(groups.data);
         }else{
-            if(typeof groups.data === "string"){
-                accountElement.appendChild(instance.noticeRow(groups.data));
-            }else{
-                accountElement.appendChild(instance.noticeRow('An unknown error occurred trying to load the groups'));
-            }
+            console.log(groups);
+            throw new Error(__('An unknown error occurred trying to load the groups', 'post-to-google-my-business'));
         }
 
         if(groups.data.count === 100){
-            await instance.getGroups(accountID, accountElement, offset + 100, refresh);
+            return await instance.getGroups(accountID, accountElement, offset + 100, refresh);
         }
     }
 
     this.getLocations = async function(account_id, group_id, groupElement, offset = 0, refresh = false){
         let locations;
-        try{
+
             while(locationsLoading){
                 await new Promise((resolve) => setTimeout(resolve, 100));
             }
@@ -225,12 +257,10 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
                 locations = locationCache[cachekey] = await locationsResponse.json();
                 locationsLoading = false;
             }
-        }catch(e){
-            groupElement.appendChild(instance.noticeRow(e.message));
-        }
 
-        if(locations && locations.success && locations.data.rows){
-            for(const row of locations.data.rows){
+
+        if(locations && locations.success && locations.data.rows) {
+            for (const row of locations.data.rows) {
                 const checkboxContainer = document.createElement('td');
 
                 const normalizedLocationName = group_id + "/" + row.location_name;
@@ -251,17 +281,18 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
                 locationContainer.insertAdjacentHTML('beforeend', row.column);
                 groupElement.appendChild(locationContainer);
             }
+        }else if(locations && locations.success && typeof locations.data === 'string'){
+            groupElement.appendChild(instance.noticeRow(locations.data));
+        }else if(locations && !locations.success && typeof locations.data === 'string'){
+            throw new Error(locations.data);
         }else{
-            if(locations.data){
-                groupElement.appendChild(instance.noticeRow(locations.data));
-            }else{
-                groupElement.appendChild(instance.noticeRow('Failed to load locations, unknown error'));
-            }
+            console.log(locations);
+            throw new Error(__('Failed to load locations, unknown error', 'post-to-google-my-business'));
         }
 
 
         if(locations.data.count === 500){
-            await instance.getLocations(account_id, group_id, groupElement, offset + 500, refresh);
+            return await instance.getLocations(account_id, group_id, groupElement, offset + 500, refresh);
         }
 
     }
@@ -270,7 +301,7 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
         const checkboxElement = document.createElement('input');
         checkboxElement.type = multiple ? 'checkbox' : 'radio';
         checkboxElement.name = businessSelector.dataset.field_name + "[" + account_key + "]" + (multiple ? "[]" : "");
-        checkboxElement.id = 'cb-'+ businessSelector.dataset.field_name+ "-" + location_name.replace('/', '-');
+        checkboxElement.id = 'cb-'+ businessSelector.dataset.field_name + "-" + location_name.replace('/', '-');
         checkboxElement.value = account_name + "/" + location_name;
         checkboxElement.disabled = disabled;
         checkboxElement.checked = checked;
@@ -314,11 +345,9 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
             }
         }
 
-        instance.getAccounts().then();
+        instance.populate().then();
 
     }
-
-
 
     this.noticeRow = function(message){
         const tr = document.createElement('tr');
@@ -327,6 +356,12 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
         td.textContent = message;
         tr.appendChild(td);
         return tr;
+    }
+
+    this.errorRow = function(message){
+        const noticeRow = this.noticeRow(message);
+        noticeRow.className = 'pgmb-business-selector-error-row';
+        return noticeRow;
     }
 
     /**
@@ -385,7 +420,7 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
      */
     $(container).on('click', '.mbp-disconnect-account', function(event){
         event.preventDefault();
-        let shouldDelete = confirm(mbp_localize_script.delete_account_confirmation);
+        let shouldDelete = confirm(__('Disconnect the Google account from this website?', 'post-to-google-my-business'));
         if(!shouldDelete){
             return;
         }
@@ -400,7 +435,7 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
         $("#pgmb-cookie-fieldset input", container).val('');
         const accountbody = $(this).closest("tbody");
         currentAccount = accountbody.data("account_id");
-        tb_show("Set Account Cookies", "#TB_inline?width=600&height=300&inlineId=mbp-set-cookies-dialog");
+        tb_show(__('Set account cookies', 'post-to-google-my-business'), "#TB_inline?width=600&height=300&inlineId=mbp-set-cookies-dialog");
     });
 
     let saveButton = $("#mbp-set-cookies-dialog-container button", container);
@@ -465,7 +500,7 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
         refresh = refresh || false;
 
         fieldContainer.empty();
-        instance.getAccounts(refresh);
+        instance.populate(refresh);
         // $.post(ajaxurl, data, function(response) {
         //     fieldContainer.replaceWith(response);
         //     //Refresh our reference to the field container
@@ -502,14 +537,28 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
      * Obtain refreshed list of locations from the Google API
      */
     refreshApiCacheButton.click(function(event){
-
-
         event.preventDefault();
         // instance.refreshBusinesses(true, instance.getBusinessSelectorSelection());
-        refreshApiCacheButton.html(mbp_localize_script.please_wait).attr('disabled', true);
+        refreshApiCacheButton.html(__('Please wait...', 'post-to-google-my-business')).attr('disabled', true);
         fieldContainer.empty();
-        instance.getAccounts(true).then(function(result){
-            refreshApiCacheButton.html(mbp_localize_script.refresh_locations).attr('disabled', false);
+        instance.populate(true).then(function(result){
+            if(result){
+                refreshApiCacheButton.html(__('Refresh locations', 'post-to-google-my-business')).attr('disabled', false);
+                refreshLockout = 5;
+            }else{
+                let count = refreshLockout;
+                const lockoutTimer = setInterval(() => {
+                    count--;
+                    /* translators: %d is the amount of seconds remaining before the locations can be refreshed again */
+                    refreshApiCacheButton.html(sprintf(__("Retry in %d", 'post-to-google-my-business'), count));
+                    if(count <= 0){
+                        refreshApiCacheButton.html(__('Refresh locations', 'post-to-google-my-business')).attr('disabled', false);
+                        clearInterval(lockoutTimer);
+                    }
+                }, 1000);
+                refreshLockout = refreshLockout * 2;
+            }
+
         });
 
 

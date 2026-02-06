@@ -1,6 +1,6 @@
 {
   "name": "post-to-google-my-business",
-  "version": "3.2.3",
+  "version": "3.3.2",
   "description": "=== Post to Google My Business ===\r Contributors: koen12344, tycoon12344, freemius\r Donate link: https://tycoonmedia.net/?utm_source=repository&utm_medium=link&utm_campaign=donate\r Tags: google my business, google, business, posts, post, local search, google my business posts, google places, google plus, google+\r Requires at least: 4.6\r Tested up to: 5.2.2\r Stable tag: 2.1.10\r Requires PHP: 5.3.0\r License: GPLv2 or later\r License URI: https://www.gnu.org/licenses/gpl-2.0.html",
   "main": "Gruntfile.js",
   "directories": {
@@ -11,6 +11,8 @@
     "watch-premium": "wp-scripts start --config webpack-premium.config.js",
     "build": "wp-scripts build --config webpack.config.js",
     "build-premium": "wp-scripts build --config webpack-premium.config.js",
+    "i18n-pot": "wp i18n make-pot . languages/post-to-google-my-business.pot --exclude=\"node_modules,vendor,vendor_prefixed,freemius,tests,webpack,build/*.asset.php\"",
+    "i18n-json": "wp i18n make-json languages --no-purge",
     "packages-update": "wp-scripts packages-update",
     "update-version": "node bin/update-version.js"
   },

@@ -3,8 +3,8 @@ Contributors: koen12344, valdemirmaran, freemius
 Donate link: https://digitaldistortion.dev/?utm_source=repository&utm_medium=link&utm_campaign=donate
 Tags: google my business, google business profile, gmb, local seo, google places
 Requires at least: 4.9.0
-Tested up to: 6.8.1
-Stable tag: 3.2.5
+Tested up to: 6.9
+Stable tag: 3.3.2
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -113,6 +113,30 @@ with image accessibility. To further debug the issue, you can use a service like
 6. Auto-post template settings
 
 == Changelog ==
+
+= 3.3.2 =
+* Added: Lockout timer for "Refresh Locations" button
+* Improved: Retain old settings after saving when business selector fails to load
+* Fix: Various strings in business selector untranslatable
+* Fix: Editing of posts through the metabox not working
+* Fix: Editing posts potentially causing duplicates to be created on GBP location
+* Update: Freemius SDK 2.13
+
+> **Premium**
+>
+> * Improved: Prevent saving/updating auto-post templates when locations are not fully loaded
+> * Fix: Location refresh button not working on auto-post templates
+
+= 3.3.1 =
+* Improved: Support for business labels in location data variables. Usage: %location_labels_0% (increment 0 to retrieve each label)
+
+= 3.3.0 =
+* Improved: Various small UI tweaks
+* Change: Made Alert (COVID-19 update) type post optional and disabled by default
+* Change: Change UI and post names on post type tabs to match Google UI
+* Update: Freemius SDK 2.12.2
+* Fix: Remove the foreign key constraint from the location cache database table
+* Fix: PHP notice when Google API doesn't return post searchURL
 
 = 3.2.5 =
 * Bump minimum PHP version to 7.1
