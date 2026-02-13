@@ -157,6 +157,7 @@ return array(
     'PGMB\\Vendor\\Cron\\MonthField' => $baseDir . '/vendor-prefixed/dragonmantank/cron-expression/src/Cron/MonthField.php',
     'PGMB\\Vendor\\Cron\\YearField' => $baseDir . '/vendor-prefixed/dragonmantank/cron-expression/src/Cron/YearField.php',
     'PGMB\\Vendor\\Firebase\\JWT\\BeforeValidException' => $baseDir . '/vendor-prefixed/firebase/php-jwt/src/BeforeValidException.php',
+    'PGMB\\Vendor\\Firebase\\JWT\\CachedKeySet' => $baseDir . '/vendor-prefixed/firebase/php-jwt/src/CachedKeySet.php',
     'PGMB\\Vendor\\Firebase\\JWT\\ExpiredException' => $baseDir . '/vendor-prefixed/firebase/php-jwt/src/ExpiredException.php',
     'PGMB\\Vendor\\Firebase\\JWT\\JWK' => $baseDir . '/vendor-prefixed/firebase/php-jwt/src/JWK.php',
     'PGMB\\Vendor\\Firebase\\JWT\\JWT' => $baseDir . '/vendor-prefixed/firebase/php-jwt/src/JWT.php',

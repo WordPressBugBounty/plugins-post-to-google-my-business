@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Post to Google My Business (Google Business Profile) plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Post to Google My Business (Google Business Profile) 3.3.2\n"
+"Project-Id-Version: Post to Google My Business (Google Business Profile) 3.3.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/post-to-google-my-business\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-29T10:34:04+00:00\n"
+"POT-Creation-Date: 2026-02-06T19:45:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: post-to-google-my-business\n"
@@ -419,7 +419,7 @@ msgid "Could not retrieve account or location groups from Google My Business: %s
 msgstr ""
 
 #: src/Components/BusinessSelector.php:135
-#: src/Components/BusinessSelector.php:387
+#: src/Components/BusinessSelector.php:392
 msgid "No user account or location groups found. Did you log in to the correct Google account?"
 msgstr ""
 
@@ -464,20 +464,20 @@ msgstr ""
 #: js/premium/settings.js:5
 #: js/settings.js:1
 #: js/settings.js:3
-#: js_src/admin/components/BusinessSelector.js:543
-#: js_src/admin/components/BusinessSelector.js:552
+#: js_src/admin/components/BusinessSelector.js:547
+#: js_src/admin/components/BusinessSelector.js:556
 msgid "Refresh locations"
 msgstr ""
 
 #: src/Components/BusinessSelector.php:347
-#: src/Components/BusinessSelector.php:364
-#: src/Components/BusinessSelector.php:401
+#: src/Components/BusinessSelector.php:375
+#: src/Components/BusinessSelector.php:406
 #: src/Subscriber/AuthenticationAdminPostSubscriber.php:88
 #: src/Subscriber/AuthenticationAdminPostSubscriber.php:123
 msgid "Invalid nonce"
 msgstr ""
 
-#: src/Components/BusinessSelector.php:415
+#: src/Components/BusinessSelector.php:420
 msgid "No businesses found in this group."
 msgstr ""
 
@@ -720,7 +720,7 @@ msgstr ""
 msgid "Google response is missing expected \"keys\" data."
 msgstr ""
 
-#: src/GoogleUserManager.php:140
+#: src/GoogleUserManager.php:145
 msgid "You did not give the plugin permission to manage your Google Business Profile listings. The plugin will not work without this permission. Please retry the authentication and make sure you grant the plugin permission to manage your locations."
 msgstr ""
 
@@ -816,7 +816,7 @@ msgstr ""
 #: templates/admin/posteditor.php:14
 #: js/metabox.js:1
 #: js/premium/metabox.js:1
-#: js_src/admin/metabox.js:224
+#: js_src/admin/metabox.js:221
 msgid "Update"
 msgstr ""
 
@@ -2099,16 +2099,16 @@ msgstr ""
 
 #: js/metabox.js:1
 #: js/premium/metabox.js:1
-#: js_src/admin/metabox.js:169
+#: js_src/admin/metabox.js:166
 msgid "Created posts"
 msgstr ""
 
 #: js/metabox.js:1
 #: js/premium/metabox.js:1
 #: js/premium/metabox.js:5
-#: js_src/admin/metabox.js:108
-#: js_src/admin/metabox.js:198
-#: js_src/admin/metabox.js:267
+#: js_src/admin/metabox.js:105
+#: js_src/admin/metabox.js:195
+#: js_src/admin/metabox.js:264
 #: js_src/admin/metabox.js:361
 #: js_src/premium/metabox-premium.js:39
 msgid "Publish"
@@ -2117,14 +2117,14 @@ msgstr ""
 #: js/metabox.js:1
 #: js/premium/metabox.js:1
 #: js/premium/metabox.js:5
-#: js_src/admin/metabox.js:141
+#: js_src/admin/metabox.js:138
 #: js_src/premium/metabox-premium.js:32
 msgid "Save template"
 msgstr ""
 
 #: js/metabox.js:1
 #: js/premium/metabox.js:1
-#: js_src/admin/metabox.js:307
+#: js_src/admin/metabox.js:304
 msgid "You're working on a Google My Business post, but it has not yet been published/scheduled. Press OK to publish/schedule it now, or Cancel to save it as a draft."
 msgstr ""
 
@@ -2457,7 +2457,7 @@ msgstr ""
 #: js/premium/metabox.js:3
 #: js/premium/settings.js:3
 #: js/settings.js:1
-#: js_src/admin/components/BusinessSelector.js:103
+#: js_src/admin/components/BusinessSelector.js:106
 #, js-format
 msgid "Failed to load locations: %s"
 msgstr ""
@@ -2466,7 +2466,7 @@ msgstr ""
 #: js/premium/metabox.js:3
 #: js/premium/settings.js:3
 #: js/settings.js:1
-#: js_src/admin/components/BusinessSelector.js:179
+#: js_src/admin/components/BusinessSelector.js:183
 msgid "Unknown error occurred trying to load accounts"
 msgstr ""
 
@@ -2474,7 +2474,7 @@ msgstr ""
 #: js/premium/metabox.js:3
 #: js/premium/settings.js:3
 #: js/settings.js:1
-#: js_src/admin/components/BusinessSelector.js:169
+#: js_src/admin/components/BusinessSelector.js:173
 msgid "The background process is currently synchronizing your locations, please wait."
 msgstr ""
 
@@ -2482,7 +2482,7 @@ msgstr ""
 #: js/premium/metabox.js:3
 #: js/premium/settings.js:3
 #: js/settings.js:1
-#: js_src/admin/components/BusinessSelector.js:229
+#: js_src/admin/components/BusinessSelector.js:233
 msgid "An unknown error occurred trying to load the groups"
 msgstr ""
 
@@ -2490,7 +2490,7 @@ msgstr ""
 #: js/premium/metabox.js:3
 #: js/premium/settings.js:3
 #: js/settings.js:1
-#: js_src/admin/components/BusinessSelector.js:287
+#: js_src/admin/components/BusinessSelector.js:291
 msgid "Failed to load locations, unknown error"
 msgstr ""
 
@@ -2500,7 +2500,7 @@ msgstr ""
 #: js/premium/settings.js:5
 #: js/settings.js:1
 #: js/settings.js:3
-#: js_src/admin/components/BusinessSelector.js:420
+#: js_src/admin/components/BusinessSelector.js:424
 #: js_src/admin/settings.js:43
 msgid "Disconnect the Google account from this website?"
 msgstr ""
@@ -2509,7 +2509,7 @@ msgstr ""
 #: js/premium/metabox.js:3
 #: js/premium/settings.js:3
 #: js/settings.js:1
-#: js_src/admin/components/BusinessSelector.js:435
+#: js_src/admin/components/BusinessSelector.js:439
 msgid "Set account cookies"
 msgstr ""
 
@@ -2517,7 +2517,7 @@ msgstr ""
 #: js/premium/metabox.js:3
 #: js/premium/settings.js:3
 #: js/settings.js:1
-#: js_src/admin/components/BusinessSelector.js:539
+#: js_src/admin/components/BusinessSelector.js:543
 msgid "Please wait..."
 msgstr ""
 
@@ -2526,7 +2526,7 @@ msgstr ""
 #: js/premium/metabox.js:5
 #: js/premium/settings.js:5
 #: js/settings.js:3
-#: js_src/admin/components/BusinessSelector.js:550
+#: js_src/admin/components/BusinessSelector.js:554
 #, js-format
 msgid "Retry in %d"
 msgstr ""

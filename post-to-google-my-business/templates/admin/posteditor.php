@@ -637,7 +637,7 @@ if ( $this instanceof \PGMB\Components\PostEditor ) {
         _e( 'Publish Now', 'post-to-google-my-business' );
         ?></button>
                                 </div>
-
+                                <div class="spinner"></div>
                             </td>
                         </tr>
                     </tbody>

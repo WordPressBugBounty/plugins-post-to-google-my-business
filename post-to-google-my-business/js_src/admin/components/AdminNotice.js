@@ -51,6 +51,8 @@ function AdminNotice(msg, type) {
     jQuery('html, body').animate({
         scrollTop: (jQuery(div).offset().top - 300)
     }, 1000);
+
+    div.scrollIntoView();
 }
 
 export default AdminNotice;

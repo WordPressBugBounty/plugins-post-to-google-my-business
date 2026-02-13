@@ -348,7 +348,18 @@ class BusinessSelector {
 		}
 		$accounts = $this->load_accounts();
 
-		if($this->location_sync_process->is_processing()){
+		$data = json_decode(stripslashes($_REQUEST['data']));
+
+		$refresh = isset($data->refresh) && $data->refresh;
+
+		if($refresh){
+			foreach($accounts as $id => $account){
+				$this->location_sync_process->push_to_queue(new AccountSyncQueueItem($id));
+			}
+			$this->location_sync_process->save()->dispatch();
+		}
+
+		if($this->location_sync_process->is_active()){
 			wp_send_json([
 				'loading' => true,
 			]);
@@ -369,12 +380,6 @@ class BusinessSelector {
 		$account_key = sanitize_key($data->account_id);
 
 		$offset = isset($data->offset) ? (int)$data->offset : 0;
-
-		$refresh = isset($data->refresh) && $data->refresh;
-
-		if($refresh){
-			$this->location_sync_process->push_to_queue(new AccountSyncQueueItem($account_key))->save()->dispatch();
-		}
 
 		$error_message = get_option('pgmb_location_import_last_error_'.$account_key);
 		if(!empty($error_message)){

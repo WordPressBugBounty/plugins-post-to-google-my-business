@@ -24,6 +24,10 @@ use PGMB\Util\DateTimeCompat;
 use PGMB\Util\UTF16CodeUnitsUtil;
 use PGMB\Vendor\Cron\CronExpression;
 class ParseFormFields {
+    const GBP_IMAGE_WIDTH = 1200;
+
+    const GBP_IMAGE_HEIGHT = 667;
+
     private $form_fields;
 
     public function __construct( $form_fields ) {
@@ -224,7 +228,20 @@ class ParseFormFields {
         return $url;
     }
 
-    function maybe_generate_intermediate( $image_id ) {
+    /**
+     * Try to generate the "pgmb-post-image" intermediate image file for the image ID
+     *
+     * Returns "full" image size if it is already smaller than 1200x900
+     * Returns originally uploaded image file if intermediate generation fails
+     * Returns intermediate file on success
+     *
+     * @param int $image_id WordPress Attachment ID
+     *
+     * @return array
+     *
+     * @throws Exception When the original image file doesn't exist
+     */
+    function maybe_generate_intermediate( int $image_id ) : array {
         list( $url, $width, $height ) = wp_get_attachment_image_src( $image_id, 'full' );
         if ( $width <= 1200 && $height <= 900 ) {
             $path = get_attached_file( $image_id );
@@ -286,9 +303,15 @@ class ParseFormFields {
         $url = $this->ensure_absolute_url( $url );
         $image_file_size = $this->get_local_file_size( $path, $url );
         if ( !$image_file_size ) {
-            throw new InvalidArgumentException(__( 'Could not detect post image file size. Make sure the image file/url is accessible remotely.', 'post-to-google-my-business' ));
+            /* translators: %s is image url */
+            throw new InvalidArgumentException(sprintf( __( 'Could not detect post image file size. Make sure the image file/url is accessible remotely. Url: %s', 'post-to-google-my-business' ), esc_url( $url ) ));
         }
-        $this->validate_image_props( $image_file_size, $width, $height );
+        $this->validate_image_props(
+            $url,
+            $image_file_size,
+            $width,
+            $height
+        );
         return $url;
     }
 
@@ -340,7 +363,12 @@ class ParseFormFields {
             return false;
         }
         try {
-            $this->validate_image_props( $image_file_size, $width, $height );
+            $this->validate_image_props(
+                $url,
+                $image_file_size,
+                $width,
+                $height
+            );
         } catch ( Exception $e ) {
             return false;
         }
@@ -440,23 +468,39 @@ class ParseFormFields {
         list( $width, $height ) = getimagesize( $url );
         $image_file_size = $this->get_remote_file_size( $url );
         if ( !$image_file_size ) {
-            throw new InvalidArgumentException(__( 'Could not detect post image file size. Make sure the image file/url is accessible remotely.', 'post-to-google-my-business' ));
+            /* translators: %s is image url */
+            throw new InvalidArgumentException(sprintf( __( 'Could not detect post image file size. Make sure the image file/url is accessible remotely. Url: %s', 'post-to-google-my-business' ), esc_url( $url ) ));
         }
-        $this->validate_image_props( $image_file_size, $width, $height );
+        $this->validate_image_props(
+            $url,
+            $image_file_size,
+            $width,
+            $height
+        );
         return $url;
     }
 
-    public function validate_image_props( $image_file_size, $width, $height ) {
+    public function validate_image_props(
+        $url,
+        $image_file_size,
+        $width,
+        $height
+    ) {
         if ( $width < 250 || $height < 250 ) {
-            /* translators: %1$dx%2$dpx is the size of the failed image (width x height) */
-            throw new InvalidArgumentException(sprintf( __( 'Post image must be at least 250x250px. Selected image is %1$dx%2$dpx', 'post-to-google-my-business' ), $width, $height ));
+            /* translators: %1$dx%2$dpx is the size of the failed image (width x height), %3$s is image url */
+            throw new InvalidArgumentException(sprintf(
+                __( 'Post image must be at least 250x250px. Selected image is %1$dx%2$dpx. Url: %3$s', 'post-to-google-my-business' ),
+                $width,
+                $height,
+                esc_url( $url )
+            ));
         }
         if ( $image_file_size < 10240 ) {
-            /* translators: %s is formatted image size */
-            throw new InvalidArgumentException(sprintf( __( 'Post image file too small, must be at least 10 KB. Selected image is %s', 'post-to-google-my-business' ), size_format( $image_file_size ) ));
+            /* translators: %1$s is formatted image size, %2$s is image URL */
+            throw new InvalidArgumentException(sprintf( __( 'Post image file too small, must be at least 10 KB. Selected image is %1$s. Url: %2$s', 'post-to-google-my-business' ), size_format( $image_file_size ), esc_url( $url ) ));
         } elseif ( $image_file_size > 5242880 ) {
-            /* translators: %s is formatted image size */
-            throw new InvalidArgumentException(sprintf( __( 'Post image file too big, must be 5 MB at most. Selected image is %s', 'post-to-google-my-business' ), size_format( $image_file_size ) ));
+            /* translators: %1$s is formatted image size, %2$s is image URL */
+            throw new InvalidArgumentException(sprintf( __( 'Post image file too big, must be 5 MB at most. Selected image is %1$s. Url: %2$s', 'post-to-google-my-business' ), size_format( $image_file_size ), esc_url( $url ) ));
         }
     }
 
@@ -470,7 +514,7 @@ class ParseFormFields {
         $wp_upload_dir = wp_upload_dir();
         $new_path = trailingslashit( $wp_upload_dir['path'] ) . $filename;
         $url = trailingslashit( $wp_upload_dir['url'] ) . $filename;
-        imagepng( $image, $new_path );
+        list( $new_path, $url ) = $this->create_and_maybe_resize_and_crop_image( $image, $new_path, $url );
         imagedestroy( $image );
         return [$new_path, $url];
     }
@@ -488,7 +532,7 @@ class ParseFormFields {
                 if ( !$image ) {
                     throw new \RuntimeException(__( 'Failed to create image from AVIF using imagecreatefromavif' ));
                 }
-                imagepng( $image, $new_path );
+                list( $new_path, $url ) = $this->create_and_maybe_resize_and_crop_image( $image, $new_path, $url );
                 imagedestroy( $image );
                 return [$new_path, $url];
             } catch ( Exception $e ) {
@@ -496,7 +540,12 @@ class ParseFormFields {
                 return $this->convert_avif_with_imagick( $path, $new_path, $url );
             }
         } else {
-            // Fall back on Imagick if imagecreatefromavif is not available
+            /*
+             * Fall back on Imagick if imagecreatefromavif is not available
+             *
+             * Note that this fallback is only needed for avif and not webp because the equivalent webp feature has
+             * been available since php 5.4
+             */
             return $this->convert_avif_with_imagick( $path, $new_path, $url );
         }
     }
@@ -506,15 +555,104 @@ class ParseFormFields {
             throw new \RuntimeException(__( 'Tried to convert AVIF image but neither imagecreatefromavif nor Imagick is available' ));
         }
         try {
-            $imagick = new \Imagick();
-            $imagick->readImage( $path );
+            $imagick = new \Imagick($path);
             $imagick->setImageFormat( 'png' );
+            $imagick->stripImage();
+            $width = $imagick->getImageWidth();
+            $height = $imagick->getImageHeight();
+            //Return if the image is already smaller than the recommended values
+            if ( $width <= self::GBP_IMAGE_WIDTH && $height <= self::GBP_IMAGE_HEIGHT ) {
+                $imagick->writeImage( $new_path );
+                $imagick->clear();
+                return [$new_path, $url];
+            }
+            $imagick->resizeImage(
+                self::GBP_IMAGE_WIDTH,
+                0,
+                \Imagick::FILTER_LANCZOS,
+                1,
+                true
+            );
+            $resized_height = $imagick->getImageHeight();
+            if ( $resized_height > self::GBP_IMAGE_HEIGHT ) {
+                $crop_y = (int) floor( ($resized_height - self::GBP_IMAGE_HEIGHT) / 2 );
+                $imagick->cropImage(
+                    self::GBP_IMAGE_WIDTH,
+                    self::GBP_IMAGE_HEIGHT,
+                    0,
+                    $crop_y
+                );
+                $imagick->setImagePage(
+                    0,
+                    0,
+                    0,
+                    0
+                );
+            }
             $imagick->writeImage( $new_path );
             $imagick->clear();
             return [$new_path, $url];
         } catch ( Exception $e ) {
             throw new \RuntimeException(__( 'AVIF image conversion failed: ' ) . $e->getMessage());
         }
+    }
+
+    /**
+     * This will take a GdImage and turn it into a png file
+     *
+     * Will crop/resize if the image is larger than recommended Google size
+     *
+     * @param resource|\GdImage $image
+     * @param $new_path
+     * @param $url
+     *
+     * @return array
+     */
+    private function create_and_maybe_resize_and_crop_image( $image, $new_path, $url ) : array {
+        $width = imagesx( $image );
+        $height = imagesy( $image );
+        if ( $width <= self::GBP_IMAGE_WIDTH && $height <= self::GBP_IMAGE_HEIGHT ) {
+            imagepng( $image, $new_path );
+            imagedestroy( $image );
+            return [$new_path, $url];
+        }
+        $scale = self::GBP_IMAGE_HEIGHT / $width;
+        $scaled_height = (int) round( $height * $scale );
+        $resized = imagecreatetruecolor( self::GBP_IMAGE_WIDTH, $scaled_height );
+        imagecopyresampled(
+            $resized,
+            $image,
+            0,
+            0,
+            0,
+            0,
+            self::GBP_IMAGE_WIDTH,
+            $scaled_height,
+            $width,
+            $height
+        );
+        if ( $scaled_height > self::GBP_IMAGE_HEIGHT ) {
+            $crop_y = (int) floor( ($scaled_height - self::GBP_IMAGE_HEIGHT) / 2 );
+            $final = imagecreatetruecolor( self::GBP_IMAGE_WIDTH, self::GBP_IMAGE_HEIGHT );
+            imagecopy(
+                $final,
+                $resized,
+                0,
+                0,
+                0,
+                $crop_y,
+                self::GBP_IMAGE_WIDTH,
+                self::GBP_IMAGE_HEIGHT
+            );
+        } else {
+            $final = $resized;
+        }
+        imagepng( $final, $new_path );
+        if ( $final !== $resized ) {
+            imagedestroy( $resized );
+        }
+        imagedestroy( $final );
+        return [$new_path, $url];
     }
 
     public function get_topic_type() {

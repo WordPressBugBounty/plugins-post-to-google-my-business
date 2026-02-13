@@ -56,6 +56,9 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
         loadListeners.push(listener);
     }
 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
     this.AjaxCall = async function(nonce, action, data){
         const formData  = new FormData();
@@ -121,19 +124,21 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
         return loadSuccess;
     }
 
-    this.getAccounts = async function(container, refresh = false){
+    this.getAccounts = async function(container, purgeCache){
         let accounts;
-
         //lockout and caching so two components on the same page won't cause double requests
         while(accountsLoading){
-            await new Promise((resolve) => setTimeout(resolve, 100));
+            await sleep(100);
         }
-        if(accountCache.accounts && !refresh){
+        if(accountCache.accounts && !purgeCache){
             accounts = accountCache.accounts;
         }else{
             accountsLoading = true;
-
-            const accountsResponse = await instance.AjaxCall(nonce, 'get_accounts');
+            groupCache = accountCache = locationCache = {};
+            const accountsResponse = await instance.AjaxCall(nonce, 'get_accounts',
+                {
+                    refresh: purgeCache,
+                });
             accounts = accountCache.accounts = await accountsResponse.json();
             accountsLoading = false;
         }
@@ -160,19 +165,17 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
                 // loaderTR.appendChild(loaderTD);
                 // loaderTD.appendChild(getSpinner());
                 // container.appendChild(loaderTR);
-                await instance.getGroups(account_id, tbody, null, refresh);
+                await instance.getGroups(account_id, tbody);
                 // loaderTR.remove();
             }
         }else{
             if(accounts && accounts.loading){
-                businessSelector.appendChild(getSpinner());
                 container.appendChild(instance.noticeRow(__('The background process is currently synchronizing your locations, please wait.', 'post-to-google-my-business')));
-                setTimeout(()=> {
+                await sleep(5000);
 
-                    accountCache.accounts = null;
-                    instance.populate();
+                accountCache.accounts = null;
+                await instance.populate();
 
-                }, 5000);
             }else if(accounts && typeof accounts.data === "string"){
                 throw new Error(accounts.data);
             }else{
@@ -184,21 +187,20 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
 
     }
 
-    this.getGroups = async function(accountID, accountElement, offset = 0, refresh = false){
+    this.getGroups = async function(accountID, accountElement, offset = 0){
         let groups;
 
             while(groupsLoading){
                 await new Promise((resolve) => setTimeout(resolve, 100));
             }
             let groupcachkey = accountID + offset;
-            if(groupCache[groupcachkey] && !refresh){
+            if(groupCache[groupcachkey]){
                 groups = groupCache[groupcachkey];
             }else{
                 groupsLoading = true;
                 const groupsResponse = await instance.AjaxCall(nonce, 'get_groups', {
                    account_id: accountID,
                    offset,
-                    refresh: refresh,
                 });
 
                 groups = groupCache[groupcachkey] = await groupsResponse.json();
@@ -219,7 +221,7 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
                 groupTR.appendChild(groupTD);
                 accountElement.appendChild(groupTR);
 
-                await instance.getLocations(accountID, group.name, accountElement, 0, refresh);
+                await instance.getLocations(accountID, group.name, accountElement, 0);
             }
         }else if(groups && groups.success && typeof groups.data === "string") {
             //e.g. when there are no groups in the account
@@ -232,18 +234,18 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
         }
 
         if(groups.data.count === 100){
-            return await instance.getGroups(accountID, accountElement, offset + 100, refresh);
+            return await instance.getGroups(accountID, accountElement, offset + 100);
         }
     }
 
-    this.getLocations = async function(account_id, group_id, groupElement, offset = 0, refresh = false){
+    this.getLocations = async function(account_id, group_id, groupElement, offset = 0){
         let locations;
 
             while(locationsLoading){
                 await new Promise((resolve) => setTimeout(resolve, 100));
             }
             let cachekey = group_id + offset;
-            if(locationCache[cachekey] && !refresh){
+            if(locationCache[cachekey]){
                 locations = locationCache[cachekey];
             }else{
                 locationsLoading = true;
@@ -252,7 +254,6 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
                     group_id: group_id,
                     account_id: account_id,
                     offset,
-                    refresh: refresh,
                 });
                 locations = locationCache[cachekey] = await locationsResponse.json();
                 locationsLoading = false;

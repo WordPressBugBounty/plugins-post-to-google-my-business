@@ -7,405 +7,647 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-02-21 21:16:32+00:00\n"
-"PO-Revision-Date: 2022-02-21 22:17+0100\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-01-30 10:19+0000\n"
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.8\n"
 
-#: src/API/GoogleMyBusiness.php:43
-msgid "Could not parse JSON response from Google API."
-msgstr "Kon de JSON reactie van de Google API niet verwerken."
+#: src/Components/BusinessSelector.php:415
+msgid "No businesses found in this group."
+msgstr "Geen bedrijven gevonden in deze groep."
 
-#: src/API/ProxyAuthenticationAPI.php:50
-msgid "Could not parse JSON response from authentication server."
-msgstr "Kon de JSON reactie van de authenticatieserver niet verwerken."
-
-#: src/Admin/AdminPage.php:87
-#: src/Components/BusinessSelector.php:232
-#: src/Premium/Components/MultiAccountBusinessSelector.php:100
-msgid "Refresh locations"
-msgstr "Locaties vernieuwen"
-
-#: src/Admin/AdminPage.php:88
-msgid "Disconnect the Google account from this website?"
-msgstr "De verbinding tussen dit Google account en de website verbreken?"
-
-#: src/Admin/AdminPage.php:89
-msgid "Please wait..."
-msgstr "Even wachten..."
-
-#: src/Admin/AdminPage.php:101
-#: src/Metabox/Main.php:191
-msgid "Min"
-msgstr "Min"
-
-#: src/Admin/AdminPage.php:102
-#: src/Metabox/Main.php:192
-#: templates/admin/posteditor.php:219
-#: templates/admin/posteditor.php:223
-msgid "Price"
-msgstr "Prijs"
-
-#: src/Admin/AdminPage.php:113
-msgid "Google settings"
-msgstr "Google instellingen"
-
-#: src/Admin/AdminPage.php:118
-msgid "Auto-post settings"
-msgstr "Auto-post instellingen"
-
-#: src/Admin/AdminPage.php:122
-msgid "Post type settings"
-msgstr "Post type instellingen"
-
-#: src/Admin/AdminPage.php:126
-msgid "Evergreen content"
-msgstr "Groenblijvende content"
-
-#: src/Admin/AdminPage.php:130
-msgid "Misc"
-msgstr "Divers"
-
-#: src/Admin/AdminPage.php:140
-msgid "Default location"
-msgstr "Standaard locatie"
-
-#: src/Admin/AdminPage.php:141
-msgid "Select the post-types where the GMB metabox & auto-post controls should be displayed"
-msgstr "Selecteer de post-types waar de GMB metabox & auto-post bediening getoond moet worden"
-
-#: src/Admin/AdminPage.php:148
-msgid "Post to GMB by default"
-msgstr "Standaard op GMB plaatsen"
-
-#: src/Admin/AdminPage.php:149
-msgid "The Auto-post checkbox will be checked by default, and your WordPress posts will be automatically published to GMB, unless you uncheck it."
-msgstr "Auto-post staat standaard aangevinkt, en je berichten worden automatisch op GMB geplaatst, tenzij je het vinkje uit zet."
-
-#: src/Admin/AdminPage.php:155
-msgid "Default template"
-msgstr "Standaard template"
-
-#: src/Admin/AdminPage.php:156
-msgid "The template for new Google posts when using quick post. Supports <a target=\"_blank\" href=\"%s\">variables</a> and <a target=\"_blank\" href=\"%s\">spintax</a> (premium only)"
-msgstr "Het sjabloon voor nieuwe Google posts wanneer er gebruik word gemaakt van auto-post. Ondersteund <a target=\"_blank\" href=\"%s\">variabelen</a> en <a target=\"_blank\" href=\"%s\">spintax</a> (alleen Premium)"
-
-#: src/Admin/AdminPage.php:166
-msgid "Enabled for post types"
-msgstr "Ingeschakeld voor post-types"
-
-#: src/Admin/AdminPage.php:167
-msgid "Select the post-types where the GMB metabox should be displayed"
-msgstr "Selecteer de post-types waar de GMB metabox getoond moet worden"
-
-#: src/Admin/AdminPage.php:177
-msgid "Delete GMB posts"
-msgstr "GMB berichten verwijderen"
-
-#: src/Admin/AdminPage.php:178
-msgid "Delete post(s) from GMB when the parent post/page/content in WordPress is deleted"
-msgstr "Verwijder bericht(en) van GMB wanneer de bovenliggende post/pagina/inhoud in WordPress wordt verwijderd"
-
-#: src/Admin/AdminPage.php:184
-msgid "Uninstall cleanup"
-msgstr "Deïnstallatie opruiming"
-
-#: src/Admin/AdminPage.php:185
-msgid "Choose which data the plugin should (try to) delete when uninstalling the plugin"
-msgstr "Kies welke data de plugin (moet proberen) te verwijderen wanneer de plugin wordt verwijderd"
-
-#: src/Admin/AdminPage.php:188
-msgid "Delete plugin settings"
-msgstr "Plugin instellingen verwijderen"
-
-#: src/Admin/AdminPage.php:189
-msgid "Delete GMB post data, post campaigns & auto-post templates"
-msgstr "Verwijder GMB post data, post campagnes & auto-post templates"
-
-#: src/Admin/AdminPage.php:201
-msgid "Connected"
-msgstr "Verbonden"
-
-#: src/Admin/AdminPage.php:201
-msgid "Not connected"
-msgstr "Niet verbonden"
-
-#: src/Admin/AdminPage.php:274
-msgid "Manage multiple businesses or locations?"
-msgstr "Beheer je meerdere bedrijven of locaties?"
-
-#: src/Admin/AdminPage.php:276
-#: src/Admin/AdminPage.php:282
-#: src/Admin/AdminPage.php:288
-#: src/Admin/AdminPage.php:294
-#: src/Admin/AdminPage.php:300
-#: src/Admin/AdminPage.php:311
-msgid "Upgrade to Premium"
-msgstr "Upgrade naar Premium"
-
-#: src/Admin/AdminPage.php:277
-msgid "to pick a location per post, or post to multiple locations at once."
-msgstr "om een locatie te kiezen per post, of naar meerdere locaties tegelijk te posten."
-
-#: src/Admin/AdminPage.php:280
-msgid "Not the right time?"
-msgstr "Niet het juiste moment?"
-
-#: src/Admin/AdminPage.php:283
-msgid "and schedule your posts to be automagically published at a later time."
-msgstr "en plan je berichten in om automagisch op een later moment te publiceren."
-
-#: src/Admin/AdminPage.php:286
-msgid "Wondering how your Google My Business post is performing?"
-msgstr "Vraag je je af hoe je Google Mijn Bedrijf post presteert?"
-
-#: src/Admin/AdminPage.php:289
-msgid "to view post statistics and easily include Google Analytics UTM parameters."
-msgstr "om post statistieken in te zien en Google Analytics UTM parameters toe te voegen."
-
-#: src/Admin/AdminPage.php:292
-msgid "Use Post to Google My Business for your pages, projects, WooCommerce products and more."
-msgstr "Gebruik Post op Google Mijn Bedrijf voor je pagina's, projecten, WooCommerce producten en meer."
-
-#: src/Admin/AdminPage.php:295
-msgid "to enable Post to Google my Business for any post type."
-msgstr "om Post op Google Mijn Bedrijf in te schakelen voor elk post-type."
-
-#: src/Admin/AdminPage.php:298
-msgid "Automatically repost your GMB posts a specific or unlimited amount of times."
-msgstr "Plaats je GMB posts automatisch een specifiek, of onbeperkt aantal keer opnieuw."
-
-#: src/Admin/AdminPage.php:301
-msgid "to set custom intervals and specify the amount of reposts."
-msgstr "om een eigen interval en het aantal reposts in te stellen."
-
-#: src/Admin/AdminPage.php:304
-msgid "I hope you enjoy using my Post to Google My Business plugin! Help spread the word with a"
-msgstr "Ik hoop dat je mijn Post op Google Mijn Bedrijf plugin fijn vindt werken! Draag een steentje bij met een"
-
-#: src/Admin/AdminPage.php:305
-msgid "5-star rating on WordPress.org"
-msgstr "5-sterren beoordeling op WordPress.org"
-
-#: src/Admin/AdminPage.php:306
-msgid ". Many thanks! - Koen Reus, plugin developer"
-msgstr ". Onwijs bedankt! - Koen Reus, plugin ontwikkelaar"
-
-#: src/Admin/AdminPage.php:309
-msgid "Create unique posts every time."
-msgstr "Maak steeds opnieuw unieke posts."
-
-#: src/Admin/AdminPage.php:312
-msgid "to use spintax and %variables% in your post text."
-msgstr "om spintax en %variabelen% te gebruiken in je post tekst."
-
-#: src/Admin/AdminPage.php:335
-msgid "Connect to Google My Business"
-msgstr "Verbinden met Google Mijn Bedrijf"
-
-#: src/Admin/AdminPage.php:343
-#: src/Admin/AdminPage.php:348
-msgid "+ Add another Google account"
-msgstr "+ Nog een Google account toevoegen"
-
-#: src/Admin/AdminPage.php:347
-msgid "Multi-account support is a Post to Google My Business Agency Feature"
-msgstr "Ondersteuning voor meerdere accounts is een feature van Post to Google My Business Agency"
+#: src/BackgroundProcessing/PostPublishProcess.php:165
+#: src/BackgroundProcessing/PostPublishProcess.php:183
+msgid "The response did not contain the expected fields"
+msgstr "De response bevatte niet de verwachte velden"
 
 #: src/Admin/AdminPage.php:355
-msgid "Disconnect Google account from this website"
-msgstr "Verbinding met dit Google account en deze site verbreken"
+msgid "Google locations could not be loaded at the time of saving. Location settings were not updated. Please reload locations and save again."
+msgstr "Google locaties konden niet worden geladen tijdens het opslaan. Locatie-instellingen zijn niet geupdatet. Herlaad de locaties en sla opnieuw op."
 
-#: src/Admin/AdminPage.php:360
-msgid "Disconnect all Google accounts from this website"
-msgstr "Alle verbonden Google accounts van deze website loskoppelen"
+#. Description of the plugin
+#: post-to-google-my-business.php
+msgid "(Auto-)post and manage Google Business Profile posts from the WordPress dashboard"
+msgstr "Beheer en plaats (automatisch) posts op je Google bedrijfsprofiel, rechtstreeks vanuit het WordPress Dashboard"
 
-#: src/Admin/AdminPage.php:389
-#: templates/admin/settings.php:5
-msgid "Post to Google My Business settings"
-msgstr "Post op Google Mijn Bedrijf instellingen"
+#. Plugin Name of the plugin
+#: post-to-google-my-business.php
+msgid "Post to Google My Business (Google Business Profile)"
+msgstr "Post op Google Mijn Bedrijf (Google Bedrijfsprofiel)"
 
-#: src/Admin/AdminPage.php:393
-msgid "Settings"
-msgstr "Instellingen"
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:152
+msgid "Go to parent WordPress post"
+msgstr "Ga naar bovenliggende WordPress bericht"
 
-#: src/Admin/AdminPage.php:398
-msgid "You do not have sufficient permissions to access this page."
-msgstr "Je hebt niet de juiste permissies om toegang tot deze pagina te krijgen."
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:133
+msgid "Content"
+msgstr "Inhoud"
 
-#: src/Admin/AdminPage.php:409
-msgid "Evergreen content is a Post to Google My Business Pro feature"
-msgstr "Groenblijvende content is een Pro functie van Post op Google Mijn Bedrijf"
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:124
+msgid "Publication date"
+msgstr "Publicatiedatum"
 
-#: src/Admin/AdminPage.php:410
-msgid "Evergreen content screenshot"
-msgstr "Groenblijvende content screenshot"
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:112
+msgid "Parent"
+msgstr "Bovenliggend item"
 
-#: src/Admin/AdminPage.php:411
-msgid "Define a posting schedule, select your existing content in bulk, and the plugin will automatically keep your GMB listing(s) fresh with new posts."
-msgstr "Stel een postschema in, selecteer je bestaande content in bulk, en de plugin zal automatisch je GMB locatie(s) voorzien van nieuwe berichten."
+#: src/Plugin.php:240
+#: templates/admin/posteditor.php:21
+msgid "Alert"
+msgstr "Waarschuwing"
 
-#: src/Admin/AdminPage.php:412
-msgid "Post to Google my Business Pro lets you:"
-msgstr "Post op Google Mijn Bedrijf Pro laat je:"
+#: src/Admin/AdminPage.php:196
+msgid "Enable ALERT post type. This is a currently unused GBP post type that will take priority over all other posts until it is deleted, introduced during the COVID-19 pandemic for emergency announcements."
+msgstr "Schakel het ALERT post type in. Dit is een op het moment ongebruikt GBP post-type dat prioriteit heeft over alle andere posts totdat het verwijderd is, geïntroduceerd tijdens de coronapandemie voor noodmeldingen."
+
+#: src/Admin/AdminPage.php:195
+msgid "Enable Alert/COVID-19 post type"
+msgstr "Noodmelding/COVID-19 post type inschakelen"
+
+#: templates/admin/posteditor.php:190
+msgid "See available dynamic tags that you can use"
+msgstr "Zie alle dynamische tags die je kunt gebruiken"
+
+#. Plugin URI of the plugin
+#: post-to-google-my-business.php
+msgid "https://digitaldistortion.dev"
+msgstr ""
+
+#: src/GoogleUserManager.php:140
+msgid "You did not give the plugin permission to manage your Google Business Profile listings. The plugin will not work without this permission. Please retry the authentication and make sure you grant the plugin permission to manage your locations."
+msgstr "Je hebt geen toestemming aan de plugin gegeven om je Google Bedrijfsprofielen te beheren. De plugin functioneert niet zonder deze toestemming. Probeer het alsjeblieft opnieuw en zorg dat je de plugin toestemming geeft om je locaties te beheren."
+
+#: src/BackgroundProcessing/LocationSyncProcess.php:67
+msgid "Check Google account settings"
+msgstr "Controleer Google account-instellingen"
+
+#. translators: %s is error message
+#: src/BackgroundProcessing/LocationSyncProcess.php:66
+msgid "Something went wrong trying to load the Google Business Profile locations for this account: %s"
+msgstr "Er is iets fout gegaan tijdens het laden van de Google Bedrijfsprofielen in dit account: %s"
+
+#. translators: %1$d represents the HTTP status code, %2$s is the error
+#. response body
+#: src/API/ProxyAuthenticationAPI.php:66
+msgid "Unexpected response code %1$d: %2$s"
+msgstr "Onverwachte antwoordcode %1$d: %2$s"
+
+#: src/API/ProxyAuthenticationAPI.php:51
+msgid "Invalid JSON response from authentication server."
+msgstr "Ongeldige JSON reactie van de authenticatieserver."
+
+#: src/Admin/AdminPage.php:332
+msgid "Connect to Google Business Profile"
+msgstr "Verbinden met Google Bedrijfsprofiel"
+
+#: src/GoogleUserManager.php:80
+msgid "Google response is missing expected \"keys\" data."
+msgstr "De verwachtte \"keys\" data ontbreekt in het antwoord van Google."
+
+#. translators: %s represents error message
+#: src/GoogleUserManager.php:74
+msgid "Failed to parse public key JSON from Google response: %s"
+msgstr "Niet gelukt om de publieke sleutel uit het antwoord van Google te verwerken: %s"
+
+#: src/GoogleUserManager.php:67
+msgid "Invalid \"expires\" header format in Google response."
+msgstr "Ongeldige \"expires\" header in het antwoord van Google."
+
+#: src/GoogleUserManager.php:59
+msgid "Missing \"expires\" header in Google response."
+msgstr "Ontbrekende \"expires\" header in het antwoord van Google."
+
+#. translators: %1$d represents status code, %2$s is response body
+#: src/GoogleUserManager.php:51
+msgid "Unexpected HTTP response code (%1$d) from Google: %2$s"
+msgstr "Onverwachte HTTP statuscode (%1$d) van Google: %2$s"
+
+#. translators: %s represents error message
+#: src/GoogleUserManager.php:44
+msgid "Unable to retrieve public keys from Google: %s"
+msgstr "Kon de publieke sleutels niet van Google terugkrijgen: %s"
+
+#. translators: %d is a number representing the amount of tasks still to
+#. process
+#: src/Components/SubPostListTable.php:265
+#: js/metabox.js:1
+#: js_src/admin/components/SubPostListTable.js:141
+msgid "%d publishing tasks queued"
+msgstr "%d publicatietaken in de wachtrij gezet"
+
+#: src/Components/GooglePostEntityListTable.php:98
+msgid "Unknown location"
+msgstr "Onbekende locatie"
+
+#. translators: %1$s is comma separated list of queried locations, %2$s
+#. represents the actual MySQL error generated
+#: src/ApiCache/LocationCacheRepository.php:80
+#: src/ApiCache/LocationCacheRepository.php:101
+msgid "Failed to retrieve location data for %1$s: %2$s"
+msgstr "Niet gelukt om de locatie-data te laden voor %1$s: %2$s"
+
+#: src/Admin/AdminPage.php:142
+msgid "Posts/pages/CPTs created in the WordPress Dashboard through the Block- or Classic editor"
+msgstr "Berichten/pagina's/CPT's aangemaakt via het WordPress Dashboard door middel van de Blok- of Klassieke editor"
+
+#: src/ParseFormFields.php:516
+msgid "AVIF image conversion failed: "
+msgstr "AVIF afbeeldingsconversie mislukt: "
+
+#: src/ParseFormFields.php:506
+msgid "Tried to convert AVIF image but neither imagecreatefromavif nor Imagick is available"
+msgstr "Probeerde AVIF afbeelding te converteren, maar imagecreatefromavif noch Imagick is beschikbaar"
+
+#: src/ParseFormFields.php:489
+msgid "Failed to create image from AVIF using imagecreatefromavif"
+msgstr "Niet gelukt om afbeelding van AVIF te maken door middel van imagecreatefromavif"
+
+#: src/Components/SubPostListTable.php:270
+msgid "This post will be deleted when the next post is auto-posted"
+msgstr "Deze post wordt verwijderd zodra de volgende automatische post geplaatst is"
+
+#: src/ParseFormFields.php:243
+msgid "Original image file not found"
+msgstr "Originele afbeelding niet gevonden"
+
+#: src/Admin/AdminPage.php:189
+msgid "Enable this only if your posts are not being published. Will publish posts in foreground, at expense of performance."
+msgstr "Schakel dit enkel in als je posts niet gepubliceerd worden. De posts worden op de voorgrond gepubliceerd, ten koste van prestaties."
+
+#: src/Admin/AdminPage.php:188
+msgid "Bypass WP-Cron"
+msgstr "WP-Cron omzeilen"
+
+#: vendor-prefixed/deliciousbrains/wp-background-processing/classes/wp-background-process.php:842
+msgid "Every Minute"
+msgstr "Elke Minuut"
+
+#: vendor-prefixed/deliciousbrains/wp-background-processing/classes/wp-background-process.php:844
+msgid "Every %d Minutes"
+msgstr "Elke %d Minuten"
+
+#: src/Components/GooglePostEntityListTable.php:56
+msgid "Refresh status"
+msgstr "Status vernieuwen"
+
+#. translators: %s represents error message
+#: src/BackgroundProcessing/PostPublishProcess.php:90
+msgid "Updating status failed: %s"
+msgstr "Status vernieuwen mislukt: %s"
+
+#: src/Subscriber/SiteHealthSubscriber.php:28
+msgid "The PHP mbstring extension is not enabled on your server. It is required for cutting your posts to the appropriate max length. Enable it through your webhosting control panel or ask your server administrator to enable it for you."
+msgstr "De PHP mbstring extensie is niet ingeschakeld op je server. Het is benodigd om je posts tot de juiste maximum lengte af te snijden. Schakel het in via het controlepaneel van je webhosting, of vraag je beheerder om het voor je in te schakelen."
+
+#: src/Subscriber/SiteHealthSubscriber.php:28
+msgid "The PHP mbstring extension helps cut your GBP posts to the appropriate max length"
+msgstr "De PHP mbstring-extensie helpt je berichten tot de juiste maximum lengte af te snijden"
+
+#: src/Subscriber/SiteHealthSubscriber.php:27
+msgid "Post to Google My Business: mbstring is not enabled"
+msgstr "Post op Google Mijn Bedrijf: mbstring is niet ingeschakeld"
+
+#: src/Subscriber/SiteHealthSubscriber.php:27
+msgid "Post to Google My Business: mbstring is enabled"
+msgstr "Post op Google Mijn Bedrijf: mbstring is ingeschakeld"
+
+#: src/Subscriber/SiteHealthSubscriber.php:17
+msgid "Post to Google My Business mbstring test"
+msgstr "Post op Google Mijn Bedrijf mbstring test"
+
+#. translators: %s is link to Product Sync for GBP plugin
+#: templates/admin/posteditor.php:117
+msgid "Using WooCommerce? Check out my new plugin: %s. It makes it super easy to sync your entire WooCommerce product catalog directly to your Google Business Profile."
+msgstr "Gebruik je WooCommerce? Bekijk dan mijn nieuwe plugin: %s. Deze maakt het super gemakkelijk om je gehele WooCommerce product-catalogus direct naar je Google Bedrijfsprofiel te synchroniseren."
+
+#: src/Upgrader/Upgrade_3_1_6.php:40
+msgid "click here to get early access"
+msgstr "klik hier om vroege toegang te krijgen"
+
+#: src/Upgrader/Upgrade_3_1_6.php:35
+#: templates/admin/posteditor.php:115
+msgid "Product Sync for GBP"
+msgstr "Product Sync voor GBP"
+
+#. translators: %1$s is username/display name, %2$s is link to Product Sync for
+#. GBP plugin, %3$s is link to early access, %4$s is developer name (Koen) with
+#. "Plugin Developer" on the next line
+#: src/Upgrader/Upgrade_3_1_6.php:30
+msgid ""
+"Hey %1$s,\n"
+"\n"
+"I noticed you're using WooCommerce and wanted to tell you about the new plugin I've been working on: %2$s.\n"
+"\n"
+"It makes it super easy to sync your entire WooCommerce product catalog directly to your Google Business Profile listing.\n"
+"\n"
+"If you're interested in giving it a try, then %3$s.\n"
+"\n"
+"%4$s"
+msgstr ""
+"Hey %1$s,\n"
+"\n"
+"Ik zie dat je WooCommerce gebruikt en wilde je graag mijn nieuwe plugin waar ik aan heb gewerkt laten zien: %2$s.\n"
+"\n"
+"Deze maakt het super gemakkelijk om je gehele WooCommerce product-catalogus naar je Google Bedrijfsprofiel te synchroniseren.\n"
+"\n"
+"Mocht je hem willen proberen, dan %3$s.\n"
+"\n"
+"%4$s"
+
+#: src/Upgrader/Upgrade_3_1_6.php:27
+msgid "Easily sync your WooCommerce products to GBP"
+msgstr "Synchroniseer gemakkelijk je WooCommerce producten naar GBP"
+
+#: src/REST/GetAccountsRoute.php:20
+msgid "Could not load account data"
+msgstr "Kon de account-data niet laden"
+
+#: src/Admin/AdminPage.php:145
+msgid "XML-RPC (Items created through XML-RPC)"
+msgstr "XML-RPC (Items aangemaakt via XML-RPC)"
+
+#: src/Admin/AdminPage.php:144
+msgid "REST API (Items created through the WP REST API)"
+msgstr "REST API (Items aangemaakt via de WP REST API)"
+
+#: src/Admin/AdminPage.php:143
+msgid "Internal (e.g. items created internally by 3rd party plugins like import plugins)"
+msgstr "Intern (b.v. items die intern door plugins zijn aangemaakt zoals import plugins)"
+
+#: src/Admin/AdminPage.php:139
+msgid "Select which request types the plugin should listen for to create auto-posts. Do not change unless you know what you are doing. Incorrect settings could result in duplicate posts or spamming your listing with posts."
+msgstr "Selecteer naar welke aanroep-types de plugin moet luisteren voor het aanmaken van auto-posts. Verander dit niet tenzij je weet wat je doet. Ongeldige instellingen kunnen resulteren in dubbele posts, of het spammen van je locatie met nieuwe posts."
+
+#: src/Admin/AdminPage.php:138
+msgid "Enabled request types (advanced)"
+msgstr "Ingeschakelde aanroep-types (geavanceerd)"
+
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:104
+msgid "To check errors per location, press \"List created posts\" below"
+msgstr "Druk hieronder op \"Laat aangemaakte posts zien\" om de foutmeldingen per locatie te bekijken"
+
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:98
+msgid ""
+"Post contains errors and possibly hasn't been published to one or more locations.\n"
+"\n"
+"Most recent error:"
+msgstr ""
+"Post bevat fouten en is mogelijk niet op alle locaties gepubliceerd\n"
+"\n"
+"Meest recente foutmelding:"
+
+# Zoals deze instelling in Google zelf heet
+#: src/Components/GooglePostEntityListTable.php:44
+msgid "Shop code"
+msgstr "Winkelcode"
+
+#: src/Subscriber/PostSubmitBoxSubscriber.php:101
+msgid "Auto-post to GMB on Publish/Update"
+msgstr "Auto-post op GMB bij Publiceren/Bijwerken"
+
+#: src/Admin/AdminPage.php:182
+msgid "Disable the event/offer date & time selector to allow for relative dates in those fields"
+msgstr "Schakel de datum- en tijdselector uit bij evenementen/aanbiedingen om relatieve datums in deze velden te kunnen gebruiken"
+
+#: src/Admin/AdminPage.php:181
+msgid "Disable date & time selector for events/offers"
+msgstr "Schakel datum- en tijdselector uit voor evenementen/aanbiedingen"
+
+#. translators: date time, Timezone: timezone
+#: src/Components/PostEditor.php:84
+msgid "%1$s %2$s, Timezone: %3$s"
+msgstr "%1$s %2$s, Tijdzone: %3$s"
+
+#: src/Components/PostEditor.php:74
+msgid "Dynamic date, calculated/retrieved when GBP post is published"
+msgstr "Dynamische datum, berekend/opgevraagd zodra de GBP-post gepubliceerd wordt"
+
+#: src/Google/CallToAction.php:47
+msgid "IPs are not allowed for call-to-action URLs"
+msgstr "IP-adressen zijn niet toegestaan als link voor een knop"
+
+#: templates/admin/posteditor.php:399
+msgid "Buy"
+msgstr "Koop"
+
+#: templates/admin/posteditor.php:394
+msgid "Order online"
+msgstr "Online bestellen"
+
+#: templates/admin/posteditor.php:382
+msgid "None"
+msgstr "Geen"
+
+#: templates/admin/posteditor.php:366
+msgid "Add a button (optional)"
+msgstr "Voeg een knop toe (optioneel)"
+
+#. translators: %s is link to configuration guide, anchor text: "the guide"
+#: templates/admin/posteditor.php:134
+msgid "Additional configuration is required for publishing products. Please check %s."
+msgstr "Er is extra configuratie nodig voor het publiceren van producten. Bekijk a.u.b. %s."
+
+#: templates/admin/posteditor.php:132
+msgid "the guide"
+msgstr "de tutorial"
+
+#: src/Components/BusinessSelector.php:255
+msgid "Service Area Business"
+msgstr "Bedrijf met servicegebied"
+
+#. translators: %s represents error message
+#: src/Subscriber/AuthenticationAdminPostSubscriber.php:134
+msgid "The authorization failed: %s"
+msgstr "De autorisatie is mislukt: %s"
+
+#: src/Subscriber/AuthenticationAdminPostSubscriber.php:130
+msgid "The request was cancelled"
+msgstr "De aanvraag is geannuleerd"
+
+#: src/Subscriber/AuthenticationAdminPostSubscriber.php:73
+msgid "You do not have permission to manage connected Google accounts"
+msgstr "Je hebt geen toestemming om verbonden Google-accounts te beheren"
+
+#: src/Subscriber/AuthenticationAdminPostSubscriber.php:57
+#: src/Subscriber/AuthenticationAdminPostSubscriber.php:91
+msgid "You do not have permission to add Google accounts"
+msgstr "Je hebt geen toestemming om Google-accounts toe te voegen"
+
+#: src/ParseFormFields.php:120
+msgid "Products are not supported in the free version of the plugin. Please choose a different post type in your template."
+msgstr "Producten worden niet ondersteund in de gratis versie van de plugin. Kies aub een ander post type in je template."
+
+#. translators: %1$s is display name/username, %2$s is link to leave a review
+#. (anchor: "leave a rating"), %3$s is plugin developer name (Koen) + "Plugin
+#. Developer" title
+#: src/Upgrader/Upgrade_3_0_0.php:304
+msgid ""
+"Hey %1$s,\n"
+"\n"
+"Thanks for updating Post to Google My Business to version 3, the \"big update\"! The plugin received a massive overhaul from a technical standpoint, making it faster, more stable & more intuitive.\n"
+"\n"
+"I've also added a ton of features that you've all been asking for. I've highlighted the major ones in the \"New features\" section, which you can check out below!\n"
+"\n"
+"If you like the plugin and have a moment to %2$s, that's much appreciated and really helps me move the plugin forward.\n"
+"\n"
+"%3$s"
+msgstr ""
+"Hoi %1$s,\n"
+"\n"
+"Bedankt voor het updaten van Post op Google Mijn Bedrijf naar versie 3, de \"grote update\"! De plugin heeft een grondige verbouwing gehad vanuit een technisch standpunt, waardoor hij sneller, stabieler en intuïtiever is.\n"
+"\n"
+"Ik heb ook onwijs veel nieuwe functies toegevoegd waar jullie allemaal om gevraagd hebben. De belangrijkste heb ik hieronder in de \"Nieuwe features\" sectie geplaatst!\n"
+"\n"
+"Als je de plugin tof vindt en een moment hebt om %2$s, dan waardeer ik dat enorm en helpt het me om de plugin verder te ontwikkelen.\n"
+"\n"
+"%3$s"
+
+#: src/Upgrader/Upgrade_3_0_0.php:291
+msgid "The post list is now cleaner, faster & more versatile with the newly added pagination and bulk actions."
+msgstr "De postlijst is nu netter, sneller & veelzijdiger dankzij de nieuw toegevoegde paginering en bulk acties."
+
+#: src/Upgrader/Upgrade_3_0_0.php:290
+msgid "Bulk actions & Pagination"
+msgstr "Bulk acties & Paginering"
+
+#: src/Upgrader/Upgrade_3_0_0.php:281
+msgid "Publish your latest (WooCommerce) products to your GBP listing. The plugin now supports \"real\" products in GBP!"
+msgstr "Publiceer je nieuwste (WooCommerce) producten naar je GBP vermelding. De plugin ondersteunt nu \"echte\" producten in GBP!"
+
+#: src/Upgrader/Upgrade_3_0_0.php:280
+msgid "[All Premium] Product support"
+msgstr "[Alle Premium] Product ondersteuning"
+
+#: src/Upgrader/Upgrade_3_0_0.php:271
+msgid "Instead of one generic auto-post template, you can now create multiple templates for different occasions."
+msgstr "In plaats van één algemeen auto-post template, kun je nu meerdere templates aanmaken voor verschillende gelegenheden."
+
+#: src/Upgrader/Upgrade_3_0_0.php:270
+msgid "[Pro] Multiple auto-post templates"
+msgstr "[Pro] Meerdere auto-post sjablonen aanmaken"
+
+#: src/Upgrader/Upgrade_3_0_0.php:261
+msgid "Select your pre-existing content in bulk and have the plugin automatically publish random items from your selection at a schedule you define"
+msgstr "Selecteer je bestaande content in bulk en laat de plugin automatisch willekeurige items uit je selectie publiceren op een door jou ingesteld tijdschema"
+
+#: src/Upgrader/Upgrade_3_0_0.php:260
+msgid "[Pro] Evergreen content"
+msgstr "[Pro] Groenblijvende content"
+
+#: src/Upgrader/Upgrade_3_0_0.php:251
+msgid "Connect multiple Google accounts to a single site, and publish posts across multiple GBP locations & Google accounts in one go."
+msgstr "Verbind meerdere Google accounts aan een site, en publiceer berichten over meerdere GBP locaties & Google accounts in één actie."
+
+#: src/Upgrader/Upgrade_3_0_0.php:250
+msgid "[Agency] Multi-account support"
+msgstr "[Agency] Multi-account ondersteuning"
+
+#: templates/admin/posteditor.php:94
+msgid "Because products require a proprietary authentication method, they are not available in the free version of the plugin. Upgrade to <strong>any</strong> of the Premium versions of Post to Google My Business to (automatically) publish your products to your Google Business Profile."
+msgstr "Omdat voor producten een andere manier van authenticatie nodig is, is deze functie niet beschikbaar in de gratis versie van de plugin. Update naar <strong>een van de</strong> Premium versies van Post op Google Mijn Bedrijf om (automatisch) je berichten op je Google bedrijfsprofiel te publiceren."
+
+#: templates/admin/postcampaigns.php:6
+msgid "Post to Google my Business for Agencies lets you:"
+msgstr "Post op Google Mijn Bedrijf voor Agencies laat je:"
+
+#: templates/admin/postcampaigns.php:4
+msgid "Manage & schedule your own, or your clients' Google My Business posts from a single location, without being tied to a specific WordPress post or page."
+msgstr "Beheer & plan Google Mijn Bedrijf berichten voor jezelf of voor je klanten vanuit één locatie, zonder vast te zitten aan een specifiek WordPress bericht of pagina."
 
 #: src/Admin/AdminPage.php:414
-msgid "Create multiple auto-post templates"
-msgstr "Meerdere auto-post sjablonen aanmaken"
-
-#: src/Admin/AdminPage.php:415
-msgid "Publish posts to multiple GMB locations at once"
-msgstr "Berichten op meerdere GMB locaties tegelijk publiceren"
-
-#: src/Admin/AdminPage.php:416
 msgid "Automatically re-cycle your posts"
 msgstr "Automatisch berichten re-cyclen"
 
+#: src/Admin/AdminPage.php:411
+msgid "Publish posts to multiple GMB locations at once"
+msgstr "Berichten op meerdere GMB locaties tegelijk publiceren"
+
+#: src/Admin/AdminPage.php:408
+msgid "Create multiple auto-post templates"
+msgstr "Meerdere auto-post sjablonen aanmaken"
+
+#: src/Admin/AdminPage.php:404
+msgid "Post to Google my Business Pro lets you:"
+msgstr "Post op Google Mijn Bedrijf Pro laat je:"
+
+#: src/Admin/AdminPage.php:401
+msgid "Define a posting schedule, select your existing content in bulk, and the plugin will automatically keep your GMB listing(s) fresh with new posts."
+msgstr "Stel een postschema in, selecteer je bestaande content in bulk, en de plugin zal automatisch je GMB locatie(s) voorzien van nieuwe berichten."
+
+#: src/Admin/AdminPage.php:398
+msgid "Evergreen content screenshot"
+msgstr "Groenblijvende content screenshot"
+
+#: src/Admin/AdminPage.php:393
+msgid "Evergreen content is a Post to Google My Business Pro feature"
+msgstr "Groenblijvende content is een Pro functie van Post op Google Mijn Bedrijf"
+
+#: src/Admin/AdminPage.php:107
+msgid "Evergreen content"
+msgstr "Groenblijvende content"
+
+#: templates/admin/settings.php:19
+msgid "Upgrade to the <strong>Agency</strong> plan of <i>Post to Google My Business</i> to handle multiple Google accounts within a single installation of the plugin. With Post to Google My Business for Agencies, you can:"
+msgstr ""
+"Upgrade naar het <strong>Agency</strong> pakket van <i>Post op Google Mijn Bedrijf</i>\n"
+"om meerdere Google accounts binnen een enkele installatie van de plugin te beheren. Met Post op Google Mijn Bedrijf voor marketingbureaus kun je:"
+
 #: src/Admin/AdminPage.php:417
 #: templates/admin/postcampaigns.php:11
-#: templates/admin/settings.php:26
+#: templates/admin/settings.php:25
 msgid "Publish posts to multiple locations across multiple Google accounts at once"
 msgstr "Publiceer posts naar meerdere locaties verdeeld over meerdere Google accounts tegelijkertijd"
 
-#: src/Admin/AdminPage.php:420
-#: templates/admin/autopost_template.php:21
+#: templates/admin/postcampaigns.php:10
+#: templates/admin/settings.php:24
+msgid "Let your users add &amp; manage their own Google accounts"
+msgstr "Laat je gebruikers hun eigen Google accounts toevoegen &amp; beheren"
+
+#: templates/admin/postcampaigns.php:9
+#: templates/admin/settings.php:23
+msgid "Assign accounts & GMB locations to specific WordPress users (and hide others)"
+msgstr "Koppel accounts & locaties aan specifieke WordPress gebruikers (en verberg andere)"
+
+#: templates/admin/postcampaigns.php:8
+#: templates/admin/settings.php:22
+msgid "Connect <strong>multiple</strong> Google accounts to a single website"
+msgstr "Verbind <strong>meerdere</strong> Google accounts aan één website"
+
+#: templates/admin/postcampaigns.php:2
+msgid "Post Campaigns are a Post to Google My Business \"Agency\" feature"
+msgstr "Post campagnes zijn een Post op Google Mijn Bedrijf \"Agency\" functie"
+
+#: templates/admin/dashboard.php:7
+msgid "Post to Google My Business dashboard"
+msgstr "Post op Google Mijn Bedrijf dashboard"
+
+#: src/Admin/AdminPage.php:424
+#: templates/admin/autopost_template.php:26
 #: templates/admin/postcampaigns.php:14
-#: templates/admin/posteditor.php:52
-#: templates/admin/settings.php:29
+#: templates/admin/posteditor.php:101
+#: templates/admin/settings.php:28
 msgid "View pricing &amp; buy now &raquo;"
 msgstr "Bekijk prijzen &amp; koop nu &raquo;"
 
-#: src/Admin/AutoPostTemplateUpsell.php:8
-#: src/Admin/AutoPostTemplateUpsell.php:12
-#: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:15
-msgid "Auto-post templates"
-msgstr "Auto-post sjablonen"
+#: templates/admin/autopost_template.php:23
+msgid "Publish posts to multiple locations at once"
+msgstr "Posts op meerdere locaties tegelijk publiceren"
 
-#: src/Admin/DashboardPage.php:56
-msgid "Post to Google My Business Dashboard"
-msgstr "Post op Google Mijn Bedrijf Dashboard"
+#: templates/admin/autopost_template.php:22
+msgid "Pick an auto-post template before publishing"
+msgstr "Een auto-post template kiezen vóór het publiceren"
 
-#: src/Admin/DashboardPage.php:60
-msgid "Dashboard %s"
-msgstr "Dashboard %s"
+#: templates/admin/autopost_template.php:21
+msgid "Assign auto-post templates to specific post types"
+msgstr "Auto-post sjablonen koppelen aan specifieke post types"
 
-#: src/Admin/DashboardPage.php:82
-#: src/Admin/DashboardPage.php:97
-msgid "Dismiss this notice."
-msgstr "Melding wissen."
+#: templates/admin/autopost_template.php:20
+msgid "Create multiple auto-post templates for different types of content"
+msgstr "Meerdere auto-post sjablonen aanmaken voor verschillende soorten content"
 
-#: src/Admin/PostCampaignsUpsell.php:8
-#: src/Admin/PostCampaignsUpsell.php:12
-msgid "Post Campaigns"
-msgstr "Post Campagnes"
+#: templates/admin/autopost_template.php:18
+msgid "Post to Google my Business Professional lets you:"
+msgstr "Post op Google Mijn Bedrijf Professional laat je:"
 
-#: src/BackgroundProcessing/PostPublishProcess.php:63
-msgid "Failed to delete post from GMB: %s"
-msgstr "Kon de post niet verwijderen van GMB: %s"
+#: templates/admin/autopost_template.php:16
+#: templates/admin/postcampaigns.php:3
+msgid "Post campaigns screenshot"
+msgstr "Post campagnes screenshot"
 
-#: src/BackgroundProcessing/PostPublishProcess.php:102
-msgid "No Google account connected at time of publishing"
-msgstr "Geen Google account verbonden op het moment van publiceren"
+#. translators: %s is link to the auto-post template settings page "the
+#. auto-post settings"
+#: templates/admin/autopost_template.php:12
+msgid "You can modify the default auto-post template in %s."
+msgstr "Je kunt het standaard auto-post sjabloon aanpassen in %s."
 
-#: src/BackgroundProcessing/PostPublishProcess.php:128
-msgid "This location is unverified, not public, or not eligible to publish posts."
-msgstr "Deze locatie is nog niet bevestigd, niet openbaar, of heeft geen toestemming om posts te publiceren."
+#: templates/admin/autopost_template.php:7
+msgid "Multiple auto-post templates are a Post to Google My Business \"Professional\" feature"
+msgstr "Meerdere auto-post templates zijn een \"Pro\" feature van Post op Google Mijn Bedrijf"
 
-#: src/BackgroundProcessing/PostPublishProcess.php:151
-msgid "Failed to create/update post: %s"
-msgstr "Niet gelukt om post aan te maken/bij te werken: %s"
+#: templates/admin/autopost_template.php:2
+msgctxt "Link to settings page"
+msgid "the auto-post settings"
+msgstr "de auto-post instellingen"
 
-#: src/BackgroundProcessing/PostPublishProcess.php:157
-#: src/Premium/BackgroundProcessing/ProductPublishProcess.php:112
-msgid "Go to post"
-msgstr "Ga naar post"
+#. translators: %s is link to Google account settings
+#: src/Upgrader/Upgrade_3_0_0.php:74
+msgid "Thanks for updating Post to Google My Business! Due to major changes in the Google account management system, re-authenticating might be required. Check the %s and reconnect your account if needed."
+msgstr "Bedankt voor het updaten van Post op Google Mijn Bedrijf! Door grote wijzigingen in het Google-accountmanagementsysteem is het misschien nodig om opnieuw te authentiseren. Controleer de %s en verbind opnieuw als dit nodig is."
 
-#: src/BackgroundProcessing/PostPublishProcess.php:161
-msgid "There recently has been an issue publishing a post to one of your GMB locations: %s."
-msgstr "Er was recentelijk een probleem tijdens het publiceren van een post op een van je GMB locaties: %s."
+#: src/Upgrader/Upgrade_3_0_0.php:71
+msgctxt "anchor text"
+msgid "Google account settings"
+msgstr "Google account instellingen"
 
-#: src/BackgroundProcessing/PostPublishProcess.php:162
-#: src/Premium/BackgroundProcessing/ProductPublishProcess.php:117
-msgid "Post to Google My Business:"
-msgstr "Post op Google Mijn Bedrijf:"
+#: src/Upgrader/Upgrade_2_2_11.php:41
+#: src/Upgrader/Upgrade_3_0_0.php:309
+msgid "leave a rating"
+msgstr "een review achter te laten"
 
-#: src/Components/BusinessSelector.php:55
-#: src/Premium/Components/MultiAccountBusinessSelector.php:62
-msgid "No Google account connected"
-msgstr "Geen Google account verbonden"
+#: src/Subscriber/ConditionalNotificationSubscriber.php:152
+msgid ""
+"Hi %1$s,\n"
+"\n"
+"Thanks for installing Post to Google My Business! To get started, connect the plugin to your Google account on the %4$s.\n"
+"\n"
+"Need help? Check out the %2$s\n"
+"\n"
+"%3$s"
+msgstr ""
+"Hoi %1$s,\n"
+"\n"
+"Bedankt voor het installeren van Post op Google Mijn Bedrijf! Om te beginnen, verbind je Google Account met de plugin op het %4$s.\n"
+"\n"
+"\n"
+"Hulp nodig? Check de %2$s\n"
+"\n"
+"%3$s"
 
-#: src/Components/BusinessSelector.php:103
-msgid "Could not retrieve account or location groups from Google My Business: %s"
-msgstr "Het niet gelukt de account- of locatiegegevens op te halen van Google Mijn Bedrijf: %s"
+#: src/Subscriber/ConditionalNotificationSubscriber.php:144
+msgctxt "anchor text"
+msgid "Google tab in the plugin settings"
+msgstr "Google tab in de plugin instellingen"
 
-#: src/Components/BusinessSelector.php:107
-msgid "No user account or location groups found. Did you log in to the correct Google account?"
-msgstr "Geen bedrijfslocaties gevonden. Heb je het juiste Google account gebruikt?"
+#. translators: %s represents error message
+#: src/Subscriber/AuthenticationAdminPostSubscriber.php:111
+msgid "Could not verify Google access token: %s"
+msgstr "Kon het Google toegangstoken niet verifiëren: %s"
 
-#: src/Components/BusinessSelector.php:138
-msgid "Could not retrieve locations from Google My Business: %s"
-msgstr "Kon de locaties niet ophalen van Google Mijn Bedrijf: %s"
+#. translators: %s represents error message
+#: src/Subscriber/AuthenticationAdminPostSubscriber.php:108
+msgid "Could not verify Google access token: %s. Is the date & time on your server set correctly?"
+msgstr "Kon het Google toegangstoken niet verifiëren: %s. Zijn de datum & tijd goed ingesteld op je server?"
 
-#: src/Components/BusinessSelector.php:142
-msgid "No businesses found."
-msgstr "Geen bedrijven gevonden."
+#. translators: %s represents error message
+#: src/Subscriber/AuthenticationAdminPostSubscriber.php:100
+msgid "Could not obtain access tokens: %s"
+msgstr "Kon de toegangstokens niet verkrijgen: %s"
 
-#: src/Components/BusinessSelector.php:223
-msgid "Location grayed out?"
-msgstr "Locatie in het grijs?"
+#: src/Subscriber/AuthenticationAdminPostSubscriber.php:94
+msgid "Did not receive authentication code"
+msgstr "Geen authenticatie-code ontvangen"
 
-#: src/Components/BusinessSelector.php:224
-msgid "It means the location is blocked from using the LocalPostAPI, and can't be posted to using the plugin."
-msgstr "Dit betekend dat de locatie geblokkeerd is van de LocalPostAPI, en geen gebruik kan maken van de plugin."
+#. translators: %s represents error message
+#: src/Subscriber/AuthenticationAdminPostSubscriber.php:64
+msgid "Could not generate authentication URL: %s"
+msgstr "Kon de authenticatie-URL niet genereren: %s"
 
-#: src/Components/BusinessSelector.php:225
-msgid "Learn more..."
-msgstr "Meer informatie..."
+#: src/Subscriber/AuthenticationAdminPostSubscriber.php:51
+msgid "Retry"
+msgstr "Opnieuw proberen"
 
-#: src/Components/BusinessSelector.php:231
-#: src/Premium/Components/MultiAccountBusinessSelector.php:92
-msgid "Search/Filter locations..."
-msgstr "Zoek/Filter locaties..."
+#: src/ParseFormFields.php:466
+msgid "Tried to convert WebP image but imagecreatefromwebp is not available"
+msgstr "Probeerde WebP afbeelding te converteren maar imagecreatefromwebp is niet beschikbaar"
 
-#: src/Components/GooglePostEntityListTable.php:30
-msgid "Published GMB Post"
-msgstr "Gepubliceerde GMB post"
+#: src/Components/SubPostListTable.php:48
+msgid "GMB Posts"
+msgstr "GMB Posts"
 
-#: src/Components/GooglePostEntityListTable.php:31
-msgid "Published GMB Posts"
-msgstr "Gepubliceerde GMB Posts"
-
-#: src/Components/GooglePostEntityListTable.php:42
-msgid "Location"
-msgstr "Locatie"
-
-#: src/Components/GooglePostEntityListTable.php:43
-msgid "Status"
-msgstr "Status"
-
-#: src/Components/GooglePostEntityListTable.php:56
-#: src/Components/SubPostListTable.php:123
-#: src/Components/SubPostListTable.php:246
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:112
-msgid "Delete"
-msgstr "Verwijderen"
-
-#: src/Components/GooglePostEntityListTable.php:119
-msgid "Could not get location name: %s"
-msgstr "Kon de locatienaam niet opvragen: %s"
-
-#: src/Components/GooglePostEntityListTable.php:124
-msgid "Unknown"
-msgstr "Onbekend"
-
-#: src/Components/GooglePostEntityListTable.php:126
-msgid "View on Google"
-msgstr "Bekijk op Google"
-
-#: src/Components/PostEditor.php:69
-msgid ", Timezone: "
-msgstr ", Tijdzone: "
+#: src/Components/SubPostListTable.php:47
+msgid "GMB Post"
+msgstr "GMB Post"
 
 #: src/Components/PrefixedListTable.php:74
 msgid "1 item"
@@ -413,705 +655,292 @@ msgid_plural "%s items"
 msgstr[0] "1 item"
 msgstr[1] "%s items"
 
-#: src/Components/SubPostListTable.php:43
-msgid "GMB Post"
-msgstr "GMB Post"
+#: src/Components/GooglePostEntityListTable.php:130
+msgid "View on Google"
+msgstr "Bekijk op Google"
 
-#: src/Components/SubPostListTable.php:44
-msgid "GMB Posts"
-msgstr "GMB Posts"
+#: src/Components/GooglePostEntityListTable.php:32
+msgid "Published GMB Posts"
+msgstr "Gepubliceerde GMB Posts"
 
-#: src/Components/SubPostListTable.php:64
-msgid "Post type"
-msgstr "Post type"
+#: src/Components/GooglePostEntityListTable.php:31
+msgid "Published GMB Post"
+msgstr "Gepubliceerde GMB post"
 
-#: src/Components/SubPostListTable.php:65
-msgid "Publish date"
-msgstr "Publicatiedatum"
+#. translators: %s represents error message
+#: src/Components/BusinessSelector.php:168
+msgid "Could not retrieve locations from Google My Business: %s"
+msgstr "Kon de locaties niet ophalen van Google Mijn Bedrijf: %s"
 
-#: src/Components/SubPostListTable.php:66
-msgid "Created"
-msgstr "Aangemaakt"
+#. translators: %s represents error message
+#: src/Components/BusinessSelector.php:131
+msgid "Could not retrieve account or location groups from Google My Business: %s"
+msgstr "Het niet gelukt de account- of locatiegegevens op te halen van Google Mijn Bedrijf: %s"
 
-#: src/Components/SubPostListTable.php:219
-#: src/Metabox/Main.php:484
-#: templates/admin/posteditor.php:11
-msgid "What's New"
-msgstr "Wat is er nieuw"
+#: src/Components/BusinessSelector.php:76
+msgid "No Google account connected"
+msgstr "Geen Google account verbonden"
 
-#: src/Components/SubPostListTable.php:223
-#: src/Metabox/Main.php:488
-#: templates/admin/posteditor.php:14
-msgid "Event"
-msgstr "Evenement"
+#: src/BackgroundProcessing/PostPublishProcess.php:202
+msgid "Post to Google My Business:"
+msgstr "Post op Google Mijn Bedrijf:"
 
-#: src/Components/SubPostListTable.php:227
-#: src/Metabox/Main.php:492
-#: templates/admin/posteditor.php:17
-msgid "Offer"
-msgstr "Aanbieding"
+#. translators: %s represents error message
+#: src/BackgroundProcessing/PostPublishProcess.php:201
+msgid "There recently has been an issue publishing a post to one of your GMB locations: %s."
+msgstr "Er was recentelijk een probleem tijdens het publiceren van een post op een van je GMB locaties: %s."
 
-#: src/Components/SubPostListTable.php:231
-#: src/Metabox/Main.php:496
-#: templates/admin/posteditor.php:20
-msgid "Product"
-msgstr "Product"
+#: src/BackgroundProcessing/PostPublishProcess.php:194
+msgid "Go to post"
+msgstr "Ga naar post"
 
-#: src/Components/SubPostListTable.php:235
-#: src/Metabox/Main.php:500
-#: templates/admin/posteditor.php:7
-msgid "COVID-19 update"
-msgstr "COVID-19 update"
+#: src/BackgroundProcessing/PostPublishProcess.php:137
+msgid "No Google account connected at time of publishing"
+msgstr "Geen Google account verbonden op het moment van publiceren"
 
-#: src/Components/SubPostListTable.php:243
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:111
-msgid "List created posts"
-msgstr "Laat aangemaakte posts zien"
+#. translators: %1$s is the Google Post ID of the post, %2$s is the error
+#. message
+#: src/BackgroundProcessing/PostPublishProcess.php:71
+msgid "Failed to delete post %1$s from GMB: %2$s"
+msgstr "Niet gelukt om post %1$s van GMB te verwijderen: %2$s"
 
-#: src/Components/SubPostListTable.php:244
-#: src/Premium/PostTypes/PostCampaign.php:20
-#: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:19
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:110
-msgid "Edit"
-msgstr "Bewerk"
+#: src/API/GoogleMyBusiness.php:46
+msgid "Could not parse JSON response from Google API."
+msgstr "Kon de JSON reactie van de Google API niet verwerken."
 
-#: src/Components/SubPostListTable.php:245
-msgid "Duplicate"
-msgstr "Dupliceren"
+#: src/Admin/PostCampaignsUpsell.php:8
+#: src/Admin/PostCampaignsUpsell.php:12
+msgid "Post Campaigns"
+msgstr "Post Campagnes"
 
-#: src/Components/SubPostListTable.php:258
-msgid "Repost enabled"
-msgstr "Repost ingeschakeld"
+#. translators: %s renders a red notification bullet with the amount of
+#. notifications in the plugin
+#: src/Admin/DashboardPage.php:62
+msgid "Dashboard %s"
+msgstr "Dashboard %s"
 
-#: src/Components/SubPostListTable.php:292
-msgid "Draft"
-msgstr "Concept"
+#: src/Admin/DashboardPage.php:57
+msgid "Post to Google My Business Dashboard"
+msgstr "Post op Google Mijn Bedrijf Dashboard"
 
-#: src/Google/AbstractGoogleJsonObject.php:27
-msgid "Unknown property"
-msgstr "Onbekende waarde"
+#: src/Admin/AutoPostTemplateUpsell.php:8
+#: src/Admin/AutoPostTemplateUpsell.php:12
+msgid "Auto-post templates"
+msgstr "Auto-post sjablonen"
 
-#: src/Google/CallToAction.php:29
-msgid "Invalid call to action"
-msgstr "Ongeldige call-to-action"
+#: src/Admin/AdminPage.php:339
+msgid "Disconnect all Google accounts from this website"
+msgstr "Alle verbonden Google accounts van deze website loskoppelen"
 
-#: src/Google/CallToAction.php:41
-msgid "Invalid URL supplied for call to action"
-msgstr "Ongeldige URL opgegeven voor call to action"
+#: src/Admin/AdminPage.php:337
+msgid "Disconnect Google account from this website"
+msgstr "Verbinding met dit Google account en deze site verbreken"
 
-#: src/Google/Date.php:42
-msgid "Year must be from 1 to 9999, or 0 if specifying a date without a year."
-msgstr "Jaar moet van 1 tot 9999 zijn, of 0 als er een datum zonder jaar wordt opgegeven."
+#: src/Admin/AdminPage.php:335
+msgid "+ Add another Google account"
+msgstr "+ Nog een Google account toevoegen"
 
-#: src/Google/Date.php:52
-msgid "Month must be from 1 to 12, or 0 if specifying a year without a month and day. "
-msgstr "Maand moet tussen 1 en 12 zijn, of 0 als er een jaartal wordt opgegeven zonder maand en dag. "
+#: src/Admin/AdminPage.php:335
+msgid "Multi-account support is a Post to Google My Business Agency Feature"
+msgstr "Ondersteuning voor meerdere accounts is een feature van Post to Google My Business Agency"
 
-#: src/Google/Date.php:62
-msgid "Day must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by itself or a year and month where the day is not significant. "
-msgstr "Dag moet tussen 1 en 31 zijn en geldig voor het jaar en de maand, of 0 als er alleen een jaar wordt opgegeven, of een jaar en maand waarbij de dag niet belangrijk is. "
+#: src/Admin/AdminPage.php:284
+msgid "Wondering how your Google My Business post is performing?"
+msgstr "Vraag je je af hoe je Google Mijn Bedrijf post presteert?"
 
-#: src/Google/LocalPost.php:72
-msgid "Invalid Topic type"
-msgstr "Ongeldige Topictype"
+#: src/Admin/AdminPage.php:176
+msgid "Delete GMB post data, post campaigns & auto-post templates"
+msgstr "Verwijder GMB post data, post campagnes & auto-post templates"
 
-#: src/Google/LocalPost.php:88
-msgid "Invalid Alert type"
-msgstr "Ongeldig Waarschuwings type"
+#: src/Admin/AdminPage.php:175
+msgid "Delete plugin settings"
+msgstr "Plugin instellingen verwijderen"
 
-#: src/Google/LocalPost.php:114
-msgid "Post text should be between 1 and 1500 characters"
-msgstr "Post tekst moet tussen 1 en 1500 karakters zijn"
+#: src/Admin/AdminPage.php:172
+msgid "Choose which data the plugin should (try to) delete when uninstalling the plugin"
+msgstr "Kies welke data de plugin (moet proberen) te verwijderen wanneer de plugin wordt verwijderd"
 
-#: src/Google/LocalPost.php:151
+#: src/Admin/AdminPage.php:171
+msgid "Uninstall cleanup"
+msgstr "Deïnstallatie opruiming"
+
+#: src/Admin/AdminPage.php:165
+msgid "Delete post(s) from GMB when the parent post/page/content in WordPress is deleted"
+msgstr "Verwijder bericht(en) van GMB wanneer de bovenliggende post/pagina/inhoud in WordPress wordt verwijderd"
+
+#: src/Admin/AdminPage.php:164
+msgid "Delete GMB posts"
+msgstr "GMB berichten verwijderen"
+
+#: src/Admin/AdminPage.php:121
+msgid "Select the post-types where the GMB metabox & auto-post controls should be displayed"
+msgstr "Selecteer de post-types waar de GMB metabox & auto-post bediening getoond moet worden"
+
+#: src/Admin/AdminPage.php:111
+msgid "Misc"
+msgstr "Divers"
+
+#: templates/admin/posteditor.php:579
+msgid "How the plugin should handle links in the content (when using %post_content%)"
+msgstr "Hoe de plugin links in de tekst moet behandelen (wanneer %post_content% wordt gebruikt)"
+
+#: templates/admin/posteditor.php:574
+msgid "Table of links (at the end of the post)"
+msgstr "Tabel met links (aan einde van de post)"
+
+#: templates/admin/posteditor.php:563
+msgid "Next line"
+msgstr "Volgende regel"
+
+#: templates/admin/posteditor.php:552
+msgid "Inline"
+msgstr "In lijn"
+
+#: templates/admin/posteditor.php:541
+msgid "Hide"
+msgstr "Verbergen"
+
+#: templates/admin/posteditor.php:529
+msgid "Links"
+msgstr "Links"
+
+#: src/ParseFormFields.php:289
+#: src/ParseFormFields.php:443
+msgid "Could not detect post image file size. Make sure the image file/url is accessible remotely."
+msgstr "Kon de afbeeldingsgrootte niet detecteren. Zorg er voor dat het afbeeldingsbestand/url extern toegankelijk is."
+
+#. translators: %s is formatted image size
+#: src/ParseFormFields.php:459
+msgid "Post image file too big, must be 5 MB at most. Selected image is %s"
+msgstr "Post afbeelding is te groot, mag maximaal 5MB zijn. Geselecteerde afbeelding is %s"
+
+#. translators: %s is formatted image size
+#: src/ParseFormFields.php:456
+msgid "Post image file too small, must be at least 10 KB. Selected image is %s"
+msgstr "Post afbeelding is te klein, moet minimaal 10KB zijn. Geselecteerde afbeelding is %s"
+
+#: templates/admin/posteditor.php:222
+msgid "All day event (time will be ignored)"
+msgstr "Evenement is hele dag (tijd wordt genegeerd)"
+
+#: src/Admin/AdminPage.php:153
+msgid "Enabled for post types"
+msgstr "Ingeschakeld voor post-types"
+
+#. Author URI of the plugin
+#: post-to-google-my-business.php
+msgid "https://koenreus.com"
+msgstr "https://koenreus.com"
+
+#. Author of the plugin
+#: post-to-google-my-business.php
+msgid "Koen Reus"
+msgstr "Koen Reus"
+
+#: src/Components/BusinessSelector.php:172
+msgid "No businesses found."
+msgstr "Geen bedrijven gevonden."
+
+#: src/Components/BusinessSelector.php:135
+#: src/Components/BusinessSelector.php:387
+msgid "No user account or location groups found. Did you log in to the correct Google account?"
+msgstr "Geen bedrijfslocaties gevonden. Heb je het juiste Google account gebruikt?"
+
+#. translators: %s represents error message
+#: src/BackgroundProcessing/PostPublishProcess.php:189
+msgid "Failed to create/update post: %s"
+msgstr "Niet gelukt om post aan te maken/bij te werken: %s"
+
+#: src/Upgrader/Upgrade_2_2_11.php:88
+msgid "A very effective way to keep your customers up-to-date on any changes to your business due to the corona virus (COVID-19)"
+msgstr "Een effectieve manier om je klanten up-to-date de houden over hoe jouw bedrijf omgaat met het coronavirus (COVID-19)"
+
+#: src/Upgrader/Upgrade_2_2_11.php:87
+msgid "COVID-19 alert/update post support"
+msgstr "COVID-19 waarschuwing/update post ondersteuning"
+
+#: src/Upgrader/Upgrade_2_2_11.php:78
+msgid "Fine-tune one template for all your automated posts to follow. The new editor gives you complete control over the auto-post template."
+msgstr "Fine-tune het template dat je geautomatiseerde posts moeten volgen. De nieuwe editor geeft je volledige controle over het auto-post template."
+
+#: src/Upgrader/Upgrade_2_2_11.php:77
+msgid "Full editor for auto-post template"
+msgstr "Volledige editor voor het auto-post template"
+
+#: src/Upgrader/Upgrade_2_2_11.php:68
+msgid "Track your posts in time with the new post calender. For easy scheduling and planning."
+msgstr "Hiermee kun je bijhouden wanneer je berichten geplaatst zijn of moeten worden. Voor gemakkelijk plannen."
+
+#: src/Upgrader/Upgrade_2_2_11.php:67
+msgid "Post calendar"
+msgstr "Post kalender"
+
+#: src/Upgrader/Upgrade_2_2_11.php:60
+#: src/Upgrader/Upgrade_2_2_11.php:70
+#: src/Upgrader/Upgrade_2_2_11.php:80
+#: src/Upgrader/Upgrade_2_2_11.php:90
+msgid "Screenshot"
+msgstr "Schermafbeelding"
+
+#: src/Upgrader/Upgrade_2_2_11.php:58
+msgid "This allows you to limit auto-post to a specific tag or category. Your post will be auto-posted when they have a tag/category where this option is enabled."
+msgstr "Hiermee kun je het automatisch posten koppelen aan een specifieke tag of categorie. Je post zal automatisch worden gepost wanneer ze een categorie of tag hebben waar deze optie is ingeschakeld."
+
+#: src/Upgrader/Upgrade_2_2_11.php:57
+msgid "[Pro] Auto-post only with specific tag/category"
+msgstr "[Pro] Automatisch posten met een bepaalde tag/categorie"
+
+#: src/Upgrader/Upgrade_2_2_11.php:36
+msgid ""
+"Hi %1$s,\n"
+"\n"
+"Thanks for updating Post to Google My Business to the latest version. I've added this new dashboard section, check out the new features section below!\n"
+"\n"
+"If you're enjoying the plugin and have a moment to %2$s, that's really appreciated and really helps me move the plugin forward.\n"
+"\n"
+"%3$s"
+msgstr ""
+"Hoi %1$s,\n"
+"\n"
+"Bedankt voor het updaten van Post op Google Mijn Bedrijf naar de nieuwste versie. Ik heb dit nieuwe dashboard toegevoegd, check ook de nieuwe functies hieronder!\n"
+"\n"
+"Als je deze plugin top vindt en een momentje hebt om %2$s, dat zou ik heel erg waarderen en helpt me onwijs om de plugin verder te ontwikkelen.\n"
+"\n"
+"%3$s"
+
+#: src/Upgrader/Upgrade_2_2_11.php:34
+#: src/Upgrader/Upgrade_3_0_0.php:301
+msgid "Thanks for updating Post to Google My Business!"
+msgstr "Bedankt voor het updaten van Post op Google Mijn Bedrijf!"
+
+#: src/Google/LocalPost.php:206
 msgid "Posts can only have 1 image"
 msgstr "Posts kunnen maar 1 afbeelding hebben"
 
-#: src/Google/LocalPostEvent.php:18
-msgid "Event/offer title is required"
-msgstr "Evenement/aanbieding titel is verplicht"
-
-#: src/Google/LocalPostOffer.php:21
-msgid "Offer redeem online URL is invalid"
-msgstr "De URL voor de link om de aanbieding in te wisselen is ongeldig"
-
-#: src/Google/MediaItem.php:23
-msgid "Invalid media format"
-msgstr "Ongeldig media formaat"
+#: src/Google/LocalPost.php:98
+msgid "Invalid Alert type"
+msgstr "Ongeldig Waarschuwings type"
 
 #: src/Google/MediaItem.php:26
 msgid "Creating posts with videos is currently not supported by Google"
 msgstr "Het aanmaken van video posts is op het moment niet ondersteund door Google"
 
-#: src/Google/MediaItem.php:33
-msgid "Invalid media URL"
-msgstr "Ongeldige media URL"
+#: src/Google/LocalPostEvent.php:18
+msgid "Event/offer title is required"
+msgstr "Evenement/aanbieding titel is verplicht"
 
-#: src/Google/TimeInterval.php:47
-msgid "End date is before start date"
-msgstr "Einddatum komt vóór de startdatum"
-
-#: src/Google/TimeOfDay.php:20
-msgid "Hour should be from 0 to 23"
-msgstr "Uren moeten tussen 0 en 23 zijn"
-
-#: src/Google/TimeOfDay.php:27
-msgid "Minutes should be between 0 and 59"
-msgstr "Minuten moeten tussen 0 en 59 zijn"
-
-#: src/Google/TimeOfDay.php:34
-msgid "Seconds should be between 0 and 59"
-msgstr "Seconden moeten tussen 0 en 59 zijn"
-
-#: src/Google/TimeOfDay.php:41
-msgid "Nanos should be between 0 and 999,999,999"
-msgstr "Nanos moeten tussen 0 en 999,999,999 zijn"
-
-#. Plugin Name of the plugin/theme
-msgid "Post to Google My Business"
-msgstr "Post op Google Mijn Bedrijf"
-
-#: src/Metabox/Main.php:175
-msgid "You're working on a Google My Business post, but it has not yet been published/scheduled. Press OK to publish/schedule it now, or Cancel to save it as a draft."
-msgstr "Je werkt aan een Google Mijn Bedrijf post, maar deze is nog niet gepubliceerd of ingepland. Druk op OK om deze nu in te plannen/plaatsen, of Annuleren om hem als concept op te slaan."
-
-#: src/Metabox/Main.php:176
-msgid "Please Wait..."
-msgstr "Even wachten..."
-
-#: src/Metabox/Main.php:177
-msgid "Publish"
-msgstr "Publiceren"
-
-#: src/Metabox/Main.php:178
-msgid "Update"
-msgstr "Bijwerken"
-
-#: src/Metabox/Main.php:179
-#: templates/admin/posteditor.php:484
-msgid "Save draft"
-msgstr "Concept opslaan"
-
-#: src/Metabox/Main.php:180
-#: templates/admin/posteditor.php:395
-msgid "Schedule post"
-msgstr "Post inplannen"
-
-#: src/Metabox/Main.php:181
-msgid "Save template"
-msgstr "Template opslaan"
-
-#: src/Metabox/Main.php:254
-msgid "Please configure Post to Google My Business first"
-msgstr "Configureer Post op Google Mijn Bedrijf eerst"
-
-#: src/Metabox/Main.php:256
-msgid "(Connect, pick a default location and Save Changes)"
-msgstr "(Verbinden, kies een standaard locatie en sla op)"
-
-#: src/Metabox/Main.php:293
-msgid "Auto-post to GMB now"
-msgstr "Nu auto-posten op GMB"
-
-#: src/Metabox/Main.php:676
-msgid "You do not have permission to publish posts"
-msgstr "Je hebt geen toestemming om berichten te plaatsen"
-
-#: src/Metabox/Main.php:713
-msgid "Error creating post: %s"
-msgstr "Error aanmaken post: %s"
-
-#: src/Metabox/Main.php:742
-msgid "Auto-post template successfully updated"
-msgstr "Auto-post template succesvol aangepast"
-
-#: src/Metabox/Main.php:755
-msgid "You do not have permission to edit posts"
-msgstr "Je hebt geen toestemming om berichten aan te passen"
-
-#: src/Metabox/Main.php:773
-msgid "Post could not be loaded"
-msgstr "Post kon niet worden geladen"
-
-#: src/Metabox/Main.php:781
-msgid "You do not have permission to delete posts"
-msgstr "Je hebt geen toestemming om berichten te verwijderen"
-
-#: src/Metabox/Main.php:793
-msgid "Invalid post ID"
-msgstr "Ongeldige post ID"
-
-#: src/ParseFormFields.php:263
-msgid "Products are not supported in the free version of the plugin. Please choose a different post type in your template."
-msgstr "Producten worden niet ondersteund in de gratis versie van de plugin. Kies aub een ander post type in je template."
-
-#: src/ParseFormFields.php:455
-#: src/ParseFormFields.php:545
-msgid "Could not detect post image file size. Make sure the image file/url is accessible remotely."
-msgstr "Kon de afbeeldingsgrootte niet detecteren. Zorg er voor dat het afbeeldingsbestand/url extern toegankelijk is."
-
-#: src/ParseFormFields.php:555
-msgid "Post image must be at least 250x250px. Selected image is %dx%dpx"
-msgstr "Afbleeding moet tenminste 250x250px zijn. Huidige afbeelding is: %dx%dpx"
-
-#: src/ParseFormFields.php:559
-msgid "Post image file too small, must be at least 10 KB. Selected image is %s"
-msgstr "Post afbeelding is te klein, moet minimaal 10KB zijn. Geselecteerde afbeelding is %s"
-
-#: src/ParseFormFields.php:561
-msgid "Post image file too big, must be 5 MB at most. Selected image is %s"
-msgstr "Post afbeelding is te groot, mag maximaal 5MB zijn. Geselecteerde afbeelding is %s"
-
-#: src/ParseFormFields.php:569
-msgid "Tried to convert WebP image but imagecreatefromwebp is not available"
-msgstr "Probeerde WebP afbeelding te converteren maar imagecreatefromwebp is niet beschikbaar"
-
-#: src/ParseFormFields.php:611
+#: src/ParseFormFields.php:547
 msgid "Could not parse post locations"
 msgstr "Kon de locaties niet verwerken"
 
-#: src/Plugin.php:214
-msgid "GMB Agency Client"
-msgstr "GMB Bureau Klant"
-
-#: src/Premium/API/GMBCookieAPI.php:69
-msgid "The HTTP request failed: %s"
-msgstr "De HTTP aanvraag is mislukt: %s"
-
-#: src/Premium/API/GMBCookieAPI.php:365
-msgid "The account is no longer properly connected to the plugin. Please update the cookies in the settings"
-msgstr "Het account is niet langer goed meer verbonden met de plugin. Update aub de cookies in de instellingen"
-
-#: src/Premium/Admin/PremiumAdminPage.php:37
-msgid "Enable evergreen content"
-msgstr "Groenblijvende content inschakelen"
-
-#: src/Premium/Admin/PremiumAdminPage.php:38
-msgid "Auto-publish random content -marked as evergreen- to GMB"
-msgstr "Automatisch willekeurige -als groenblijvend gemarkeerde- content op GMB publiceren"
-
-#: src/Premium/Admin/PremiumAdminPage.php:43
-msgid "Evergreen by default"
-msgstr "Standaard groenblijvend"
-
-#: src/Premium/Admin/PremiumAdminPage.php:44
-msgid "Automatically mark new content as evergreen (checks evergreen checkbox by default when enabled)"
-msgstr "Automatisch nieuwe content als groenblijvend markeren (vinkt het \"Groenblijvend\" vinkje automatisch aan)"
-
-#: src/Premium/Admin/PremiumAdminPage.php:49
-msgid "Posting schedule"
-msgstr "Publicatieschema"
-
-#: src/Premium/Admin/PremiumAdminPage.php:50
-msgid "Choose the interval at which the plugin will auto-post evergreen content"
-msgstr "Kies de interval waarbij de plugin automatisch groenblijvende content publiceert"
-
-#: src/Premium/Admin/PremiumAdminPage.php:60
-msgid "Post type default template"
-msgstr "Standaard post type template"
-
-#: src/Premium/Admin/PremiumAdminPage.php:61
-msgid "Choose which auto-post template the post type should use by default"
-msgstr "Kies welk auto-post sjabloon de post types standaard moeten gebruiken"
-
-#: src/Premium/Admin/PremiumAdminPage.php:110
-msgid "The chosen schedule is invalid"
-msgstr "Het gekozen schema is ongeldig"
-
-#: src/Premium/Admin/PremiumAdminPage.php:128
-msgid "The chosen schedule is impossible, make sure it doesn't resolve to an impossible date such as the 30th of February."
-msgstr "Het gekozen schema is onmogelijk, controleer of het niet resulteert in een onmogelijke datum zoals 30 februari."
-
-#: src/Premium/Admin/PremiumAdminPage.php:142
-#: src/Premium/Subscribers/PremiumSubmitboxMetaSubscriber.php:92
-msgid "Default auto-post template"
-msgstr "Standaard auto-post sjabloon"
-
-#: src/Premium/Admin/PremiumAdminPage.php:144
-#: src/Premium/Subscribers/PremiumSubmitboxMetaSubscriber.php:94
-msgid "Untitled"
-msgstr "Geen titel"
-
-#: src/Premium/Admin/PremiumAdminPage.php:175
-msgid "Manage Google account(s)"
-msgstr "Google account(s) beheren"
-
-#: src/Premium/Admin/PremiumAdminPage.php:176
-msgid "See Google accounts added by other users"
-msgstr "See Google accounts die door andere gebruikers zijn toegevoegd"
-
-#: src/Premium/BackgroundProcessing/ProductPublishProcess.php:31
-msgid "Invalid user key"
-msgstr "Ongeldige gebruikerssleutel"
-
-#: src/Premium/BackgroundProcessing/ProductPublishProcess.php:38
-msgid "No cookies set for product creation"
-msgstr "Geen cookies ingesteld voor het aanmaken van producten"
-
-#: src/Premium/BackgroundProcessing/ProductPublishProcess.php:83
-msgid "Image is required for Product"
-msgstr "Afbeelding is verplicht voor Product"
-
-#: src/Premium/BackgroundProcessing/ProductPublishProcess.php:103
-msgid "Published"
-msgstr "Gepubliceerd"
-
-#: src/Premium/BackgroundProcessing/ProductPublishProcess.php:106
-msgid "Failed to create/update product: %s"
-msgstr "Aanmaken/updaten product niet gelukt: %s"
-
-#: src/Premium/BackgroundProcessing/ProductPublishProcess.php:116
-msgid "There recently has been an issue publishing a product to one of your GMB locations: %s."
-msgstr "Er was recentelijk een probleem tijdens het publiceren van een product op een van je GMB locaties: %s."
-
-#: src/Premium/BackgroundProcessing/ProductPublishProcess.php:130
-msgid "Failed to delete product from GMB: %s"
-msgstr "Kon het product niet van GMB verwijderen: %s"
-
-#: src/Premium/Components/MultiAccountBusinessSelector.php:41
-msgid "Update cookies"
-msgstr "Cookies bijwerken"
-
-#: src/Premium/Components/MultiAccountBusinessSelector.php:41
-msgid "Set cookies"
-msgstr "Cookies instellen"
-
-#: src/Premium/Components/MultiAccountBusinessSelector.php:46
-msgid "Disconnect account from this website"
-msgstr "Verbinding met dit account verbreken"
-
-#: src/Premium/Components/MultiAccountBusinessSelector.php:95
-msgid "Select all"
-msgstr "Selecteer alle"
-
-#: src/Premium/Components/MultiAccountBusinessSelector.php:96
-msgid "Select none"
-msgstr "Selecteer geen"
-
-#: src/Premium/Components/MultiAccountBusinessSelector.php:140
-msgid "To be able to create products on your Google Business Profile, you will need to enter additional cookie values."
-msgstr "Om producten aan te kunnen maken op je Google Bedrijfsprofiel moet je extra cookiewaardes toevoegen."
-
-#: src/Premium/Components/MultiAccountBusinessSelector.php:141
-#: templates/admin/posteditor.php:284
-msgid "Learn more"
-msgstr "Meer informatie"
-
-#: src/Premium/Components/MultiAccountBusinessSelector.php:158
-msgid "Save"
-msgstr "Opslaan"
-
-#: src/Premium/Google/Product.php:24
-msgid "Product name can't be empty"
-msgstr "Productnaam kan niet leeg zijn"
-
-#: src/Premium/Google/Product.php:28
-msgid "Product description can't be empty"
-msgstr "Product omschrijving mag niet leeg zijn"
-
-#: src/Premium/Google/Product.php:32
-msgid "Invalid product price"
-msgstr "Ongeldige productprijs"
-
-#: src/Premium/Google/Product.php:36
-msgid "Product category can't be empty"
-msgstr "Productcategorie mag niet leeg zijn"
-
-#: src/Premium/Google/Product.php:82
-msgid "Max price is not a number"
-msgstr "De maximale prijs is geen geldig nummer"
-
-#: src/Premium/Google/Product.php:89
-msgid "No image, image is required for Products"
-msgstr "Geen afbeelding, afbeeldingen zijn verplicht voor Producten"
-
-#: src/Premium/Metabox/AutopostTemplateMetabox.php:32
-#: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:16
-msgid "Auto-post template"
-msgstr "Auto-post template"
-
-#: src/Premium/PostTypes/PostCampaign.php:16
-msgid "Post campaigns"
-msgstr "Post campagnes"
-
-#: src/Premium/PostTypes/PostCampaign.php:17
-msgid "Post campaign"
-msgstr "Post campagne"
-
-#: src/Premium/PostTypes/PostCampaign.php:18
-#: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:17
-msgid "New"
-msgstr "Nieuw"
-
-#: src/Premium/PostTypes/PostCampaign.php:19
-msgid "Add new GMB campaign"
-msgstr "Nieuwe GMB campagne"
-
-#: src/Premium/PostTypes/PostCampaign.php:21
-msgid "Edit GMB post campaign"
-msgstr "Bewerk GMB post campagne"
-
-#: src/Premium/PostTypes/PostCampaign.php:22
-msgid "New GMB post campaign"
-msgstr "Nieuwe GMB post campagne"
-
-#: src/Premium/PostTypes/PostCampaign.php:23
-#: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:22
-msgid "View"
-msgstr "Bekijk"
-
-#: src/Premium/PostTypes/PostCampaign.php:24
-msgid "View GMB post campaign"
-msgstr "Bekijk GMB post campagne"
-
-#: src/Premium/PostTypes/PostCampaign.php:25
-msgid "Find GMB post campaign"
-msgstr "Zoek GMB post campagne"
-
-#: src/Premium/PostTypes/PostCampaign.php:26
-msgid "No GMB post campaigns found"
-msgstr "Geen GMB post campagnes gevonden"
-
-#: src/Premium/PostTypes/PostCampaign.php:27
-msgid "No GMB post campaigns found in the trash"
-msgstr "Geen GMB post campagnes gevonden in de prullenbak"
-
-#: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:18
-msgid "Add new auto-post template"
-msgstr "Nieuw auto-post sjabloon toevoegen"
-
-#: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:20
-#: templates/metabox.php:9
-msgid "Edit auto-post template"
-msgstr "Bewerk auto-post sjabloon"
-
-#: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:21
-msgid "New auto-post template"
-msgstr "Nieuw auto-post sjabloon"
-
-#: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:23
-msgid "View auto-post template"
-msgstr "Bekijk auto-post sjabloon"
-
-#: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:24
-msgid "Find auto-post template"
-msgstr "Zoek auto-post sjabloon"
-
-#: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:25
-msgid "No auto-post templates found"
-msgstr "Geen auto-post sjablonen gevonden"
-
-#: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:26
-msgid "No auto-post templates found in the trash"
-msgstr "Geen auto-post sjablonen gevonden in de prullenbak"
-
-#: src/Premium/Subscribers/EvergreenBulkActionSubscriber.php:25
-msgid "Add to GMB evergreen content"
-msgstr "Aan GMB groenblijvende content toevoegen"
-
-#: src/Premium/Subscribers/EvergreenBulkActionSubscriber.php:26
-msgid "Remove from GMB evergreen content"
-msgstr "Verwijder uit GMB groenblijvende content"
-
-#: src/Premium/Subscribers/EvergreenBulkActionSubscriber.php:43
-msgid "Evergreen"
-msgstr "Groenblijvend"
-
-#: src/Premium/Subscribers/EvergreenBulkActionSubscriber.php:50
-msgid "Yes"
-msgstr "Ja"
-
-#: src/Premium/Subscribers/EvergreenBulkActionSubscriber.php:50
-msgid "No"
-msgstr "Nee"
-
-#: src/Premium/Subscribers/EvergreenBulkActionSubscriber.php:67
-msgid "Changed evergreen status of %d items."
-msgstr "Groenblijvend status van %d items gewijzigd."
-
-#: src/Premium/Subscribers/PremiumEvergreenScheduleSubscriber.php:111
-msgid "Evergreen content is currently: "
-msgstr "Groenblijvende content is nu: "
-
-#: src/Premium/Subscribers/PremiumEvergreenScheduleSubscriber.php:114
-msgid "disabled."
-msgstr "uitgeschakeld."
-
-#: src/Premium/Subscribers/PremiumEvergreenScheduleSubscriber.php:122
-msgid "enabled."
-msgstr "ingeschakeld."
-
-#: src/Premium/Subscribers/PremiumEvergreenScheduleSubscriber.php:123
-msgid " Next item will be published at: "
-msgstr " Volgende item wordt gepubliceerd op: "
-
-#: src/Premium/Subscribers/PremiumSubmitboxMetaSubscriber.php:114
-msgid "Add to evergreen content"
-msgstr "Aan groenblijvende content toevoegen"
-
-#: src/Premium/Subscribers/TaxonomySubscriber.php:62
-msgid "Autopost to GMB"
-msgstr "Auto-post dit naar GMB"
-
-#. translators: %s refers to category/categories tag/tags or other terms
-#: src/Premium/Subscribers/TaxonomySubscriber.php:64
-msgid "Automatically post items with this %s to GMB. Autopost will only occur once, even when this option is enabled for multiple %s."
-msgstr "Items met deze %s automatisch op GMB plaatsen. Automatisch plaatsen gebeurt eenmalig, zelfs wanneer deze optie is ingeschakeld voor meerdere %s."
-
-#: src/Premium/Taxonomies/TaxonomyField.php:21
-msgid "The taxonomy does not exist"
-msgstr "De taxonomie bestaat niet"
-
-#: src/Premium/Taxonomies/TaxonomyField.php:25
-msgid "Invalid field type"
-msgstr "Ongeldig veld type"
-
-#: src/Subscriber/AdminPageSubscriber.php:62
-msgid "Post to GMB %s"
-msgstr "Post op GMB %s"
-
-#: src/Subscriber/AuthenticationAdminPostSubscriber.php:50
-msgid "Retry"
-msgstr "Opnieuw proberen"
-
-#: src/Subscriber/AuthenticationAdminPostSubscriber.php:55
-msgid "No permission to edit options"
-msgstr "Geen toestemming om instellingen aan te passen"
-
-#: src/Subscriber/AuthenticationAdminPostSubscriber.php:60
-msgid "Could not generate authentication URL: %s"
-msgstr "Kon de authenticatie-URL niet genereren: %s"
-
-#: src/Subscriber/AuthenticationAdminPostSubscriber.php:92
-msgid "Invalid nonce"
-msgstr "Ongeldige nonce"
-
-#: src/Subscriber/AuthenticationAdminPostSubscriber.php:94
-msgid "Did not receive authentication code"
-msgstr "Geen authenticatie-code ontvangen"
-
-#: src/Subscriber/AuthenticationAdminPostSubscriber.php:99
-msgid "Could not obtain access tokens: %s"
-msgstr "Kon de toegangstokens niet verkrijgen: %s"
-
-#: src/Subscriber/AuthenticationAdminPostSubscriber.php:105
-#: src/Subscriber/AuthenticationAdminPostSubscriber.php:107
-msgid "Could not verify Google access token: %s. Is the date & time on your server set correctly?"
-msgstr "Kon het Google toegangstoken niet verifiëren: %s. Zijn de datum & tijd goed ingesteld op je server?"
-
-#: src/Subscriber/AuthenticationAdminPostSubscriber.php:109
-msgid "Could not verify Google access token: %s"
-msgstr "Kon het Google toegangstoken niet verifiëren: %s"
-
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:104
-msgid "Parent post: %s"
-msgstr "Bovenliggende post: %s"
-
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:105
-msgid "Post type: %s"
-msgstr "Post type: %s"
-
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:109
-msgid "Go to parent post"
-msgstr "Ga naar bovenliggende post"
-
-#: src/Subscriber/ConditionalNotificationSubscriber.php:46
-msgid "WordPress Repository"
-msgstr "WordPress Repository"
-
-#: src/Subscriber/ConditionalNotificationSubscriber.php:52
-#: src/Subscriber/ConditionalNotificationSubscriber.php:162
-#: src/Upgrader/Upgrade_2_2_11.php:46
-#: src/Upgrader/Upgrade_3_0_0.php:313
-msgid "Plugin Developer"
-msgstr "Ontwikkelaar van de plugin"
-
-#: src/Subscriber/ConditionalNotificationSubscriber.php:58
-msgid "Ok, you deserve it"
-msgstr "Ok, je verdient 't"
-
-#: src/Subscriber/ConditionalNotificationSubscriber.php:63
-msgid "Maybe later"
-msgstr "Misschien later"
-
-#: src/Subscriber/ConditionalNotificationSubscriber.php:68
-msgid "I already did"
-msgstr "Heb ik al gedaan"
-
-#: src/Subscriber/ConditionalNotificationSubscriber.php:75
-#: src/Subscriber/ConditionalNotificationSubscriber.php:167
-#: src/Upgrader/Upgrade_2_2_11.php:50
-#: src/Upgrader/Upgrade_3_0_0.php:317
-msgid "Developer profile photo"
-msgstr "Foto van de ontwikkelaar"
-
-#: src/Subscriber/ConditionalNotificationSubscriber.php:81
-msgid "7 posts!"
-msgstr "7 posts!"
-
-#: src/Subscriber/ConditionalNotificationSubscriber.php:83
-msgid ""
-"Hey %1$s,\n"
-"\n"
-"I noticed you've just created your 7th GMB post through my plugin, awesome!\n"
-"\n"
-"If you like the plugin and have a moment to leave a 5-star rating on the %2$s, that really helps spread the word and move the development forwards!\n"
-"\n"
-"%3$s\n"
-"\n"
-"%4$s\n"
-"%5$s\n"
-"%6$s"
-msgstr ""
-"Hey %1$s,\n"
-"\n"
-"Ik zag dat je zojuist je 7e post hebt aangemaakt met mijn plugin, top!\n"
-"\n"
-"Als je de plugin goed vindt en een momentje hebt om een 5-sterren beoordeling achter te laten op de %2$s, zou dat onwijs helpen om de plugin te laten groeien en de ontwikkeling te versnellen!\n"
-"\n"
-"%3$s\n"
-"\n"
-"%4$s\n"
-"%5$s\n"
-"%6$s"
-
-#: src/Subscriber/ConditionalNotificationSubscriber.php:99
-msgid "28 posts! Awesome"
-msgstr "28 posts! Geweldig"
-
-#: src/Subscriber/ConditionalNotificationSubscriber.php:101
-msgid ""
-"Hi %1$s,\n"
-"\n"
-"I hope you find my GMB plugin useful! I noticed you've already created 28 GMB posts with it.\n"
-"\n"
-"If you like the plugin and have a moment to leave a 5-star rating on the %2$s, that really helps boost my motivation!\n"
-"\n"
-"Thanks!\n"
-"\n"
-"%3$s\n"
-"\n"
-"%4$s\n"
-"%5$s\n"
-"%6$s"
-msgstr ""
-"Hoi %1$s,\n"
-"\n"
-"Ik hoop dat je mijn plugin handig vindt! Ik zag dat je er zojuist je 28e post mee gemaakt hebt.\n"
-"\n"
-"Als je de plugin goed vindt en een momentje hebt om een 5-sterren beoordeling achter te laten op de %2$s? Dat geeft me echt een motivatieboost! \n"
-"\n"
-"Alvast bedankt!\n"
-"\n"
-"%3$s\n"
-"\n"
-"%4$s\n"
-"%5$s\n"
-"%6$s"
-
-#: src/Subscriber/ConditionalNotificationSubscriber.php:117
-msgid "Wow! 100 posts!"
-msgstr "Wow! 100 posts!"
+#. translators: %1$dx%2$dpx is the size of the failed image (width x height)
+#: src/ParseFormFields.php:452
+msgid "Post image must be at least 250x250px. Selected image is %1$dx%2$dpx"
+msgstr "Afbeelding moet tenminste 250x250px zijn. Huidige afbeelding is: %1$dx%2$dpx"
+
+#: src/Metabox/PostCreationMetabox.php:335
+msgid "Invalid post ID"
+msgstr "Ongeldige post ID"
 
 #: src/Subscriber/ConditionalNotificationSubscriber.php:119
 msgid ""
@@ -1147,548 +976,1058 @@ msgstr ""
 "%5$s\n"
 "%6$s"
 
-#: src/Subscriber/ConditionalNotificationSubscriber.php:150
-msgid "Getting started with Post to Google My Business"
-msgstr "Beginnen met Post op Google Mijn Bedrijf"
+#: src/Subscriber/ConditionalNotificationSubscriber.php:117
+msgid "Wow! 100 posts!"
+msgstr "Wow! 100 posts!"
 
-#: src/Subscriber/ConditionalNotificationSubscriber.php:152
+#: src/Subscriber/ConditionalNotificationSubscriber.php:101
 msgid ""
 "Hi %1$s,\n"
 "\n"
-"Thanks for installing Post to Google My Business! To get started, connect the plugin to your Google account on the %4$s.\n"
+"I hope you find my GMB plugin useful! I noticed you've already created 28 GMB posts with it.\n"
 "\n"
-"Need help? Check out the %2$s\n"
+"If you like the plugin and have a moment to leave a 5-star rating on the %2$s, that really helps boost my motivation!\n"
 "\n"
-"%3$s"
+"Thanks!\n"
+"\n"
+"%3$s\n"
+"\n"
+"%4$s\n"
+"%5$s\n"
+"%6$s"
 msgstr ""
 "Hoi %1$s,\n"
 "\n"
-"Bedankt voor het installeren van Post op Google Mijn Bedrijf! Om te beginnen, verbind je Google Account met de plugin op het %4$s.\n"
+"Ik hoop dat je mijn plugin handig vindt! Ik zag dat je er zojuist je 28e post mee gemaakt hebt.\n"
 "\n"
+"Als je de plugin goed vindt en een momentje hebt om een 5-sterren beoordeling achter te laten op de %2$s? Dat geeft me echt een motivatieboost! \n"
 "\n"
-"Hulp nodig? Check de %2$s\n"
+"Alvast bedankt!\n"
 "\n"
-"%3$s"
+"%3$s\n"
+"\n"
+"%4$s\n"
+"%5$s\n"
+"%6$s"
+
+#: src/Subscriber/ConditionalNotificationSubscriber.php:99
+msgid "28 posts! Awesome"
+msgstr "28 posts! Geweldig"
+
+#: src/Subscriber/ConditionalNotificationSubscriber.php:83
+msgid ""
+"Hey %1$s,\n"
+"\n"
+"I noticed you've just created your 7th GMB post through my plugin, awesome!\n"
+"\n"
+"If you like the plugin and have a moment to leave a 5-star rating on the %2$s, that really helps spread the word and move the development forwards!\n"
+"\n"
+"%3$s\n"
+"\n"
+"%4$s\n"
+"%5$s\n"
+"%6$s"
+msgstr ""
+"Hey %1$s,\n"
+"\n"
+"Ik zag dat je zojuist je 7e post hebt aangemaakt met mijn plugin, top!\n"
+"\n"
+"Als je de plugin goed vindt en een momentje hebt om een 5-sterren beoordeling achter te laten op de %2$s, zou dat onwijs helpen om de plugin te laten groeien en de ontwikkeling te versnellen!\n"
+"\n"
+"%3$s\n"
+"\n"
+"%4$s\n"
+"%5$s\n"
+"%6$s"
+
+#: src/Subscriber/ConditionalNotificationSubscriber.php:81
+msgid "7 posts!"
+msgstr "7 posts!"
+
+#: src/Subscriber/ConditionalNotificationSubscriber.php:68
+msgid "I already did"
+msgstr "Heb ik al gedaan"
+
+#: src/Subscriber/ConditionalNotificationSubscriber.php:63
+msgid "Maybe later"
+msgstr "Misschien later"
+
+#: src/Subscriber/ConditionalNotificationSubscriber.php:58
+msgid "Ok, you deserve it"
+msgstr "Ok, je verdient 't"
+
+#: src/Subscriber/ConditionalNotificationSubscriber.php:46
+msgid "WordPress Repository"
+msgstr "WordPress Repository"
+
+#: src/Subscriber/ConditionalNotificationSubscriber.php:75
+#: src/Subscriber/ConditionalNotificationSubscriber.php:167
+#: src/Upgrader/Upgrade_2_2_11.php:50
+#: src/Upgrader/Upgrade_3_0_0.php:318
+#: src/Upgrader/Upgrade_3_1_6.php:49
+msgid "Developer profile photo"
+msgstr "Foto van de ontwikkelaar"
+
+#: src/Subscriber/ConditionalNotificationSubscriber.php:52
+#: src/Subscriber/ConditionalNotificationSubscriber.php:162
+#: src/Upgrader/Upgrade_2_2_11.php:46
+#: src/Upgrader/Upgrade_3_0_0.php:314
+#: src/Upgrader/Upgrade_3_1_6.php:45
+msgid "Plugin Developer"
+msgstr "Ontwikkelaar van de plugin"
 
 #: src/Subscriber/ConditionalNotificationSubscriber.php:157
 msgid "tutorial video"
 msgstr "tutorial video"
 
-#: src/Upgrader/Upgrade_2_2_11.php:34
-#: src/Upgrader/Upgrade_3_0_0.php:301
-msgid "Thanks for updating Post to Google My Business!"
-msgstr "Bedankt voor het updaten van Post op Google Mijn Bedrijf!"
+#: src/Subscriber/ConditionalNotificationSubscriber.php:150
+msgid "Getting started with Post to Google My Business"
+msgstr "Beginnen met Post op Google Mijn Bedrijf"
 
-#: src/Upgrader/Upgrade_2_2_11.php:36
-msgid ""
-"Hi %1$s,\n"
-"\n"
-"Thanks for updating Post to Google My Business to the latest version. I've added this new dashboard section, check out the new features section below!\n"
-"\n"
-"If you're enjoying the plugin and have a moment to %2$s, that's really appreciated and really helps me move the plugin forward.\n"
-"\n"
-"%3$s"
-msgstr ""
-"Hoi %1$s,\n"
-"\n"
-"Bedankt voor het updaten van Post op Google Mijn Bedrijf naar de nieuwste versie. Ik heb dit nieuwe dashboard toegevoegd, check ook de nieuwe functies hieronder!\n"
-"\n"
-"Als je deze plugin top vindt en een momentje hebt om %2$s, dat zou ik heel erg waarderen en helpt me onwijs om de plugin verder te ontwikkelen.\n"
-"\n"
-"%3$s"
+#: src/Admin/DashboardPage.php:87
+#: src/Admin/DashboardPage.php:102
+msgid "Dismiss this notice."
+msgstr "Melding wissen."
 
-#: src/Upgrader/Upgrade_2_2_11.php:41
-#: src/Upgrader/Upgrade_3_0_0.php:308
-msgid "leave a rating"
-msgstr "een review achter te laten"
+#. translators: %s is a red notification bullet with the amount of
+#. notifications
+#: src/Subscriber/AdminPageSubscriber.php:63
+msgid "Post to GMB %s"
+msgstr "Post op GMB %s"
 
-#: src/Upgrader/Upgrade_2_2_11.php:57
-msgid "[Pro] Auto-post only with specific tag/category"
-msgstr "[Pro] Automatisch posten met een bepaalde tag/categorie"
+#: src/Admin/AdminPage.php:132
+msgid "Default template"
+msgstr "Standaard template"
 
-#: src/Upgrader/Upgrade_2_2_11.php:58
-msgid "This allows you to limit auto-post to a specific tag or category. Your post will be auto-posted when they have a tag/category where this option is enabled."
-msgstr "Hiermee kun je het automatisch posten koppelen aan een specifieke tag of categorie. Je post zal automatisch worden gepost wanneer ze een categorie of tag hebben waar deze optie is ingeschakeld."
-
-#: src/Upgrader/Upgrade_2_2_11.php:60
-#: src/Upgrader/Upgrade_2_2_11.php:70
-#: src/Upgrader/Upgrade_2_2_11.php:80
-#: src/Upgrader/Upgrade_2_2_11.php:90
-msgid "Screenshot"
-msgstr "Schermafbeelding"
-
-#: src/Upgrader/Upgrade_2_2_11.php:67
-msgid "Post calendar"
-msgstr "Post kalender"
-
-#: src/Upgrader/Upgrade_2_2_11.php:68
-msgid "Track your posts in time with the new post calender. For easy scheduling and planning."
-msgstr "Hiermee kun je bijhouden wanneer je berichten geplaatst zijn of moeten worden. Voor gemakkelijk plannen."
-
-#: src/Upgrader/Upgrade_2_2_11.php:77
-msgid "Full editor for auto-post template"
-msgstr "Volledige editor voor het auto-post template"
-
-#: src/Upgrader/Upgrade_2_2_11.php:78
-msgid "Fine-tune one template for all your automated posts to follow.  The new editor gives you complete control over the auto-post template."
-msgstr "Fine-tune het template dat je geautomatiseerde posts moeten volgen. De nieuwe editor geeft je volledige controle over het auto-post template."
-
-#: src/Upgrader/Upgrade_2_2_11.php:87
-msgid "COVID-19 alert/update post support"
-msgstr "COVID-19 waarschuwing/update post ondersteuning"
-
-#: src/Upgrader/Upgrade_2_2_11.php:88
-msgid "A very effective way to keep your customers up-to-date on any changes to your business due to the corona virus (COVID-19)"
-msgstr "Een effectieve manier om je klanten up-to-date de houden over hoe jouw bedrijf omgaat met het coronavirus (COVID-19)"
-
-#: src/Upgrader/Upgrade_3_0_0.php:74
-msgid "Thanks for updating Post to Google My Business! Due to major changes in the Google account management system, re-authenticating might be required. Check the %s and reconnect your account if needed."
-msgstr "Bedankt voor het updaten van Post op Google Mijn Bedrijf! Door grote wijzigingen in het Google-accountmanagementsysteem is het misschien nodig om opnieuw te authentiseren. Controleer de %s en verbind opnieuw als dit nodig is."
-
-#: src/Upgrader/Upgrade_3_0_0.php:250
-msgid "[Agency] Multi-account support"
-msgstr "[Agency] Multi-account ondersteuning"
-
-#: src/Upgrader/Upgrade_3_0_0.php:251
-msgid "Connect multiple Google accounts to a single site, and publish posts across multiple GBP locations & Google accounts in one go."
-msgstr "Verbind meerdere Google accounts aan een site, en publiceer berichten over meerdere GBP locaties & Google accounts in één actie."
-
-#: src/Upgrader/Upgrade_3_0_0.php:260
-msgid "[Pro] Evergreen content"
-msgstr "[Pro] Groenblijvende content"
-
-#: src/Upgrader/Upgrade_3_0_0.php:261
-msgid "Select your pre-existing content in bulk and have the plugin automatically publish random items from your selection at a schedule you define"
-msgstr "Selecteer je bestaande content in bulk en laat de plugin automatisch willekeurige items uit je selectie publiceren op een door jou ingesteld tijdschema"
-
-#: src/Upgrader/Upgrade_3_0_0.php:270
-msgid "[Pro] Multiple auto-post templates"
-msgstr "[Pro] Meerdere auto-post sjablonen aanmaken"
-
-#: src/Upgrader/Upgrade_3_0_0.php:271
-msgid "Instead of one generic auto-post template, you can now create multiple templates for different occasions."
-msgstr "In plaats van één algemeen auto-post template, kun je nu meerdere templates aanmaken voor verschillende gelegenheden."
-
-#: src/Upgrader/Upgrade_3_0_0.php:280
-msgid "[All Premium] Product support"
-msgstr "[Alle Premium] Product ondersteuning"
-
-#: src/Upgrader/Upgrade_3_0_0.php:281
-msgid "Publish your latest (WooCommerce) products to your GBP listing. The plugin now supports \"real\" products in GBP!"
-msgstr "Publiceer je nieuwste (WooCommerce) producten naar je GBP vermelding. De plugin ondersteunt nu \"echte\" producten in GBP!"
-
-#: src/Upgrader/Upgrade_3_0_0.php:290
-msgid "Bulk actions & Pagination"
-msgstr "Bulk acties & Paginering"
-
-#: src/Upgrader/Upgrade_3_0_0.php:291
-msgid "The post list is now cleaner, faster & more versatile with the newly added pagination and bulk actions."
-msgstr "De postlijst is nu netter, sneller & veelzijdiger dankzij de nieuw toegevoegde paginering en bulk acties."
-
-#: src/Upgrader/Upgrade_3_0_0.php:303
-msgid ""
-"Hey %1$s,\n"
-"\n"
-"Thanks for updating Post to Google My Business to version 3, the \"big update\"! The plugin received a massive overhaul from a technical standpoint, making it faster, more stable & more intuitive.\n"
-"\n"
-"I've also added a ton of features that you've all been asking for. I've highlighted the major ones in the \"New features\" section, which you can check out below!\n"
-"\n"
-"If you like the plugin and have a moment to %2$s, that's much appreciated and really helps me move the plugin forward.\n"
-"\n"
-"%3$s"
-msgstr ""
-"Hoi %1$s,\n"
-"\n"
-"Bedankt voor het updaten van Post op Google Mijn Bedrijf naar versie 3, de \"grote update\"! De plugin heeft een grondige verbouwing gehad vanuit een technisch standpunt, waardoor hij sneller, stabieler en intuïtiever is.\n"
-"\n"
-"Ik heb ook onwijs veel nieuwe functies toegevoegd waar jullie allemaal om gevraagd hebben. De belangrijkste heb ik hieronder in de \"Nieuwe features\" sectie geplaatst!\n"
-"\n"
-"Als je de plugin tof vindt en een moment hebt om %2$s, dan waardeer ik dat enorm en helpt het me om de plugin verder te ontwikkelen.\n"
-"\n"
-"%3$s"
-
-#: src/Vendor/WeDevsSettingsAPI.php:372
-msgid "Choose File"
-msgstr "Kies Bestand"
-
-#: templates/admin/autopost_template.php:7
-msgid "Multiple auto-post templates are a Post to Google My Business \"Professional\" feature"
-msgstr "Meerdere auto-post templates zijn een \"Pro\" feature van Post op Google Mijn Bedrijf"
-
-#: templates/admin/autopost_template.php:9
-msgid "You can modify the default auto-post template in %s."
-msgstr "Je kunt het standaard auto-post sjabloon aanpassen in %s."
-
-#: templates/admin/autopost_template.php:11
-#: templates/admin/postcampaigns.php:3
-msgid "Post campaigns screenshot"
-msgstr "Post campagnes screenshot"
-
-#: templates/admin/autopost_template.php:13
-msgid "Post to Google my Business Professional lets you:"
-msgstr "Post op Google Mijn Bedrijf Professional laat je:"
-
-#: templates/admin/autopost_template.php:15
-msgid "Create multiple auto-post templates for different types of content"
-msgstr "Meerdere auto-post sjablonen aanmaken voor verschillende soorten content"
-
-#: templates/admin/autopost_template.php:16
-msgid "Assign auto-post templates to specific post types"
-msgstr "Auto-post sjablonen koppelen aan specifieke post types"
-
-#: templates/admin/autopost_template.php:17
-msgid "Pick an auto-post template before publishing"
-msgstr "Een auto-post template kiezen vóór het publiceren"
-
-#: templates/admin/autopost_template.php:18
-msgid "Publish posts to multiple locations at once"
-msgstr "Posts op meerdere locaties tegelijk publiceren"
-
-#: templates/admin/dashboard.php:7
-msgid "Post to Google My Business dashboard"
-msgstr "Post op Google Mijn Bedrijf dashboard"
-
-#: templates/admin/dashboard.php:11
-msgid "Notifications (%s)"
-msgstr "Meldingen (%s)"
-
-#: templates/admin/dashboard.php:23
-msgid "New features (%s)"
-msgstr "Nieuwe functies (%s)"
-
-#: templates/admin/dashboard.php:41
+#: templates/admin/dashboard.php:54
 msgid "Calendar"
 msgstr "Kalender"
 
-#: templates/admin/postcampaigns.php:2
-msgid "Post Campaigns are a Post to Google My Business \"Agency\" feature"
-msgstr "Post campagnes zijn een Post op Google Mijn Bedrijf \"Agency\" functie"
+#. translators: %s is the amount of new features (count) in a styled html
+#. component
+#: templates/admin/dashboard.php:33
+msgid "New features (%s)"
+msgstr "Nieuwe functies (%s)"
 
-#: templates/admin/postcampaigns.php:4
-msgid "Manage & schedule your own, or your clients' Google My Business posts from a single location, without being tied to a specific WordPress post or page."
-msgstr "Beheer & plan Google Mijn Bedrijf berichten voor jezelf of voor je klanten vanuit één locatie, zonder vast te zitten aan een specifiek WordPress bericht of pagina."
+#. translators: %s is the amount of notifications in a styled html component
+#: templates/admin/dashboard.php:15
+msgid "Notifications (%s)"
+msgstr "Meldingen (%s)"
 
-#: templates/admin/postcampaigns.php:6
-msgid "Post to Google my Business for Agencies lets you:"
-msgstr "Post op Google Mijn Bedrijf voor Agencies laat je:"
+#: src/Components/GooglePostEntityListTable.php:129
+msgid "Unknown"
+msgstr "Onbekend"
 
-#: templates/admin/postcampaigns.php:8
-#: templates/admin/settings.php:23
-msgid "Connect <strong>multiple</strong> Google accounts to a single website"
-msgstr "Verbind <strong>meerdere</strong> Google accounts aan één website"
+#: src/Metabox/PostCreationMetabox.php:286
+msgid "Auto-post template successfully updated"
+msgstr "Auto-post template succesvol aangepast"
 
-#: templates/admin/postcampaigns.php:9
-#: templates/admin/settings.php:24
-msgid "Assign accounts & GMB locations to specific WordPress users (and hide others)"
-msgstr "Koppel accounts & locaties aan specifieke WordPress gebruikers (en verberg andere)"
+#: src/Metabox/PostCreationMetabox.php:268
+msgid "Error creating post: %s"
+msgstr "Error aanmaken post: %s"
 
-#: templates/admin/postcampaigns.php:10
-#: templates/admin/settings.php:25
-msgid "Let your users add &amp; manage their own Google accounts"
-msgstr "Laat je gebruikers hun eigen Google accounts toevoegen &amp; beheren"
+#: src/Components/SubPostListTable.php:281
+msgid "Draft"
+msgstr "Concept"
 
-#: templates/admin/posteditor.php:47
-msgid "Products are a Post to Google My Business Premium feature"
-msgstr "Producten zijn een Premium functie van Post op Google Mijn Bedrijf"
+#. translators: %s = human-readable time difference
+#: src/Components/SubPostListTable.php:284
+msgctxt "%s = human-readable time difference"
+msgid "%s ago"
+msgstr "%s geleden"
 
-#: templates/admin/posteditor.php:49
-msgid "Because products require a proprietary authentication method, they are not available in the free version of the plugin. Upgrade to <strong>any</strong> of the Premium versions of Post to Google My Business to (automatically) publish your products to your Google Business Profile."
-msgstr "Omdat voor producten een andere manier van authenticatie nodig is, is deze functie niet beschikbaar in de gratis versie van de plugin. Update naar <strong>een van de</strong> Premium versies van Post op Google Mijn Bedrijf om (automatisch) je berichten op je Google bedrijfsprofiel te publiceren."
+#: src/Components/SubPostListTable.php:218
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:168
+msgid "List created posts"
+msgstr "Laat aangemaakte posts zien"
 
-#: templates/admin/posteditor.php:60
-msgid "Post image/video"
-msgstr "Post afbeelding/video"
+#: src/Components/SubPostListTable.php:233
+msgid "Repost enabled"
+msgstr "Repost ingeschakeld"
 
-#: templates/admin/posteditor.php:69
-msgid "JPG or PNG, 720x540px minimum size"
-msgstr "JPG of PNG, 720x540px minimum afmeting"
+#: src/Admin/AdminPage.php:128
+msgid "The Auto-post checkbox will be checked by default, and your WordPress posts will be automatically published to GMB, unless you uncheck it."
+msgstr "Auto-post staat standaard aangevinkt, en je berichten worden automatisch op GMB geplaatst, tenzij je het vinkje uit zet."
 
-#: templates/admin/posteditor.php:75
-msgid "Post text"
-msgstr "Post tekst"
+#: src/Components/GooglePostEntityListTable.php:46
+msgid "Status"
+msgstr "Status"
 
-#: templates/admin/posteditor.php:82
-#: templates/admin/posteditor.php:247
-msgid "Characters:"
-msgstr "Karakters:"
+#: src/Components/GooglePostEntityListTable.php:45
+msgid "Location"
+msgstr "Locatie"
 
-#: templates/admin/posteditor.php:84
-#: templates/admin/posteditor.php:249
-msgid "Word count:"
-msgstr "Woordentelling:"
+#: src/Components/SubPostListTable.php:70
+msgid "Publish date"
+msgstr "Publicatiedatum"
 
-#: templates/admin/posteditor.php:87
-msgid "The text that should appear on your post. Recommended 150-300 characters. 80 characters show in the Google Search results. 1500 characters maximum."
-msgstr "De tekst voor je post. 150-300 karakters is aanbevolen. 80 karakters zijn zichtbaar in de zoekresultaten. 1500 karakters maximaal."
-
-#: templates/admin/posteditor.php:95
-msgid "Event title"
-msgstr "Evenement titel"
-
-#: templates/admin/posteditor.php:106
-msgid "All day event (time will be ignored)"
-msgstr "Evenement is hele dag (tijd wordt genegeerd)"
-
-#: templates/admin/posteditor.php:111
-msgid "Start date"
-msgstr "Startdatum"
-
-#: templates/admin/posteditor.php:123
-msgid "End date"
-msgstr "Einddatum"
-
-#: templates/admin/posteditor.php:138
-msgid "Offer title"
-msgstr "Titel aanbieding"
-
-#: templates/admin/posteditor.php:145
-msgid "Example: 20% off in store or online"
-msgstr "Voorbeeld: 20% korting in de winkel of online"
-
-#: templates/admin/posteditor.php:150
-msgid "Coupon code (optional)"
-msgstr "Kortingscode (optioneel)"
-
-#: templates/admin/posteditor.php:160
-msgid "Link to redeem offer (optional)"
-msgstr "Link om aanbieding in te wisselen (optioneel)"
-
-#: templates/admin/posteditor.php:170
-msgid "Terms and conditions (optional)"
-msgstr "Algemene voorwaarden (optioneel)"
-
-#: templates/admin/posteditor.php:200
-msgid "Product name"
-msgstr "Product naam"
-
-#: templates/admin/posteditor.php:202
-msgid "Product Name"
-msgstr "Product Naam"
-
-#: templates/admin/posteditor.php:206
-msgid "Category"
-msgstr "Categorie"
-
-#: templates/admin/posteditor.php:209
-msgid "Custom"
-msgstr "Aangepast"
-
-#: templates/admin/posteditor.php:210
-msgid "Use WordPress/WooCommerce parent category name"
-msgstr "Gebruik WordPress/WooCommerce bovenliggende categorienaam"
-
-#: templates/admin/posteditor.php:214
-msgid "Custom category..."
-msgstr "Aangepaste categorie..."
-
-#: templates/admin/posteditor.php:224
-msgid "Max"
-msgstr "Max"
-
-#: templates/admin/posteditor.php:227
-msgid "Range"
-msgstr "Prijsbereik"
-
-#: templates/admin/posteditor.php:228
-msgid "Format: 123.45"
-msgstr "Formaat: 123.45"
-
-#: templates/admin/posteditor.php:243
-msgid "Product description"
-msgstr "Product omschrijving"
-
-#: templates/admin/posteditor.php:251
-msgid "Description for the product. 1000 characters maximum."
-msgstr "Omschrijving voor het product. Maximaal 1000 karakters."
-
-#: templates/admin/posteditor.php:260
-msgid "Button"
-msgstr "Knop"
-
-#: templates/admin/posteditor.php:265
-msgid "Add a button"
-msgstr "Voeg een knop toe"
-
-#: templates/admin/posteditor.php:272
-msgid "Book"
-msgstr "Reserveren"
-
-#: templates/admin/posteditor.php:276
-msgid "Order"
-msgstr "Bestellen"
-
-#: templates/admin/posteditor.php:280
-msgid "Shop"
-msgstr "Online bestellen"
-
-#: templates/admin/posteditor.php:288
-msgid "Sign up"
-msgstr "Registreren"
-
-#: templates/admin/posteditor.php:292
-msgid "Call now (uses primary phone number of business)"
-msgstr "Bel nu (Primaire telefoonnummer van bedrijf)"
-
-#: templates/admin/posteditor.php:295
-msgid "The text that should appear on your button"
-msgstr "De tekst die op je knop moet verschijnen"
-
-#: templates/admin/posteditor.php:304
-msgid "Optional. Where the user should go when clicking the button. Leave at default to send them to your newly created WordPress post."
-msgstr "Optioneel. Waar de bezoeker heengaat als deze op de knop drukt. Laat op de standaard waarde staan om ze naar je nieuwe WordPress post toe te sturen."
-
-#: templates/admin/posteditor.php:313
-msgid "Advanced post settings"
-msgstr "Geavanceerde post instellingen"
-
-#: templates/admin/posteditor.php:324
-msgid "Image settings"
-msgstr "Afbeelding instellingen"
-
-#: templates/admin/posteditor.php:330
-msgid "Fetch image from post content"
-msgstr "Afbeelding uit post inhoud ophalen"
-
-#: templates/admin/posteditor.php:333
-msgid "Try to get an image from the post content (when no custom image is set). This takes priority over the featured image."
-msgstr "Probeer een afbeelding uit de post inhoud op te halen (als er geen handmatige afbeelding ingesteld is). Dit heeft voorrang op de Uitgelichte afbeelding."
-
-#: templates/admin/posteditor.php:337
-msgid "Use Featured Image as GMB post image"
-msgstr "Gebruik Uitgelichte afbeelding als GMB post afbeelding"
-
-#: templates/admin/posteditor.php:340
+#: templates/admin/posteditor.php:521
 msgid "Use the Featured Image as GMB Post image (when no custom image is set)"
 msgstr "Gebruik de uitgelichte afbeelding als GMB post afbeelding (als er geen post afbeelding ingesteld is)"
 
-#: templates/admin/posteditor.php:345
-msgid "Links"
-msgstr "Links"
+#: templates/admin/posteditor.php:516
+msgid "Use Featured Image as GMB post image"
+msgstr "Gebruik Uitgelichte afbeelding als GMB post afbeelding"
 
-#: templates/admin/posteditor.php:351
-msgid "Hide"
-msgstr "Verbergen"
+#: templates/admin/posteditor.php:506
+msgid "Try to get an image from the post content (when no custom image is set). This takes priority over the featured image."
+msgstr "Probeer een afbeelding uit de post inhoud op te halen (als er geen handmatige afbeelding ingesteld is). Dit heeft voorrang op de Uitgelichte afbeelding."
 
-#: templates/admin/posteditor.php:356
-msgid "Inline"
-msgstr "In lijn"
+#: templates/admin/posteditor.php:501
+msgid "Fetch image from post content"
+msgstr "Afbeelding uit post inhoud ophalen"
 
-#: templates/admin/posteditor.php:361
-msgid "Next line"
-msgstr "Volgende regel"
+#: templates/admin/posteditor.php:489
+msgid "Image settings"
+msgstr "Afbeelding instellingen"
 
-#: templates/admin/posteditor.php:366
-msgid "Table of links (at the end of the post)"
-msgstr "Tabel met links (aan einde van de post)"
+#: templates/metabox.php:9
+msgid "Edit auto-post template"
+msgstr "Bewerk auto-post sjabloon"
 
-#: templates/admin/posteditor.php:369
-msgid "How the plugin should handle links in the content (when using %post_content%)"
-msgstr "Hoe de plugin links in de tekst moet behandelen (wanneer %post_content% wordt gebruikt)"
+#: src/Google/TimeInterval.php:47
+msgid "End date is before start date"
+msgstr "Einddatum komt vóór de startdatum"
 
-#: templates/admin/posteditor.php:377
-msgid "Schedule your Google My Business posts, automatically repost them at specified interval, and pick one or more locations to post to. And many more features!"
-msgstr "Plan je Google Mijn Bedrijf posts in, repost ze automatisch op bepaalde interval, en kies één of meerdere locaties om naar te posten. En nog veel meer functies!"
+#: src/Google/Date.php:62
+msgid "Day must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by itself or a year and month where the day is not significant. "
+msgstr "Dag moet tussen 1 en 31 zijn en geldig voor het jaar en de maand, of 0 als er alleen een jaar wordt opgegeven, of een jaar en maand waarbij de dag niet belangrijk is. "
 
-#: templates/admin/posteditor.php:380
-msgid "Upgrade now!"
-msgstr "Upgrade nu!"
+#: src/Google/Date.php:52
+msgid "Month must be from 1 to 12, or 0 if specifying a year without a month and day. "
+msgstr "Maand moet tussen 1 en 12 zijn, of 0 als er een jaartal wordt opgegeven zonder maand en dag. "
 
-#: templates/admin/posteditor.php:405
-msgid "When the post should be first published"
-msgstr "Wanneer de post voor het eerst gepubliceerd moet worden"
+#: src/Google/Date.php:42
+msgid "Year must be from 1 to 9999, or 0 if specifying a date without a year."
+msgstr "Jaar moet van 1 tot 9999 zijn, of 0 als er een datum zonder jaar wordt opgegeven."
 
-#: templates/admin/posteditor.php:417
-msgid "Automatic repost"
-msgstr "Automatische repost"
+#: src/Google/CallToAction.php:41
+msgid "Invalid URL supplied for call to action"
+msgstr "Ongeldige URL opgegeven voor call to action"
 
-#: templates/admin/posteditor.php:427
-msgid "Stop after"
-msgstr "Stop na"
+#: src/Google/CallToAction.php:29
+msgid "Invalid call to action"
+msgstr "Ongeldige call-to-action"
 
-#: templates/admin/posteditor.php:431
-msgid "Never"
-msgstr "Nooit"
+#: src/Google/TimeOfDay.php:41
+msgid "Nanos should be between 0 and 999,999,999"
+msgstr "Nanos moeten tussen 0 en 999,999,999 zijn"
 
-#: templates/admin/posteditor.php:433
-msgid "Date"
-msgstr "Datum"
+#: src/Google/TimeOfDay.php:34
+msgid "Seconds should be between 0 and 59"
+msgstr "Seconden moeten tussen 0 en 59 zijn"
 
-#: templates/admin/posteditor.php:435
-msgid "Executions"
-msgstr "Uitvoeringen"
+#: src/Google/TimeOfDay.php:27
+msgid "Minutes should be between 0 and 59"
+msgstr "Minuten moeten tussen 0 en 59 zijn"
 
-#: templates/admin/posteditor.php:448
-msgid "executions"
-msgstr "uitvoeringen"
+#: src/Google/TimeOfDay.php:20
+msgid "Hour should be from 0 to 23"
+msgstr "Uren moeten tussen 0 en 23 zijn"
 
-#: templates/admin/posteditor.php:457
-msgid "Post to location(s)"
-msgstr "Plaatsen op locatie(s)"
+#: src/Google/LocalPostOffer.php:21
+msgid "Offer redeem online URL is invalid"
+msgstr "De URL voor de link om de aanbieding in te wisselen is ongeldig"
 
-#: templates/admin/posteditor.php:482
-msgid "Cancel"
-msgstr "Annuleren"
+#: src/Google/LocalPost.php:142
+msgid "Post text should be between 1 and 1500 characters"
+msgstr "Post tekst moet tussen 1 en 1500 karakters zijn"
 
-#: templates/admin/posteditor.php:488
-msgid "Publish Now"
-msgstr "Nu publiceren"
+#: src/Google/LocalPost.php:73
+msgid "Invalid Topic type"
+msgstr "Ongeldige Topictype"
 
-#: templates/admin/settings.php:7
-msgid "Thanks for choosing Post to Google My Business! The easiest and most versatile Google My Business plugin for WordPress."
-msgstr "Bedankt dat je hebt gekozen voor Post op Google Mijn Bedrijf. De simpelste en meest veelzijdige Google Mijn Bedrijf plugin voor WordPress."
+#: src/Google/MediaItem.php:33
+msgid "Invalid media URL"
+msgstr "Ongeldige media URL"
+
+#: src/Google/MediaItem.php:23
+msgid "Invalid media format"
+msgstr "Ongeldig media formaat"
+
+#: src/Google/AbstractGoogleJsonObject.php:29
+msgid "Unknown property"
+msgstr "Onbekende waarde"
+
+#: src/Components/BusinessSelector.php:309
+msgid "Search/Filter locations..."
+msgstr "Zoek/Filter locaties..."
+
+#: src/Components/BusinessSelector.php:303
+msgid "Learn more..."
+msgstr "Meer informatie..."
+
+#: src/Components/BusinessSelector.php:302
+msgid "It means the location is blocked from using the LocalPostAPI, and can't be posted to using the plugin."
+msgstr "Dit betekend dat de locatie geblokkeerd is van de LocalPostAPI, en geen gebruik kan maken van de plugin."
+
+#: src/Components/BusinessSelector.php:301
+msgid "Location grayed out?"
+msgstr "Locatie in het grijs?"
+
+#: src/Metabox/PostCreationMetabox.php:165
+msgid "(Connect, pick a default location and Save Changes)"
+msgstr "(Verbinden, kies een standaard locatie en sla op)"
+
+#: src/Admin/AdminPage.php:103
+msgid "Post type settings"
+msgstr "Post type instellingen"
+
+#: templates/admin/posteditor.php:90
+msgid "Products are a Post to Google My Business Premium feature"
+msgstr "Producten zijn een Premium functie van Post op Google Mijn Bedrijf"
+
+#: src/Admin/AdminPage.php:99
+msgid "Auto-post settings"
+msgstr "Auto-post instellingen"
 
 #: templates/admin/settings.php:8
 msgid "Need help getting started? Check out the <a target=\"_blank\" href=\"https://tycoonmedia.net/gmb-tutorial-video/\">tutorial video</a>"
 msgstr "Hulp nodig om te starten? Check de <a target=\"_blank\" href=\"https://tycoonmedia.net/gmb-tutorial-video/\">tutorial video (Engels)</a>"
 
-#: templates/admin/settings.php:19
-msgid ""
-"Upgrade to the <strong>Agency</strong> plan of <i>Post to Google My Business</i>\r\n"
-"            to handle multiple Google accounts within a single installation of the plugin. With Post to Google My Business for Agencies, you can:"
-msgstr ""
-"Upgrade naar het <strong>Agency</strong> pakket van <i>Post op Google Mijn Bedrijf</i>\r\n"
-"om meerdere Google accounts binnen een enkele installatie van de plugin te beheren. Met Post op Google Mijn Bedrijf voor marketingbureaus kun je:"
+#: templates/admin/settings.php:7
+msgid "Thanks for choosing Post to Google My Business! The easiest and most versatile Google My Business plugin for WordPress."
+msgstr "Bedankt dat je hebt gekozen voor Post op Google Mijn Bedrijf. De simpelste en meest veelzijdige Google Mijn Bedrijf plugin voor WordPress."
+
+#: templates/admin/posteditor.php:414
+msgid "Call now (uses primary phone number of business)"
+msgstr "Bel nu (Primaire telefoonnummer van bedrijf)"
+
+#: templates/admin/posteditor.php:184
+msgid "Word count:"
+msgstr "Woordentelling:"
+
+#: templates/admin/posteditor.php:180
+msgid "Characters:"
+msgstr "Karakters:"
+
+#: src/Components/BusinessSelector.php:310
+#: js/settings.js:1
+#: js/settings.js:3
+#: js_src/admin/components/BusinessSelector.js:546
+#: js_src/admin/components/BusinessSelector.js:555
+msgid "Refresh locations"
+msgstr "Locaties vernieuwen"
+
+#: templates/admin/posteditor.php:637
+msgid "Publish Now"
+msgstr "Nu publiceren"
+
+#: src/Admin/AdminPage.php:127
+msgid "Post to GMB by default"
+msgstr "Standaard op GMB plaatsen"
+
+#: templates/admin/posteditor.php:629
+#: js/metabox.js:1
+#: js_src/admin/metabox.js:363
+msgid "Save draft"
+msgstr "Concept opslaan"
+
+#: src/Plugin.php:220
+#: templates/admin/posteditor.php:28
+#: js/metabox.js:1
+#: js_src/admin/metabox.js:224
+msgid "Update"
+msgstr "Bijwerken"
+
+#: src/Components/SubPostListTable.php:71
+msgid "Created"
+msgstr "Aangemaakt"
+
+#: src/Components/SubPostListTable.php:69
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:119
+msgid "Post type"
+msgstr "Post type"
+
+#: templates/admin/posteditor.php:625
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: templates/admin/posteditor.php:599
+msgid "Upgrade now!"
+msgstr "Upgrade nu!"
+
+#: templates/admin/posteditor.php:592
+msgid "Schedule your Google My Business posts, automatically repost them at specified interval, and pick one or more locations to post to. And many more features!"
+msgstr "Plan je Google Mijn Bedrijf posts in, repost ze automatisch op bepaalde interval, en kies één of meerdere locaties om naar te posten. En nog veel meer functies!"
+
+#: templates/admin/posteditor.php:476
+msgid "Advanced post settings"
+msgstr "Geavanceerde post instellingen"
+
+#: templates/admin/posteditor.php:465
+msgid "Optional. Where the user should go when clicking the button. Leave at default (%post_permalink%) to send them to your newly created WordPress post."
+msgstr "Optioneel. Waar de bezoeker heengaat als deze op de knop drukt. Laat op de standaard waarde (%post_permalink%) staan om ze naar je nieuwe WordPress bericht toe te sturen."
+
+#: templates/admin/posteditor.php:320
+msgid "Terms and conditions (optional)"
+msgstr "Algemene voorwaarden (optioneel)"
+
+#: templates/admin/posteditor.php:304
+msgid "Link to redeem offer (optional)"
+msgstr "Link om aanbieding in te wisselen (optioneel)"
+
+#: templates/admin/posteditor.php:288
+msgid "Coupon code (optional)"
+msgstr "Kortingscode (optioneel)"
+
+#: templates/admin/posteditor.php:281
+msgid "Example: 20% off in store or online"
+msgstr "Voorbeeld: 20% korting in de winkel of online"
+
+#: templates/admin/posteditor.php:268
+msgid "Offer title"
+msgstr "Titel aanbieding"
+
+#: templates/admin/posteditor.php:247
+msgid "End date"
+msgstr "Einddatum"
+
+#: templates/admin/posteditor.php:229
+msgid "Start date"
+msgstr "Startdatum"
+
+#: templates/admin/posteditor.php:148
+msgid "Post image/video"
+msgstr "Post afbeelding/video"
 
 #: templates/metabox.php:10
 #: templates/metabox.php:13
 msgid "New GMB Post"
 msgstr "Nieuwe GMB Post"
 
-#. Plugin URI of the plugin/theme
-msgid "https://tycoonmedia.net"
-msgstr "https://tycoonmedia.net"
+#: src/Admin/AdminPage.php:314
+msgid "to use spintax and %variables% in your post text."
+msgstr "om spintax en %variabelen% te gebruiken in je post tekst."
 
-#. Description of the plugin/theme
-msgid "Automatically create a post on Google My Business when creating a new WordPress post"
-msgstr "Maak automatisch posts op Google Mijn Bedrijf wanneer je nieuwe WordPress posts maakt"
+#: src/Admin/AdminPage.php:311
+msgid "Create unique posts every time."
+msgstr "Maak steeds opnieuw unieke posts."
 
-#. Author of the plugin/theme
-msgid "Koen Reus"
-msgstr "Koen Reus"
+#: src/Admin/AdminPage.php:301
+msgid "to set custom intervals and specify the amount of reposts."
+msgstr "om een eigen interval en het aantal reposts in te stellen."
 
-#. Author URI of the plugin/theme
-msgid "https://koenreus.com"
-msgstr "https://koenreus.com"
+#: src/Admin/AdminPage.php:298
+msgid "Automatically repost your GMB posts a specific or unlimited amount of times."
+msgstr "Plaats je GMB posts automatisch een specifiek, of onbeperkt aantal keer opnieuw."
 
-#: src/Components/SubPostListTable.php:294
-msgctxt "%s = human-readable time difference"
-msgid "%s ago"
-msgstr "%s geleden"
+#: src/Admin/AdminPage.php:277
+msgid "Not the right time?"
+msgstr "Niet het juiste moment?"
 
-#: src/Subscriber/ConditionalNotificationSubscriber.php:144
-msgctxt "anchor text"
-msgid "Google tab in the plugin settings"
-msgstr "Google tab in de plugin instellingen"
+#: src/Admin/AdminPage.php:376
+msgid "Settings"
+msgstr "Instellingen"
 
-#: src/Upgrader/Upgrade_3_0_0.php:71
-msgctxt "anchor text"
-msgid "Google account settings"
-msgstr "Google account instellingen"
+#: templates/admin/posteditor.php:409
+msgid "Sign up"
+msgstr "Registreren"
 
-#: templates/admin/autopost_template.php:2
-msgctxt "Link to settings page"
-msgid "the auto-post settings"
-msgstr "de auto-post instellingen"
+#: templates/admin/posteditor.php:404
+msgid "Learn more"
+msgstr "Meer informatie"
+
+#: templates/admin/posteditor.php:389
+msgid "Book"
+msgstr "Reserveren"
+
+#: src/Admin/AdminPage.php:120
+msgid "Default location"
+msgstr "Standaard locatie"
+
+#: src/Admin/AdminPage.php:154
+msgid "Select the post-types where the GMB metabox should be displayed"
+msgstr "Selecteer de post-types waar de GMB metabox getoond moet worden"
+
+#: src/Admin/AdminPage.php:95
+msgid "Google settings"
+msgstr "Google instellingen"
+
+#: src/Components/GooglePostEntityListTable.php:57
+#: src/Components/SubPostListTable.php:128
+#: src/Components/SubPostListTable.php:221
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:173
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: src/Components/SubPostListTable.php:220
+msgid "Duplicate"
+msgstr "Dupliceren"
+
+#: src/Components/SubPostListTable.php:219
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:160
+msgid "Edit"
+msgstr "Bewerk"
+
+#: src/Metabox/PostCreationMetabox.php:324
+msgid "You do not have permission to delete posts"
+msgstr "Je hebt geen toestemming om berichten te verwijderen"
+
+#: src/Metabox/PostCreationMetabox.php:314
+msgid "Post could not be loaded"
+msgstr "Post kon niet worden geladen"
+
+#: src/Metabox/PostCreationMetabox.php:298
+msgid "You do not have permission to edit posts"
+msgstr "Je hebt geen toestemming om berichten aan te passen"
+
+#: src/Metabox/PostCreationMetabox.php:240
+msgid "You do not have permission to publish posts"
+msgstr "Je hebt geen toestemming om berichten te plaatsen"
+
+#: src/Plugin.php:235
+#: templates/admin/posteditor.php:43
+msgid "Product"
+msgstr "Product"
+
+#: src/Plugin.php:230
+#: templates/admin/posteditor.php:38
+msgid "Offer"
+msgstr "Aanbieding"
+
+#: src/Plugin.php:225
+#: templates/admin/posteditor.php:33
+msgid "Event"
+msgstr "Evenement"
+
+#: src/Metabox/PostCreationMetabox.php:163
+msgid "Please configure Post to Google My Business first"
+msgstr "Configureer Post op Google Mijn Bedrijf eerst"
+
+#: src/Vendor/WeDevsSettingsAPI.php:372
+msgid "Choose File"
+msgstr "Kies Bestand"
+
+#: src/Admin/AdminPage.php:372
+#: templates/admin/settings.php:5
+msgid "Post to Google My Business settings"
+msgstr "Post op Google Mijn Bedrijf instellingen"
+
+#: src/Admin/AdminPage.php:307
+msgid ". Many thanks! - Koen Reus, plugin developer"
+msgstr ". Onwijs bedankt! - Koen Reus, plugin ontwikkelaar"
+
+#: src/Admin/AdminPage.php:306
+msgid "5-star rating on WordPress.org"
+msgstr "5-sterren beoordeling op WordPress.org"
+
+#: src/Admin/AdminPage.php:305
+msgid "I hope you enjoy using my Post to Google My Business plugin! Help spread the word with a"
+msgstr "Ik hoop dat je mijn Post op Google Mijn Bedrijf plugin fijn vindt werken! Draag een steentje bij met een"
+
+#: src/Admin/AdminPage.php:294
+msgid "to enable Post to Google my Business for any post type."
+msgstr "om Post op Google Mijn Bedrijf in te schakelen voor elk post-type."
+
+#: src/Admin/AdminPage.php:291
+msgid "Use Post to Google My Business for your pages, projects, WooCommerce products and more."
+msgstr "Gebruik Post op Google Mijn Bedrijf voor je pagina's, projecten, WooCommerce producten en meer."
+
+#: src/Admin/AdminPage.php:287
+msgid "to view post statistics and easily include Google Analytics UTM parameters."
+msgstr "om post statistieken in te zien en Google Analytics UTM parameters toe te voegen."
+
+#: src/Admin/AdminPage.php:280
+msgid "and schedule your posts to be automagically published at a later time."
+msgstr "en plan je berichten in om automagisch op een later moment te publiceren."
+
+#: src/Admin/AdminPage.php:273
+msgid "to pick a location per post, or post to multiple locations at once."
+msgstr "om een locatie te kiezen per post, of naar meerdere locaties tegelijk te posten."
+
+#: src/Admin/AdminPage.php:270
+msgid "Manage multiple businesses or locations?"
+msgstr "Beheer je meerdere bedrijven of locaties?"
+
+#: src/Admin/AdminPage.php:272
+#: src/Admin/AdminPage.php:279
+#: src/Admin/AdminPage.php:286
+#: src/Admin/AdminPage.php:293
+#: src/Admin/AdminPage.php:300
+#: src/Admin/AdminPage.php:313
+msgid "Upgrade to Premium"
+msgstr "Upgrade naar Premium"
+
+#. translators: %s gets replaced by the link to the support page with available
+#. dynamic tags that can be used
+#: templates/admin/posteditor.php:192
+msgid "The text that should appear on your post. Recommended 150-300 characters. 80 characters show in the Google Search results. 1500 characters maximum. %s"
+msgstr "De tekst voor je post. 150-300 karakters is aanbevolen. 80 karakters zijn zichtbaar in de zoekresultaten. 1500 karakters maximaal. %s"
+
+#: templates/admin/posteditor.php:159
+msgid "JPG or PNG, 720x540px minimum size"
+msgstr "JPG of PNG, 720x540px minimum afmeting"
+
+#: templates/admin/posteditor.php:203
+msgid "Event title"
+msgstr "Evenement titel"
+
+#: templates/admin/posteditor.php:167
+msgid "Post text"
+msgstr "Post tekst"
+
+#: src/Metabox/PostCreationMetabox.php:365
+#: src/Notices/BrandedStickyNotice.php:9
+#: src/Subscriber/AdminPageSubscriber.php:61
+#: src/Subscriber/SiteHealthSubscriber.php:34
+msgid "Post to Google My Business"
+msgstr "Post op Google Mijn Bedrijf"
+
+#: src/Admin/AdminPage.php:381
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Je hebt niet de juiste permissies om toegang tot deze pagina te krijgen."
+
+#: src/Admin/AdminPage.php:206
+msgid "Not connected"
+msgstr "Niet verbonden"
+
+#: src/Admin/AdminPage.php:206
+msgid "Connected"
+msgstr "Verbonden"
+
+#: src/Components/BusinessSelector.php:347
+#: src/Components/BusinessSelector.php:364
+#: src/Components/BusinessSelector.php:401
+#: src/Subscriber/AuthenticationAdminPostSubscriber.php:88
+#: src/Subscriber/AuthenticationAdminPostSubscriber.php:123
+msgid "Invalid nonce"
+msgstr "Ongeldige nonce"
+
+#~ msgid "GMB Agency Client"
+#~ msgstr "GMB Bureau Klant"
+
+#~ msgid "Enable evergreen content"
+#~ msgstr "Groenblijvende content inschakelen"
+
+#~ msgid "Auto-publish random content -marked as evergreen- to GMB"
+#~ msgstr "Automatisch willekeurige -als groenblijvend gemarkeerde- content op GMB publiceren"
+
+#~ msgid "Evergreen by default"
+#~ msgstr "Standaard groenblijvend"
+
+#~ msgid "Automatically mark new content as evergreen (checks evergreen checkbox by default when enabled)"
+#~ msgstr "Automatisch nieuwe content als groenblijvend markeren (vinkt het \"Groenblijvend\" vinkje automatisch aan)"
+
+#~ msgid "Posting schedule"
+#~ msgstr "Publicatieschema"
+
+#~ msgid "Choose the interval at which the plugin will auto-post evergreen content"
+#~ msgstr "Kies de interval waarbij de plugin automatisch groenblijvende content publiceert"
+
+#~ msgid "Post type default template"
+#~ msgstr "Standaard post type template"
+
+#~ msgid "The chosen schedule is invalid"
+#~ msgstr "Het gekozen schema is ongeldig"
+
+#~ msgid "The chosen schedule is impossible, make sure it doesn't resolve to an impossible date such as the 30th of February."
+#~ msgstr "Het gekozen schema is onmogelijk, controleer of het niet resulteert in een onmogelijke datum zoals 30 februari."
+
+#~ msgid "Default auto-post template"
+#~ msgstr "Standaard auto-post sjabloon"
+
+#~ msgid "Untitled"
+#~ msgstr "Geen titel"
+
+#~ msgid "Manage Google account(s)"
+#~ msgstr "Google account(s) beheren"
+
+#~ msgid "See Google accounts added by other users"
+#~ msgstr "See Google accounts die door andere gebruikers zijn toegevoegd"
+
+#, fuzzy,php-format
+#~ msgid "Could not parse account data JSON: %s."
+#~ msgstr "Kon de locaties niet verwerken"
+
+#~ msgid "Invalid user key"
+#~ msgstr "Ongeldige gebruikerssleutel"
+
+#~ msgid "No cookies set for product creation"
+#~ msgstr "Geen cookies ingesteld voor het aanmaken van producten"
+
+#~ msgid "Image is required for Product"
+#~ msgstr "Afbeelding is verplicht voor Product"
+
+#~ msgid "Published"
+#~ msgstr "Gepubliceerd"
+
+#, php-format
+#~ msgid "Failed to create/update product: %s"
+#~ msgstr "Aanmaken/updaten product niet gelukt: %s"
+
+#, php-format
+#~ msgid "There recently has been an issue publishing a product to one of your GMB locations: %s."
+#~ msgstr "Er was recentelijk een probleem tijdens het publiceren van een product op een van je GMB locaties: %s."
+
+#, php-format
+#~ msgid "Failed to delete product from GMB: %s"
+#~ msgstr "Kon het product niet van GMB verwijderen: %s"
+
+#, fuzzy
+#~ msgid "Toggle selection"
+#~ msgstr "Google instellingen"
+
+#~ msgid "Update cookies"
+#~ msgstr "Cookies bijwerken"
+
+#~ msgid "Set cookies"
+#~ msgstr "Cookies instellen"
+
+#~ msgid "Disconnect account from this website"
+#~ msgstr "Verbinding met dit account verbreken"
+
+#~ msgid "Select all"
+#~ msgstr "Selecteer alle"
+
+#~ msgid "Select none"
+#~ msgstr "Selecteer geen"
+
+#~ msgid "To be able to create products on your Google Business Profile, you will need to enter additional cookie values."
+#~ msgstr "Om producten aan te kunnen maken op je Google Bedrijfsprofiel moet je extra cookiewaardes toevoegen."
+
+#~ msgid "Save"
+#~ msgstr "Opslaan"
+
+#, fuzzy
+#~ msgid "No permission to manage Google accounts"
+#~ msgstr "Geen toestemming om instellingen aan te passen"
+
+#, fuzzy
+#~ msgid "Invalid account ID"
+#~ msgstr "Ongeldige post ID"
+
+#, fuzzy,php-format
+#~ msgid "Could not connect to the Google account: %s"
+#~ msgstr "Kon het Google toegangstoken niet verifiëren: %s"
+
+#~ msgid "Product name can't be empty"
+#~ msgstr "Productnaam kan niet leeg zijn"
+
+#~ msgid "Invalid product price"
+#~ msgstr "Ongeldige productprijs"
+
+#~ msgid "Product category can't be empty"
+#~ msgstr "Productcategorie mag niet leeg zijn"
+
+#~ msgid "Max price is not a number"
+#~ msgstr "De maximale prijs is geen geldig nummer"
+
+#~ msgid "No image, image is required for Products"
+#~ msgstr "Geen afbeelding, afbeeldingen zijn verplicht voor Producten"
+
+#~ msgid "Auto-post template"
+#~ msgstr "Auto-post template"
+
+#~ msgid "Post campaigns"
+#~ msgstr "Post campagnes"
+
+#~ msgid "Post campaign"
+#~ msgstr "Post campagne"
+
+#~ msgid "New"
+#~ msgstr "Nieuw"
+
+#~ msgid "Add new GMB campaign"
+#~ msgstr "Nieuwe GMB campagne"
+
+#~ msgid "Edit GMB post campaign"
+#~ msgstr "Bewerk GMB post campagne"
+
+#~ msgid "New GMB post campaign"
+#~ msgstr "Nieuwe GMB post campagne"
+
+#~ msgid "View"
+#~ msgstr "Bekijk"
+
+#~ msgid "View GMB post campaign"
+#~ msgstr "Bekijk GMB post campagne"
+
+#~ msgid "Find GMB post campaign"
+#~ msgstr "Zoek GMB post campagne"
+
+#~ msgid "No GMB post campaigns found"
+#~ msgstr "Geen GMB post campagnes gevonden"
+
+#~ msgid "No GMB post campaigns found in the trash"
+#~ msgstr "Geen GMB post campagnes gevonden in de prullenbak"
+
+#~ msgid "Add new auto-post template"
+#~ msgstr "Nieuw auto-post sjabloon toevoegen"
+
+#~ msgid "New auto-post template"
+#~ msgstr "Nieuw auto-post sjabloon"
+
+#~ msgid "View auto-post template"
+#~ msgstr "Bekijk auto-post sjabloon"
+
+#~ msgid "Find auto-post template"
+#~ msgstr "Zoek auto-post sjabloon"
+
+#~ msgid "No auto-post templates found"
+#~ msgstr "Geen auto-post sjablonen gevonden"
+
+#~ msgid "No auto-post templates found in the trash"
+#~ msgstr "Geen auto-post sjablonen gevonden in de prullenbak"
+
+#, fuzzy
+#~ msgid "You do not have permission to do this"
+#~ msgstr "Je hebt geen toestemming om berichten aan te passen"
+
+#, fuzzy
+#~ msgid "State"
+#~ msgstr "Status"
+
+#~ msgid "Add to GMB evergreen content"
+#~ msgstr "Aan GMB groenblijvende content toevoegen"
+
+#~ msgid "Remove from GMB evergreen content"
+#~ msgstr "Verwijder uit GMB groenblijvende content"
+
+#~ msgid "Evergreen"
+#~ msgstr "Groenblijvend"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
+
+#~ msgid "No"
+#~ msgstr "Nee"
+
+#, php-format
+#~ msgid "Changed evergreen status of %d items."
+#~ msgstr "Groenblijvend status van %d items gewijzigd."
+
+#~ msgid "Evergreen content is currently: "
+#~ msgstr "Groenblijvende content is nu: "
+
+#~ msgid "disabled."
+#~ msgstr "uitgeschakeld."
+
+#~ msgid "enabled."
+#~ msgstr "ingeschakeld."
+
+#~ msgid " Next item will be published at: "
+#~ msgstr " Volgende item wordt gepubliceerd op: "
+
+#~ msgid "Add to evergreen content"
+#~ msgstr "Aan groenblijvende content toevoegen"
+
+#~ msgid "Autopost to GMB"
+#~ msgstr "Auto-post dit naar GMB"
+
+#, fuzzy,php-format
+#~ msgid "Automatically post items with this %1$s to GMB. Autopost will only occur once, even when this option is enabled for multiple %2$s."
+#~ msgstr "Items met deze %s automatisch op GMB plaatsen. Automatisch plaatsen gebeurt eenmalig, zelfs wanneer deze optie is ingeschakeld voor meerdere %s."
+
+#, fuzzy
+#~ msgid "Campaign category"
+#~ msgstr "Categorie"
+
+#, fuzzy
+#~ msgid "Parent campaign categories"
+#~ msgstr "Post campagnes screenshot"
+
+#, fuzzy
+#~ msgid "Parent campaign categories:"
+#~ msgstr "Post campagnes screenshot"
+
+#, fuzzy
+#~ msgid "Add new campaign category"
+#~ msgstr "Nieuwe GMB campagne"
+
+#, fuzzy
+#~ msgid "Popular campaign categories"
+#~ msgstr "Post campagnes screenshot"
+
+#, fuzzy
+#~ msgid "Not Found"
+#~ msgstr "Niet verbonden"
+
+#, fuzzy
+#~ msgid "No campaign categories"
+#~ msgstr "Post campagnes screenshot"
+
+#, fuzzy
+#~ msgid "Campaign tags"
+#~ msgstr "Post Campagnes"
+
+#, fuzzy
+#~ msgid "Campaign tag"
+#~ msgstr "Post Campagnes"
+
+#, fuzzy
+#~ msgid "All campaign tags"
+#~ msgstr "Post campagnes"
+
+#, fuzzy
+#~ msgid "Parent campaign tags"
+#~ msgstr "Post campagnes"
+
+#, fuzzy
+#~ msgid "Parent campaign tags:"
+#~ msgstr "Post campagnes"
+
+#, fuzzy
+#~ msgid "Add new campaign tag"
+#~ msgstr "Nieuwe GMB campagne"
+
+#, fuzzy
+#~ msgid "Edit campaign tag"
+#~ msgstr "Bewerk GMB post campagne"
+
+#, fuzzy
+#~ msgid "Update campaign tag"
+#~ msgstr "Post campagne"
+
+#, fuzzy
+#~ msgid "View campaign tag"
+#~ msgstr "Bekijk GMB post campagne"
+
+#, fuzzy
+#~ msgid "Popular campaign tags"
+#~ msgstr "Post campagnes"
+
+#, fuzzy
+#~ msgid "No campaign tags"
+#~ msgstr "Post campagnes"
+
+#~ msgid "The taxonomy does not exist"
+#~ msgstr "De taxonomie bestaat niet"
+
+#~ msgid "Invalid field type"
+#~ msgstr "Ongeldig veld type"
+
+#, fuzzy
+#~ msgid "Scheduled deletion date"
+#~ msgstr "Geplande datum is in het verleden"
+
+#~ msgid "Product name"
+#~ msgstr "Product naam"
+
+#~ msgid "Product Name"
+#~ msgstr "Product Naam"
+
+#~ msgid "Category"
+#~ msgstr "Categorie"
+
+#~ msgid "Custom"
+#~ msgstr "Aangepast"
+
+#~ msgid "Use WordPress/WooCommerce parent category name"
+#~ msgstr "Gebruik WordPress/WooCommerce bovenliggende categorienaam"
+
+#~ msgid "Custom category..."
+#~ msgstr "Aangepaste categorie..."
+
+#~ msgid "Price"
+#~ msgstr "Prijs"
+
+#~ msgid "Max"
+#~ msgstr "Max"
+
+#~ msgid "Range"
+#~ msgstr "Prijsbereik"
+
+#~ msgid "Format: 123.45"
+#~ msgstr "Formaat: 123.45"
+
+#~ msgid "Product description"
+#~ msgstr "Product omschrijving"
+
+#~ msgid "Description for the product. 1000 characters maximum."
+#~ msgstr "Omschrijving voor het product. Maximaal 1000 karakters."
+
+#~ msgid "Schedule post"
+#~ msgstr "Post inplannen"
+
+#~ msgid "When the post should be first published"
+#~ msgstr "Wanneer de post voor het eerst gepubliceerd moet worden"
+
+#~ msgid "Automatic repost"
+#~ msgstr "Automatische repost"
+
+#~ msgid "Stop after"
+#~ msgstr "Stop na"
+
+#~ msgid "Never"
+#~ msgstr "Nooit"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "Executions"
+#~ msgstr "Uitvoeringen"
+
+#~ msgid "executions"
+#~ msgstr "uitvoeringen"
+
+#~ msgid "Post to location(s)"
+#~ msgstr "Plaatsen op locatie(s)"
+
+#, fuzzy
+#~ msgctxt "schedule selector - ar, bg, cn, de, en, es, fa, fr, it, ja, ko, nl, pl, pt-br, ru, tr, vi already included, translation not required"
+#~ msgid "every"
+#~ msgstr "Nooit"
+
+#, fuzzy
+#~ msgctxt "schedule selector - ar, bg, cn, de, en, es, fa, fr, it, ja, ko, nl, pl, pt-br, ru, tr, vi already included, translation not required"
+#~ msgid "Every <b />"
+#~ msgstr "Elke 7 dagen"
+
+#~ msgid "Min"
+#~ msgstr "Min"
+
+#, fuzzy
+#~ msgid "Loading templates..."
+#~ msgstr "Template opslaan"
+
+#~ msgid "The template for new Google posts when using quick post. Supports <a target=\"_blank\" href=\"%s\">variables</a> and <a target=\"_blank\" href=\"%s\">spintax</a> (premium only)"
+#~ msgstr "Het sjabloon voor nieuwe Google posts wanneer er gebruik word gemaakt van auto-post. Ondersteund <a target=\"_blank\" href=\"%s\">variabelen</a> en <a target=\"_blank\" href=\"%s\">spintax</a> (alleen Premium)"
+
+#~ msgid "This location is unverified, not public, or not eligible to publish posts."
+#~ msgstr "Deze locatie is nog niet bevestigd, niet openbaar, of heeft geen toestemming om posts te publiceren."
+
+#~ msgid "Could not get location name: %s"
+#~ msgstr "Kon de locatienaam niet opvragen: %s"
+
+#~ msgid "What's New"
+#~ msgstr "Wat is er nieuw"
+
+#~ msgid "COVID-19 update"
+#~ msgstr "COVID-19 update"
+
+#~ msgid "Please Wait..."
+#~ msgstr "Even wachten..."
+
+#~ msgid "The account is no longer properly connected to the plugin. Please update the cookies in the settings"
+#~ msgstr "Het account is niet langer goed meer verbonden met de plugin. Update aub de cookies in de instellingen"
+
+#~ msgid "Choose which auto-post template the post type should use by default"
+#~ msgstr "Kies welk auto-post sjabloon de post types standaard moeten gebruiken"
+
+#~ msgid "Product description can't be empty"
+#~ msgstr "Product omschrijving mag niet leeg zijn"
+
+#~ msgid "Parent post: %s"
+#~ msgstr "Bovenliggende post: %s"
+
+#~ msgid "Post type: %s"
+#~ msgstr "Post type: %s"
+
+#~ msgid "Button"
+#~ msgstr "Knop"
+
+#~ msgid "Order"
+#~ msgstr "Bestellen"
+
+#~ msgid "The text that should appear on your button"
+#~ msgstr "De tekst die op je knop moet verschijnen"
+
+#~ msgid "https://tycoonmedia.net"
+#~ msgstr "https://tycoonmedia.net"
+
+#~ msgid "Automatically create a post on Google My Business when creating a new WordPress post"
+#~ msgstr "Maak automatisch posts op Google Mijn Bedrijf wanneer je nieuwe WordPress posts maakt"
 
 #~ msgid "The ability to create Product posts has been (temporarily?) removed from the Google My Business API."
 #~ msgstr "De mogelijkheid om Product posts aan te maken is (tijdelijk?) verwijderd uit de Google My Business API."
@@ -1827,12 +2166,6 @@ msgstr "de auto-post instellingen"
 
 #~ msgid "Do NOT publish to GMB"
 #~ msgstr "NIET publiceren op GMB"
-
-#~ msgid "Schedule date is in the past"
-#~ msgstr "Geplande datum is in het verleden"
-
-#~ msgid "Every 7 days"
-#~ msgstr "Elke 7 dagen"
 
 #~ msgid "Every 14 days"
 #~ msgstr "Elke 14 dagen"

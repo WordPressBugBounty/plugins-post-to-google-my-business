@@ -133,7 +133,12 @@ class GoogleUserManager {
 
 		JWT::$leeway = 60;
 
-		$account_data = JWT::decode( $tokens->id_token, JWK::parseKeySet( (array) $keys ), [ 'RS256' ] );
+		$keys = JWK::parseKeySet((array) $keys);
+
+		$account_data = JWT::decode(
+			$tokens->id_token,
+			$keys
+		);
 
 		$scopes = explode(" ", $tokens->scope);
 		if(!in_array('https://www.googleapis.com/auth/business.manage', $scopes)){

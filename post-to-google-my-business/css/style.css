@@ -274,6 +274,15 @@
 	padding:0;
 }
 
+	.mbp-fields td.pgmb-editor-action-buttons .spinner{
+		float: none;
+		margin-top: 0px;
+		visibility: hidden;
+	}
+		.mbp-fields td.pgmb-editor-action-buttons.is-busy .spinner{
+			visibility: visible;
+		}
+
 /* 5.9 fix for button */
 .mbp-fields .ui-datepicker-trigger:before{
 	content: "\f508";

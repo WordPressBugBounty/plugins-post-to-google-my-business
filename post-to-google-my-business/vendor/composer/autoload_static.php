@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit406c958eef0130bdf8dd70395c662a50
+class ComposerStaticInitd6ad150f73b640e5870333764e3e2313
 {
     public static $prefixLengthsPsr4 = array (
         'T' => 
@@ -212,6 +212,7 @@ class ComposerStaticInit406c958eef0130bdf8dd70395c662a50
         'PGMB\\Vendor\\Cron\\MonthField' => __DIR__ . '/../..' . '/vendor-prefixed/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'PGMB\\Vendor\\Cron\\YearField' => __DIR__ . '/../..' . '/vendor-prefixed/dragonmantank/cron-expression/src/Cron/YearField.php',
         'PGMB\\Vendor\\Firebase\\JWT\\BeforeValidException' => __DIR__ . '/../..' . '/vendor-prefixed/firebase/php-jwt/src/BeforeValidException.php',
+        'PGMB\\Vendor\\Firebase\\JWT\\CachedKeySet' => __DIR__ . '/../..' . '/vendor-prefixed/firebase/php-jwt/src/CachedKeySet.php',
         'PGMB\\Vendor\\Firebase\\JWT\\ExpiredException' => __DIR__ . '/../..' . '/vendor-prefixed/firebase/php-jwt/src/ExpiredException.php',
         'PGMB\\Vendor\\Firebase\\JWT\\JWK' => __DIR__ . '/../..' . '/vendor-prefixed/firebase/php-jwt/src/JWK.php',
         'PGMB\\Vendor\\Firebase\\JWT\\JWT' => __DIR__ . '/../..' . '/vendor-prefixed/firebase/php-jwt/src/JWT.php',
@@ -241,9 +242,9 @@ class ComposerStaticInit406c958eef0130bdf8dd70395c662a50
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit406c958eef0130bdf8dd70395c662a50::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit406c958eef0130bdf8dd70395c662a50::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit406c958eef0130bdf8dd70395c662a50::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd6ad150f73b640e5870333764e3e2313::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd6ad150f73b640e5870333764e3e2313::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitd6ad150f73b640e5870333764e3e2313::$classMap;
 
         }, null, ClassLoader::class);
     }

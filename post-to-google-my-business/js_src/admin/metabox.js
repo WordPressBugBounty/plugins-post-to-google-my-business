@@ -3,9 +3,6 @@
  *
  * @property {string} mbp_localize_script.post_nonce Post nonce
  * @property {string} mbp_localize_script.post_id ID of the current WordPress post
- *
- * Translations
- * @property {Array} mbp_localize_script[] Array containing translations
  */
 
 import * as $ from "jquery";
@@ -319,9 +316,12 @@ $('#mbp-publish-post, #mbp-draft-post').click(function(event){
 	event.preventDefault();
 
 
-	const publishButton = this;
-	$(publishButton).html(mbp_localize_script.please_wait).attr('disabled', true);
+	const publishButton = $(this);
+	const buttonContainer = $('.pgmb-editor-action-buttons');
 
+	publishButton.html(mbp_localize_script.please_wait).attr('disabled', true);
+
+	buttonContainer.addClass('is-busy');
 
 	let draft = false;
 	if(this.id === 'mbp-draft-post'){
@@ -358,11 +358,12 @@ $('#mbp-publish-post, #mbp-draft-post').click(function(event){
 		}
 
 		if(!draft){
-			$(publishButton).html(__('Publish', 'post-to-google-my-business')).attr('disabled', false);
+			publishButton.html(__('Publish', 'post-to-google-my-business')).attr('disabled', false);
 		}else{
-			$(publishButton).html(__('Save draft', 'post-to-google-my-business')).attr('disabled', false);
+			publishButton.html(__('Save draft', 'post-to-google-my-business')).attr('disabled', false);
 		}
 
+		buttonContainer.removeClass('is-busy');
 	});
 
 
