@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-30 03:26-0300\n"
-"PO-Revision-Date: 2026-01-30 04:05-0300\n"
+"POT-Creation-Date: 2026-02-13 23:33-0300\n"
+"PO-Revision-Date: 2026-02-13 23:41-0300\n"
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.8\n"
@@ -20,8 +20,8 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: js_src/admin/components/BusinessSelector.js:546
-#: js_src/admin/components/BusinessSelector.js:555
+#: js_src/admin/components/BusinessSelector.js:547
+#: js_src/admin/components/BusinessSelector.js:556
 #: src/Components/BusinessSelector.php:310
 #: src/Premium/Components/MultiAccountBusinessSelector.php:141
 msgid "Refresh locations"
@@ -34,7 +34,7 @@ msgstr "Atualizar locais"
 msgid "%d publishing tasks queued"
 msgstr "%d tarefas de publicação enfileiradas"
 
-#: js_src/admin/metabox.js:224
+#: js_src/admin/metabox.js:221
 #: src/Plugin.php:253
 #: templates/admin/posteditor.php:14
 msgid "Update"
@@ -461,7 +461,7 @@ msgid "Could not retrieve account or location groups from Google My Business: %s
 msgstr "Não foi possível recuperar contas ou grupos de locais do Google My Business: %s"
 
 #: src/Components/BusinessSelector.php:135
-#: src/Components/BusinessSelector.php:387
+#: src/Components/BusinessSelector.php:392
 msgid "No user account or location groups found. Did you log in to the correct Google account?"
 msgstr "Nenhuma conta de usuário ou grupo de locais foi encontrado. Você fez login na conta correta do Google?"
 
@@ -497,14 +497,14 @@ msgid "Search/Filter locations..."
 msgstr "Pesquisar/filtrar locais..."
 
 #: src/Components/BusinessSelector.php:347
-#: src/Components/BusinessSelector.php:364
-#: src/Components/BusinessSelector.php:401
+#: src/Components/BusinessSelector.php:375
+#: src/Components/BusinessSelector.php:406
 #: src/Subscriber/AuthenticationAdminPostSubscriber.php:88
 #: src/Subscriber/AuthenticationAdminPostSubscriber.php:123
 msgid "Invalid nonce"
 msgstr "Nonce inválido"
 
-#: src/Components/BusinessSelector.php:415
+#: src/Components/BusinessSelector.php:420
 msgid "No businesses found in this group."
 msgstr "Nenhuma empresa encontrada neste grupo."
 
@@ -745,7 +745,7 @@ msgstr "Falha ao analisar a chave pública JSON da resposta do Google: %s"
 msgid "Google response is missing expected \"keys\" data."
 msgstr "A resposta do Google não contém os dados esperados das “chaves”."
 
-#: src/GoogleUserManager.php:140
+#: src/GoogleUserManager.php:145
 msgid "You did not give the plugin permission to manage your Google Business Profile listings. The plugin will not work without this permission. Please retry the authentication and make sure you grant the plugin permission to manage your locations."
 msgstr "Você não concedeu permissão ao plugin para gerenciar suas listagens do Perfil de Empresas do Google (GBP). O plugin não irá funcionar sem esta permissão. Tente a autenticação novamente e certifique-se de conceder permissão ao plugin para gerenciar seus locais."
 
@@ -798,54 +798,56 @@ msgstr "ID do post inválido"
 msgid "Post to Google My Business"
 msgstr "Publicar no Google My Business"
 
-#: src/ParseFormFields.php:261
+#: src/ParseFormFields.php:263
 msgid "Products are not supported in the free version of the plugin. Please choose a different post type in your template."
 msgstr "Os produtos não são suportados na versão gratuita do plugin. Escolher um tipo de post diferente em seus modelos."
 
-#: src/ParseFormFields.php:459
+#: src/ParseFormFields.php:474
 msgid "Original image file not found"
 msgstr "Arquivo de imagem original não encontrado"
 
-#: src/ParseFormFields.php:501
-#: src/ParseFormFields.php:669
-msgid "Could not detect post image file size. Make sure the image file/url is accessible remotely."
-msgstr "Não foi possível detectar o tamanho do arquivo de imagem do post. Certifique-se de que o arquivo/url da imagem esteja acessível remotamente."
-
-#. translators: %1$dx%2$dpx is the size of the failed image (width x height)
-#: src/ParseFormFields.php:680
+#. translators: %s is image url
+#: src/ParseFormFields.php:517
+#: src/ParseFormFields.php:686
 #, php-format
-msgid "Post image must be at least 250x250px. Selected image is %1$dx%2$dpx"
-msgstr "A imagem do post deve ter pelo menos 250x250px. A imagem selecionada tem %1$dx%2$dpx"
+msgid "Could not detect post image file size. Make sure the image file/url is accessible remotely. Url: %s"
+msgstr "Não foi possível detectar o tamanho do arquivo de imagem do post. Certifique-se de que o arquivo/URL da imagem esteja acessível remotamente. URL: %s"
 
-#. translators: %s is formatted image size
-#: src/ParseFormFields.php:685
+#. translators: %1$dx%2$dpx is the size of the failed image (width x height), %3$s is image url
+#: src/ParseFormFields.php:697
 #, php-format
-msgid "Post image file too small, must be at least 10 KB. Selected image is %s"
-msgstr "Arquivo da imagem do post muito pequeno, deve ter pelo menos 10 KB. A imagem selecionada tem %s"
+msgid "Post image must be at least 250x250px. Selected image is %1$dx%2$dpx. Url: %3$s"
+msgstr "A imagem do post deve ter pelo menos 250x250px. A imagem selecionada tem %1$dx%2$dpx. URL: %3$s"
 
-#. translators: %s is formatted image size
-#: src/ParseFormFields.php:688
+#. translators: %1$s is formatted image size, %2$s is image URL
+#: src/ParseFormFields.php:702
 #, php-format
-msgid "Post image file too big, must be 5 MB at most. Selected image is %s"
-msgstr "Arquivo da imagem do post muito grande, deve ter 5 MB no máximo. A imagem selecionada tem %s"
+msgid "Post image file too small, must be at least 10 KB. Selected image is %1$s. Url: %2$s"
+msgstr "Arquivo da imagem do post muito pequeno, deve ter pelo menos 10 KB. A imagem selecionada tem %1$s. URL: %2$s"
 
-#: src/ParseFormFields.php:696
+#. translators: %1$s is formatted image size, %2$s is image URL
+#: src/ParseFormFields.php:705
+#, php-format
+msgid "Post image file too big, must be 5 MB at most. Selected image is %1$s. Url: %2$s"
+msgstr "Arquivo da imagem do post muito grande, deve ter 5 MB no máximo. A imagem selecionada tem %1$s. URL: %2$s"
+
+#: src/ParseFormFields.php:713
 msgid "Tried to convert WebP image but imagecreatefromwebp is not available"
 msgstr "Tentei converter a imagem WebP, mas a imagem criada a partir do WebP não está disponível"
 
-#: src/ParseFormFields.php:725
+#: src/ParseFormFields.php:742
 msgid "Failed to create image from AVIF using imagecreatefromavif"
 msgstr "Falha ao criar imagem em AVIF usando o imagecreatefromavif"
 
-#: src/ParseFormFields.php:742
+#: src/ParseFormFields.php:766
 msgid "Tried to convert AVIF image but neither imagecreatefromavif nor Imagick is available"
 msgstr "Tentativa de converter a imagem AVIF, mas nem o imagecreatefromavif nem o Imagick estão disponíveis"
 
-#: src/ParseFormFields.php:753
+#: src/ParseFormFields.php:798
 msgid "AVIF image conversion failed: "
 msgstr "Falha na conversão da imagem AVIF: "
 
-#: src/ParseFormFields.php:785
+#: src/ParseFormFields.php:885
 msgid "Could not parse post locations"
 msgstr "Não foi possível analisar os locais das publicações"
 

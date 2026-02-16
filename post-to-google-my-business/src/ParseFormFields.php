@@ -616,7 +616,7 @@ class ParseFormFields {
             imagedestroy( $image );
             return [$new_path, $url];
         }
-        $scale = self::GBP_IMAGE_HEIGHT / $width;
+        $scale = self::GBP_IMAGE_WIDTH / $width;
         $scaled_height = (int) round( $height * $scale );
         $resized = imagecreatetruecolor( self::GBP_IMAGE_WIDTH, $scaled_height );
         imagecopyresampled(

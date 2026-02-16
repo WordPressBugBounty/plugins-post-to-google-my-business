@@ -4,7 +4,7 @@ Donate link: https://digitaldistortion.dev/?utm_source=repository&utm_medium=lin
 Tags: google my business, google business profile, gmb, local seo, google places
 Requires at least: 4.9.0
 Tested up to: 6.9
-Stable tag: 3.3.3
+Stable tag: 3.3.4
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -113,6 +113,10 @@ with image accessibility. To further debug the issue, you can use a service like
 6. Auto-post template settings
 
 == Changelog ==
+
+= 3.3.4 =
+* Fix: Scaling issue on AVIF/WebP images
+* Update: Pt-br translations (thanks @valdemirmaran)
 
 = 3.3.3 =
 * Fix: Location selector not indicating whether locations are still being loaded

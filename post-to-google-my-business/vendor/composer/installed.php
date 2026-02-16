@@ -1,7 +1,7 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '3.3.3',
-        'version' => '3.3.3.0',
+        'pretty_version' => '3.3.4',
+        'version' => '3.3.4.0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,8 +11,8 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '3.3.3',
-            'version' => '3.3.3.0',
+            'pretty_version' => '3.3.4',
+            'version' => '3.3.4.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Post to Google My Business (Google Business Profile) plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Post to Google My Business (Google Business Profile) 3.3.3\n"
+"Project-Id-Version: Post to Google My Business (Google Business Profile) 3.3.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/post-to-google-my-business\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-06T19:45:49+00:00\n"
+"POT-Creation-Date: 2026-02-16T11:53:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: post-to-google-my-business\n"
@@ -773,38 +773,40 @@ msgstr ""
 msgid "Post to Google My Business"
 msgstr ""
 
-#: src/ParseFormFields.php:261
+#: src/ParseFormFields.php:263
 msgid "Products are not supported in the free version of the plugin. Please choose a different post type in your template."
 msgstr ""
 
-#: src/ParseFormFields.php:459
+#: src/ParseFormFields.php:474
 msgid "Original image file not found"
 msgstr ""
 
-#: src/ParseFormFields.php:501
-#: src/ParseFormFields.php:669
-msgid "Could not detect post image file size. Make sure the image file/url is accessible remotely."
-msgstr ""
-
-#. translators: %1$dx%2$dpx is the size of the failed image (width x height)
-#: src/ParseFormFields.php:680
+#. translators: %s is image url
+#: src/ParseFormFields.php:517
+#: src/ParseFormFields.php:686
 #, php-format
-msgid "Post image must be at least 250x250px. Selected image is %1$dx%2$dpx"
+msgid "Could not detect post image file size. Make sure the image file/url is accessible remotely. Url: %s"
 msgstr ""
 
-#. translators: %s is formatted image size
-#: src/ParseFormFields.php:685
+#. translators: %1$dx%2$dpx is the size of the failed image (width x height), %3$s is image url
+#: src/ParseFormFields.php:697
 #, php-format
-msgid "Post image file too small, must be at least 10 KB. Selected image is %s"
+msgid "Post image must be at least 250x250px. Selected image is %1$dx%2$dpx. Url: %3$s"
 msgstr ""
 
-#. translators: %s is formatted image size
-#: src/ParseFormFields.php:688
+#. translators: %1$s is formatted image size, %2$s is image URL
+#: src/ParseFormFields.php:702
 #, php-format
-msgid "Post image file too big, must be 5 MB at most. Selected image is %s"
+msgid "Post image file too small, must be at least 10 KB. Selected image is %1$s. Url: %2$s"
 msgstr ""
 
-#: src/ParseFormFields.php:785
+#. translators: %1$s is formatted image size, %2$s is image URL
+#: src/ParseFormFields.php:705
+#, php-format
+msgid "Post image file too big, must be 5 MB at most. Selected image is %1$s. Url: %2$s"
+msgstr ""
+
+#: src/ParseFormFields.php:885
 msgid "Could not parse post locations"
 msgstr ""
 
