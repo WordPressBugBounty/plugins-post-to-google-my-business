@@ -9,6 +9,7 @@ return array(
     'TypistTech\\WPAdminNotices\\' => array($vendorDir . '/typisttech/wp-admin-notices/src'),
     'Rarst\\WordPress\\DateTime\\' => array($vendorDir . '/rarst/wpdatetime/src'),
     'PGMB\\' => array($baseDir . '/src'),
+    'Mustache\\' => array($vendorDir . '/mustache/mustache/src'),
     'Html2Text\\' => array($vendorDir . '/html2text/html2text/src'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),

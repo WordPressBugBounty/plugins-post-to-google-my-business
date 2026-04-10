@@ -15,10 +15,6 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
- * @license GPL-2.0-or-later
- * Modified by __root__ on 16-February-2026 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
 
 namespace PGMB\Vendor\Html2Text;

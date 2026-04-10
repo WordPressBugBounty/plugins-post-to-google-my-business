@@ -176,18 +176,26 @@ if ( $this instanceof \PGMB\Components\PostEditor ) {
     echo $this->fields['mbp_post_text'];
     ?></textarea>
                             <div
-                                class="mbp-text-details"><?php 
+                                class="mbp-text-details">
+                                <span>
+                                    <?php 
     _e( 'Characters:', 'post-to-google-my-business' );
     ?>
                                 <span class="mbp-character-count">0</span>/1500
                                 - <?php 
     _e( 'Word count:', 'post-to-google-my-business' );
     ?> <span
-                                    class="mbp-word-count">0</span></div>
+                                    class="mbp-word-count">0</span>
+                                </span>
+                                <button class="button button-secondary button-small pgmb-insert-variable-button"><?php 
+    esc_html_e( 'Insert dynamic data', 'post-to-google-my-business' );
+    ?></button>
+                            </div>
+
                             <br/><span
                                 class='description'>
                                 <?php 
-    $link = sprintf( "<a href=\"https://docs.digitaldistortion.dev/article/12-using-the-auto-post-feature\" target='_blank'>%s<span style=\"text-decoration: none\" class=\"dashicons dashicons-external\"></span></a>", __( 'See available dynamic tags that you can use', 'post-to-google-my-business' ) );
+    $link = sprintf( "<a href=\"https://docs.digitaldistortion.dev/article/41-dynamic-templates-for-google-business-posts\" target='_blank'>%s<span style=\"text-decoration: none\" class=\"dashicons dashicons-external\"></span></a>", __( 'Check out template guide', 'post-to-google-my-business' ) );
     /* translators: %s gets replaced by the link to the support page with available dynamic tags that can be used */
     printf( __( 'The text that should appear on your post. Recommended 150-300 characters. 80 characters show in the Google Search results. 1500 characters maximum. %s', 'post-to-google-my-business' ), $link );
     ?>
@@ -362,7 +370,7 @@ if ( $this instanceof \PGMB\Components\PostEditor ) {
     ?>'>
                         <!-- mbp-product-field -->
                         <th><label
-                                for='post_text'><?php 
+                                for='mbp_button_type'><?php 
     esc_html_e( 'Add a button (optional)', 'post-to-google-my-business' );
     ?></label>
                         </th>
@@ -373,7 +381,7 @@ if ( $this instanceof \PGMB\Components\PostEditor ) {
     ?>[mbp_button]'
                                        id='mbp_button'
                                        value='1' />
-                                <select class="mbp-button-type" name="<?php 
+                                <select id="mbp_button_type" class="mbp-button-type" name="<?php 
     echo $this->field_name;
     ?>[mbp_button_type]">
                                     <option value="" <?php 
@@ -456,25 +464,52 @@ if ( $this instanceof \PGMB\Components\PostEditor ) {
                                        name='<?php 
     echo $this->field_name;
     ?>[mbp_button_url]' style='width:100%'
-                                       data-default="%post_permalink%"
+                                       data-default="{{post.url}}"
                                        value="<?php 
     echo $this->fields['mbp_button_url'];
     ?>"/>
                                 <br/><span
                                         class='description'><?php 
-    _e( 'Optional. Where the user should go when clicking the button. Leave at default (%post_permalink%) to send them to your newly created WordPress post.', 'post-to-google-my-business' );
+    _e( 'Optional. Where the user should go when clicking the button. Leave at default ({{post.url}}) to send them to your newly created WordPress post.', 'post-to-google-my-business' );
     ?></span>
 
                             </div>
                         </td>
+
                     </tr>
+                    <?php 
+    if ( mbp_fs()->is_plan_or_trial( 'starter' ) ) {
+        ?>
+                        <tr class='mbp-whatsnew-field mbp-alert-field mbp-product-field mbp-offer-field mbp-event-field'>
+                            <th><label
+                                        for='post_location'><?php 
+        _e( 'Post to location(s)', 'post-to-google-my-business' );
+        ?></label>
+                            </th>
+                            <td class="mbp-business-selector-container">
+			                    <?php 
+        echo $this->business_selector->location_blocked_info();
+        echo $this->business_selector->generate();
+        echo $this->business_selector->business_selector_controls();
+        ?>
+                            </td>
+                        </tr>
+                    <?php 
+    }
+    ?>
 
                     <tr class='mbp-whatsnew-field mbp-offer-field mbp-alert-field mbp mbp-event-field<?php 
     ?>'>
                         <td colspan="2">
-                            <a href='#' class='mbp-toggle-advanced'><?php 
-    _e( 'Advanced post settings', 'post-to-google-my-business' );
-    ?> &darr;</a>
+<!--                            <a href='#' class='mbp-toggle-advanced'>--><?php 
+    //_e( 'Advanced post settings', 'post-to-google-my-business' );
+    ?><!-- &darr;</a>-->
+                            <button class="button-link mbp-toggle-advanced"><?php 
+    esc_html_e( 'Advanced post settings', 'post-to-google-my-business' );
+    ?> &darr;</button>
+                            <button style="float:right;" class="button-link" id="pgmb-restore-default-template"><?php 
+    esc_html_e( 'Restore default template', 'post-to-google-my-business' );
+    ?></button>
                         </td>
                     </tr>
                     </tbody>
@@ -576,7 +611,7 @@ if ( $this instanceof \PGMB\Components\PostEditor ) {
                                     </label>
                                     <br/><span
                                             class='description'><?php 
-    _e( 'How the plugin should handle links in the content (when using %post_content%)', 'post-to-google-my-business' );
+    _e( 'How the plugin should handle hyperlinks in the content', 'post-to-google-my-business' );
     ?></span>
                                 </td>
                             </tr>

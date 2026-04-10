@@ -12,7 +12,7 @@ class PostCampaignsUpsell extends AbstractPage {
 		return __('Post Campaigns', 'post-to-google-my-business');
 	}
 
-	public function render_page() {
+	public function render_content() {
 		include($this->template_path.'postcampaigns.php');
 	}
 

@@ -6,7 +6,7 @@ use PGMB\API\CachedGoogleMyBusiness;
 use PGMB\ApiCache\LocationCacheRepository;
 use PGMB\Google\LocalPostEditMask;
 use PGMB\Google\NormalizeLocationName;
-use PGMB\ParseFormFields;
+use PGMB\FormFieldParser;
 use PGMB\PostTypes\GooglePostEntity;
 use PGMB\PostTypes\GooglePostEntityRepository;
 use PGMB\Vendor\TypistTech\WPAdminNotices\AbstractNotice;
@@ -31,17 +31,21 @@ class PostPublishProcess extends BackgroundProcess {
      */
     private $location_repository;
 
+    protected FormFieldParser $form_field_parser;
+
     public function __construct(
         CachedGoogleMyBusiness $api,
         GooglePostEntityRepository $repository,
         LocationCacheRepository $location_repository,
-        AdminNoticesStore $admin_notice_store
+        AdminNoticesStore $admin_notice_store,
+        FormFieldParser $form_field_parser
     ) {
         parent::__construct();
         $this->api = $api;
         $this->repository = $repository;
         $this->admin_notice_store = $admin_notice_store;
         $this->location_repository = $location_repository;
+        $this->form_field_parser = $form_field_parser;
     }
 
     /**
@@ -138,7 +142,7 @@ class PostPublishProcess extends BackgroundProcess {
             }
             $this->api->set_user_id( $user_key );
             $post_name = $created_post->get_post_name();
-            $data = new ParseFormFields($form_fields);
+            $data = $this->form_field_parser->set_raw_fields( $form_fields );
             //$location_data = $this->api->get_location( $location, "", true );
             //			if(!isset($location_data->locationState->isVerified) || !$location_data->locationState->isVerified || !isset($location_data->locationState->isPublished) || !$location_data->locationState->isPublished){
             //				throw new \InvalidArgumentException(__('This location is unverified, not public, or not eligible to publish posts.', 'post-to-google-my-business'));

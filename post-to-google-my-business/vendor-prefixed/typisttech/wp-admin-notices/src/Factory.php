@@ -1,10 +1,11 @@
 <?php
+
 /**
  * WP Admin Notices
  *
  * A simplified OOP implementation of the WordPress admin notices.
  *
- * @package   TypistTech\WPAdminNotices
+ * @package   \TypistTech\WPAdminNotices
  *
  * @author    Typist Tech <wp-admin-notices@typist.tech>
  * @copyright 2017 Typist Tech
@@ -12,13 +13,8 @@
  *
  * @see       https://www.typist.tech/projects/wp-admin-notices
  * @see       https://github.com/TypistTech/wp-admin-notices
- *
- * Modified by __root__ on 16-February-2026 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace PGMB\Vendor\TypistTech\WPAdminNotices;
 
 final class Factory
@@ -35,11 +31,9 @@ final class Factory
     {
         $store = new Store($optionKey);
         $notifier = new Notifier($action, $store);
-
         add_action('admin_notices', [$notifier, 'renderNotices']);
-        add_action("wp_ajax_$action", [$notifier, 'dismissNotice']);
+        add_action("wp_ajax_{$action}", [$notifier, 'dismissNotice']);
         add_action('admin_footer', [$notifier, 'renderScript']);
-
         return $store;
     }
 }

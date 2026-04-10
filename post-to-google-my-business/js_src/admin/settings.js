@@ -12,12 +12,7 @@ import PostEditor from "./components/PostEditor";
 import BusinessSelector from "./components/BusinessSelector";
 import {__} from "@wordpress/i18n";
 
-
-const BUSINESSSELECTOR_CALLBACK_PREFIX = mbp_localize_script.BUSINESSSELECTOR_CALLBACK_PREFIX;
-const POST_EDITOR_CALLBACK_PREFIX = mbp_localize_script.POST_EDITOR_CALLBACK_PREFIX;
-const FIELD_PREFIX = mbp_localize_script.FIELD_PREFIX;
-
-const { disable_event_dateselector, setting_selected_location, nonce } = mbp_localize_script;
+const { BUSINESSSELECTOR_CALLBACK_PREFIX, POST_EDITOR_CALLBACK_PREFIX, FIELD_PREFIX, disable_event_dateselector, setting_selected_location, nonce, localize_post_editor, default_autopost_fields } = mbp_localize_script;
 
 const submitButton = document.querySelector('#mbp_google_settings #submit');
 const oldtext = submitButton.value;
@@ -31,7 +26,7 @@ const listener = function(loading){
     }
 }
 
-let postEditor = new PostEditor(false, POST_EDITOR_CALLBACK_PREFIX, null, null, disable_event_dateselector, listener);
+let postEditor = new PostEditor(false, POST_EDITOR_CALLBACK_PREFIX, default_autopost_fields, null, disable_event_dateselector, listener, localize_post_editor);
 postEditor.setFieldPrefix(FIELD_PREFIX);
 
 

@@ -5,7 +5,7 @@ Plugin Name: Post to Google My Business (Google Business Profile)
 Plugin URI: https://digitaldistortion.dev
 Description: (Auto-)post and manage Google Business Profile posts from the WordPress dashboard
 Author: Koen Reus
-Version: 3.3.4
+Version: 3.4.0
 Author URI: https://koenreus.com
 Text Domain: post-to-google-my-business
 */
@@ -31,22 +31,23 @@ if ( function_exists( 'mbp_fs' ) ) {
                 // Include Freemius SDK.
                 require_once dirname( __FILE__ ) . '/freemius/start.php';
                 $mbp_fs = fs_dynamic_init( array(
-                    'id'              => '1828',
-                    'slug'            => 'post-to-google-my-business',
-                    'type'            => 'plugin',
-                    'public_key'      => 'pk_8ef8aab9dd4277db6bc9b2441830c',
-                    'is_premium'      => false,
-                    'has_addons'      => false,
-                    'has_paid_plans'  => true,
-                    'trial'           => array(
+                    'id'               => '1828',
+                    'slug'             => 'post-to-google-my-business',
+                    'type'             => 'plugin',
+                    'public_key'       => 'pk_8ef8aab9dd4277db6bc9b2441830c',
+                    'is_premium'       => false,
+                    'has_addons'       => false,
+                    'has_paid_plans'   => true,
+                    'trial'            => array(
                         'days'               => 7,
                         'is_require_payment' => true,
                     ),
-                    'has_affiliation' => 'selected',
-                    'menu'            => array(
+                    'has_affiliation'  => 'selected',
+                    'menu'             => array(
                         'slug' => 'post_to_google_my_business',
                     ),
-                    'is_live'         => true,
+                    'is_live'          => true,
+                    'is_org_compliant' => true,
                 ) );
             }
             return $mbp_fs;

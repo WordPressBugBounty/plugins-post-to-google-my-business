@@ -1,8 +1,6 @@
 /**
  * @property {string} ajaxurl URL for ajax request set by WordPress
  *
- * @property {string} mbp_localize_script.post_nonce Post nonce
- * @property {string} mbp_localize_script.post_id ID of the current WordPress post
  */
 
 import * as $ from "jquery";
@@ -17,19 +15,16 @@ import { addAction } from "@wordpress/hooks";
 import {__} from "@wordpress/i18n";
 
 
-const AJAX_CALLBACK_PREFIX = mbp_localize_script.AJAX_CALLBACK_PREFIX;
-const POST_EDITOR_DEFAULT_FIELDS = mbp_localize_script.POST_EDITOR_DEFAULT_FIELDS;
+const { AJAX_CALLBACK_PREFIX, POST_EDITOR_DEFAULT_FIELDS, post_nonce, locale, disable_event_dateselector, localize_post_editor, post_id: parent_wp_post } = mbp_localize_script;
 
-const { post_nonce, locale, disable_event_dateselector } = mbp_localize_script;
-
-let postEditor = new PostEditor(true, AJAX_CALLBACK_PREFIX, POST_EDITOR_DEFAULT_FIELDS, post_nonce, disable_event_dateselector);
+let postEditor = new PostEditor(true, AJAX_CALLBACK_PREFIX, POST_EDITOR_DEFAULT_FIELDS, post_nonce, disable_event_dateselector, null, localize_post_editor, parent_wp_post);
 
 
 let subpostListContainer = $("#pgmb-subpost-table-container");
 let subpostListTableNonce = $("#pgmb_subpost_table_nonce");
 
 let subpostList = new AjaxListTable(subpostListContainer, subpostListTableNonce, "pgmb_subpost");
-subpostList.set_parent_id(mbp_localize_script.post_id);
+subpostList.set_parent_id(parent_wp_post);
 
 
 const entityTableContainer = $("#pgmb-entity-table-container");
@@ -138,8 +133,8 @@ function load_autopost_template(){
 	formControlButtons.publishPostButton.html(__('Save template', 'post-to-google-my-business'));
 	const data = {
 		'action': 'mbp_load_autopost_template',
-		'mbp_post_nonce': mbp_localize_script.post_nonce,
-		'mbp_post_id': mbp_localize_script.post_id
+		'mbp_post_nonce': post_nonce,
+		'mbp_post_id': parent_wp_post
 	};
 	$.post(ajaxurl, data, function(response) {
 		if (response.error) {
@@ -149,6 +144,8 @@ function load_autopost_template(){
 		if(response.success){
 			if(response.data.fields){
 				postEditor.loadFormFields(response.data.fields);
+				postEditor.templateDefaultFields(response.data.default);
+				postEditor.setEditingTemplate(true);
 			}
 			postFormContainer.slideDown("slow");
 
@@ -205,7 +202,7 @@ function load_post(post_id, edit, onReadyCallback){
 	const data = {
 		'action': 'mbp_load_post',
 		'mbp_post_id': post_id,
-		'mbp_post_nonce': mbp_localize_script.post_nonce
+		'mbp_post_nonce': post_nonce
 	};
 
 	$.post(ajaxurl, data, function(response) {
@@ -215,6 +212,7 @@ function load_post(post_id, edit, onReadyCallback){
 		}
 
 		if(response.success){
+			postEditor.setEditingTemplate(false);
 			postEditor.loadFormFields(response.post.form_fields);
 			formControlButtons.draftPostButton.show();
 			if(editing && response.post.post_status === 'publish'){
@@ -245,7 +243,7 @@ function delete_post(post_id){
 	const data = {
 		'action': 'mbp_delete_post',
 		'mbp_post_id': post_id,
-		'mbp_post_nonce': mbp_localize_script.post_nonce
+		'mbp_post_nonce': post_nonce
 	};
 	$.post(ajaxurl, data, function(response) {
 		if(response.success){
@@ -265,6 +263,7 @@ formControlButtons.newPostButton.click(function(event) {
 	postFormContainer.slideUp("slow");
 	editing = false;
 	postEditor.resetForm();
+	postEditor.setEditingTemplate(false);
 	postEditor.loadDefaultFormFields();
 	postFormContainer.slideDown("slow");
 	formControlButtons.draftPostButton.show();
@@ -291,7 +290,6 @@ formControlButtons.cancelPostButton.click(function(event){
 /**
  * Inform the user if they're still working on a GMB post, and it hasn't been saved yet
  *
- * @property mbp_localize_script.publish_confirmation "You're working on a Google My Business post, but it has not yet been published/scheduled. Press OK to publish/schedule it now, or Cancel to save it as a draft."
  */
 $('#publish, #original_publish').click(function(event) {
 
@@ -319,7 +317,7 @@ $('#mbp-publish-post, #mbp-draft-post').click(function(event){
 	const publishButton = $(this);
 	const buttonContainer = $('.pgmb-editor-action-buttons');
 
-	publishButton.html(mbp_localize_script.please_wait).attr('disabled', true);
+	publishButton.html(__('Please wait...', 'post-to-google-my-business')).attr('disabled', true);
 
 	buttonContainer.addClass('is-busy');
 
@@ -332,8 +330,8 @@ $('#mbp-publish-post, #mbp-draft-post').click(function(event){
 	let mbp_fields_data = {
 		'action': 'mbp_new_post',
 		'mbp_serialized_fieldset': $('fieldset#mbp-post-data').serialize(),
-		'mbp_post_id': mbp_localize_script.post_id,
-		'mbp_post_nonce': mbp_localize_script.post_nonce,
+		'mbp_post_id': parent_wp_post,
+		'mbp_post_nonce': post_nonce,
 		'mbp_editing': editing,
 		'mbp_draft': draft,
 		'mbp_data_mode': formDataMode

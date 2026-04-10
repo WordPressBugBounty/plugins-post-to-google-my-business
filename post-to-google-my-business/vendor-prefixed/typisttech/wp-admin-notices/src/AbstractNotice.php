@@ -1,10 +1,11 @@
 <?php
+
 /**
  * WP Admin Notices
  *
  * A simplified OOP implementation of the WordPress admin notices.
  *
- * @package   TypistTech\WPAdminNotices
+ * @package   \TypistTech\WPAdminNotices
  *
  * @author    Typist Tech <wp-admin-notices@typist.tech>
  * @copyright 2017 Typist Tech
@@ -12,49 +13,38 @@
  *
  * @see       https://www.typist.tech/projects/wp-admin-notices
  * @see       https://github.com/TypistTech/wp-admin-notices
- *
- * Modified by __root__ on 16-February-2026 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace PGMB\Vendor\TypistTech\WPAdminNotices;
 
 use InvalidArgumentException;
-
 abstract class AbstractNotice implements NoticeInterface
 {
     const IS_STICKY = false;
     const HTML_CLASSES = [];
-
     const UPDATE_NAG = 'UPDATE_NAG';
     const ERROR = 'ERROR';
     const WARNING = 'WARNING';
     const INFO = 'INFO';
     const SUCCESS = 'SUCCESS';
-
     /**
      * The notice's unique identifier. Also used to permanently dismiss a sticky notice.
      *
      * @var string
      */
     protected $handle;
-
     /**
      * The HTML content of the notice.
      *
      * @var string
      */
     protected $content;
-
     /**
      * HTML class for the notice.
      *
      * @var string
      */
     protected $htmlClass;
-
     /**
      * Notice constructor.
      *
@@ -66,27 +56,17 @@ abstract class AbstractNotice implements NoticeInterface
      *
      * @throws InvalidArgumentException When $type is not supported.
      */
-    public function __construct(
-        string $handle,
-        string $content,
-        string $type = null
-    ) {
+    public function __construct(string $handle, string $content, string $type = null)
+    {
         $type = $type ?? static::INFO;
-        if (! array_key_exists($type, static::HTML_CLASSES)) {
-            $errorMessage = sprintf(
-                'Type "%1$s" not found. Valid options are: %2$s.',
-                $type,
-                implode(', ', array_keys(static::HTML_CLASSES))
-            );
-
+        if (!array_key_exists($type, static::HTML_CLASSES)) {
+            $errorMessage = sprintf('Type "%1$s" not found. Valid options are: %2$s.', $type, implode(', ', array_keys(static::HTML_CLASSES)));
             throw new InvalidArgumentException($errorMessage);
         }
-
         $this->handle = sanitize_key($handle);
         $this->content = wp_kses_post($content);
         $this->htmlClass = static::HTML_CLASSES[$type];
     }
-
     /**
      * Echo notice to screen.
      *
@@ -95,7 +75,6 @@ abstract class AbstractNotice implements NoticeInterface
      * @return void
      */
     abstract public function render(string $action);
-
     /**
      * {@inheritdoc}
      */
@@ -103,7 +82,6 @@ abstract class AbstractNotice implements NoticeInterface
     {
         return $this->handle;
     }
-
     /**
      * {@inheritdoc}
      */

@@ -71,11 +71,20 @@ let MediaUploader = function(selector, fieldname) {
         let newItem = $("<div>", {"class": "item item-container"});
 
 
-        if(type === "VIDEO" || !thumbnail){
-            let externalImage = $("<div>", { "class": "external-image" });
+        if(type === "VIDEO") {
+            let externalImage = $("<div>", {"class": "external-image video"});
+            newItem.append(externalImage);
+        }else if(type === "PHOTO" && itemUrl.includes('{{')){
+            let externalImage = $("<div>", {"class": "external-image dynamic"});
             newItem.append(externalImage);
         }else{
-            let newItemImg = $("<img>", {"class": "item-image", "src": thumbnail});
+            let newItemImg;
+            if(thumbnail){
+                newItemImg = $("<img>", {"class": "item-image", "src": thumbnail});
+            }else{
+                newItemImg = $("<div>", {"class": "external-image video"});
+            }
+
             newItem.append(newItemImg);
         }
 
@@ -99,9 +108,13 @@ let MediaUploader = function(selector, fieldname) {
     /* Media was submitted through the "Add from URL" dialog */
     wp_media_uploader.on("select", function(){
         let json = wp_media_uploader.state().props.toJSON();
-        if(json.width){
+        console.log(json);
+        if(json.width) {
             instance.loadItem("PHOTO", json.url, json.url);
+        }else if(json.url.includes("{{")){
+            instance.loadItem("PHOTO", json.url);
         }else{
+            //todo: this isn't a valid way to determine if its a video file. does not work with dynamic tags.
             instance.loadItem("VIDEO", json.url);
         }
 

@@ -12,7 +12,7 @@ class SettingsConfiguration implements ContainerConfigurationInterface {
             return new WeDevsSettingsAPI();
         } );
         $container['setting.default_location'] = function ( Container $container ) {
-            return $container['wedevs_settings_api']->get_option( 'google_location', 'mbp_google_settings', false );
+            return $container['wedevs_settings_api']->get_option( 'google_location', 'mbp_google_settings', [] );
         };
         $container['setting.invert_checkbox'] = function ( Container $container ) {
             return $container['wedevs_settings_api']->get_option( 'invert', 'mbp_quick_post_settings', 'off' ) === 'on';

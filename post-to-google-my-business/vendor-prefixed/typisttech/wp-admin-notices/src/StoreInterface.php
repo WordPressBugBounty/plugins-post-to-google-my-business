@@ -1,10 +1,11 @@
 <?php
+
 /**
  * WP Admin Notices
  *
  * A simplified OOP implementation of the WordPress admin notices.
  *
- * @package   TypistTech\WPAdminNotices
+ * @package   \TypistTech\WPAdminNotices
  *
  * @author    Typist Tech <wp-admin-notices@typist.tech>
  * @copyright 2017 Typist Tech
@@ -12,13 +13,8 @@
  *
  * @see       https://www.typist.tech/projects/wp-admin-notices
  * @see       https://github.com/TypistTech/wp-admin-notices
- *
- * Modified by __root__ on 16-February-2026 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace PGMB\Vendor\TypistTech\WPAdminNotices;
 
 /**
@@ -32,21 +28,18 @@ interface StoreInterface
      * @return int
      */
     public function size(): int;
-
     /**
      * Get all enqueued notices.
      *
      * @return NoticeInterface[]
      */
     public function all(): array;
-
     /**
      * Get sticky notices.
      *
      * @return NoticeInterface[]
      */
     public function sticky(): array;
-
     /**
      * Enqueue an admin notice.
      *
@@ -55,7 +48,6 @@ interface StoreInterface
      * @return void
      */
     public function add(NoticeInterface ...$notices);
-
     /**
      * Delete an enqueued notice.
      *
@@ -64,7 +56,6 @@ interface StoreInterface
      * @return void
      */
     public function delete(string $handle);
-
     /**
      * Reset enqueued notices.
      *

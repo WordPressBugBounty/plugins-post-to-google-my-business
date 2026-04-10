@@ -4,6 +4,7 @@ namespace PGMB\Subscriber;
 
 use PGMB\Components\SubPostListTable;
 use PGMB\EventManagement\SubscriberInterface;
+use PGMB\FormFieldParser;
 use PGMB\PostTypes\SubPostRepository;
 
 class SubPostListAjaxSubscriber implements SubscriberInterface {
@@ -12,6 +13,7 @@ class SubPostListAjaxSubscriber implements SubscriberInterface {
 	 * @var SubPostRepository
 	 */
 	private $repository;
+	private FormFieldParser $form_field_parser;
 
 	public static function get_subscribed_hooks() {
 		return [
@@ -22,8 +24,9 @@ class SubPostListAjaxSubscriber implements SubscriberInterface {
 		];
 	}
 
-	public function __construct(SubPostRepository $repository){
+	public function __construct(SubPostRepository $repository, FormFieldParser $form_field_parser){
 		$this->repository = $repository;
+		$this->form_field_parser = $form_field_parser;
 	}
 
 	public function process_bulk_action(){
@@ -53,7 +56,7 @@ class SubPostListAjaxSubscriber implements SubscriberInterface {
 
 		$parent_post_id = (int)$_REQUEST['parent_id'];
 
-		$wp_list_table = new SubPostListTable($parent_post_id, $this->repository);
+		$wp_list_table = new SubPostListTable($parent_post_id, $this->repository, $this->form_field_parser);
 		$wp_list_table->prepare_items();
 
 		ob_start();

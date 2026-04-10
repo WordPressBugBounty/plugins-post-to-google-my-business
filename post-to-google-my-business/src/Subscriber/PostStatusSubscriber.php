@@ -4,7 +4,7 @@ namespace PGMB\Subscriber;
 
 use PGMB\BackgroundProcessing\PostPublishProcess;
 use PGMB\EventManagement\SubscriberInterface;
-use PGMB\ParseFormFields;
+use PGMB\FormFieldParser;
 use PGMB\PostTypes\GooglePostEntity;
 use PGMB\PostTypes\GooglePostEntityRepository;
 use PGMB\PostTypes\SubPost;
@@ -31,9 +31,12 @@ class PostStatusSubscriber implements SubscriberInterface {
 
     private $bypass_wp_cron;
 
+    private FormFieldParser $form_field_parser;
+
     public function __construct(
         PostPublishProcess $process,
         GooglePostEntityRepository $repository,
+        FormFieldParser $form_field_parser,
         $default_location,
         $delete_gmb_posts,
         $enabled_post_types,
@@ -45,6 +48,7 @@ class PostStatusSubscriber implements SubscriberInterface {
         $this->delete_gmb_posts = $delete_gmb_posts;
         $this->enabled_post_types = $enabled_post_types;
         $this->bypass_wp_cron = $bypass_wp_cron;
+        $this->form_field_parser = $form_field_parser;
     }
 
     public static function get_subscribed_hooks() {
@@ -99,7 +103,7 @@ class PostStatusSubscriber implements SubscriberInterface {
             return;
         }
         $form_fields = get_post_meta( $post_id, 'mbp_form_fields', true );
-        $data = new ParseFormFields($form_fields);
+        $data = $this->form_field_parser->set_raw_fields( $form_fields );
         $postPublishDate = get_post_meta( $post_id, '_mbp_post_publish_date', true );
         if ( !$postPublishDate ) {
             update_post_meta( $post_id, '_mbp_post_publish_date', time() );

@@ -6,7 +6,7 @@ namespace PGMB\PostTypes;
 use DateTime;
 use Exception;
 use InvalidArgumentException;
-use PGMB\ParseFormFields;
+use PGMB\FormFieldParser;
 use WP_Post;
 
 class SubPost implements EntityInterface {
@@ -14,7 +14,7 @@ class SubPost implements EntityInterface {
 
 	private $is_autopost = false;
 
-	private $parsed_form_fields;
+//	private $parsed_form_fields;
 
 	private $form_fields;
 
@@ -130,22 +130,22 @@ class SubPost implements EntityInterface {
 
 	public function get_post_publish_date_timestamp(){
 		//Backwards compatibility
-		if($this->form_fields && !$this->post_publish_date_timestamp){
-			try{
-				$parsed_form_fields = $this->parsed_form_fields();
-				$publish_DateTime = $parsed_form_fields->getPublishDateTime();
-				if($publish_DateTime){
-					$this->post_publish_date_timestamp = $publish_DateTime->getTimestamp();
-				}
-			}catch (Exception $exception){
-				$has_error = true;
-			}
-			if(!isset($publish_DateTime) || !$publish_DateTime instanceof DateTime){
-				$this->post_publish_date_timestamp = $this->get_creation_timestamp();
-			}
-		}
+//		if($this->form_fields && !$this->post_publish_date_timestamp){
+//			try{
+//				$parsed_form_fields = $this->parsed_form_fields();
+//				$publish_DateTime = $parsed_form_fields->getPublishDateTime();
+//				if($publish_DateTime){
+//					$this->post_publish_date_timestamp = $publish_DateTime->getTimestamp();
+//				}
+//			}catch (Exception $exception){
+//				$has_error = true;
+//			}
+//			if(!isset($publish_DateTime) || !$publish_DateTime instanceof DateTime){
+//				$this->post_publish_date_timestamp = $this->get_creation_timestamp();
+//			}
+//		}
 
-		return $this->post_publish_date_timestamp;
+		return $this->post_publish_date_timestamp ?: $this->get_creation_timestamp();
 	}
 
 	public function set_post_publish_date_timestamp($unix_timestamp){
@@ -154,16 +154,6 @@ class SubPost implements EntityInterface {
 
 	public function is_draft(){
 		return $this->draft;
-	}
-
-	/**
-	 * @return ParseFormFields
-	 */
-	public function parsed_form_fields(){
-		if(!$this->parsed_form_fields){
-			$this->parsed_form_fields = new ParseFormFields($this->form_fields);
-		}
-		return $this->parsed_form_fields;
 	}
 
 	public static function create($parent_id){

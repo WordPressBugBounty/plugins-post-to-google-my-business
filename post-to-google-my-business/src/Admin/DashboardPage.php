@@ -62,7 +62,7 @@ class DashboardPage extends AbstractPage implements EnqueuesScriptsInterface, Aj
 		return sprintf(__('Dashboard %s', 'post-to-google-my-business'), $this->get_notification_count_html());
 	}
 
-	public function render_page(){
+	public function render_content(){
 		include($this->template_path.'dashboard.php');
 	}
 

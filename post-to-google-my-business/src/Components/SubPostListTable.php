@@ -9,6 +9,7 @@ namespace PGMB\Components;
 
 use DateTime;
 use DateTimeZone;
+use PGMB\FormFieldParser;
 use PGMB\Plugin;
 use PGMB\PostTypes\SubPost;
 use PGMB\PostTypes\SubPostRepository;
@@ -27,6 +28,7 @@ class SubPostListTable extends PrefixedListTable {
 	private $repository;
 
     protected $html_prefix = 'pgmb-subpost';
+	private FormFieldParser $form_field_parser;
 
 	/**
 	 *
@@ -38,7 +40,7 @@ class SubPostListTable extends PrefixedListTable {
 	 *
 	 */
 
-	function __construct($parent_id, SubPostRepository $repository) {
+	function __construct($parent_id, SubPostRepository $repository, FormFieldParser $form_field_parser) {
 		$this->parent_id = $parent_id;
 		$this->repository = $repository;
 
@@ -52,6 +54,7 @@ class SubPostListTable extends PrefixedListTable {
 		);
 
 
+		$this->form_field_parser = $form_field_parser;
 	}
 
 	/**
@@ -225,11 +228,13 @@ class SubPostListTable extends PrefixedListTable {
 			unset($actions['postlist']);
 		}
 
-	    $topic_type = $item->parsed_form_fields()->get_topic_type();
+        $parsed_form_fields = $this->form_field_parser->set_raw_fields($item->get_form_fields());
+
+	    $topic_type = $parsed_form_fields->get_topic_type();
 
 	    $output = '';
 
-	    if($item->parsed_form_fields()->is_repost()){
+	    if($parsed_form_fields->is_repost()){
 	        $output .= sprintf('<span class="dashicons dashicons-controls-repeat" title="%s"></span> ', __('Repost enabled', 'post-to-google-my-business'));
         }
 
@@ -238,7 +243,7 @@ class SubPostListTable extends PrefixedListTable {
         $output .= sprintf('<a href="#" class="row-title mbp-action" data-action="edit">%s %s</a><br />%s',
 	        $gbp_post_types[ $topic_type ]['svg'] ?? "", // $this->gmb_topic_types()[$topic_type]['dashicon']
 	        $gbp_post_types[$topic_type]['name'],
-            MbString::strimwidth((string)$item->parsed_form_fields()->get_summary(), 0, 100, '...')
+            MbString::strimwidth((string)$parsed_form_fields->get_summary(), 0, 100, '...')
         );
 
         return $output.$this->row_actions($actions);

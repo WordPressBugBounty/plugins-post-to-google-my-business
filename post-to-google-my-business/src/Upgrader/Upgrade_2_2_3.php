@@ -2,7 +2,7 @@
 
 namespace PGMB\Upgrader;
 
-use PGMB\ParseFormFields;
+use PGMB\FormFieldParser;
 use PGMB\PostTypes\SubPost;
 class Upgrade_2_2_3 implements DistributedUpgrade {
     private $background_process;

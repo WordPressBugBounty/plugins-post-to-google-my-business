@@ -108,6 +108,9 @@
 	padding:5px;
 	margin-top:-2px;
 	font-size:12px;
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 /* Fix for strange overflow issues with fieldset */
@@ -187,12 +190,17 @@
 
 .mediaupload_selector .external-image{
 	height:120px;
-	background-image: url("../img/video.png");
 	background-repeat: no-repeat;
 	background-position: center center;
 	line-height:120px;
 	text-align:center;
 }
+	.mediaupload_selector .external-image.video{
+		background-image: url("../img/video.png");
+	}
+	.mediaupload_selector .external-image.dynamic {
+		background-image: url("../img/dynamic.png");
+	}
 
 
 .pgmb-notification {
@@ -323,3 +331,220 @@
 .pgmb-business-selector-error-row{
 	background-color:#FDCDCD;
 }
+
+/* Variable panel */
+
+#pgmb-variable-panel {
+	position: fixed;
+	top: 0;
+	right: -400px;
+	width: 400px;
+	height: 100%;
+	background: #fff;
+	border-left: 1px solid #ddd;
+	box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+	transition: right 0.3s ease;
+	z-index: 100000;
+}
+	.block-editor #pgmb-variable-panel {
+		height: calc(100% - 32px);
+		top: 32px;
+	}
+
+	#pgmb-variable-panel .pgmb-panel-content{
+		padding:10px;
+	}
+
+	#pgmb-variable-panel #pgmb-selected-post{
+		padding-top:10px;
+		padding-bottom:10px;
+	}
+		#pgmb-variable-panel #pgmb-selected-post .pgmb-image-container{
+			width:50px;
+			height:50px;
+			margin-right:10px;
+			float:left;
+			overflow: hidden;
+		}
+			#pgmb-variable-panel #pgmb-selected-post .pgmb-image-container img{
+				height:50px;
+				display:block;
+				margin: 0 auto;
+			}
+	#pgmb-variable-panel #pgmb-selected-post-controls{
+		padding-top:10px;
+		display: flex;
+		justify-content: space-between;
+		clear:both;
+	}
+
+	#pgmb-variable-panel .pgmb-variable-panel-close-button{
+		position: absolute;
+		bottom:10px;
+		right:10px;
+	}
+
+	#pgmb-variable-panel.open {
+		right: 0;
+	}
+
+	#pgmb-variable-panel .pgmb-var-tab {
+		display:none;
+	}
+
+/* Post Preview */
+
+/* Qj68Ed  wt9ZDd hmXx5c */
+.pgmb-post-preview-container{
+	display:block;
+	width:234px;
+	border-radius:8px;
+	overflow:hidden;
+	border-bottom: 1px hidden #fff;
+	margin-top:20px;
+	box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+	position: relative;
+}
+	/* Z07zMb */
+	.pgmb-post-preview-container .pgmb-post-preview {
+		height:272px;
+		display:flex;
+		flex-direction: column;
+	}
+		/* HH2Fqe ncE9Xc Gbanud */
+		.pgmb-post-preview-container .pgmb-post-preview .pgmb-post-preview-cta{
+			bottom: 4px;
+			left: 5px;
+			line-height: 20px;
+			padding: 12px 11px;
+			position: absolute;
+			color: #1a0dab;
+			text-decoration: none;
+		}
+
+		/* zITa3d */
+		.pgmb-post-preview-container .pgmb-post-preview .pgmb-post-preview-image-container{
+			height:130px;
+			position:relative;
+		}
+			/* o0AaCd */
+			.pgmb-post-preview-container .pgmb-post-preview .pgmb-post-preview-image-container div{
+				height:100%;
+				width:100%;
+				background-size:cover;
+				background-position:center;
+			}
+
+		/* DLAM2 */
+		.pgmb-post-preview-container .pgmb-post-preview .pgmb-post-preview-content-container{
+			box-sizing:border-box;
+			font-size:14px;
+			overflow:hidden;
+			padding:16px;
+			position:relative;
+		}
+			/* iT7n post content text wrapper */
+			.pgmb-post-preview-container .pgmb-post-preview .pgmb-post-preview-content-container .pgmb-post-preview-content-text-wrapper {
+				overflow:hidden;
+				max-height:200px;
+			}
+
+			/* nvO4I - event title wrapper */
+			.pgmb-post-preview-container .pgmb-post-preview .pgmb-post-preview-content-container .pgmb-post-preview-event-title-wrapper {
+				display:flex;
+			}
+				/* zatzn - event title */
+				.pgmb-post-preview-container .pgmb-post-preview .pgmb-post-preview-content-container .pgmb-post-preview-event-title-wrapper .pgmb-post-preview-event-title{
+					color: #4d5156;
+					-moz-box-flex: 1;
+					flex: 1;
+					font-weight: bold;
+					line-height: 20px;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+				/* gTESXc - offer label wrapper */
+				.pgmb-post-preview-container .pgmb-post-preview .pgmb-post-preview-content-container .pgmb-post-preview-event-title-wrapper .pgmb-post-preview-offer-label-wrapper{
+					color: #f4b400;
+					line-height: 0;
+					margin-left: 5px;
+				}
+					.pgmb-post-preview-container .pgmb-post-preview .pgmb-post-preview-content-container .pgmb-post-preview-event-title-wrapper .pgmb-post-preview-offer-label-wrapper .pgmb-post-preview-offer-label {
+						fill: currentColor;
+					}
+
+			/* iT7n llCY5e */
+			.pgmb-post-preview-container .pgmb-post-preview .pgmb-post-preview-content-container .pgmb-post-preview-content-no-pic{
+				max-height:220px;
+			}
+            	/* gdQxwd */
+				.pgmb-post-preview-container .pgmb-post-preview .pgmb-post-preview-content-container .pgmb-post-preview-content-text-wrapper .pgmb-post-preview-content-text{
+					color: rgba(0,0,0,0.87);
+					display: inline-block;
+					line-height: 20px;
+					overflow: hidden;
+					white-space: pre-line;
+					word-break: break-word;
+				}
+			/* Ufkx2c */
+			.pgmb-post-preview-container .pgmb-post-preview .pgmb-post-preview-content-container .pgmb-post-preview-content-date{
+				color: rgba(0,0,0,0.54);
+				font-size: 13px;
+				line-height: 15px;
+				margin-top: 5px;
+			}
+
+
+#pgmb-variable-details p{
+	margin-bottom:10px;
+}
+#pgmb-variable-details button{
+	margin-top:10px;
+	margin-right:5px;
+}
+
+#pgmb-variable-tree-container, #pgmb-variable-tree-container ul{
+	list-style-type: none;
+}
+
+#pgmb-variable-tree-container{
+	margin:0;
+	padding:0;
+}
+	#pgmb-variable-tree-container ul{
+		margin-top:5px;
+		margin-left:10px;
+	}
+	#pgmb-variable-tree-container .pgmb-variable-tree-nested{
+		display:none;
+	}
+
+	#pgmb-variable-tree-container .pgmb-variable-group{
+		cursor: pointer;
+		user-select: none; /* Prevent text selection */
+	}
+
+	#pgmb-variable-tree-container .pgmb-variable-group::before{
+		font-family: "dashicons";
+		content: "\f345";
+		display: inline-block;
+		margin-right: 6px;
+	}
+		#pgmb-variable-tree-container .pgmb-variable-group-open::before{
+			content: "\f347";
+		}
+		#pgmb-variable-tree-container .pgmb-variable-row{
+			cursor: pointer;
+		}
+
+		.pgmb-premium-badge{
+			padding:3px 8px;
+			margin-left:5px;
+			background-color:#00a0d2;
+			color: #fff;
+			font-weight:bold;
+			font-size: 12px;
+			border-radius: 3px;
+			float:right;
+		}

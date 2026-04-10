@@ -1,10 +1,11 @@
 <?php
+
 /**
  * WP Admin Notices
  *
  * A simplified OOP implementation of the WordPress admin notices.
  *
- * @package   TypistTech\WPAdminNotices
+ * @package   \TypistTech\WPAdminNotices
  *
  * @author    Typist Tech <wp-admin-notices@typist.tech>
  * @copyright 2017 Typist Tech
@@ -12,13 +13,8 @@
  *
  * @see       https://www.typist.tech/projects/wp-admin-notices
  * @see       https://github.com/TypistTech/wp-admin-notices
- *
- * Modified by __root__ on 16-February-2026 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace PGMB\Vendor\TypistTech\WPAdminNotices;
 
 /**
@@ -32,7 +28,6 @@ class Store implements StoreInterface
      * @var string
      */
     private $optionKey;
-
     /**
      * Store constructor.
      *
@@ -42,7 +37,6 @@ class Store implements StoreInterface
     {
         $this->optionKey = $optionKey;
     }
-
     /**
      * Count all enqueued notices from database.
      *
@@ -52,7 +46,6 @@ class Store implements StoreInterface
     {
         return count($this->all());
     }
-
     /**
      * Get all enqueued notices from database.
      *
@@ -60,11 +53,8 @@ class Store implements StoreInterface
      */
     public function all(): array
     {
-        return $this->normalize(
-            (array) get_option($this->optionKey, [])
-        );
+        return $this->normalize((array) get_option($this->optionKey, []));
     }
-
     /**
      * Normalize notice array.
      *  - Filter out non-NoticeInterface objects
@@ -75,16 +65,10 @@ class Store implements StoreInterface
      */
     private function normalize(array $maybeNotices): array
     {
-        return array_values(
-            array_filter(
-                $maybeNotices,
-                function ($notice) {
-                    return $notice instanceof NoticeInterface;
-                }
-            )
-        );
+        return array_values(array_filter($maybeNotices, function ($notice) {
+            return $notice instanceof NoticeInterface;
+        }));
     }
-
     /**
      * Get sticky notices from database.
      *
@@ -92,16 +76,10 @@ class Store implements StoreInterface
      */
     public function sticky(): array
     {
-        return $this->normalize(
-            array_filter(
-                $this->all(),
-                function (NoticeInterface $notice) {
-                    return $notice->isSticky();
-                }
-            )
-        );
+        return $this->normalize(array_filter($this->all(), function (NoticeInterface $notice) {
+            return $notice->isSticky();
+        }));
     }
-
     /**
      * Enqueue admin notices to database.
      *
@@ -112,32 +90,14 @@ class Store implements StoreInterface
     public function add(NoticeInterface ...$notices)
     {
         $normalizedNewNotices = $this->normalize($notices);
-
-        $newNoticeHandles = array_map(
-            function (NoticeInterface $notice) {
-                return $notice->getHandle();
-            },
-            $normalizedNewNotices
-        );
-
-        $oldNotices = array_filter(
-            $this->all(),
-            function (NoticeInterface $notice) use ($newNoticeHandles) {
-                return ! in_array($notice->getHandle(), $newNoticeHandles, true);
-            }
-        );
-
-        update_option(
-            $this->optionKey,
-            $this->normalize(
-                array_merge(
-                    $oldNotices,
-                    $normalizedNewNotices
-                )
-            )
-        );
+        $newNoticeHandles = array_map(function (NoticeInterface $notice) {
+            return $notice->getHandle();
+        }, $normalizedNewNotices);
+        $oldNotices = array_filter($this->all(), function (NoticeInterface $notice) use ($newNoticeHandles) {
+            return !in_array($notice->getHandle(), $newNoticeHandles, true);
+        });
+        update_option($this->optionKey, $this->normalize(array_merge($oldNotices, $normalizedNewNotices)));
     }
-
     /**
      * Delete an enqueued notice from database.
      *
@@ -147,16 +107,10 @@ class Store implements StoreInterface
      */
     public function delete(string $handle)
     {
-        $this->reset(
-            array_filter(
-                $this->all(),
-                function (NoticeInterface $notice) use ($handle) {
-                    return $notice->getHandle() !== $handle;
-                }
-            )
-        );
+        $this->reset(array_filter($this->all(), function (NoticeInterface $notice) use ($handle) {
+            return $notice->getHandle() !== $handle;
+        }));
     }
-
     /**
      * Reset enqueued notices in database.
      *
@@ -167,7 +121,6 @@ class Store implements StoreInterface
     public function reset(array $notices = null)
     {
         $normalizedNotices = $this->normalize($notices ?? []);
-
         if (empty($normalizedNotices)) {
             delete_option($this->optionKey);
         } else {

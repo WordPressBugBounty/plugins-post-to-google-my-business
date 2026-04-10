@@ -19,7 +19,7 @@ class EventManagementConfiguration implements ContainerConfigurationInterface {
         $container['subscribers'] = $container->service( function ( Container $container ) {
             $subscribers = [
                 new Subscriber\AuthenticationAdminPostSubscriber($container['proxy_auth_api'], $container['user_manager']),
-                new Subscriber\CalendarFeedAjaxSubscriber($container['repository.subposts']),
+                new Subscriber\CalendarFeedAjaxSubscriber($container['repository.subposts'], $container['service.form_field_parser']),
                 new Upgrader(
                     $container['upgrade_background_process'],
                     $container['plugin_version'],
@@ -29,12 +29,13 @@ class EventManagementConfiguration implements ContainerConfigurationInterface {
                 new Subscriber\PostStatusSubscriber(
                     $container['post_publishing_process'],
                     $container['repository.post_entities'],
+                    $container['service.form_field_parser'],
                     $container['setting.default_location'],
                     $container['setting.delete_gmb_posts'],
                     $container['setting.enabled_post_types'],
                     $container['setting.bypass_wp_cron']
                 ),
-                new Subscriber\SubPostListAjaxSubscriber($container['repository.subposts']),
+                new Subscriber\SubPostListAjaxSubscriber($container['repository.subposts'], $container['service.form_field_parser']),
                 new Subscriber\PostEntityListAjaxSubscriber($container['repository.post_entities'], $container['repository.location_cache'], $container['post_publishing_process']),
                 new Subscriber\AdminPageSubscriber(
                     $container['dashboard_page'],
@@ -53,12 +54,13 @@ class EventManagementConfiguration implements ContainerConfigurationInterface {
                 new Subscriber\BlockEditorAssetSubscriber(
                     $container['setting.enabled_post_types'],
                     $container['plugin_url'],
-                    $container['plugin_version'],
+                    $container['plugin_path'],
                     $container['wedevs_settings_api']
                 ),
                 new Subscriber\PostSubmitBoxSubscriber($container['setting.enabled_post_types'], $container['setting.invert_checkbox']),
                 new Subscriber\SiteHealthSubscriber(),
-                new Subscriber\AdminStyleSubscriber($container['plugin_url'], $container['plugin_version'])
+                new Subscriber\AdminStyleSubscriber($container['plugin_url'], $container['plugin_version']),
+                new Subscriber\RestAPISubscriber($container['plugin_rest_namespace'], $container['rest_routes'])
             ];
             $subscribers[] = new Subscriber\PostTypesSubscriber();
             return $subscribers;

@@ -1,16 +1,12 @@
 <?php
-/**
- * @license GPL-2.0-or-later
- *
- * Modified by __root__ on 24-July-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
- */
 
 namespace PGMB\Vendor\Html2Text;
 
-class ImageTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ImageTest extends TestCase
 {
-    public function testImageDataProvider() {
+    public function imageDataProvider() {
         return array(
             'Without alt tag' => array(
                 'html' => '<img src="http://example.com/example.jpg">',
@@ -40,7 +36,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider testImageDataProvider
+     * @dataProvider imageDataProvider
      */
     public function testImages($html, $expected)
     {

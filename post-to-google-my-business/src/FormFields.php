@@ -8,7 +8,7 @@ class FormFields {
         'mbp_topic_type'        => 'STANDARD',
         'mbp_alert_type'        => 'COVID_19',
         'mbp_post_attachment'   => '',
-        'mbp_post_text'         => 'New post: %post_title% - %post_content%',
+        'mbp_post_text'         => 'New post: {{post.title}} - {{post.content}}',
         'mbp_event_all_day'     => false,
         'mbp_event_title'       => '',
         'mbp_event_start_date'  => '',
@@ -19,7 +19,7 @@ class FormFields {
         'mbp_offer_terms'       => '',
         'mbp_button'            => true,
         'mbp_button_type'       => false,
-        'mbp_button_url'        => '%post_permalink%',
+        'mbp_button_url'        => '{{post.url}}',
         'mbp_schedule'          => false,
         'mbp_scheduled_date'    => '',
         'mbp_cron_schedule'     => '0 12 * * 1',
@@ -35,6 +35,10 @@ class FormFields {
 
     public static function default_autopost_fields() {
         $fields = self::$fields;
+        $fields = array_merge( $fields, [
+            'mbp_event_title' => '{{post.title}}',
+            'mbp_offer_title' => '{{post.title}}',
+        ] );
         return $fields;
     }
 

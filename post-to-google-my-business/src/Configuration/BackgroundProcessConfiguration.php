@@ -12,6 +12,7 @@ use PGMB\Upgrader\Upgrade_3_0_0;
 use PGMB\Upgrader\Upgrade_3_1_2;
 use PGMB\Upgrader\Upgrade_3_1_6;
 use PGMB\Upgrader\Upgrade_3_2_0;
+use PGMB\Upgrader\Upgrade_3_4_0;
 class BackgroundProcessConfiguration implements ContainerConfigurationInterface {
     public function modify( Container $container ) {
         $container['post_publishing_process'] = $container->service( function ( Container $container ) {
@@ -20,7 +21,8 @@ class BackgroundProcessConfiguration implements ContainerConfigurationInterface 
                 $api,
                 $container['repository.post_entities'],
                 $container['repository.location_cache'],
-                $container['admin_notice_store']
+                $container['admin_notice_store'],
+                $container['service.form_field_parser']
             );
         } );
         $container['service.location_sync_process'] = $container->service( function ( Container $container ) {
@@ -51,6 +53,9 @@ class BackgroundProcessConfiguration implements ContainerConfigurationInterface 
             },
             '3.2.0'  => function () use($container) {
                 return new Upgrade_3_2_0($container['user_manager'], $container['service.location_sync_process']);
+            },
+            '3.4.0'  => function () use($container) {
+                return new Upgrade_3_4_0($container['notification_manager']);
             },
         ];
     }

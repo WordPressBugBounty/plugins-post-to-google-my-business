@@ -6,11 +6,11 @@
         <?php if($this->is_autopost_enabled()) : ?>
             <input type="hidden" value="1" name="mbp_wp_post" /> <!-- Hidden value so we can determine if the page was submitted without checking the checkbox -->
             <div class="button-group">
-                <a href="#" class="button button-secondary"  id='mbp-edit-post-template'><?php _e('Edit auto-post template', 'post-to-google-my-business'); ?></a>
-                <a href='#' class='button button-primary' id='mbp-new-post'>+ <?php _e('New GMB Post', 'post-to-google-my-business'); ?></a>
+                <a href="#" class="button button-secondary"  id='mbp-edit-post-template'><?php esc_html_e('Edit auto-post template', 'post-to-google-my-business'); ?></a>
+                <a href='#' class='button button-primary' id='mbp-new-post'>+ <?php esc_html_e('New GMB Post', 'post-to-google-my-business'); ?></a>
             </div>
         <?php else: ?>
-            <a href='#' class='button button-primary' id='mbp-new-post'>+ <?php _e('New GMB Post', 'post-to-google-my-business'); ?></a>
+            <a href='#' class='button button-primary' id='mbp-new-post'>+ <?php esc_html_e('New GMB Post', 'post-to-google-my-business'); ?></a>
         <?php endif; ?>
     </div>
 

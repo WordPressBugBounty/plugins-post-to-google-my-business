@@ -12,7 +12,7 @@ class AutoPostTemplateUpsell extends AbstractPage {
 		return __('Auto-post templates', 'post-to-google-my-business');
 	}
 
-	public function render_page() {
+	public function render_content() {
 		include($this->template_path.'autopost_template.php');
 	}
 

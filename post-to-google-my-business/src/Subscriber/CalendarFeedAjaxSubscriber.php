@@ -3,8 +3,10 @@
 namespace PGMB\Subscriber;
 
 use DateTime;
+use DateTimeInterface;
 use Exception;
 use PGMB\EventManagement\SubscriberInterface;
+use PGMB\FormFieldParser;
 use PGMB\Plugin;
 use PGMB\PostTypes\SubPost;
 use PGMB\PostTypes\SubPostRepository;
@@ -15,8 +17,11 @@ class CalendarFeedAjaxSubscriber implements SubscriberInterface {
 
     const NONCE_ACTION = 'calendar_nonce';
 
-    public function __construct( SubPostRepository $repository ) {
+    private FormFieldParser $form_field_parser;
+
+    public function __construct( SubPostRepository $repository, FormFieldParser $form_field_parser ) {
         $this->sub_post_repository = $repository;
+        $this->form_field_parser = $form_field_parser;
     }
 
     public static function get_subscribed_hooks() {
@@ -55,7 +60,7 @@ class CalendarFeedAjaxSubscriber implements SubscriberInterface {
             $parent_post_id = $post->get_parent();
             $post_date_timestamp = $post->get_post_publish_date_timestamp();
             //get_post_meta($post_id, '_mbp_post_publish_date', true);
-            $parsed_form_fields = $post->parsed_form_fields();
+            $parsed_form_fields = $this->form_field_parser->set_raw_fields( $post->get_form_fields() );
             //$posts_have_error = !empty(get_post_meta($post->get_id(), 'mbp_last_error', true)); //Todo: error handling
             $posts_have_error = $post->has_error();
             $post_date = ( new DateTime() )->setTimestamp( $post_date_timestamp )->setTimezone( DateTimeCompat::get_timezone() );
@@ -64,7 +69,7 @@ class CalendarFeedAjaxSubscriber implements SubscriberInterface {
             $live = $post_date <= $now;
             $events[] = [
                 'title'     => get_the_title( $parent_post_id ),
-                'start'     => $post_date->format( DateTime::ISO8601 ),
+                'start'     => $post_date->format( DateTimeInterface::ATOM ),
                 'end'       => null,
                 'url'       => get_edit_post_link( $parent_post_id, false ),
                 'color'     => ( $live ? ( $posts_have_error ? '#DE2E30' : '#4CAF50' ) : '#2196F3' ),
@@ -85,7 +90,7 @@ class CalendarFeedAjaxSubscriber implements SubscriberInterface {
         $post_id = (int) $_REQUEST['post_id'];
         $sub_post = $this->sub_post_repository->find_by_id( $post_id );
         $parent_post_link = get_edit_post_link( $sub_post->get_parent(), false );
-        $parsed_form_fields = $sub_post->parsed_form_fields();
+        $parsed_form_fields = $this->form_field_parser->set_raw_fields( $sub_post->get_form_fields() );
         $publish_date_timestamp = $sub_post->get_post_publish_date_timestamp();
         $publish_DateTime = ( new DateTime() )->setTimestamp( $publish_date_timestamp )->setTimezone( DateTimeCompat::get_timezone() );
         $topic_types = Plugin::gbp_topic_types();

@@ -3,9 +3,9 @@ Contributors: koen12344, valdemirmaran, freemius
 Donate link: https://digitaldistortion.dev/?utm_source=repository&utm_medium=link&utm_campaign=donate
 Tags: google my business, google business profile, gmb, local seo, google places
 Requires at least: 4.9.0
-Tested up to: 6.9
-Stable tag: 3.3.4
-Requires PHP: 7.1
+Tested up to: 7.0
+Stable tag: 3.4.0
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,11 +41,12 @@ Upgrade to **Post to Google My Business premium** for **even more automation and
 ⭐ **Multi-location & Multi-account support** – Publish posts across **multiple GBP locations** at once
 ⭐ **Auto re-posting (Recycling)** – Keep your content fresh by **automatically republishing** posts at set intervals
 ⭐ **Category- & tag-based auto-publishing** – Control exactly what gets posted
-⭐ **Spintax support** – Generate **unique** content variations to avoid duplication
+⭐ **Custom field support** – Use content from custom meta fields and ACF/SCF in your posts
 ⭐ **Evergreen content** – Randomly publish from a selection of your best content
 ⭐ **Post campaigns** – Create GMB posts that aren’t tied to a specific WordPress post or page
 ⭐ **Multiple auto-post Templates** – Customize and manage different posting styles
 ⭐ **Agency support** – Manage Google My Business posts for **multiple clients**
+⭐ **3rd party plugin support** – Use dynamic data from WooCommerce, ACF/SCF, Yoast and more in your posts
 
 **[Learn more about Post to Google My Business Premium](https://digitaldistortion.dev/?utm_source=repository&utm_medium=link&utm_campaign=learn_more&utm_content=description)**
 
@@ -113,6 +114,21 @@ with image accessibility. To further debug the issue, you can use a service like
 6. Auto-post template settings
 
 == Changelog ==
+
+= 3.4.0 =
+* Tested on WordPress 7.0
+* Added: Mustache template engine for post templates
+* Added: Pop-in post preview and variable explorer
+* Added: pgmb_page_cap filter for changing the required capability for accessing plugin settings
+* Added: "Restore default" button for restoring default template
+* Change: Bumped minimum PHP version to 7.4
+* Fix: JS conflict with some 3rd-party plugins causing locations not to load if no default location is selected
+* Update: Freemius SDK 2.13.1
+
+> **Premium**
+>
+> * Change: Move location selector out of "Advanced Post Settings" to main area
+> * Removed: Support for spintax (interfered with Mustache, and is pretty much irrelevant with AI in 2026)
 
 = 3.3.4 =
 * Fix: Scaling issue on AVIF/WebP images

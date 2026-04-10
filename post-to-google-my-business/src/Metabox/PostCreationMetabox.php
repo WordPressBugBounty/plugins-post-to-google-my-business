@@ -11,6 +11,7 @@ use PGMB\API\CachedGoogleMyBusiness;
 use PGMB\ApiCache\LocationCacheRepository;
 use PGMB\Components\PostEditor;
 use PGMB\EventManagement\SubscriberInterface;
+use PGMB\FormFieldParser;
 use PGMB\Google\NormalizeLocationName;
 use PGMB\PostTypes\GooglePostEntityRepository;
 use PGMB\PostTypes\SubPost;
@@ -50,9 +51,12 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
      */
     private $location_repository;
 
+    private FormFieldParser $form_field_parser;
+
     public function __construct(
         WeDevsSettingsAPI $settings_api,
         LocationCacheRepository $location_repository,
+        FormFieldParser $form_field_parser,
         $plugin_version,
         $post_editor,
         $enabled_post_types,
@@ -69,6 +73,7 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
         $this->plugin_path = $plugin_path;
         $this->plugin_url = $plugin_url;
         $this->location_repository = $location_repository;
+        $this->form_field_parser = $form_field_parser;
     }
 
     public static function get_subscribed_hooks() {
@@ -130,19 +135,14 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
             'AJAX_CALLBACK_PREFIX'       => self::AJAX_CALLBACK_PREFIX,
             'POST_EDITOR_DEFAULT_FIELDS' => \PGMB\FormFields::default_post_fields(),
             'disable_event_dateselector' => $this->settings_api->get_option( 'disable_event_dateselector', 'mbp_misc' ) === 'on',
+            'localize_post_editor'       => $this->post_editor->localize_vars(),
         ];
+        $script_assets = (require $this->plugin_path . 'js/metabox.asset.php');
         wp_enqueue_script(
             'mbp-metabox',
             $this->plugin_url . 'js/metabox.js',
-            array(
-                'jquery',
-                'jquery-ui-core',
-                'jquery-ui-datepicker',
-                'jquery-ui-slider',
-                'wp-hooks',
-                'wp-i18n'
-            ),
-            $this->plugin_version,
+            array_merge( $script_assets['dependencies'], ['jquery-ui-core', 'jquery-ui-datepicker', 'jquery-ui-slider'] ),
+            $script_assets['version'],
             true
         );
         wp_enqueue_style( 'pgmb-metabox', $this->plugin_url . 'js/metabox.css' );
@@ -174,6 +174,18 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
      */
     public function is_autopost_enabled() {
         return true;
+    }
+
+    /**
+     * Check if the user has customized the auto-post template for this specific post
+     *
+     * @return bool
+     */
+    public function is_autopost_template_customized() : bool {
+        if ( get_post_meta( get_the_ID(), '_mbp_autopost_template', true ) ) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -212,7 +224,7 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
      * @throws Exception Fields did not validate
      */
     public function validate_form_fields( $parent_post_id, $fields ) {
-        $parsed_fields = new \PGMB\ParseFormFields($fields);
+        $parsed_fields = $this->form_field_parser->set_raw_fields( $fields );
         $default_location = (array) $this->settings_api->get_option( 'google_location', 'mbp_google_settings' );
         $location_name = reset( $default_location );
         $location = $this->location_repository->get_location_by_google_id( NormalizeLocationName::from_with_account( $location_name )->without_account_id() );
@@ -246,8 +258,7 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
         //$form_fields = $this->sanitize_form_fields($_POST['mbp_form_fields'], ['mbp_post_text']);
         parse_str( $_POST['mbp_serialized_fieldset'], $parsed_fieldset );
         //$form_fields = $this->sanitize_form_fields($parsed_fieldset['mbp_form_fields'], ['mbp_post_text'], ['mbp_selected_location', 'mbp_button_url', 'mbp_offer_redeemlink', 'mbp_post_attachment']);
-        $parsed_form_fields = new \PGMB\ParseFormFields($parsed_fieldset['mbp_form_fields']);
-        $form_fields = $parsed_form_fields->sanitize();
+        $form_fields = $this->form_field_parser->sanitize_from_form( $parsed_fieldset['mbp_form_fields'] )->get_form_fields();
         $json_args = [];
         switch ( $data_mode ) {
             case "save_draft":
@@ -341,12 +352,14 @@ class PostCreationMetabox implements JSMetaboxInterface, AjaxCallbackInterface {
                 'fields' => $fields,
             ] );
         }
+        $default = \PGMB\FormFields::default_autopost_fields();
         $template = $this->settings_api->get_option( 'autopost_template', 'mbp_quick_post_settings', \PGMB\FormFields::default_autopost_fields() );
         if ( empty( $template ) ) {
-            $template = \PGMB\FormFields::default_autopost_fields();
+            $template = $default;
         }
         wp_send_json_success( [
-            'fields' => $template,
+            'fields'  => $template,
+            'default' => $default,
         ] );
     }
 

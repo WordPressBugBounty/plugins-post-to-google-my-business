@@ -144,14 +144,17 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
         }
 
         if(accounts && accounts.success){
-            for(const account_id in accounts.data){
+            for(const account_id of Object.keys(accounts.data)){
+                const account = accounts.data[account_id];
+                if (!account) continue;
+
                 const tbody = document.createElement('tbody');
                 const tr = document.createElement('tr');
                 const th = document.createElement('th');
                 th.colSpan = 2;
-                th.textContent = accounts.data[account_id].email;
-                if(account_controls && accounts.data[account_id].controls){
-                    th.innerHTML = th.innerHTML + " " + accounts.data[account_id].controls;
+                th.textContent = account.email ?? '';
+                if(account_controls && account.controls){
+                    th.innerHTML = th.innerHTML + " " + account.controls;
                 }
 
                 tbody.dataset.account_id = account_id;
@@ -179,8 +182,8 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
             }else if(accounts && typeof accounts.data === "string"){
                 throw new Error(accounts.data);
             }else{
-                console.log(accounts);
-                throw new Error(__('Unknown error occurred trying to load accounts', 'post-to-google-my-business'));
+                console.warn('Unknown error occurred trying to load accounts', accounts)
+                throw new Error(__('Unknown error occurred trying to load accounts. Check browser console for details', 'post-to-google-my-business'));
             }
         }
 
@@ -229,8 +232,8 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
         }else if(groups && !groups.success && typeof groups.data === "string"){
             throw new Error(groups.data);
         }else{
-            console.log(groups);
-            throw new Error(__('An unknown error occurred trying to load the groups', 'post-to-google-my-business'));
+            console.warn('An unknown error occurred trying to load the groups', groups);
+            throw new Error(__('An unknown error occurred trying to load the groups. Check browser console for details.', 'post-to-google-my-business'));
         }
 
         if(groups.data.count === 100){
@@ -287,13 +290,13 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
         }else if(locations && !locations.success && typeof locations.data === 'string'){
             throw new Error(locations.data);
         }else{
-            console.log(locations);
-            throw new Error(__('Failed to load locations, unknown error', 'post-to-google-my-business'));
+            console.warn('Failed to load locations, unknown error', locations);
+            throw new Error(__('Failed to load locations, unknown error. Check browser console for details.', 'post-to-google-my-business'));
         }
 
 
         if(locations.data.count === 500){
-            return await instance.getLocations(account_id, group_id, groupElement, offset + 500, refresh);
+            return await instance.getLocations(account_id, group_id, groupElement, offset + 500);
         }
 
     }
@@ -325,23 +328,32 @@ let BusinessSelector = function(container, ajax_prefix, es6container, load_callb
 
         const inputtype = multiple ? "checkbox" : "radio";
 
-        const checkboxes  = businessSelector.querySelectorAll(`input[type="${inputtype}"]`);
-        for(const checkbox of checkboxes){
+        const inputs  = businessSelector.querySelectorAll(`input[type="${inputtype}"]`);
+        for(const checkbox of inputs){
             checkbox.checked = false;
         }
-        for (const account_id in selectedLocations){
-            const data = selectedLocations[account_id];
-            if(typeof data === "object"){
-                data.forEach((location) => {
-                    const checkbox = businessSelector.querySelector(`input[type="${inputtype}"][value="${location}"]`);
-                    if(checkbox){
-                        checkbox.checked = true;
+
+        if(!selectedLocations || typeof selectedLocations !== "object"){
+            console.warn('setSelection expected object, got', selection);
+            // return;
+        }else{
+            for (const account_id of Object.keys(selectedLocations)){
+                const data = selectedLocations[account_id];
+                if(Array.isArray(data)){
+                    for(const location of data){
+                        for(const input of inputs){
+                            if(input.value === String(location)){
+                                input.checked = true;
+                            }
+                        }
                     }
-                });
-            }else{
-                const checkbox = businessSelector.querySelector(`input[type="${inputtype}"][value="${data}"]`);
-                if(checkbox){
-                    checkbox.checked = true;
+                }else if (data !== null){
+                    //backwards compatibility in case the data is stored in old format
+                    for(const input of inputs){
+                        if(input.value === String(data)){
+                            input.checked = true;
+                        }
+                    }
                 }
             }
         }

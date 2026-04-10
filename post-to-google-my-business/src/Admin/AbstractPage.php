@@ -18,7 +18,7 @@ abstract class AbstractPage {
 	}
 
 	public function get_capability(){
-		return 'manage_options';
+		return apply_filters('pgmb_page_cap', 'manage_options', $this);
 	}
 
 	abstract public function get_menu_slug();
@@ -27,7 +27,14 @@ abstract class AbstractPage {
 
 	abstract public function get_menu_title();
 
-	abstract public function render_page();
+	abstract protected function render_content();
+
+	public function render_page(){
+		if(!current_user_can($this->get_capability())){
+			wp_die(__('You do not have sufficient permissions to access this page.', 'post-to-google-my-business'));
+		}
+		$this->render_content();
+	}
 
 	/**
 	 * @return int Page position in submenu

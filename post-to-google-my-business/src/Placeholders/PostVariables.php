@@ -41,7 +41,7 @@ class PostVariables implements VariableInterface {
 		foreach($post as $key => $value){
 			$variables['%'.$key.'%'] = $value;
 		}
-		$variables['%post_content%'] = $this->parse_post_content($variables['%post_content%']);
+		$variables['%post_content%'] = $this->parse_post_content(apply_filters('the_content', $post->post_content));
 		return $variables;
 	}
 }

@@ -1,0 +1,15 @@
+<phpunit bootstrap="bootstrap.php"
+         backupGlobals="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true">
+    <php>
+        <env name="WP_TESTS_MULTISITE" value="1"/>
+    </php>
+    <testsuites>
+        <testsuite name="wp-background-processing Multisite">
+            <directory prefix="Test_" suffix=".php">./tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

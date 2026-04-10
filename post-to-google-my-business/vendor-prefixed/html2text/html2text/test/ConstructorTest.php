@@ -1,14 +1,10 @@
 <?php
-/**
- * @license GPL-2.0-or-later
- *
- * Modified by __root__ on 24-July-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
- */
 
 namespace PGMB\Vendor\Html2Text;
 
-class ConstructorTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ConstructorTest extends TestCase
 {
     public function testConstructor()
     {
@@ -35,7 +31,10 @@ class ConstructorTest extends \PHPUnit_Framework_TestCase
         $html = 'Foo';
         $options = array('do_links' => 'none');
 
-        $this->setExpectedException('InvalidArgumentException');
+        method_exists($this, 'expectException') 
+            ? $this->expectException('InvalidArgumentException')
+            : $this->setExpectedException('InvalidArgumentException');
+
         $html2text = new Html2Text($html, true, $options);
     }
 }

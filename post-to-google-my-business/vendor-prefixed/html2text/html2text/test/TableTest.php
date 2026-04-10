@@ -1,14 +1,10 @@
 <?php
-/**
- * @license GPL-2.0-or-later
- *
- * Modified by __root__ on 24-July-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
- */
 
 namespace PGMB\Vendor\Html2Text;
 
-class TableTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class TableTest extends TestCase
 {
     public function testTable()
     {

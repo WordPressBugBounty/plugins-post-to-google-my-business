@@ -68,19 +68,16 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
             'locale'                           => get_locale(),
             'nonce'                            => wp_create_nonce( 'pgmb-nonce' ),
             'disable_event_dateselector'       => $this->settings_api->get_option( 'disable_event_dateselector', 'mbp_misc' ) === 'on',
-            'setting_selected_location'        => $this->settings_api->get_option( 'google_location', 'mbp_google_settings' ),
+            'setting_selected_location'        => $this->settings_api->get_option( 'google_location', 'mbp_google_settings', (object) [] ),
+            'localize_post_editor'             => $this->autopost_editor->localize_vars(),
+            'default_autopost_fields'          => FormFields::default_autopost_fields(),
         ];
+        $script_assets = (require $this->plugin_path . 'js/settings.asset.php');
         wp_enqueue_script(
             'mbp-settings-page',
             $this->plugin_url . 'js/settings.js',
-            array(
-                'jquery',
-                'jquery-ui-core',
-                'jquery-ui-datepicker',
-                'jquery-ui-slider',
-                'wp-i18n'
-            ),
-            $this->plugin_version,
+            array_merge( $script_assets['dependencies'], ['jquery-ui-core', 'jquery-ui-datepicker', 'jquery-ui-slider'] ),
+            $script_assets['version'],
             true
         );
         wp_enqueue_style( 'pgmb-settings-page', $this->plugin_url . 'js/settings.css' );
@@ -218,6 +215,7 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
         //$user = $this->get_current_setting('google_user', 'mbp_google_settings');
         //Fix for default checkboxes enabled by default not saving when turned off
         $values = array_merge( FormFields::empty_post_fields(), $values );
+        //todo: see if this can be replaced easily by storing on/off string instead of bool
         $this->autopost_editor->set_field_name( $name );
         $this->autopost_editor->set_values( $values );
         echo $this->autopost_editor->generate();
@@ -256,63 +254,60 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
 
     public function message_of_the_day() {
         if ( !mbp_fs()->can_use_premium_code() ) {
+            $upgrade_url_format = '%s <a target="_blank" href="%s">%s</a> %s';
+            $upgrade_url = mbp_fs()->get_upgrade_url();
             $messages = [
-                /*
-                sprintf('%s <a target="_blank" href="%s">%s</a> %s',
-                	__('Get more visitors to your website with a call-to-action button in your post.', 'post-to-google-my-business'),
-                	esc_url(admin_url('options-general.php?page=my_business_post-pricing')),
-                	__('Upgrade to Premium', 'post-to-google-my-business'),
-                	__('for call-to-action buttons, post statistics and more.', 'post-to-google-my-business')
+                sprintf(
+                    $upgrade_url_format,
+                    esc_html__( 'Manage multiple businesses or locations?', 'post-to-google-my-business' ),
+                    $upgrade_url,
+                    esc_html__( 'Upgrade to Premium (Pro)', 'post-to-google-my-business' ),
+                    esc_html__( 'to pick a location per post, or post to multiple locations at once.', 'post-to-google-my-business' )
+                ),
+                sprintf(
+                    $upgrade_url_format,
+                    esc_html__( 'Not the right time?', 'post-to-google-my-business' ),
+                    $upgrade_url,
+                    esc_html__( 'Upgrade to Premium', 'post-to-google-my-business' ),
+                    esc_html__( 'and schedule your GBP posts to be automagically published at a later time.', 'post-to-google-my-business' )
+                ),
+                sprintf(
+                    $upgrade_url_format,
+                    esc_html__( 'Manage GBP locations for clients?', 'post-to-google-my-business' ),
+                    $upgrade_url,
+                    esc_html__( 'Upgrade to Premium (Agency)', 'post-to-google-my-business' ),
+                    esc_html__( 'to connect multiple Google accounts, and centrally manage GBP post campaigns.', 'post-to-google-my-business' )
+                ),
+                sprintf(
+                    $upgrade_url_format,
+                    wp_kses( __( 'Publish <em>real</em> GBP products.', 'post-to-google-my-business' ), [
+                        'em' => [],
+                    ] ),
+                    $upgrade_url,
+                    esc_html__( 'Upgrade to Premium', 'post-to-google-my-business' ),
+                    esc_html__( 'to enable publishing GBP products', 'post-to-google-my-business' )
+                ),
+                sprintf(
+                    $upgrade_url_format,
+                    esc_html__( 'Automatically re-publish your GBP posts a specific or unlimited amount of times.', 'post-to-google-my-business' ),
+                    $upgrade_url,
+                    esc_html__( 'Upgrade to Premium (Pro)', 'post-to-google-my-business' ),
+                    esc_html__( 'to set custom intervals and specify the amount of reposts.', 'post-to-google-my-business' )
+                ),
+                sprintf(
+                    $upgrade_url_format,
+                    esc_html__( 'Use ACF or custom meta fields in your post templates.', 'post-to-google-my-business' ),
+                    $upgrade_url,
+                    esc_html__( 'Upgrade to Premium', 'post-to-google-my-business' ),
+                    esc_html__( 'for custom meta field and ACF support.', 'post-to-google-my-business' )
+                ),
+                sprintf(
+                    $upgrade_url_format,
+                    esc_html__( 'I hope you enjoy using my Post to Google My Business plugin! Help spread the word with a', 'post-to-google-my-business' ),
+                    'https://wordpress.org/support/plugin/post-to-google-my-business/reviews/#new-post',
+                    esc_html__( '5-star rating on WordPress.org', 'post-to-google-my-business' ),
+                    esc_html__( '. Many thanks! - Koen Reus, plugin developer', 'post-to-google-my-business' )
                 )
-                */
-                sprintf(
-                    '%s <a target="_blank" href="%s">%s</a> %s',
-                    __( 'Manage multiple businesses or locations?', 'post-to-google-my-business' ),
-                    mbp_fs()->get_upgrade_url(),
-                    __( 'Upgrade to Premium', 'post-to-google-my-business' ),
-                    __( 'to pick a location per post, or post to multiple locations at once.', 'post-to-google-my-business' )
-                ),
-                sprintf(
-                    '%s <a target="_blank" href="%s">%s</a> %s',
-                    __( 'Not the right time?', 'post-to-google-my-business' ),
-                    mbp_fs()->get_upgrade_url(),
-                    __( 'Upgrade to Premium', 'post-to-google-my-business' ),
-                    __( 'and schedule your posts to be automagically published at a later time.', 'post-to-google-my-business' )
-                ),
-                sprintf(
-                    '%s <a target="_blank" href="%s">%s</a> %s',
-                    __( 'Wondering how your Google My Business post is performing?', 'post-to-google-my-business' ),
-                    mbp_fs()->get_upgrade_url(),
-                    __( 'Upgrade to Premium', 'post-to-google-my-business' ),
-                    __( 'to view post statistics and easily include Google Analytics UTM parameters.', 'post-to-google-my-business' )
-                ),
-                sprintf(
-                    '%s <a target="_blank" href="%s">%s</a> %s',
-                    __( 'Use Post to Google My Business for your pages, projects, WooCommerce products and more.', 'post-to-google-my-business' ),
-                    mbp_fs()->get_upgrade_url(),
-                    __( 'Upgrade to Premium', 'post-to-google-my-business' ),
-                    __( 'to enable Post to Google my Business for any post type.', 'post-to-google-my-business' )
-                ),
-                sprintf(
-                    '%s <a target="_blank" href="%s">%s</a> %s',
-                    __( 'Automatically repost your GMB posts a specific or unlimited amount of times.', 'post-to-google-my-business' ),
-                    mbp_fs()->get_upgrade_url(),
-                    __( 'Upgrade to Premium', 'post-to-google-my-business' ),
-                    __( 'to set custom intervals and specify the amount of reposts.', 'post-to-google-my-business' )
-                ),
-                sprintf(
-                    '%s <a target="_blank" href="https://wordpress.org/plugins/post-to-google-my-business/">%s</a> %s',
-                    __( 'I hope you enjoy using my Post to Google My Business plugin! Help spread the word with a', 'post-to-google-my-business' ),
-                    __( '5-star rating on WordPress.org', 'post-to-google-my-business' ),
-                    __( '. Many thanks! - Koen Reus, plugin developer', 'post-to-google-my-business' )
-                ),
-                sprintf(
-                    '%s <a target="_blank" href="%s">%s</a> %s',
-                    __( 'Create unique posts every time.', 'post-to-google-my-business' ),
-                    mbp_fs()->get_upgrade_url(),
-                    __( 'Upgrade to Premium', 'post-to-google-my-business' ),
-                    __( 'to use spintax and %variables% in your post text.', 'post-to-google-my-business' )
-                ),
             ];
             //mt_srand(date('dmY'));
             $motd = mt_rand( 0, count( $messages ) - 1 );
@@ -350,7 +345,7 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
 
     public function validate_default_location( $value ) {
         //$value['load_success'] = "no" means the business selector failed to load fully.
-        $original = $this->settings_api->get_option( 'google_location', 'mbp_google_settings' );
+        $original = $this->settings_api->get_option( 'google_location', 'mbp_google_settings', (object) [] );
         if ( !empty( $value['load_success'] ) && $value['load_success'] === 'no' ) {
             add_settings_error( 'mbp_google_settings[google_location]', 'locations_load_fail', __( 'Google locations could not be loaded at the time of saving. Location settings were not updated. Please reload locations and save again.' ) );
             $value = $original;
@@ -376,10 +371,7 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
         return __( 'Settings', 'post-to-google-my-business' );
     }
 
-    public function render_page() {
-        if ( !current_user_can( 'manage_options' ) ) {
-            wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-        }
+    public function render_content() {
         include $this->template_path . 'settings.php';
     }
 
@@ -431,7 +423,7 @@ class AdminPage extends AbstractPage implements ConfigurablePageInterface, Enque
         $this->autopost_editor->register_ajax_callbacks( self::POST_EDITOR_CALLBACK_PREFIX );
         $this->business_selector->register_ajax_callbacks( self::BUSINESSSELECTOR_CALLBACK_PREFIX );
         $this->business_selector->set_field_name( 'mbp_google_settings[google_location]' );
-        $selected_locations = $this->settings_api->get_option( 'google_location', 'mbp_google_settings' );
+        $selected_locations = $this->settings_api->get_option( 'google_location', 'mbp_google_settings', (object) [] );
         $this->business_selector->set_selected_locations( $selected_locations );
         if ( mbp_fs()->is_plan_or_trial__premium_only( 'starter' ) && $this->business_selector instanceof MultiAccountBusinessSelector ) {
             $this->business_selector->enable_account_cookie_control( true );

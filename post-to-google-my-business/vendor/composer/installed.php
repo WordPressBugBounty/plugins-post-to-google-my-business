@@ -38,12 +38,12 @@
             'dev_requirement' => false,
         ),
         'firebase/php-jwt' => array(
-            'pretty_version' => 'v6.4.0',
-            'version' => '6.4.0.0',
+            'pretty_version' => 'v6.10.0',
+            'version' => '6.10.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../firebase/php-jwt',
             'aliases' => array(),
-            'reference' => '4dd1e007f22a927ac77da5a3fbb067b42d3bc224',
+            'reference' => 'a49db6f0a5033aef5143295342f1c95521b075ff',
             'dev_requirement' => false,
         ),
         'html2text/html2text' => array(
@@ -53,6 +53,15 @@
             'install_path' => __DIR__ . '/../html2text/html2text',
             'aliases' => array(),
             'reference' => '3b443cbe302b52eb5806a21a9dbd79524203970a',
+            'dev_requirement' => false,
+        ),
+        'mustache/mustache' => array(
+            'pretty_version' => 'v3.0.0',
+            'version' => '3.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mustache/mustache',
+            'aliases' => array(),
+            'reference' => '176b6b21d68516dd5107a63ab71b0050e518b7a4',
             'dev_requirement' => false,
         ),
         'rarst/wpdatetime' => array(

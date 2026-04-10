@@ -6,36 +6,51 @@ use PGMB\EventManagement\SubscriberInterface;
 use PGMB\REST\RouteInterface;
 
 class RestAPISubscriber implements SubscriberInterface {
-
-	const REST_API_VERSION = 'v1';
-
-	const NAMESPACE = 'post-to-google-my-business';
+	/**
+	 * @var array
+	 */
+	private $endpoints;
+	private $namespace;
 
 	/**
-	 * @var RouteInterface[]
+	 * @param $namespace
+	 * @param RouteInterface[] $endpoints
 	 */
-	private $routes;
+	public function __construct($namespace, array $endpoints = []){
+		$this->endpoints = [];
 
-	/**
-	 * @param RouteInterface[] $routes
-	 */
-	public function __construct( array $routes){
-		$this->routes = $routes;
+		foreach($endpoints as $endpoint){
+			$this->add_endpoint($endpoint);
+		}
+
+		$this->namespace = $namespace;
 	}
-
 	public static function get_subscribed_hooks(): array {
 		return [
-			'rest_api_init' => 'register_routes',
+			'rest_api_init' => 'register_endpoints',
 		];
 	}
 
-	public function register_routes(){
-		foreach($this->routes as $route){
-			register_rest_route( self::NAMESPACE.'/'.self::REST_API_VERSION, $route->get_endpoint_name(), [
-				'methods'  => $route->get_methods(),
-				'callback' => [$route, 'callback'],
-				'permission_callback' => [$route, 'permission_callback'],
-			] );
+	public function add_endpoint(RouteInterface $endpoint){
+		$this->endpoints[] = $endpoint;
+	}
+
+	public function register_endpoints(){
+		foreach($this->endpoints as $endpoint){
+			$this->register_endpoint($endpoint);
 		}
+	}
+
+	public function get_arguments(RouteInterface $endpoint): array {
+		return [
+			'args' => $endpoint->get_arguments(),
+			'callback' => [$endpoint, 'respond'],
+			'methods' => $endpoint->get_methods(),
+			'permission_callback' => [$endpoint, 'validate'],
+		];
+	}
+
+	private function register_endpoint(RouteInterface $endpoint){
+		register_rest_route($this->namespace, $endpoint->get_path(), $this->get_arguments($endpoint));
 	}
 }
