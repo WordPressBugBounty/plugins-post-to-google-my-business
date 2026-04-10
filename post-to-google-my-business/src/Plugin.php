@@ -9,7 +9,7 @@ use WP_Site;
 class Plugin {
     const DOMAIN = 'post-to-google-my-business';
 
-    const VERSION = '3.3.4';
+    const VERSION = '3.4.1';
 
     const REST_NAMESPACE = 'pgmb/v1';
 
