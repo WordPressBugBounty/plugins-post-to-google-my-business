@@ -4,7 +4,7 @@ Donate link: https://digitaldistortion.dev/?utm_source=repository&utm_medium=lin
 Tags: google my business, google business profile, gmb, local seo, google places
 Requires at least: 4.9.0
 Tested up to: 7.0
-Stable tag: 3.4.1
+Stable tag: 3.4.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -114,6 +114,9 @@ with image accessibility. To further debug the issue, you can use a service like
 6. Auto-post template settings
 
 == Changelog ==
+
+= 3.4.3 =
+* Fix: Call to action URL not working with {{post.url}} variable
 
 = 3.4.1 =
 * Fix: Not showing new features and upgrade notification

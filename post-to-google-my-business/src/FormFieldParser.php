@@ -218,15 +218,15 @@ class FormFieldParser {
         // mbp_content_image mbp_featured_image
         //Add button
         if ( isset( $this->form_fields['mbp_button'] ) && $this->form_fields['mbp_button'] && $this->form_fields['mbp_button_type'] ) {
-            $buttonURL = $this->parse_placeholder_variables( $placeholder_variables, $mustache->render( $this->form_fields['mbp_button_url'] ) );
+            $buttonURL = $this->parse_placeholder_variables( $placeholder_variables, $mustache->render( $this->form_fields['mbp_button_url'], $context ) );
             $callToAction = new \PGMB\Google\CallToAction($this->form_fields['mbp_button_type'], $buttonURL);
             $localPost->addCallToAction( $callToAction );
         }
         //Add offer
         if ( $topicType == 'OFFER' ) {
-            $coupon = $mustache->render( $this->form_fields['mbp_offer_coupon'] );
-            $redeemlink = $mustache->render( $this->form_fields['mbp_offer_redeemlink'] );
-            $terms = $mustache->render( $this->form_fields['mbp_offer_terms'] );
+            $coupon = $mustache->render( $this->form_fields['mbp_offer_coupon'], $context );
+            $redeemlink = $mustache->render( $this->form_fields['mbp_offer_redeemlink'], $context );
+            $terms = $mustache->render( $this->form_fields['mbp_offer_terms'], $context );
             $localPostOffer = new \PGMB\Google\LocalPostOffer($coupon, $redeemlink, $terms);
             $localPost->addLocalPostOffer( $localPostOffer );
         }

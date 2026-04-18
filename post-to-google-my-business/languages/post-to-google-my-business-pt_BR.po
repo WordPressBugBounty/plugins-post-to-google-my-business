@@ -7,11 +7,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-13 23:33-0300\n"
-"PO-Revision-Date: 2026-02-13 23:41-0300\n"
+"POT-Creation-Date: 2026-04-11 00:29-0300\n"
+"PO-Revision-Date: 2026-04-11 00:51-0300\n"
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: post-to-google-my-business.php\n"
@@ -19,47 +19,77 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor-prefixed/deliciousbrains/wp-background-processing/tests\n"
+"X-Poedit-SearchPathExcluded-2: vendor-prefixed/dragonmantank/cron-expression/tests\n"
+"X-Poedit-SearchPathExcluded-3: vendor-prefixed/html2text/html2text/test\n"
+"X-Poedit-SearchPathExcluded-4: vendor-prefixed/rarst/wpdatetime/tests\n"
 
-#: js_src/admin/components/BusinessSelector.js:547
-#: js_src/admin/components/BusinessSelector.js:556
+#: js_src/admin/components/BusinessSelector.js:559
+#: js_src/admin/components/BusinessSelector.js:568
 #: src/Components/BusinessSelector.php:310
-#: src/Premium/Components/MultiAccountBusinessSelector.php:141
+#: src/Premium/Components/MultiAccountBusinessSelector.php:142
 msgid "Refresh locations"
 msgstr "Atualizar locais"
 
+#: js_src/admin/components/PostEditor.js:626
+#: templates/admin/posteditor.php:321
+msgid "Buy"
+msgstr "Comprar"
+
+#: js_src/admin/components/PostEditor.js:628
+#: templates/admin/posteditor.php:319
+msgid "Book"
+msgstr "Reservar"
+
+#: js_src/admin/components/PostEditor.js:630
+#: templates/admin/posteditor.php:320
+msgid "Order online"
+msgstr "Pedir online"
+
+#: js_src/admin/components/PostEditor.js:632
+#: src/Premium/Components/MultiAccountBusinessSelector.php:168
+#: templates/admin/posteditor.php:322
+msgid "Learn more"
+msgstr "Saiba mais"
+
+#: js_src/admin/components/PostEditor.js:634
+#: templates/admin/posteditor.php:323
+msgid "Sign up"
+msgstr "Cadastrar-se"
+
 #. translators: %d is a number representing the amount of tasks still to process
 #: js_src/admin/components/SubPostListTable.js:141
-#: src/Components/SubPostListTable.php:265
+#: src/Components/SubPostListTable.php:270
 #, javascript-format,php-format
 msgid "%d publishing tasks queued"
 msgstr "%d tarefas de publicação enfileiradas"
 
-#: js_src/admin/metabox.js:221
-#: src/Plugin.php:253
+#: js_src/admin/metabox.js:219
+#: src/Plugin.php:257
 #: templates/admin/posteditor.php:14
 msgid "Update"
 msgstr "Atualizar"
 
-#: js_src/admin/metabox.js:363
-#: templates/admin/posteditor.php:536
+#: js_src/admin/metabox.js:361
+#: templates/admin/posteditor.php:551
 msgid "Save draft"
 msgstr "Salvar rascunho"
 
 #: js_src/premium/components/ApTemplateSelector.js:22
-#: src/Premium/Admin/PremiumAdminPage.php:148
+#: src/Premium/Admin/PremiumAdminPage.php:159
 #: src/Premium/Subscribers/PremiumSubmitboxMetaSubscriber.php:92
 msgid "Default auto-post template"
 msgstr "Modelo de publicação automática padrão"
 
 #: js_src/premium/components/ApTemplateSelector.js:31
-#: src/Premium/Metabox/AutopostTemplateMetabox.php:47
+#: src/Premium/Metabox/AutopostTemplateMetabox.php:49
 #: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:16
 msgid "Auto-post template"
 msgstr "Modelo de publicação automática"
 
 #: js_src/premium/components/PremiumPostEditor.js:100
-#: templates/admin/posteditor.php:252
-#: templates/admin/posteditor.php:256
+#: templates/admin/posteditor.php:258
+#: templates/admin/posteditor.php:262
 msgid "Price"
 msgstr "Preço"
 
@@ -69,7 +99,7 @@ msgid "Add to evergreen content"
 msgstr "Adicionar ao conteúdo evergreen"
 
 #: js_src/premium/metabox-premium.js:37
-#: templates/admin/posteditor.php:445
+#: templates/admin/posteditor.php:477
 msgid "Schedule post"
 msgstr "Agendar publicação"
 
@@ -87,131 +117,135 @@ msgstr "Resposta JSON inválida do servidor de autenticação."
 msgid "Unexpected response code %1$d: %2$s"
 msgstr "Código de resposta inesperado %1$d: %2$s"
 
-#: src/Admin/AdminPage.php:129
+#: src/Admin/AbstractPage.php:34
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Você não tem permissões suficientes para acessar esta página."
+
+#: src/Admin/AdminPage.php:133
 msgid "Google settings"
 msgstr "Configurações do Google"
 
-#: src/Admin/AdminPage.php:134
+#: src/Admin/AdminPage.php:138
 msgid "Auto-post settings"
 msgstr "Configurações de publicação automática"
 
-#: src/Admin/AdminPage.php:138
+#: src/Admin/AdminPage.php:142
 msgid "Post type settings"
 msgstr "Configurações de tipo de post"
 
-#: src/Admin/AdminPage.php:142
+#: src/Admin/AdminPage.php:146
 msgid "Evergreen content"
 msgstr "Conteúdo evergreen"
 
-#: src/Admin/AdminPage.php:146
+#: src/Admin/AdminPage.php:150
 msgid "Misc"
 msgstr "Diversos"
 
-#: src/Admin/AdminPage.php:156
+#: src/Admin/AdminPage.php:160
 msgid "Default location"
 msgstr "Local padrão"
 
-#: src/Admin/AdminPage.php:157
+#: src/Admin/AdminPage.php:161
 msgid "Select the post-types where the GMB metabox & auto-post controls should be displayed"
 msgstr "Selecionar os tipos de posts em que a metabox do GMB e os controles de publicação automática devem ser exibidos"
 
-#: src/Admin/AdminPage.php:165
+#: src/Admin/AdminPage.php:169
 msgid "Post to GMB by default"
 msgstr "Publicar no GMB por padrão"
 
-#: src/Admin/AdminPage.php:166
+#: src/Admin/AdminPage.php:170
 msgid "The Auto-post checkbox will be checked by default, and your WordPress posts will be automatically published to GMB, unless you uncheck it."
 msgstr "A caixa de seleção Publicação automática será marcada por padrão e suas publicações do WordPress serão publicadas automaticamente no GMB, a menos que você a desmarque."
 
-#: src/Admin/AdminPage.php:172
+#: src/Admin/AdminPage.php:176
 msgid "Default template"
 msgstr "Modelo padrão"
 
-#: src/Admin/AdminPage.php:179
+#: src/Admin/AdminPage.php:183
 msgid "Enabled request types (advanced)"
 msgstr "Tipos de solicitação ativadas (avançado)"
 
-#: src/Admin/AdminPage.php:180
+#: src/Admin/AdminPage.php:184
 msgid "Select which request types the plugin should listen for to create auto-posts. Do not change unless you know what you are doing. Incorrect settings could result in duplicate posts or spamming your listing with posts."
 msgstr "Selecione quais tipos de solicitação o plugin deve ouvir para criar posts automáticos. Não mude a menos que você saiba o que está fazendo. Configurações incorretas podem resultar em posts duplicados ou spam em sua listagem com publicações."
 
-#: src/Admin/AdminPage.php:183
+#: src/Admin/AdminPage.php:187
 msgid "Posts/pages/CPTs created in the WordPress Dashboard through the Block- or Classic editor"
 msgstr "Posts/páginas/CPTs criados no painel do WordPress através do editor de blocos ou clássico"
 
-#: src/Admin/AdminPage.php:184
+#: src/Admin/AdminPage.php:188
 msgid "Internal (e.g. items created internally by 3rd party plugins like import plugins)"
 msgstr "Interno (por exemplo, itens criados internamente por plugins de terceiros, como plugins de importação)"
 
-#: src/Admin/AdminPage.php:185
+#: src/Admin/AdminPage.php:189
 msgid "REST API (Items created through the WP REST API)"
 msgstr "API REST (itens criados por meio da API REST do WP)"
 
-#: src/Admin/AdminPage.php:186
+#: src/Admin/AdminPage.php:190
 msgid "XML-RPC (Items created through XML-RPC)"
 msgstr "XML-RPC (Itens criados por meio de XML-RPC)"
 
-#: src/Admin/AdminPage.php:195
+#: src/Admin/AdminPage.php:199
 msgid "Enabled for post types"
 msgstr "Ativado para tipos de posts"
 
-#: src/Admin/AdminPage.php:196
+#: src/Admin/AdminPage.php:200
 msgid "Select the post-types where the GMB metabox should be displayed"
 msgstr "Selecionar os tipos de posts onde a metabox do GMB deve ser exibida"
 
-#: src/Admin/AdminPage.php:205
+#: src/Admin/AdminPage.php:209
 msgid "Delete GMB posts"
 msgstr "Excluir posts do GMB"
 
-#: src/Admin/AdminPage.php:206
+#: src/Admin/AdminPage.php:210
 msgid "Delete post(s) from GMB when the parent post/page/content in WordPress is deleted"
 msgstr "Excluir post(s) do GMB quando o post/página/conteúdo ascendente no WordPress for excluído"
 
-#: src/Admin/AdminPage.php:212
+#: src/Admin/AdminPage.php:216
 msgid "Uninstall cleanup"
 msgstr "Desinstalar e limpar"
 
-#: src/Admin/AdminPage.php:213
+#: src/Admin/AdminPage.php:217
 msgid "Choose which data the plugin should (try to) delete when uninstalling the plugin"
 msgstr "Escolher quais dados o plugin deve (tentar) excluir ao desinstalar o plugin"
 
-#: src/Admin/AdminPage.php:216
+#: src/Admin/AdminPage.php:220
 msgid "Delete plugin settings"
 msgstr "Excluir configurações do plugin"
 
-#: src/Admin/AdminPage.php:217
+#: src/Admin/AdminPage.php:221
 msgid "Delete GMB post data, post campaigns & auto-post templates"
 msgstr "Excluir dados do post do GMB, Publicar campanhas e modelos de publicação automática"
 
-#: src/Admin/AdminPage.php:222
+#: src/Admin/AdminPage.php:226
 msgid "Disable date & time selector for events/offers"
 msgstr "Desativar seletor de data e hora para eventos/ofertas"
 
-#: src/Admin/AdminPage.php:223
+#: src/Admin/AdminPage.php:227
 msgid "Disable the event/offer date & time selector to allow for relative dates in those fields"
 msgstr "Desativar o seletor de data e hora do evento/oferta para permitir datas relativas nesses campos"
 
-#: src/Admin/AdminPage.php:229
+#: src/Admin/AdminPage.php:233
 msgid "Bypass WP-Cron"
 msgstr "Ignorar o WP-Cron"
 
-#: src/Admin/AdminPage.php:230
+#: src/Admin/AdminPage.php:234
 msgid "Enable this only if your posts are not being published. Will publish posts in foreground, at expense of performance."
 msgstr "Ativar isso apenas se seus posts não estiverem sendo publicados. Isso publicará posts em primeiro plano, com prejuízo de desempenho."
 
-#: src/Admin/AdminPage.php:236
+#: src/Admin/AdminPage.php:240
 msgid "Enable Alert/COVID-19 post type"
 msgstr "Ativar o tipo de post Alerta/COVID-19"
 
-#: src/Admin/AdminPage.php:237
+#: src/Admin/AdminPage.php:241
 msgid "Enable ALERT post type. This is a currently unused GBP post type that will take priority over all other posts until it is deleted, introduced during the COVID-19 pandemic for emergency announcements."
 msgstr "Ative o tipo de post ALERTA. Este é um tipo de post do GBP não usado no momento, que terá prioridade sobre todos os outros posts até ser excluído, introduzido durante a pandemia da COVID-19 para anúncios de emergência."
 
-#: src/Admin/AdminPage.php:250
+#: src/Admin/AdminPage.php:254
 msgid "Connected"
 msgstr "Conectado"
 
-#: src/Admin/AdminPage.php:250
+#: src/Admin/AdminPage.php:254
 msgid "Not connected"
 msgstr "Desconectado"
 
@@ -220,13 +254,9 @@ msgid "Manage multiple businesses or locations?"
 msgstr "Gerenciar várias empresas ou locais?"
 
 #: src/Admin/AdminPage.php:325
-#: src/Admin/AdminPage.php:331
-#: src/Admin/AdminPage.php:337
-#: src/Admin/AdminPage.php:343
 #: src/Admin/AdminPage.php:349
-#: src/Admin/AdminPage.php:360
-msgid "Upgrade to Premium"
-msgstr "Atualizar para Premium"
+msgid "Upgrade to Premium (Pro)"
+msgstr "Atualizar para Premium (Pro)"
 
 #: src/Admin/AdminPage.php:326
 msgid "to pick a location per post, or post to multiple locations at once."
@@ -236,127 +266,133 @@ msgstr "para escolher um local por post, ou publicar em vários locais ao mesmo 
 msgid "Not the right time?"
 msgstr "Não é a hora certa?"
 
+#: src/Admin/AdminPage.php:331
+#: src/Admin/AdminPage.php:343
+#: src/Admin/AdminPage.php:355
+msgid "Upgrade to Premium"
+msgstr "Atualizar para Premium"
+
 #: src/Admin/AdminPage.php:332
-msgid "and schedule your posts to be automagically published at a later time."
-msgstr "e agende seus posts para serem publicados automaticamente em um momento posterior."
+msgid "and schedule your GBP posts to be automagically published at a later time."
+msgstr "e agende seus posts do GBP para serem publicados automaticamente mais tarde."
 
 #: src/Admin/AdminPage.php:335
-msgid "Wondering how your Google My Business post is performing?"
-msgstr "Quer saber como está o desempenho de sua publicação no Google My Business?"
+msgid "Manage GBP locations for clients?"
+msgstr "Gerencia locais no GBP para clientes?"
+
+#: src/Admin/AdminPage.php:337
+msgid "Upgrade to Premium (Agency)"
+msgstr "Atualizar para Premium (Agency)"
 
 #: src/Admin/AdminPage.php:338
-msgid "to view post statistics and easily include Google Analytics UTM parameters."
-msgstr "para visualizar estatísticas de posts e incluir facilmente os parâmetros UTM do Google Analytics."
+msgid "to connect multiple Google accounts, and centrally manage GBP post campaigns."
+msgstr "para conectar várias contas do Google e gerenciar de forma centralizada as campanhas no GBP."
 
 #: src/Admin/AdminPage.php:341
-msgid "Use Post to Google My Business for your pages, projects, WooCommerce products and more."
-msgstr "Usar o Post to Google My Business para suas páginas, projetos, produtos WooCommerce e muito mais."
+msgid "Publish <em>real</em> GBP products."
+msgstr "Publicar produtos <em>reais</em> no GBP."
 
 #: src/Admin/AdminPage.php:344
-msgid "to enable Post to Google my Business for any post type."
-msgstr "para ativar o Post to Google My Business para qualquer tipo de post."
+msgid "to enable publishing GBP products"
+msgstr "para ativar a publicação de produtos no GBP"
 
 #: src/Admin/AdminPage.php:347
-msgid "Automatically repost your GMB posts a specific or unlimited amount of times."
-msgstr "Republique automaticamente seus posts do GMB, uma quantidade específica ou ilimitada de vezes."
+msgid "Automatically re-publish your GBP posts a specific or unlimited amount of times."
+msgstr "Republique automaticamente seus posts do GBP, uma quantidade específica ou ilimitada de vezes."
 
 #: src/Admin/AdminPage.php:350
 msgid "to set custom intervals and specify the amount of reposts."
 msgstr "para definir intervalos personalizados e especificar a quantidade de republicações."
 
 #: src/Admin/AdminPage.php:353
+msgid "Use ACF or custom meta fields in your post templates."
+msgstr "Use o ACF ou campos meta personalizados nos seus modelos de posts."
+
+#: src/Admin/AdminPage.php:356
+msgid "for custom meta field and ACF support."
+msgstr "para campos meta personalizados e compatibilidade com o ACF."
+
+#: src/Admin/AdminPage.php:359
 msgid "I hope you enjoy using my Post to Google My Business plugin! Help spread the word with a"
 msgstr "Espero que você esteja gostando de usar meu plugin Post to Google My Business! Ajude a divulgar com uma"
 
-#: src/Admin/AdminPage.php:354
+#: src/Admin/AdminPage.php:361
 msgid "5-star rating on WordPress.org"
 msgstr "Classificação de 5 estrelas no WordPress.org"
 
-#: src/Admin/AdminPage.php:355
+#: src/Admin/AdminPage.php:362
 msgid ". Many thanks! - Koen Reus, plugin developer"
 msgstr ". Muito Obrigado! - Koen Reus, desenvolvedor de plugins"
 
-#: src/Admin/AdminPage.php:358
-msgid "Create unique posts every time."
-msgstr "Criar publicações exclusivas sempre."
-
-#: src/Admin/AdminPage.php:361
-msgid "to use spintax and %variables% in your post text."
-msgstr "para usar spintax e %variables% no texto do post."
-
-#: src/Admin/AdminPage.php:384
+#: src/Admin/AdminPage.php:385
 msgid "Connect to Google Business Profile"
 msgstr "Conectar ao Perfil de Empresas do Google"
 
-#: src/Admin/AdminPage.php:392
-#: src/Admin/AdminPage.php:397
+#: src/Admin/AdminPage.php:393
+#: src/Admin/AdminPage.php:398
 msgid "+ Add another Google account"
 msgstr "+ Adicionar outra conta do Google"
 
-#: src/Admin/AdminPage.php:396
+#: src/Admin/AdminPage.php:397
 msgid "Multi-account support is a Post to Google My Business Agency Feature"
 msgstr "O suporte para várias contas é um recurso do Post to Google My Business para Agência"
 
-#: src/Admin/AdminPage.php:404
+#: src/Admin/AdminPage.php:405
 msgid "Disconnect Google account from this website"
 msgstr "Desconecte a conta do Google deste site"
 
-#: src/Admin/AdminPage.php:409
+#: src/Admin/AdminPage.php:410
 msgid "Disconnect all Google accounts from this website"
 msgstr "Desconecte todas as contas do Google deste site"
 
-#: src/Admin/AdminPage.php:433
+#: src/Admin/AdminPage.php:434
 msgid "Google locations could not be loaded at the time of saving. Location settings were not updated. Please reload locations and save again."
 msgstr "Não foi possível carregar os locais do Google no momento do salvamento. As configurações de local não foram atualizadas. Recarregue os locais e salve novamente."
 
-#: src/Admin/AdminPage.php:452
+#: src/Admin/AdminPage.php:453
 #: templates/admin/settings.php:5
 msgid "Post to Google My Business settings"
 msgstr "Configurações do Post to Google My Business"
 
-#: src/Admin/AdminPage.php:456
+#: src/Admin/AdminPage.php:457
 msgid "Settings"
 msgstr "Configurações"
 
-#: src/Admin/AdminPage.php:461
-msgid "You do not have sufficient permissions to access this page."
-msgstr "Você não tem permissões suficientes para acessar esta página."
-
-#: src/Admin/AdminPage.php:472
+#: src/Admin/AdminPage.php:470
 msgid "Evergreen content is a Post to Google My Business Pro feature"
 msgstr "O conteúdo evergreen é um recurso do Post to Google My Business Pro"
 
-#: src/Admin/AdminPage.php:473
+#: src/Admin/AdminPage.php:471
 msgid "Evergreen content screenshot"
 msgstr "Captura de tela de conteúdo evergreen"
 
-#: src/Admin/AdminPage.php:474
+#: src/Admin/AdminPage.php:472
 msgid "Define a posting schedule, select your existing content in bulk, and the plugin will automatically keep your GMB listing(s) fresh with new posts."
 msgstr "Defina um cronograma de publicações, selecione seu conteúdo existente em massa e o plugin manterá automaticamente sua(s) lista(s) do GMB atualizadas com novos posts."
 
-#: src/Admin/AdminPage.php:475
+#: src/Admin/AdminPage.php:473
 msgid "Post to Google my Business Pro lets you:"
 msgstr "Post to Google my Business Pro permite que você:"
 
-#: src/Admin/AdminPage.php:477
+#: src/Admin/AdminPage.php:475
 msgid "Create multiple auto-post templates"
 msgstr "Criar vários modelos de posts automáticos"
 
-#: src/Admin/AdminPage.php:478
+#: src/Admin/AdminPage.php:476
 msgid "Publish posts to multiple GMB locations at once"
 msgstr "Publicar posts em vários locais do GMB de uma só vez"
 
-#: src/Admin/AdminPage.php:479
+#: src/Admin/AdminPage.php:477
 msgid "Automatically re-cycle your posts"
 msgstr "Reciclar automaticamente seus posts"
 
-#: src/Admin/AdminPage.php:480
+#: src/Admin/AdminPage.php:478
 #: templates/admin/postcampaigns.php:11
 #: templates/admin/settings.php:25
 msgid "Publish posts to multiple locations across multiple Google accounts at once"
 msgstr "Publicar posts em vários locais em várias contas do Google de uma só vez"
 
-#: src/Admin/AdminPage.php:483
+#: src/Admin/AdminPage.php:481
 #: templates/admin/autopost_template.php:26
 #: templates/admin/postcampaigns.php:14
 #: templates/admin/posteditor.php:55
@@ -408,44 +444,44 @@ msgid "Check Google account settings"
 msgstr "Verificar as configurações da conta do Google"
 
 #. translators: %1$s is the Google Post ID of the post, %2$s is the error message
-#: src/BackgroundProcessing/PostPublishProcess.php:73
+#: src/BackgroundProcessing/PostPublishProcess.php:75
 #, php-format
 msgid "Failed to delete post %1$s from GMB: %2$s"
 msgstr "Falha ao excluir post %1$s do GMB: %2$s"
 
 #. translators: %s represents error message
-#: src/BackgroundProcessing/PostPublishProcess.php:93
+#: src/BackgroundProcessing/PostPublishProcess.php:95
 #, php-format
 msgid "Updating status failed: %s"
 msgstr "Falha ao atualizar o status: %s"
 
-#: src/BackgroundProcessing/PostPublishProcess.php:154
+#: src/BackgroundProcessing/PostPublishProcess.php:156
 msgid "No Google account connected at time of publishing"
 msgstr "Nenhuma conta do Google conectada no momento da publicação"
 
-#: src/BackgroundProcessing/PostPublishProcess.php:199
-#: src/BackgroundProcessing/PostPublishProcess.php:214
+#: src/BackgroundProcessing/PostPublishProcess.php:201
+#: src/BackgroundProcessing/PostPublishProcess.php:216
 msgid "The response did not contain the expected fields"
 msgstr "A resposta não contém os campos esperados"
 
 #. translators: %s represents error message
-#: src/BackgroundProcessing/PostPublishProcess.php:221
+#: src/BackgroundProcessing/PostPublishProcess.php:223
 #, php-format
 msgid "Failed to create/update post: %s"
 msgstr "Falha ao criar/atualizar post: %s"
 
-#: src/BackgroundProcessing/PostPublishProcess.php:227
+#: src/BackgroundProcessing/PostPublishProcess.php:229
 #: src/Premium/BackgroundProcessing/ProductPublishProcess.php:142
 msgid "Go to post"
 msgstr "Ir para o post"
 
 #. translators: %s represents error message
-#: src/BackgroundProcessing/PostPublishProcess.php:231
+#: src/BackgroundProcessing/PostPublishProcess.php:233
 #, php-format
 msgid "There recently has been an issue publishing a post to one of your GMB locations: %s."
 msgstr "Recentemente, ocorreu um problema ao publicar um post em um de seus locais do GMB: %s."
 
-#: src/BackgroundProcessing/PostPublishProcess.php:232
+#: src/BackgroundProcessing/PostPublishProcess.php:234
 msgid "Post to Google My Business:"
 msgstr "Post to Google My Business:"
 
@@ -492,7 +528,7 @@ msgid "Learn more..."
 msgstr "Saber mais..."
 
 #: src/Components/BusinessSelector.php:309
-#: src/Premium/Components/MultiAccountBusinessSelector.php:133
+#: src/Premium/Components/MultiAccountBusinessSelector.php:134
 msgid "Search/Filter locations..."
 msgstr "Pesquisar/filtrar locais..."
 
@@ -534,9 +570,9 @@ msgid "Refresh status"
 msgstr "Atualizar status"
 
 #: src/Components/GooglePostEntityListTable.php:62
-#: src/Components/SubPostListTable.php:128
-#: src/Components/SubPostListTable.php:221
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:162
+#: src/Components/SubPostListTable.php:131
+#: src/Components/SubPostListTable.php:224
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:165
 msgid "Delete"
 msgstr "Excluir"
 
@@ -558,12 +594,12 @@ msgstr "Ver no Google"
 msgid "Download CSV"
 msgstr "Baixar CSV"
 
-#: src/Components/PostEditor.php:74
+#: src/Components/PostEditor.php:78
 msgid "Dynamic date, calculated/retrieved when GBP post is published"
 msgstr "Data dinâmica, calculada/recuperada quando o post no GBP é publicado"
 
 #. translators: date time, Timezone: timezone
-#: src/Components/PostEditor.php:84
+#: src/Components/PostEditor.php:88
 #, php-format
 msgid "%1$s %2$s, Timezone: %3$s"
 msgstr "%1$s %2$s, Fuso horário: %3$s"
@@ -575,61 +611,120 @@ msgid_plural "%s items"
 msgstr[0] "1 item"
 msgstr[1] "%s itens"
 
-#: src/Components/SubPostListTable.php:47
+#: src/Components/SubPostListTable.php:49
 msgid "GMB Post"
 msgstr "Post GMB"
 
-#: src/Components/SubPostListTable.php:48
+#: src/Components/SubPostListTable.php:50
 msgid "GMB Posts"
 msgstr "Posts GMB"
 
-#: src/Components/SubPostListTable.php:69
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:127
+#: src/Components/SubPostListTable.php:72
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:130
+#: templates/admin/variablebrowser.php:14
+#: templates/admin/variablebrowser.php:16
 msgid "Post type"
 msgstr "Tipo de post"
 
-#: src/Components/SubPostListTable.php:70
+#: src/Components/SubPostListTable.php:73
 msgid "Publish date"
 msgstr "Data de publicação"
 
-#: src/Components/SubPostListTable.php:71
+#: src/Components/SubPostListTable.php:74
 msgid "Created"
 msgstr "Criado"
 
-#: src/Components/SubPostListTable.php:218
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:161
+#: src/Components/SubPostListTable.php:221
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:164
 msgid "List created posts"
 msgstr "Listar publicações criadas"
 
-#: src/Components/SubPostListTable.php:219
+#: src/Components/SubPostListTable.php:222
 #: src/Premium/PostTypes/PostCampaign.php:20
 #: src/Premium/PostTypes/PostTypeAutoPostTemplate.php:19
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:160
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:163
 msgid "Edit"
 msgstr "Editar"
 
-#: src/Components/SubPostListTable.php:220
+#: src/Components/SubPostListTable.php:223
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: src/Components/SubPostListTable.php:233
+#: src/Components/SubPostListTable.php:238
 msgid "Repost enabled"
 msgstr "Repost ativado"
 
-#: src/Components/SubPostListTable.php:270
+#: src/Components/SubPostListTable.php:275
 msgid "This post will be deleted when the next post is auto-posted"
 msgstr "Este post será excluído quando a próxima publicação for publicada automaticamente"
 
-#: src/Components/SubPostListTable.php:281
+#: src/Components/SubPostListTable.php:286
 msgid "Draft"
 msgstr "Rascunho"
 
 #. translators: %s = human-readable time difference
-#: src/Components/SubPostListTable.php:284
+#: src/Components/SubPostListTable.php:289
 #, php-format
 msgctxt "%s = human-readable time difference"
 msgid "%s ago"
 msgstr "%s atrás"
+
+#: src/FormFieldParser.php:348
+msgid "Products are not supported in the free version of the plugin. Please choose a different post type in your template."
+msgstr "Os produtos não são suportados na versão gratuita do plugin. Escolher um tipo de post diferente em seus modelos."
+
+#: src/FormFieldParser.php:438
+msgid "Could not detect image. Image is required for products!"
+msgstr "Não foi possível detectar a imagem. É necessário incluir uma imagem dos produtos!"
+
+#: src/FormFieldParser.php:570
+msgid "Original image file not found"
+msgstr "Arquivo de imagem original não encontrado"
+
+#. translators: %s is image url
+#: src/FormFieldParser.php:613
+#: src/FormFieldParser.php:782
+#, php-format
+msgid "Could not detect post image file size. Make sure the image file/url is accessible remotely. Url: %s"
+msgstr "Não foi possível detectar o tamanho do arquivo de imagem do post. Certifique-se de que o arquivo/URL da imagem esteja acessível remotamente. URL: %s"
+
+#. translators: %1$dx%2$dpx is the size of the failed image (width x height), %3$s is image url
+#: src/FormFieldParser.php:793
+#, php-format
+msgid "Post image must be at least 250x250px. Selected image is %1$dx%2$dpx. Url: %3$s"
+msgstr "A imagem do post deve ter pelo menos 250x250px. A imagem selecionada tem %1$dx%2$dpx. URL: %3$s"
+
+#. translators: %1$s is formatted image size, %2$s is image URL
+#: src/FormFieldParser.php:798
+#, php-format
+msgid "Post image file too small, must be at least 10 KB. Selected image is %1$s. Url: %2$s"
+msgstr "Arquivo da imagem do post muito pequeno, deve ter pelo menos 10 KB. A imagem selecionada tem %1$s. URL: %2$s"
+
+#. translators: %1$s is formatted image size, %2$s is image URL
+#: src/FormFieldParser.php:801
+#, php-format
+msgid "Post image file too big, must be 5 MB at most. Selected image is %1$s. Url: %2$s"
+msgstr "Arquivo da imagem do post muito grande, deve ter 5 MB no máximo. A imagem selecionada tem %1$s. URL: %2$s"
+
+#: src/FormFieldParser.php:809
+msgid "Tried to convert WebP image but imagecreatefromwebp is not available"
+msgstr "Tentei converter a imagem WebP, mas a imagem criada a partir do WebP não está disponível"
+
+#: src/FormFieldParser.php:838
+msgid "Failed to create image from AVIF using imagecreatefromavif"
+msgstr "Falha ao criar imagem em AVIF usando o imagecreatefromavif"
+
+#: src/FormFieldParser.php:862
+msgid "Tried to convert AVIF image but neither imagecreatefromavif nor Imagick is available"
+msgstr "Tentativa de converter a imagem AVIF, mas nem o imagecreatefromavif nem o Imagick estão disponíveis"
+
+#: src/FormFieldParser.php:894
+msgid "AVIF image conversion failed: "
+msgstr "Falha na conversão da imagem AVIF: "
+
+#: src/FormFieldParser.php:981
+msgid "Could not parse post locations"
+msgstr "Não foi possível analisar os locais das publicações"
 
 #: src/Google/AbstractGoogleJsonObject.php:29
 msgid "Unknown property"
@@ -749,128 +844,160 @@ msgstr "A resposta do Google não contém os dados esperados das “chaves”."
 msgid "You did not give the plugin permission to manage your Google Business Profile listings. The plugin will not work without this permission. Please retry the authentication and make sure you grant the plugin permission to manage your locations."
 msgstr "Você não concedeu permissão ao plugin para gerenciar suas listagens do Perfil de Empresas do Google (GBP). O plugin não irá funcionar sem esta permissão. Tente a autenticação novamente e certifique-se de conceder permissão ao plugin para gerenciar seus locais."
 
-#: src/Metabox/PostCreationMetabox.php:185
+#: src/Metabox/PostCreationMetabox.php:193
 msgid "Please configure Post to Google My Business first"
 msgstr "Configure o Post to Google My Business primeiro"
 
-#: src/Metabox/PostCreationMetabox.php:187
+#: src/Metabox/PostCreationMetabox.php:195
 msgid "(Connect, pick a default location and Save Changes)"
 msgstr "(Conectar, escolher um local padrão e salvar as alterações)"
 
-#: src/Metabox/PostCreationMetabox.php:252
+#: src/Metabox/PostCreationMetabox.php:273
 msgid "There was an error while loading the location list. Please check the location selector in the \"Advanced post settings\" for details."
 msgstr "Ocorreu um erro ao carregar a lista de locais. Verifique o seletor de local em “Configurações avançadas do post” para mais detalhes."
 
-#: src/Metabox/PostCreationMetabox.php:277
+#: src/Metabox/PostCreationMetabox.php:298
 msgid "You do not have permission to publish posts"
 msgstr "Você não tem permissão para publicar posts"
 
 #. translators: %s represents error message
-#: src/Metabox/PostCreationMetabox.php:315
+#: src/Metabox/PostCreationMetabox.php:334
 #, php-format
 msgid "Error creating post: %s"
 msgstr "Erro ao criar post: %s"
 
-#: src/Metabox/PostCreationMetabox.php:344
+#: src/Metabox/PostCreationMetabox.php:363
 msgid "Auto-post template successfully updated"
 msgstr "Modelo de publicação automática atualizado com sucesso"
 
-#: src/Metabox/PostCreationMetabox.php:357
+#: src/Metabox/PostCreationMetabox.php:376
 msgid "You do not have permission to edit posts"
 msgstr "Você não tem permissão para editar posts"
 
-#: src/Metabox/PostCreationMetabox.php:375
+#: src/Metabox/PostCreationMetabox.php:394
 msgid "Post could not be loaded"
 msgstr "O post não pôde ser carregado"
 
-#: src/Metabox/PostCreationMetabox.php:383
+#: src/Metabox/PostCreationMetabox.php:402
 msgid "You do not have permission to delete posts"
 msgstr "Você não tem permissão para excluir publicações"
 
-#: src/Metabox/PostCreationMetabox.php:395
+#: src/Metabox/PostCreationMetabox.php:414
 msgid "Invalid post ID"
 msgstr "ID do post inválido"
 
-#: src/Metabox/PostCreationMetabox.php:422
+#: src/Metabox/PostCreationMetabox.php:443
 #: src/Notices/BrandedStickyNotice.php:9
 #: src/Subscriber/AdminPageSubscriber.php:61
 #: src/Subscriber/SiteHealthSubscriber.php:34
 msgid "Post to Google My Business"
 msgstr "Publicar no Google My Business"
 
-#: src/ParseFormFields.php:263
-msgid "Products are not supported in the free version of the plugin. Please choose a different post type in your template."
-msgstr "Os produtos não são suportados na versão gratuita do plugin. Escolher um tipo de post diferente em seus modelos."
+#: src/Mustache/Context/CustomMetaContext.php:22
+#: src/Premium/Mustache/Context/PremiumCustomMetaContext.php:91
+msgid "Custom meta fields"
+msgstr "Campos meta personalizados"
 
-#: src/ParseFormFields.php:474
-msgid "Original image file not found"
-msgstr "Arquivo de imagem original não encontrado"
+#: src/Mustache/Context/LocationContext.php:41
+msgid "Google location details"
+msgstr "Detalhes do local no Google"
 
-#. translators: %s is image url
-#: src/ParseFormFields.php:517
-#: src/ParseFormFields.php:686
-#, php-format
-msgid "Could not detect post image file size. Make sure the image file/url is accessible remotely. Url: %s"
-msgstr "Não foi possível detectar o tamanho do arquivo de imagem do post. Certifique-se de que o arquivo/URL da imagem esteja acessível remotamente. URL: %s"
+#: src/Mustache/Context/LocationContext.php:45
+msgid "Location name/title"
+msgstr "Nome/título do local"
 
-#. translators: %1$dx%2$dpx is the size of the failed image (width x height), %3$s is image url
-#: src/ParseFormFields.php:697
-#, php-format
-msgid "Post image must be at least 250x250px. Selected image is %1$dx%2$dpx. Url: %3$s"
-msgstr "A imagem do post deve ter pelo menos 250x250px. A imagem selecionada tem %1$dx%2$dpx. URL: %3$s"
+#: src/Mustache/Context/LocationContext.php:50
+msgid "Location store code"
+msgstr "Código do local da loja"
 
-#. translators: %1$s is formatted image size, %2$s is image URL
-#: src/ParseFormFields.php:702
-#, php-format
-msgid "Post image file too small, must be at least 10 KB. Selected image is %1$s. Url: %2$s"
-msgstr "Arquivo da imagem do post muito pequeno, deve ter pelo menos 10 KB. A imagem selecionada tem %1$s. URL: %2$s"
+#: src/Mustache/Context/LocationContext.php:55
+msgid "Location website URL"
+msgstr "URL do site do local"
 
-#. translators: %1$s is formatted image size, %2$s is image URL
-#: src/ParseFormFields.php:705
-#, php-format
-msgid "Post image file too big, must be 5 MB at most. Selected image is %1$s. Url: %2$s"
-msgstr "Arquivo da imagem do post muito grande, deve ter 5 MB no máximo. A imagem selecionada tem %1$s. URL: %2$s"
+#: src/Mustache/Context/PostContext.php:50
+msgid "WordPress post data"
+msgstr "Dados do post do WordPress"
 
-#: src/ParseFormFields.php:713
-msgid "Tried to convert WebP image but imagecreatefromwebp is not available"
-msgstr "Tentei converter a imagem WebP, mas a imagem criada a partir do WebP não está disponível"
+#: src/Mustache/Context/PostContext.php:54
+msgid "Post ID"
+msgstr "ID do post"
 
-#: src/ParseFormFields.php:742
-msgid "Failed to create image from AVIF using imagecreatefromavif"
-msgstr "Falha ao criar imagem em AVIF usando o imagecreatefromavif"
+#: src/Mustache/Context/PostContext.php:59
+msgid "Post title"
+msgstr "Título do post"
 
-#: src/ParseFormFields.php:766
-msgid "Tried to convert AVIF image but neither imagecreatefromavif nor Imagick is available"
-msgstr "Tentativa de converter a imagem AVIF, mas nem o imagecreatefromavif nem o Imagick estão disponíveis"
+#: src/Mustache/Context/PostContext.php:64
+msgid "Post content"
+msgstr "Conteúdo do post"
 
-#: src/ParseFormFields.php:798
-msgid "AVIF image conversion failed: "
-msgstr "Falha na conversão da imagem AVIF: "
+#: src/Mustache/Context/PostContext.php:68
+msgid "Post excerpt"
+msgstr "Resumo do post"
 
-#: src/ParseFormFields.php:885
-msgid "Could not parse post locations"
-msgstr "Não foi possível analisar os locais das publicações"
+#: src/Mustache/Context/PostContext.php:72
+msgid "Post slug"
+msgstr "Slug do post"
 
-#: src/Plugin.php:234
+#: src/Mustache/Context/PostContext.php:77
+msgid "Post url"
+msgstr "URL do post"
+
+#: src/Mustache/Context/PostContext.php:81
+msgid "Post date"
+msgstr "Data do post"
+
+#: src/Mustache/Context/PostContext.php:85
+msgid "Post thumbnail URL"
+msgstr "URL da miniatura do post"
+
+#: src/Mustache/Context/SiteContext.php:35
+msgid "Website details"
+msgstr "Detalhes do site"
+
+#: src/Mustache/Context/SiteContext.php:39
+msgid "Website name"
+msgstr "Nome do site"
+
+#: src/Mustache/Context/SiteContext.php:43
+msgid "Website description"
+msgstr "Descrição do site"
+
+#: src/Mustache/Context/SiteContext.php:47
+msgid "Website url"
+msgstr "URL do site"
+
+#: src/Mustache/Context/ThirdParty/AcfContext.php:24
+msgid "ACF/SCF fields"
+msgstr "Campos ACF/SCF"
+
+#: src/Mustache/Context/ThirdParty/WooCommerceContext.php:30
+msgid "WooCommerce product & shop data"
+msgstr "Dados de produtos e da loja do WooCommerce"
+
+#: src/Mustache/Context/UserContext.php:52
+msgid "Post author data"
+msgstr "Dados do autor do post"
+
+#: src/Plugin.php:238
 msgid "GMB Agency Client"
 msgstr "Cliente Agência GMB"
 
-#: src/Plugin.php:258
+#: src/Plugin.php:262
 #: templates/admin/posteditor.php:17
 msgid "Event"
 msgstr "Eventos"
 
-#: src/Plugin.php:263
+#: src/Plugin.php:267
 #: templates/admin/posteditor.php:20
 msgid "Offer"
 msgstr "Ofertas"
 
-#: src/Plugin.php:268
+#: src/Plugin.php:272
 #: templates/admin/posteditor.php:23
 msgid "Product"
 msgstr "Produtos"
 
-#: src/Plugin.php:273
+#: src/Plugin.php:277
 #: templates/admin/posteditor.php:9
 msgid "Alert"
 msgstr "Alerta"
@@ -937,28 +1064,36 @@ msgstr "Modelo padrão de tipo de post"
 msgid "Choose which auto-post template the post type should use by default"
 msgstr "Escolha qual modelo de publicação automática o tipo de post deve usar por padrão"
 
-#: src/Premium/Admin/PremiumAdminPage.php:116
+#: src/Premium/Admin/PremiumAdminPage.php:79
+msgid "Allowlisted custom meta fields"
+msgstr "Campos meta personalizados permitidos"
+
+#: src/Premium/Admin/PremiumAdminPage.php:80
+msgid "This makes custom meta fields accessible to the post template engine. Enter one field name per line. Usage in templates: {{meta.your_field_name}}"
+msgstr "Isso torna os campos meta personalizados acessíveis ao mecanismo de modelos de posts. Digite um nome de campo por linha. Uso nos modelos: {{meta.your_field_name}}"
+
+#: src/Premium/Admin/PremiumAdminPage.php:127
 msgid "The chosen schedule is invalid"
 msgstr "O agendamento escolhido é inválido"
 
-#: src/Premium/Admin/PremiumAdminPage.php:134
+#: src/Premium/Admin/PremiumAdminPage.php:145
 msgid "The chosen schedule is impossible, make sure it doesn't resolve to an impossible date such as the 30th of February."
 msgstr "O horário escolhido é impossível, certifique-se de que não está determinado para uma data impossível, como 30 de Fevereiro."
 
-#: src/Premium/Admin/PremiumAdminPage.php:150
+#: src/Premium/Admin/PremiumAdminPage.php:161
 #: src/Premium/Subscribers/PremiumSubmitboxMetaSubscriber.php:94
 msgid "Untitled"
 msgstr "Sem título"
 
-#: src/Premium/Admin/PremiumAdminPage.php:181
+#: src/Premium/Admin/PremiumAdminPage.php:192
 msgid "Manage Google account(s)"
 msgstr "Gerenciar conta(s) do Google"
 
-#: src/Premium/Admin/PremiumAdminPage.php:182
+#: src/Premium/Admin/PremiumAdminPage.php:193
 msgid "See Google accounts added by other users"
 msgstr "Ver contas do Google adicionadas por outros usuários"
 
-#: src/Premium/Admin/PremiumAdminPage.php:224
+#: src/Premium/Admin/PremiumAdminPage.php:235
 msgid "Google locations could not be loaded at time of saving. Please check the location selector for details. The location selection in your auto-post template has not been updated, and previous setting has been retained."
 msgstr "Não foi possível carregar os locais do Google no momento do salvamento. Verifique o seletor de local para mais detalhes. A seleção de local no seu modelo de publicação automática não foi atualizada e a configuração anterior foi mantida."
 
@@ -970,7 +1105,7 @@ msgstr "Chave de usuário inválida"
 msgid "No cookies set for product creation"
 msgstr "Nenhum cookie definido para criação de produtos"
 
-#: src/Premium/BackgroundProcessing/ProductPublishProcess.php:107
+#: src/Premium/BackgroundProcessing/ProductPublishProcess.php:108
 msgid "Image is required for Product"
 msgstr "A imagem é obrigatória para Produto"
 
@@ -1016,64 +1151,96 @@ msgstr "Baixar dados de depuração"
 msgid "Disconnect account from this website"
 msgstr "Desconectar conta deste site"
 
-#: src/Premium/Components/MultiAccountBusinessSelector.php:136
+#: src/Premium/Components/MultiAccountBusinessSelector.php:137
 msgid "Select all"
 msgstr "Selecionar tudo"
 
-#: src/Premium/Components/MultiAccountBusinessSelector.php:137
+#: src/Premium/Components/MultiAccountBusinessSelector.php:138
 msgid "Select none"
 msgstr "Nenhuma seleção"
 
-#: src/Premium/Components/MultiAccountBusinessSelector.php:166
+#: src/Premium/Components/MultiAccountBusinessSelector.php:167
 msgid "To be able to create products on your Google Business Profile, you will need to enter additional cookie values."
 msgstr "Para poder criar produtos em seu Perfil de Empresas do Google, você precisará inserir valores de cookies adicionais."
 
-#: src/Premium/Components/MultiAccountBusinessSelector.php:167
-#: templates/admin/posteditor.php:309
-msgid "Learn more"
-msgstr "Saiba mais"
-
-#: src/Premium/Components/MultiAccountBusinessSelector.php:185
+#: src/Premium/Components/MultiAccountBusinessSelector.php:186
 msgid "Save"
 msgstr "Salvar"
 
-#: src/Premium/Components/MultiAccountBusinessSelector.php:194
+#: src/Premium/Components/MultiAccountBusinessSelector.php:195
 msgid "No permission to manage Google accounts"
 msgstr "Sem permissão para gerenciar contas do Google"
 
-#: src/Premium/Components/MultiAccountBusinessSelector.php:200
+#: src/Premium/Components/MultiAccountBusinessSelector.php:201
 msgid "Invalid account ID"
 msgstr "ID de conta inválido"
 
 #. translators: %s represents error message
-#: src/Premium/Components/MultiAccountBusinessSelector.php:209
+#: src/Premium/Components/MultiAccountBusinessSelector.php:210
 #, php-format
 msgid "Could not connect to the Google account: %s"
 msgstr "Não foi possível conectar à conta do Google: %s"
 
-#: src/Premium/Google/Product.php:24
+#: src/Premium/Google/Product.php:26
 msgid "Product name can't be empty"
 msgstr "O nome do produto não pode estar vazio"
 
-#: src/Premium/Google/Product.php:28
+#: src/Premium/Google/Product.php:30
 msgid "Invalid product price"
 msgstr "Preço do produto inválido"
 
-#: src/Premium/Google/Product.php:32
+#: src/Premium/Google/Product.php:34
 msgid "Product category can't be empty"
 msgstr "A categoria do produto não pode estar vazia"
 
-#: src/Premium/Google/Product.php:78
+#: src/Premium/Google/Product.php:88
 msgid "Max price is not a number"
 msgstr "O preço máximo não é um número"
 
-#: src/Premium/Google/Product.php:85
+#: src/Premium/Google/Product.php:95
 msgid "No image, image is required for Products"
 msgstr "Nenhuma imagem, a imagem é necessária para Produtos"
 
-#: src/Premium/Metabox/AutopostTemplateMetabox.php:116
+#: src/Premium/Metabox/AutopostTemplateMetabox.php:122
 msgid "Google locations could not be fully loaded at the time of saving. Location settings were not updated. Please reload locations in the business selector and save again."
 msgstr "Não foi possível carregar totalmente os locais do Google no momento do salvamento. As configurações do local não foram atualizadas. Recarregue os locais no seletor de empresas e salve novamente."
+
+#: src/Premium/Mustache/Context/ThirdParty/PremiumWooCommerceContext.php:62
+msgid "Url for the shopping cart page"
+msgstr "URL da página do carrinho de compras"
+
+#: src/Premium/Mustache/Context/ThirdParty/PremiumWooCommerceContext.php:66
+msgid "Url for the checkout page"
+msgstr "URL da página de finalização de compra"
+
+#: src/Premium/Mustache/Context/ThirdParty/PremiumWooCommerceContext.php:70
+msgid "Url for the main shop page"
+msgstr "URL da página principal da loja"
+
+#: src/Premium/Mustache/Context/ThirdParty/PremiumWooCommerceContext.php:74
+msgid "The currency symbol for the used currency"
+msgstr "O símbolo monetário da moeda usada"
+
+#: src/Premium/Mustache/Context/ThirdParty/PremiumWooCommerceContext.php:79
+msgid "Product details object"
+msgstr "Objeto de detalhes do produto"
+
+#: src/Premium/Mustache/Context/ThirdParty/PremiumWooCommerceContext.php:83
+msgid "Product title"
+msgstr "Título do produto"
+
+#: src/Premium/Mustache/Context/ThirdParty/PremiumWooCommerceContext.php:87
+msgid "Product short description"
+msgstr "Breve descrição do produto"
+
+#: src/Premium/Mustache/Context/ThirdParty/PremiumWooCommerceContext.php:91
+#: templates/admin/posteditor.php:282
+msgid "Product description"
+msgstr "Descrição do produto"
+
+#: src/Premium/Mustache/Context/ThirdParty/PremiumWooCommerceContext.php:95
+msgid "Is product in stock?"
+msgstr "O produto está em estoque?"
 
 #: src/Premium/PostTypes/PostCampaign.php:16
 msgid "Post campaigns"
@@ -1396,6 +1563,23 @@ msgstr "Tipo de campo inválido"
 msgid "Could not load account data"
 msgstr "Não foi possível carregar os dados da conta"
 
+#: src/REST/GetPostVariables.php:67
+msgid "No public posts available for preview."
+msgstr "Nenhum post público disponível para pré-visualização."
+
+#: src/REST/PreviewPostRoute.php:61
+msgid "Default location is not yet configured"
+msgstr "O local padrão ainda não foi configurado"
+
+#: src/REST/PreviewPostRoute.php:67
+msgid "Previewing products is currently not supported"
+msgstr "No momento, a pré-visualização de produtos não está disponível"
+
+#: src/REST/PreviewPostRoute.php:72
+#, php-format
+msgid "Could not generate preview: %s"
+msgstr "Não foi possível gerar a pré-visualização: %s"
+
 #. translators: %s is a red notification bullet with the amount of notifications
 #: src/Subscriber/AdminPageSubscriber.php:63
 #, php-format
@@ -1453,7 +1637,7 @@ msgstr "A solicitação foi cancelada"
 msgid "The authorization failed: %s"
 msgstr "A autorização falhou: %s"
 
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:117
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:120
 msgid ""
 "Post contains errors and possibly hasn't been published to one or more locations.\n"
 "\n"
@@ -1463,31 +1647,31 @@ msgstr ""
 "\n"
 "Erro mais recente:"
 
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:119
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:122
 msgid "To check errors per location, press \"List created posts\" below"
 msgstr "Para verificar os erros por local, pressione \"Listar publicações criadas\" abaixo"
 
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:126
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:129
 msgid "Parent"
 msgstr "Ascendente"
 
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:128
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:131
 msgid "Publication date"
 msgstr "Data da publicação"
 
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:137
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:140
 msgid "Scheduled deletion date"
 msgstr "Data de exclusão agendada"
 
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:144
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:147
 msgid "This post was created through an automatic re-post schedule. It will be automatically deleted when the post is next republished following the schedule."
 msgstr "Este post foi criado através de um agendamento automático de republicação. Ele será automaticamente excluído quando o post for republicado novamente, de acordo com o agendamento."
 
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:151
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:154
 msgid "Content"
 msgstr "Conteúdo"
 
-#: src/Subscriber/CalendarFeedAjaxSubscriber.php:159
+#: src/Subscriber/CalendarFeedAjaxSubscriber.php:162
 msgid "Go to parent WordPress post"
 msgstr "Acessar o post ascendente do WordPress"
 
@@ -1500,6 +1684,7 @@ msgstr "Repositório WordPress"
 #: src/Upgrader/Upgrade_2_2_11.php:46
 #: src/Upgrader/Upgrade_3_0_0.php:314
 #: src/Upgrader/Upgrade_3_1_6.php:45
+#: src/Upgrader/Upgrade_3_4_0.php:91
 msgid "Plugin Developer"
 msgstr "Desenvolvedor do Plugin"
 
@@ -1520,6 +1705,7 @@ msgstr "Eu já fiz isso"
 #: src/Upgrader/Upgrade_2_2_11.php:50
 #: src/Upgrader/Upgrade_3_0_0.php:318
 #: src/Upgrader/Upgrade_3_1_6.php:49
+#: src/Upgrader/Upgrade_3_4_0.php:95
 msgid "Developer profile photo"
 msgstr "Foto de perfil do desenvolvedor"
 
@@ -1710,6 +1896,7 @@ msgstr ""
 
 #: src/Upgrader/Upgrade_2_2_11.php:41
 #: src/Upgrader/Upgrade_3_0_0.php:309
+#: src/Upgrader/Upgrade_3_4_0.php:86
 msgid "leave a rating"
 msgstr "deixe uma classificação"
 
@@ -1864,6 +2051,81 @@ msgstr "Product Sync for GBP"
 msgid "click here to get early access"
 msgstr "clique aqui para obter acesso antecipado"
 
+#: src/Upgrader/Upgrade_3_4_0.php:24
+msgid "Dynamic templates"
+msgstr "Modelos dinâmicos"
+
+#: src/Upgrader/Upgrade_3_4_0.php:25
+msgid "Build flexible auto-post templates using dynamic data from your site. Set it once and let it update itself."
+msgstr "Crie modelos flexíveis de publicação automática, usando dados dinâmicos do seu site. Defina uma vez, e deixe que se atualize automaticamente."
+
+#: src/Upgrader/Upgrade_3_4_0.php:35
+msgid "Live preview"
+msgstr "Pré-visualização ao vivo"
+
+#: src/Upgrader/Upgrade_3_4_0.php:36
+msgid "Preview your post or template before publishing, so you know exactly what will be sent to Google."
+msgstr "Pré-visualize seu post ou modelo antes de publicar, para saber exatamente o que será enviado ao Google."
+
+#: src/Upgrader/Upgrade_3_4_0.php:46
+msgid "Variable browser"
+msgstr "Navegador de variáveis"
+
+#: src/Upgrader/Upgrade_3_4_0.php:47
+msgid "Browse and insert available data from your site without guessing variable names."
+msgstr "Navegue e insira os dados disponíveis do seu site, sem precisar adivinhar os nomes das variáveis."
+
+#: src/Upgrader/Upgrade_3_4_0.php:57
+msgid "Custom fields support"
+msgstr "Compatibilidade com campos personalizados"
+
+#: src/Upgrader/Upgrade_3_4_0.php:58
+msgid "Use data from custom fields directly in your posts, including support for ACF, SCF and WooCommerce."
+msgstr "Use dados de campos personalizados diretamente nos seus posts, incluindo compatibilidade com ACF, SCF e WooCommerce."
+
+#: src/Upgrader/Upgrade_3_4_0.php:70
+msgid "Templates just got a big upgrade"
+msgstr "Os modelos acabaram de receber uma grande atualização"
+
+#: src/Upgrader/Upgrade_3_4_0.php:74
+#, php-format
+msgid ""
+"Hey %1$s,\n"
+"\n"
+"Templates in Post to Google My Business just got a big upgrade.\n"
+"\n"
+"If you've used the %%variable%% system before, this builds on top of that with a more flexible approach. You can now structure your templates more freely and pull in data from posts, custom fields or WooCommerce in a much cleaner way.\n"
+"\n"
+"To make this easier to use, there's also a new variable browser and a live preview.\n"
+"\n"
+"The old %%variable%% system still works, but this gives you much more control over how your posts are structured.\n"
+"\n"
+"If you're curious how it works, I've put together a quick guide %2$s.\n"
+"\n"
+"And if you're enjoying the plugin, taking a moment to %3$s really helps.\n"
+"\n"
+"%4$s"
+msgstr ""
+"Olá, %1$s,\n"
+"\n"
+"Os modelos do Post to Google My Business acabaram de receber uma grande atualização.\n"
+"\n"
+"Se você já usou o sistema %%variable%% antes, esta atualização se baseia nele, mas com uma abordagem mais flexível. Agora você pode estruturar seus modelos com mais liberdade e inserir dados de posts, campos personalizados ou do WooCommerce de uma maneira muito mais organizada.\n"
+"\n"
+"Para facilitar o uso, há também um novo navegador de variáveis e uma pré-visualização ao vivo.\n"
+"\n"
+"O antigo sistema %%variable%% ainda funciona, mas esta versão oferece muito mais controle sobre a estrutura dos seus posts.\n"
+"\n"
+"Se você estiver curioso para saber como funciona, preparei um guia rápido %2$s.\n"
+"\n"
+"E, se você estiver satisfeito com o plugin, reserve um momento para %3$s, isso ajuda muito.\n"
+"\n"
+"%4$s"
+
+#: src/Upgrader/Upgrade_3_4_0.php:81
+msgid "here"
+msgstr "aqui"
+
 #: src/Vendor/WeDevsSettingsAPI.php:372
 msgid "Choose File"
 msgstr "Escolher arquivo"
@@ -1991,239 +2253,228 @@ msgstr "JPG ou PNG, tamanho mínimo de 720x540px"
 msgid "Post text"
 msgstr "Texto do post"
 
-#: templates/admin/posteditor.php:109
-#: templates/admin/posteditor.php:280
+#: templates/admin/posteditor.php:111
+#: templates/admin/posteditor.php:290
 msgid "Characters:"
 msgstr "Caracteres:"
 
-#: templates/admin/posteditor.php:111
-#: templates/admin/posteditor.php:282
+#: templates/admin/posteditor.php:113
+#: templates/admin/posteditor.php:292
 msgid "Word count:"
 msgstr "Contagem de palavras:"
 
 #: templates/admin/posteditor.php:116
-msgid "See available dynamic tags that you can use"
-msgstr "Veja as tags dinâmicas disponíveis que você pode usar"
+#: templates/admin/posteditor.php:295
+msgid "Insert dynamic data"
+msgstr "Inserir dados dinâmicos"
+
+#: templates/admin/posteditor.php:122
+msgid "Check out template guide"
+msgstr "Confira o guia de modelos"
 
 #. translators: %s gets replaced by the link to the support page with available dynamic tags that can be used
-#: templates/admin/posteditor.php:118
+#: templates/admin/posteditor.php:124
 #, php-format
 msgid "The text that should appear on your post. Recommended 150-300 characters. 80 characters show in the Google Search results. 1500 characters maximum. %s"
 msgstr "O texto que deve aparecer em seu post. Recomendado de 150 a 300 caracteres. Os primeiros 80 caracteres, mostrados nos resultados da Pesquisa Google. Máximo de 1.500 caracteres. %s"
 
-#: templates/admin/posteditor.php:128
+#: templates/admin/posteditor.php:134
 msgid "Event title"
 msgstr "Título do evento"
 
-#: templates/admin/posteditor.php:139
+#: templates/admin/posteditor.php:145
 msgid "All day event (time will be ignored)"
 msgstr "Evento de dia inteiro (o horário será ignorado)"
 
-#: templates/admin/posteditor.php:144
+#: templates/admin/posteditor.php:150
 msgid "Start date"
 msgstr "Data de início"
 
-#: templates/admin/posteditor.php:156
+#: templates/admin/posteditor.php:162
 msgid "End date"
 msgstr "Data de término"
 
-#: templates/admin/posteditor.php:171
+#: templates/admin/posteditor.php:177
 msgid "Offer title"
 msgstr "Título da oferta"
 
-#: templates/admin/posteditor.php:178
+#: templates/admin/posteditor.php:184
 msgid "Example: 20% off in store or online"
 msgstr "Exemplo: 20% o de desconto na loja ou online"
 
-#: templates/admin/posteditor.php:183
+#: templates/admin/posteditor.php:189
 msgid "Coupon code (optional)"
 msgstr "Código de cupom (opcional)"
 
-#: templates/admin/posteditor.php:193
+#: templates/admin/posteditor.php:199
 msgid "Link to redeem offer (optional)"
 msgstr "Link para resgatar oferta (opcional)"
 
-#: templates/admin/posteditor.php:203
+#: templates/admin/posteditor.php:209
 msgid "Terms and conditions (optional)"
 msgstr "Termos e condições (opcional)"
 
-#: templates/admin/posteditor.php:233
+#: templates/admin/posteditor.php:239
 msgid "Product name"
 msgstr "Nome do produto"
 
-#: templates/admin/posteditor.php:235
+#: templates/admin/posteditor.php:241
 msgid "Product Name"
 msgstr "Nome do Produto"
 
-#: templates/admin/posteditor.php:239
+#: templates/admin/posteditor.php:245
 msgid "Category"
 msgstr "Categoria"
 
-#: templates/admin/posteditor.php:242
+#: templates/admin/posteditor.php:248
 msgid "Custom"
 msgstr "Personalizado"
 
-#: templates/admin/posteditor.php:243
+#: templates/admin/posteditor.php:249
 msgid "Use WordPress/WooCommerce parent category name"
 msgstr "Use o nome da categoria ascendente do WordPress/WooCommerce"
 
-#: templates/admin/posteditor.php:247
+#: templates/admin/posteditor.php:253
 msgid "Custom category..."
 msgstr "Categoria personalizada..."
 
-#: templates/admin/posteditor.php:257
+#: templates/admin/posteditor.php:263
 msgid "Max"
 msgstr "Máximo"
 
-#: templates/admin/posteditor.php:260
+#: templates/admin/posteditor.php:266
 msgid "Range"
 msgstr "Intervalo"
 
-#: templates/admin/posteditor.php:261
+#: templates/admin/posteditor.php:267
 msgid "Format: 123.45"
 msgstr "Formato: 123.45"
 
-#: templates/admin/posteditor.php:276
-msgid "Product description"
-msgstr "Descrição do produto"
-
-#: templates/admin/posteditor.php:284
+#: templates/admin/posteditor.php:297
 msgid "Description for the product. 1000 characters maximum."
 msgstr "Descrição para o produto. 1000 caracteres no máximo."
 
-#: templates/admin/posteditor.php:293
+#: templates/admin/posteditor.php:306
 msgid "Add a button (optional)"
 msgstr "Adicionar um botão (opcional)"
 
-#: templates/admin/posteditor.php:301
+#: templates/admin/posteditor.php:314
 msgid "None"
 msgstr "Nenhum"
 
-#: templates/admin/posteditor.php:304
+#: templates/admin/posteditor.php:317
 msgid "Visit site"
 msgstr "Visitar site"
 
-#: templates/admin/posteditor.php:306
-msgid "Book"
-msgstr "Reservar"
-
-#: templates/admin/posteditor.php:307
-msgid "Order online"
-msgstr "Pedir online"
-
-#: templates/admin/posteditor.php:308
-msgid "Buy"
-msgstr "Comprar"
-
-#: templates/admin/posteditor.php:310
-msgid "Sign up"
-msgstr "Cadastrar-se"
-
-#: templates/admin/posteditor.php:311
+#: templates/admin/posteditor.php:324
 msgid "Call now (uses primary phone number of business)"
 msgstr "Ligar agora (usa o número de telefone principal da empresa)"
 
-#: templates/admin/posteditor.php:356
-msgid "Optional. Where the user should go when clicking the button. Leave at default (%post_permalink%) to send them to your newly created WordPress post."
-msgstr "Opcional. Para onde o usuário deve ir ao clicar no botão. Deixe como padrão (%post_permalink%) para enviá-lo ao seu post WordPress recém-criado."
+#: templates/admin/posteditor.php:369
+msgid "Optional. Where the user should go when clicking the button. Leave at default ({{post.url}}) to send them to your newly created WordPress post."
+msgstr "Opcional. Para onde o usuário será direcionado ao clicar no botão. Deixe como padrão ({{post.url}}) para redirecioná-lo ao seu post recém-criado no WordPress."
 
-#: templates/admin/posteditor.php:364
-msgid "Advanced post settings"
-msgstr "Configurações avançadas do post"
-
-#: templates/admin/posteditor.php:374
-msgid "Image settings"
-msgstr "Configurações de imagem"
-
-#: templates/admin/posteditor.php:380
-msgid "Fetch image from post content"
-msgstr "Obter imagem do conteúdo do post"
-
-#: templates/admin/posteditor.php:383
-msgid "Try to get an image from the post content (when no custom image is set). This takes priority over the featured image."
-msgstr "Tentar obter uma imagem do conteúdo do post (quando nenhuma imagem personalizada está definida). Isso tem prioridade sobre a imagem destacada."
-
-#: templates/admin/posteditor.php:387
-msgid "Use Featured Image as GMB post image"
-msgstr "Usar a imagem destacada como imagem de publicação do GMB"
-
-#: templates/admin/posteditor.php:390
-msgid "Use the Featured Image as GMB Post image (when no custom image is set)"
-msgstr "Usar a imagem destacada como imagem de publicação do GMB (quando nenhuma imagem personalizada estiver definida)"
-
-#: templates/admin/posteditor.php:395
-msgid "Links"
-msgstr "Links"
-
-#: templates/admin/posteditor.php:401
-msgid "Hide"
-msgstr "Ocultar"
-
-#: templates/admin/posteditor.php:406
-msgid "Inline"
-msgstr "Em linha"
-
-#: templates/admin/posteditor.php:411
-msgid "Next line"
-msgstr "Próxima linha"
-
-#: templates/admin/posteditor.php:416
-msgid "Table of links (at the end of the post)"
-msgstr "Tabela de links (no final do post)"
-
-#: templates/admin/posteditor.php:419
-msgid "How the plugin should handle links in the content (when using %post_content%)"
-msgstr "Como o plugin deve lidar com links no conteúdo (ao usar %post_content%)"
-
-#: templates/admin/posteditor.php:427
-msgid "Schedule your Google My Business posts, automatically repost them at specified interval, and pick one or more locations to post to. And many more features!"
-msgstr "Agende seus posts no Google My Business, repita-os automaticamente em um intervalo especificado e escolha um ou mais locais para publicar. E muitos mais recursos!"
-
-#: templates/admin/posteditor.php:430
-msgid "Upgrade now!"
-msgstr "Atualizar agora!"
-
-#: templates/admin/posteditor.php:455
-msgid "When the post should be first published"
-msgstr "Quando o post deve ser publicado pela primeira vez"
-
-#: templates/admin/posteditor.php:467
-msgid "Automatic repost"
-msgstr "Republicação automática"
-
-#: templates/admin/posteditor.php:477
-msgid "Stop after"
-msgstr "Parar depois"
-
-#: templates/admin/posteditor.php:481
-msgid "Never"
-msgstr "Nunca"
-
-#: templates/admin/posteditor.php:483
-msgid "Date"
-msgstr "Data"
-
-#: templates/admin/posteditor.php:485
-msgid "Executions"
-msgstr "Execuções"
-
-#: templates/admin/posteditor.php:498
-msgid "executions"
-msgstr "execuções"
-
-#: templates/admin/posteditor.php:501
-msgid "Automatically re-publish the post and delete the previous one based on this schedule"
-msgstr "Publique novamente o post automaticamente e exclua o anterior com base neste agendamento"
-
-#: templates/admin/posteditor.php:509
+#: templates/admin/posteditor.php:378
 msgid "Post to location(s)"
 msgstr "Publicar no(s) local(is)"
 
-#: templates/admin/posteditor.php:534
+#: templates/admin/posteditor.php:395
+msgid "Advanced post settings"
+msgstr "Configurações avançadas do post"
+
+#: templates/admin/posteditor.php:396
+msgid "Restore default template"
+msgstr "Restaurar o modelo padrão"
+
+#: templates/admin/posteditor.php:406
+msgid "Image settings"
+msgstr "Configurações de imagem"
+
+#: templates/admin/posteditor.php:412
+msgid "Fetch image from post content"
+msgstr "Obter imagem do conteúdo do post"
+
+#: templates/admin/posteditor.php:415
+msgid "Try to get an image from the post content (when no custom image is set). This takes priority over the featured image."
+msgstr "Tentar obter uma imagem do conteúdo do post (quando nenhuma imagem personalizada está definida). Isso tem prioridade sobre a imagem destacada."
+
+#: templates/admin/posteditor.php:419
+msgid "Use Featured Image as GMB post image"
+msgstr "Usar a imagem destacada como imagem de publicação do GMB"
+
+#: templates/admin/posteditor.php:422
+msgid "Use the Featured Image as GMB Post image (when no custom image is set)"
+msgstr "Usar a imagem destacada como imagem de publicação do GMB (quando nenhuma imagem personalizada estiver definida)"
+
+#: templates/admin/posteditor.php:427
+msgid "Links"
+msgstr "Links"
+
+#: templates/admin/posteditor.php:433
+msgid "Hide"
+msgstr "Ocultar"
+
+#: templates/admin/posteditor.php:438
+msgid "Inline"
+msgstr "Em linha"
+
+#: templates/admin/posteditor.php:443
+msgid "Next line"
+msgstr "Próxima linha"
+
+#: templates/admin/posteditor.php:448
+msgid "Table of links (at the end of the post)"
+msgstr "Tabela de links (no final do post)"
+
+#: templates/admin/posteditor.php:451
+msgid "How the plugin should handle hyperlinks in the content"
+msgstr "Como o plugin precisa gerenciar os links no conteúdo"
+
+#: templates/admin/posteditor.php:459
+msgid "Schedule your Google My Business posts, automatically repost them at specified interval, and pick one or more locations to post to. And many more features!"
+msgstr "Agende seus posts no Google My Business, repita-os automaticamente em um intervalo especificado e escolha um ou mais locais para publicar. E muitos mais recursos!"
+
+#: templates/admin/posteditor.php:462
+msgid "Upgrade now!"
+msgstr "Atualizar agora!"
+
+#: templates/admin/posteditor.php:487
+msgid "When the post should be first published"
+msgstr "Quando o post deve ser publicado pela primeira vez"
+
+#: templates/admin/posteditor.php:499
+msgid "Automatic repost"
+msgstr "Republicação automática"
+
+#: templates/admin/posteditor.php:509
+msgid "Stop after"
+msgstr "Parar depois"
+
+#: templates/admin/posteditor.php:513
+msgid "Never"
+msgstr "Nunca"
+
+#: templates/admin/posteditor.php:515
+msgid "Date"
+msgstr "Data"
+
+#: templates/admin/posteditor.php:517
+msgid "Executions"
+msgstr "Execuções"
+
+#: templates/admin/posteditor.php:530
+msgid "executions"
+msgstr "execuções"
+
+#: templates/admin/posteditor.php:533
+msgid "Automatically re-publish the post and delete the previous one based on this schedule"
+msgstr "Publique novamente o post automaticamente e exclua o anterior com base neste agendamento"
+
+#: templates/admin/posteditor.php:549
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/admin/posteditor.php:540
+#: templates/admin/posteditor.php:555
 msgid "Publish Now"
 msgstr "Publicar agora"
 
@@ -2239,16 +2490,53 @@ msgstr "Precisa de ajuda para começar? Confira o <a target=\"_blank\" href=\"ht
 msgid "Upgrade to the <strong>Agency</strong> plan of <i>Post to Google My Business</i> to handle multiple Google accounts within a single installation of the plugin. With Post to Google My Business for Agencies, you can:"
 msgstr "Atualizar para <strong>Agency</strong> o plano do <i>Post to Google My Business</i> para lidar com várias contas do Google dentro de uma única instalação do plugin. Com o Post to Google My Business for Agencies, você pode:"
 
+#: templates/admin/variablebrowser.php:11
+msgid "Variables/preview"
+msgstr "Variáveis/pré-visualização"
+
+#: templates/admin/variablebrowser.php:27
+msgid "Previous"
+msgstr "Anterior"
+
+#: templates/admin/variablebrowser.php:28
+msgid "Next"
+msgstr "Próximo"
+
+#: templates/admin/variablebrowser.php:34
+msgid "Dynamic data"
+msgstr "Dados dinâmicos"
+
+#: templates/admin/variablebrowser.php:35
+msgid "Post preview"
+msgstr "Pré-visualização da publicação"
+
+#: templates/admin/variablebrowser.php:40
+msgctxt "\"Variables\" refers to the placeholder tokens in the post text"
+msgid "Dynamic data"
+msgstr "Dados dinâmicos"
+
+#: templates/admin/variablebrowser.php:51
+msgid "Post Preview"
+msgstr "Pré-visualização da publicação"
+
+#: templates/admin/variablebrowser.php:57
+msgid "Refresh preview"
+msgstr "Atualizar pré-visualização"
+
+#: templates/admin/variablebrowser.php:62
+msgid "Close"
+msgstr "Fechar"
+
 #: templates/metabox.php:10
 #: templates/metabox.php:13
 msgid "New GMB Post"
 msgstr "Nova publicação no GMB"
 
-#: vendor-prefixed/deliciousbrains/wp-background-processing/classes/wp-background-process.php:842
+#: vendor-prefixed/deliciousbrains/wp-background-processing/classes/wp-background-process.php:838
 msgid "Every Minute"
 msgstr "A cada minuto"
 
-#: vendor-prefixed/deliciousbrains/wp-background-processing/classes/wp-background-process.php:844
+#: vendor-prefixed/deliciousbrains/wp-background-processing/classes/wp-background-process.php:840
 #, php-format
 msgid "Every %d Minutes"
 msgstr "A cada %d minutos"
@@ -2272,6 +2560,27 @@ msgstr "Koen Reus"
 #. Author URI of the plugin/theme
 msgid "https://koenreus.com"
 msgstr "https://koenreus.com"
+
+#~ msgid "Wondering how your Google My Business post is performing?"
+#~ msgstr "Quer saber como está o desempenho de sua publicação no Google My Business?"
+
+#~ msgid "to view post statistics and easily include Google Analytics UTM parameters."
+#~ msgstr "para visualizar estatísticas de posts e incluir facilmente os parâmetros UTM do Google Analytics."
+
+#~ msgid "Use Post to Google My Business for your pages, projects, WooCommerce products and more."
+#~ msgstr "Usar o Post to Google My Business para suas páginas, projetos, produtos WooCommerce e muito mais."
+
+#~ msgid "to enable Post to Google my Business for any post type."
+#~ msgstr "para ativar o Post to Google My Business para qualquer tipo de post."
+
+#~ msgid "Create unique posts every time."
+#~ msgstr "Criar publicações exclusivas sempre."
+
+#~ msgid "to use spintax and %variables% in your post text."
+#~ msgstr "para usar spintax e %variables% no texto do post."
+
+#~ msgid "See available dynamic tags that you can use"
+#~ msgstr "Veja as tags dinâmicas disponíveis que você pode usar"
 
 #~ msgid "Copied!"
 #~ msgstr "Copiado!"
@@ -2364,9 +2673,6 @@ msgstr "https://koenreus.com"
 
 #~ msgid "Please supply the debug data below with your support requests"
 #~ msgstr "Por favor, forneça os dados de depuração abaixo com suas solicitações de suporte"
-
-#~ msgid "Copy site info to clipboard"
-#~ msgstr "Copiar as informações do site para a área de transferência"
 
 #~ msgid "Reconnect to Google My Business"
 #~ msgstr "Reconecte-se ao Google My Business"
